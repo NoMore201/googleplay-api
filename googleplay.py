@@ -7,8 +7,8 @@ from google.protobuf.internal.containers import RepeatedCompositeFieldContainer
 from google.protobuf import text_format
 from google.protobuf.message import Message, DecodeError
 
-from . import googleplay_pb2
-from . import config
+import googleplay_pb2
+import config
 
 ssl_verify = True
 
