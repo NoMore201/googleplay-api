@@ -13,9 +13,9 @@ This project is released under the BSD license.
 Here are some example request reversed from LineageOS 14.1 (Android 7.1) with lastest play services (as of 06/09/2017):
 
 ### Search
-
-**URL:** GET https://android.clients.google.com/fdfe/search?c=4&q=zodiac
 ```
+GET https://android.clients.google.com/fdfe/search?c=4&q=zodiac
+
 X-Ad-Id: <hidden>
 X-DFE-Device-Id: <hidden>
 X-DFE-Content-Filters:
@@ -35,10 +35,9 @@ Accept-Encoding: gzip
 ```
 
 ### Details (single)
-
-**URL:** GET https://android.clients.google.com/fdfe/details?doc=com.google.android.apps.photos
-
 ```
+GET https://android.clients.google.com/fdfe/details?doc=com.google.android.apps.photos
+
 X-Ad-Id: <hidden>
 X-DFE-Device-Id: <hidden>
 X-DFE-Content-Filters:
@@ -57,10 +56,9 @@ Accept-Encoding: gzip
 ```
 
 ### BulkDetails
-
-**URL:** POST https://android.clients.google.com/fdfe/bulkDetails?au=1
-
 ```
+POST https://android.clients.google.com/fdfe/bulkDetails?au=1
+
 X-DFE-Device-Id: <hidden>
 X-DFE-Content-Filters:
 X-DFE-Network-Type: 4
@@ -79,10 +77,9 @@ Accept-Encoding: gzip
 ```
 
 ### Download (with DownloadManager)
-
-**URL:** GET https://android.clients.google.com/market/download/Download?packageName=com.blizzard.bma&versionCode=37&ssl=1&token=AOTCm0RaA2KnsS7TNkToZHQ-HFvfoFcKVl8cEtfceae9R_D1AM7NUnBmYUQ94qbR7KE_WzE-ujoJ7zjyBPjxFXTycEPO2D3PEcEeEKRnRkT-lQnWBX0zBTVyxl3cl_SHNrsD4mU89DOlhd7MxFyjHXYy8Z0sjCEKoEkxN_sEI1Yc76cRvpfhhsD6Hp41B9qizcCWpYF40XXRVbbO75zsAA7Bx4tdyR-7xG5Fu8tVcTU1m9Apj3QyFrQYDmVCz642avKBW2FaZGup8Eg4ixX3LPGnV2t7sL2-kjFrKsnSg8pZ9McN9bqAwNi2jzuotwsrGPsB_YHeiC-mad44p4h7HrDrDojnclKVAGzvt2dVSpV83w&cf=2&did=0&cpn=mizUmddBG6L0EGEh
-
 ```
+GET https://android.clients.google.com/market/download/Download?packageName=com.blizzard.bma&versionCode=37&ssl=1&token=AOTCm0RaA2KnsS7TNkToZHQ-HFvfoFcKVl8cEtfceae9R_D1AM7NUnBmYUQ94qbR7KE_WzE-ujoJ7zjyBPjxFXTycEPO2D3PEcEeEKRnRkT-lQnWBX0zBTVyxl3cl_SHNrsD4mU89DOlhd7MxFyjHXYy8Z0sjCEKoEkxN_sEI1Yc76cRvpfhhsD6Hp41B9qizcCWpYF40XXRVbbO75zsAA7Bx4tdyR-7xG5Fu8tVcTU1m9Apj3QyFrQYDmVCz642avKBW2FaZGup8Eg4ixX3LPGnV2t7sL2-kjFrKsnSg8pZ9McN9bqAwNi2jzuotwsrGPsB_YHeiC-mad44p4h7HrDrDojnclKVAGzvt2dVSpV83w&cf=2&did=0&cpn=mizUmddBG6L0EGEh
+
 User-Agent: AndroidDownloadManager/7.1.2 (Linux; U; Android 7.1.2; A0001 Build/NJH47F)
 Accept-Encoding: identity
 Connection: close
