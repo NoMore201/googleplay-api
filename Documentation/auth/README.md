@@ -8,7 +8,7 @@ POST https://android.clients.google.com/auth HTTP/1.1
 
 **HEADERS**
 ```
-device: 320d104c4dc6eaa4
+device: <hidden_device_id>
 app: com.google.android.gms
 Accept-Encoding: gzip
 User-Agent: GoogleAuth/1.4 (A0001 NJH47F); gzip

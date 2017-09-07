@@ -23,7 +23,7 @@ X-DFE-Device-Id:        <hidden>
 X-DFE-Content-Filters:
 X-DFE-Network-Type:     4
 X-DFE-Request-Params:   timeoutMs=4000
-User-Agent:             Android-Finsky/8.1.72.S-all%20%5B6%5D%20%5BPR%5D%20165478484 (api=3,versionCode=80817206,sdk=25,device=A0001,hardware=bacon,product=bacon,platformVersionRelease=7.1.2,model=A0001,buildId=NJH47F,isWideScreen=0,supportedAbis=armeabi-v7a;armeabi)
+User-Agent:             Android-Finsky/8.1.72.S-all [6] [PR] 165478484 (api=3,versionCode=80817206,sdk=25,device=A0001,hardware=bacon,product=bacon,platformVersionRelease=7.1.2,model=A0001,buildId=NJH47F,isWideScreen=0,supportedAbis=armeabi-v7a;armeabi)
 X-DFE-Client-Id:        am-android-oneplus
 Authorization:          GoogleLogin auth=<hidden>
 Accept-Language:        en-US
