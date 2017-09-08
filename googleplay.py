@@ -60,6 +60,15 @@ class GooglePlayAPI(object):
         self.lang = lang
         self.debug = debug
 
+    def encrypt_password(self, login, passwd):
+
+        def readInt(byteArray, start):
+            return struct.unpack(">I", byteArray[0:4])[0]
+
+        binaryKey = base64.b64encode(bytes(config.GOOGLE_PUBKEY, 'utf-8'))
+        i = readInt(binaryKey, 0)
+
+
     def toDict(self, protoObj):
         """Converts the (protobuf) result from an API call into a dict, for
         easier introspection."""
