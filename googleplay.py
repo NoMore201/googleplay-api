@@ -6,9 +6,15 @@ from google.protobuf import descriptor
 from google.protobuf.internal.containers import RepeatedCompositeFieldContainer
 from google.protobuf import text_format
 from google.protobuf.message import Message, DecodeError
+from Crypto.Util import asn1
+from Crypto.PublicKey import RSA
+from Crypto.Hash import SHA
+from Crypto.Cipher import PKCS1_OAEP
 
 import googleplay_pb2
 import config
+import base64
+import struct
 
 ssl_verify = True
 
@@ -42,10 +48,7 @@ class GooglePlayAPI(object):
 
     SERVICE = "androidmarket"
 
-    # https://developers.google.com/identity/protocols/AuthForInstalledApps
     URL_LOGIN = "https://android.clients.google.com/auth"
-    ACCOUNT_TYPE_GOOGLE = "GOOGLE"
-    ACCOUNT_TYPE_HOSTED = "HOSTED"
     ACCOUNT_TYPE_HOSTED_OR_GOOGLE = "HOSTED_OR_GOOGLE"
     authSubToken = None
 
@@ -59,14 +62,42 @@ class GooglePlayAPI(object):
         self.androidId = androidId
         self.lang = lang
         self.debug = debug
+        self.gsfId = None
+        self.ac2dmToken = None
+        self.authSubToken = None
 
     def encrypt_password(self, login, passwd):
 
         def readInt(byteArray, start):
-            return struct.unpack(">I", byteArray[0:4])[0]
+            # [start:] remove elements before start
+            # [0:4] select the first four elements from start
+            return struct.unpack("!L", byteArray[start:][0:4])[0]
 
-        binaryKey = base64.b64encode(bytes(config.GOOGLE_PUBKEY, 'utf-8'))
+
+        def toBigInt(byteArray):
+            array = byteArray[::-1] # reverse array
+            out = 0
+            for key, value in enumerate(array):
+                decoded = struct.unpack("B", bytes([value]))[0]
+                out = out | decoded << key*8
+            return out
+
+        binaryKey = base64.b64decode(config.GOOGLE_PUBKEY)
         i = readInt(binaryKey, 0)
+        modulus = toBigInt(binaryKey[4:][0:i])
+        j = readInt(binaryKey, i+4)
+        exponent = toBigInt(binaryKey[i+8:][0:j])
+
+        seq = asn1.DerSequence()
+        seq.append(modulus)
+        seq.append(exponent)
+
+        publicKey = RSA.importKey(seq.encode())
+        cipher = PKCS1_OAEP.new(publicKey)
+        combined = login.encode() + b'\x00' + passwd.encode()
+        encrypted = cipher.encrypt(combined)
+        h = b'\x00' + SHA.new(binaryKey).digest()[0:4]
+        return base64.urlsafe_b64encode(h + encrypted)
 
 
     def toDict(self, protoObj):
@@ -114,6 +145,84 @@ class GooglePlayAPI(object):
         if self.debug:
             print("authSubToken: " + authSubToken)
 
+    def setAc2dmToken(self, ac2dmToken):
+        self.ac2dmToken = ac2dmToken
+
+        # put your auth token in config.py to avoid multiple login requests
+        if self.debug:
+            print("ac2dmToken: " + ac2dmToken)
+
+    def getDefaultHeaders(self):
+        """Return the default set of request parameters, which
+        can later be updated, based on the request type"""
+
+        headers = {
+            "Accept-Language": "en-US",
+            "X-DFE-Encoded-Targets":
+                "CAEScFfqlIEG6gUYogFWrAISK1WDAg+hAZoCDgIU1gYEOIACFkLMAeQBnASLATlASUuyAyqCAjY5igOMBQzfA/IClwFbApUC4ANbtgKVAS7OAX8YswHFBhgDwAOPAmGEBt4OfKkB5weSB5AFASkiN68akgMaxAMSAQEBA9kBO7UBFE1KVwIDBGs3go6BBgEBAgMECQgJAQIEAQMEAQMBBQEBBAUEFQYCBgUEAwMBDwIBAgOrARwBEwMEAg0mrwESfTEcAQEKG4EBMxghChMBDwYGASI3hAEODEwXCVh/EREZA4sBYwEdFAgIIwkQcGQRDzQ2fTC2AjfVAQIBAYoBGRg2FhYFBwEqNzACJShzFFblAo0CFxpFNBzaAd0DHjIRI4sBJZcBPdwBCQGhAUd2A7kBLBVPngEECHl0UEUMtQETigHMAgUFCc0BBUUlTywdHDgBiAJ+vgKhAU0uAcYCAWQ/"
+                "5ALUAw1UwQHUBpIBCdQDhgL4AY4CBQICjARbGFBGWzA1CAEMOQH+BRAOCAZywAIDyQZ2MgM3BxsoAgUEBwcHFia3AgcGTBwHBYwBAlcBggFxSGgIrAEEBw4QEqUCASsWadsHCgUCBQMD7QICA3tXCUw7ugJZAwGyAUwpIwM5AwkDBQMJA5sBCw8BNxBVVBwVKhebARkBAwsQEAgEAhESAgQJEBCZATMdzgEBBwG8AQQYKSMUkAEDAwY/CTs4/wEaAUt1AwEDAQUBAgIEAwYEDx1dB2wGeBFgTQ",
+            "User-Agent": "Android-Finsky/7.1.15 (api=3,versionCode=80798000,sdk=25,device=A0001,hardware=bacon,product=bacon)",
+        }
+        if self.gsfId is not None:
+            headers["X-DFE-Device-Id"] = "{0:x}".format(self.gsfId)
+        if self.authSubToken is not None:
+            headers["Authorization"] = "GoogleLogin auth=%s" % self.authSubToken
+        return headers
+
+    def checkin(self, email):
+        headers = self.getDefaultHeaders()
+        headers["Content-Type"] = "application/x-protobuffer"
+        url = "https://android.clients.google.com/checkin"
+
+        request = googleplay_pb2.AndroidCheckinRequest()
+        request.id = 0
+        request.checkin.CopyFrom(config.androidCheckin)
+        request.locale = self.lang
+        request.timeZone = 'America/New_York'
+        request.version = 3
+        request.deviceConfiguration.CopyFrom(config.deviceConfig)
+        request.fragment = 0
+
+        stringRequest = request.SerializeToString()
+        res = requests.post(url, data=stringRequest,
+                                 headers=headers, verify=ssl_verify)
+        response = googleplay_pb2.AndroidCheckinResponse()
+        response.ParseFromString(res.content)
+
+        securityToken = "{0:x}".format(response.securityToken)
+        gsfId = "{0:x}".format(response.androidId)
+        print("String representation of androidId: %s" % gsfId)
+
+        # checkin again to upload gfsid
+        request2 = googleplay_pb2.AndroidCheckinRequest()
+        request2.CopyFrom(request)
+        request2.id = response.androidId
+        request2.securityToken = response.securityToken
+        request2.accountCookie.append("[" + email + "]")
+        request2.accountCookie.append(self.ac2dmToken)
+        stringRequest = request2.SerializeToString()
+        res2 = requests.post(url, data=stringRequest,
+                             headers=headers, verify=ssl_verify)
+
+        return response.androidId
+
+    def uploadDeviceConfig(self):
+        upload = googleplay_pb2.UploadDeviceConfigRequest()
+        upload.deviceConfiguration.CopyFrom(config.deviceConfig)
+        headers = self.getDefaultHeaders()
+        headers["X-DFE-Enabled-Experiments"] = "cl:billing.select_add_instrument_by_default"
+        headers["X-DFE-Unsupported-Experiments"] = "nocache:billing.use_charging_poller,market_emails,buyer_currency,prod_baseline,checkin.set_asset_paid_app_field,shekel_test,content_ratings,buyer_currency_in_app,nocache:encrypted_apk,recent_changes"
+        headers["X-DFE-Client-Id"] = "am-android-google"
+        headers["X-DFE-SmallestScreenWidthDp"] = "320"
+        headers["X-DFE-Filter-Level"] = "3"
+        url = "https://android.clients.google.com/fdfe/uploadDeviceConfig"
+        stringRequest = upload.SerializeToString()
+        res = requests.post(url, data=stringRequest,
+                            headers=headers, verify=ssl_verify)
+        response = googleplay_pb2.ResponseWrapper.FromString(res.content)
+        print(res.text)
+
+
     def login(self, email=None, password=None, authSubToken=None):
         """Login to your Google Account. You must provide either:
         - an email and password
@@ -126,26 +235,26 @@ class GooglePlayAPI(object):
             if (email is None or password is None):
                 raise Exception("You should provide at least " +
                                 "authSubToken or (email and password)")
+
+            encryptedPass = self.encrypt_password(email, password).decode('utf-8')
+            # AC2DM token
             params = {
                 "Email": email,
-                "Passwd": password,
-                "service": self.SERVICE,
+                "EncryptedPasswd": encryptedPass,
+                "service": "ac2dm",
+                "add_account": "1",
                 "accountType": self.ACCOUNT_TYPE_HOSTED_OR_GOOGLE,
                 "has_permission": "1",
+                "app": "com.google.android.gsf",
                 "source": "android",
-                "androidId": self.androidId,
-                "app": "com.android.vending",
                 "device_country": "en",
-                "operatorCountry": "en",
                 "lang": self.lang,
-                "sdk_version": "24"
+                "sdk_version": "25",
+                "client_sig": "38918a453d07199354f8b19af05ec6562ced5788"
             }
-            headers = {
-                "Accept-Encoding": "",
-            }
-            response = requests.post(self.URL_LOGIN, data=params,
-                                     headers=headers, verify=ssl_verify)
+            response = requests.post(self.URL_LOGIN, data=params, verify=ssl_verify)
             data = response.text.split()
+            print(response.text)
             params = {}
             for d in data:
                 if "=" not in d:
@@ -153,30 +262,52 @@ class GooglePlayAPI(object):
                 k, v = d.split("=")[0:2]
                 params[k.strip().lower()] = v.strip()
             if "auth" in params:
-                self.setAuthSubToken(params["auth"])
+                self.setAc2dmToken(params["auth"])
             elif "error" in params:
                 raise LoginError("server says: " + params["error"])
             else:
                 raise LoginError("Auth token not found.")
+
+            self.gsfId = self.checkin(email)
+            self.getAuthSubToken(email, encryptedPass)
+            self.uploadDeviceConfig()
+
+    def getAuthSubToken(self, email, passwd):
+        params = {
+            "Email": email,
+            "EncryptedPasswd": passwd,
+            "accountType": self.ACCOUNT_TYPE_HOSTED_OR_GOOGLE,
+            "has_permission": "1",
+            "source": "android",
+            "device_country": "en",
+            "service": "androidmarket",
+            "app": "com.android.vending",
+            "lang": self.lang,
+            "sdk_version": "25",
+            "client_sig": "38918a453d07199354f8b19af05ec6562ced5788"
+        }
+        response = requests.post(self.URL_LOGIN, data=params, verify=ssl_verify)
+        data = response.text.split()
+        print(response.text)
+        params = {}
+        for d in data:
+            if "=" not in d:
+                continue
+            k, v = d.split("=")[0:2]
+            params[k.strip().lower()] = v.strip()
+        if "auth" in params:
+            self.setAuthSubToken(params["auth"])
+        elif "error" in params:
+            raise LoginError("server says: " + params["error"])
+        else:
+            raise LoginError("Auth token not found.")
 
     def executeRequestApi2(self, path, datapost=None,
                            post_content_type="application/x-www-form-urlencoded; charset=UTF-8"):
         if (datapost is None and path in self.preFetch):
             data = self.preFetch[path]
         else:
-            headers = {
-                "Accept-Language": self.lang,
-                "Authorization": "GoogleLogin auth=%s" % self.authSubToken,
-                "X-DFE-Enabled-Experiments": "cl:billing.select_add_instrument_by_default",
-                "X-DFE-Unsupported-Experiments": "nocache:billing.use_charging_poller,market_emails,buyer_currency,prod_baseline,checkin.set_asset_paid_app_field,shekel_test,content_ratings,buyer_currency_in_app,nocache:encrypted_apk,recent_changes",
-                "X-DFE-Device-Id": self.androidId,
-                "X-DFE-Client-Id": "am-android-google",
-                "User-Agent": "Android-Finsky/4.4.3 (api=3,versionCode=8013013,sdk=24,device=angler,hardware=angler,product=angler)",
-                "X-DFE-SmallestScreenWidthDp": "335",
-                "X-DFE-Filter-Level": "3",
-                "Accept-Encoding": "",
-                "Host": "android.clients.google.com"
-            }
+            headers = self.getDefaultHeaders()
 
             if datapost is not None:
                 headers["Content-Type"] = post_content_type
@@ -189,6 +320,7 @@ class GooglePlayAPI(object):
                 response = requests.get(url, headers=headers,
                                         verify=ssl_verify)
             data = response.content
+            print(data)
 
         message = googleplay_pb2.ResponseWrapper.FromString(data)
         self._try_register_preFetch(message)
