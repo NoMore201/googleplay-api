@@ -39,27 +39,19 @@ class GooglePlayAPI(object):
     """Google Play Unofficial API Class
 
     Usual APIs methods are login(), search(), details(), bulkDetails(),
-    download(), browse(), reviews() and list().
-
-    toStr() can be used to pretty print the result (protobuf object) of the
-    previous methods.
-
-    toDict() converts the result into a dict, for easier introspection."""
-
-    SERVICE = "androidmarket"
+    download(), browse(), reviews() and list()."""
 
     URL_LOGIN = "https://android.clients.google.com/auth"
     ACCOUNT_TYPE_HOSTED_OR_GOOGLE = "HOSTED_OR_GOOGLE"
     authSubToken = None
+    ac2dmToken = None
+    gsfId = None
 
     def __init__(self, debug=False):
         # you must use a device-associated androidId value
         self.preFetch = {}
         self.lang = config.LANG
         self.debug = debug
-        self.gsfId = None
-        self.ac2dmToken = None
-        self.authSubToken = None
 
     def encrypt_password(self, login, passwd):
 
@@ -156,7 +148,7 @@ class GooglePlayAPI(object):
             "X-DFE-Encoded-Targets":
                 "CAEScFfqlIEG6gUYogFWrAISK1WDAg+hAZoCDgIU1gYEOIACFkLMAeQBnASLATlASUuyAyqCAjY5igOMBQzfA/IClwFbApUC4ANbtgKVAS7OAX8YswHFBhgDwAOPAmGEBt4OfKkB5weSB5AFASkiN68akgMaxAMSAQEBA9kBO7UBFE1KVwIDBGs3go6BBgEBAgMECQgJAQIEAQMEAQMBBQEBBAUEFQYCBgUEAwMBDwIBAgOrARwBEwMEAg0mrwESfTEcAQEKG4EBMxghChMBDwYGASI3hAEODEwXCVh/EREZA4sBYwEdFAgIIwkQcGQRDzQ2fTC2AjfVAQIBAYoBGRg2FhYFBwEqNzACJShzFFblAo0CFxpFNBzaAd0DHjIRI4sBJZcBPdwBCQGhAUd2A7kBLBVPngEECHl0UEUMtQETigHMAgUFCc0BBUUlTywdHDgBiAJ+vgKhAU0uAcYCAWQ/"
                 "5ALUAw1UwQHUBpIBCdQDhgL4AY4CBQICjARbGFBGWzA1CAEMOQH+BRAOCAZywAIDyQZ2MgM3BxsoAgUEBwcHFia3AgcGTBwHBYwBAlcBggFxSGgIrAEEBw4QEqUCASsWadsHCgUCBQMD7QICA3tXCUw7ugJZAwGyAUwpIwM5AwkDBQMJA5sBCw8BNxBVVBwVKhebARkBAwsQEAgEAhESAgQJEBCZATMdzgEBBwG8AQQYKSMUkAEDAwY/CTs4/wEaAUt1AwEDAQUBAgIEAwYEDx1dB2wGeBFgTQ",
-            "User-Agent": "Android-Finsky/7.1.15 (api=3,versionCode=80798000,sdk=25,device=A0001,hardware=bacon,product=bacon)",
+            "User-Agent": "Android-Finsky/7.1.15 (api=3,versionCode=80798000,sdk=23,device=angler,hardware=angler,product=angler)",
         }
         if self.gsfId is not None:
             headers["X-DFE-Device-Id"] = "{0:x}".format(self.gsfId)
@@ -169,14 +161,7 @@ class GooglePlayAPI(object):
         headers["Content-Type"] = "application/x-protobuffer"
         url = "https://android.clients.google.com/checkin"
 
-        request = googleplay_pb2.AndroidCheckinRequest()
-        request.id = 0
-        request.checkin.CopyFrom(config.androidCheckin)
-        request.locale = self.lang
-        request.timeZone = 'America/New_York'
-        request.version = 3
-        request.deviceConfiguration.CopyFrom(config.deviceConfig)
-        request.fragment = 0
+        request = config.getAndroidCheckinRequest()
 
         stringRequest = request.SerializeToString()
         res = requests.post(url, data=stringRequest,
@@ -185,9 +170,6 @@ class GooglePlayAPI(object):
         response.ParseFromString(res.content)
 
         securityToken = "{0:x}".format(response.securityToken)
-        gsfId = "{0:x}".format(response.androidId)
-        print("GsfId value: %d" % response.androidId)
-        print("Hex string representation of gsfId: %s" % gsfId)
 
         # checkin again to upload gfsid
         request2 = googleplay_pb2.AndroidCheckinRequest()
@@ -204,7 +186,7 @@ class GooglePlayAPI(object):
 
     def uploadDeviceConfig(self):
         upload = googleplay_pb2.UploadDeviceConfigRequest()
-        upload.deviceConfiguration.CopyFrom(config.deviceConfig)
+        upload.deviceConfiguration.CopyFrom(config.getDeviceConfig())
         headers = self.getDefaultHeaders()
         headers["X-DFE-Enabled-Experiments"] = "cl:billing.select_add_instrument_by_default"
         headers["X-DFE-Unsupported-Experiments"] = "nocache:billing.use_charging_poller,market_emails,buyer_currency,prod_baseline,checkin.set_asset_paid_app_field,shekel_test,content_ratings,buyer_currency_in_app,nocache:encrypted_apk,recent_changes"
@@ -216,7 +198,6 @@ class GooglePlayAPI(object):
         res = requests.post(url, data=stringRequest,
                             headers=headers, verify=ssl_verify)
         response = googleplay_pb2.ResponseWrapper.FromString(res.content)
-        print(res.text)
 
 
     def login(self, email=None, password=None, ac2dmToken=None, gsfId=None):
@@ -272,7 +253,11 @@ class GooglePlayAPI(object):
                 raise LoginError("Auth token not found.")
 
             self.gsfId = self.checkin(email)
+            if self.debug:
+                print("Google Services Framework Id: %s" % "{0:x}".format(self.gsfId))
             self.getAuthSubToken(email, encryptedPass)
+            if self.debug:
+                print("Uploading device configuration")
             self.uploadDeviceConfig()
 
     def getAuthSubToken(self, email, passwd):
@@ -341,7 +326,7 @@ class GooglePlayAPI(object):
                                 verify=ssl_verify)
         data = response.content
         cluster = googleplay_pb2.SearchClusterResponse.FromString(data)
-        return cluster.preFetch[0].response.wrapper.wrapper.cluster[0].doc[0] 
+        return cluster.preFetch[0].response.wrapper.wrapper.cluster[0].doc[0]
 
     def details(self, packageName):
         """Get app details from a package name.
@@ -432,8 +417,9 @@ class GooglePlayAPI(object):
                                  params=params, verify=ssl_verify)
 
         resObj = googleplay_pb2.ResponseWrapper.FromString(response.content)
-        if "ErrorMessage" in str(resObj):
-            raise DecodeError
+        print(resObj)
+        if resObj.commands.displayErrorMessage != "":
+            raise DecodeError(resObj.commands.displayErrorMessage)
         else:
             dlToken = resObj.payload.buyResponse.downloadToken
             path = "delivery"
