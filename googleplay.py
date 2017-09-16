@@ -341,7 +341,7 @@ class GooglePlayAPI(object):
                                 verify=ssl_verify)
         data = response.content
         cluster = googleplay_pb2.SearchClusterResponse.FromString(data)
-        return cluster.preFetch[0].response.wrapper.wrapper.cluster[0] 
+        return cluster.preFetch[0].response.wrapper.wrapper.cluster[0].doc[0] 
 
     def details(self, packageName):
         """Get app details from a package name.
@@ -416,40 +416,37 @@ class GooglePlayAPI(object):
 
         versionCode can be grabbed by using the details() method on the given
         app."""
+
         path = "purchase"
-        data = "ot=%d&doc=%s&vc=%d" % (offerType, packageName, versionCode)
-        message = self.executeRequestApi2(path, data)
-        response = message.payload.buyResponse.purchaseStatusResponse
-        if len(response.appDeliveryData.downloadAuthCookie) == 0:
+
+        headers = self.getDefaultHeaders()
+
+        params = {
+            'ot': str(offerType),
+            'doc': packageName,
+            'vc': str(versionCode)
+        }
+
+        url = "https://android.clients.google.com/fdfe/%s" % path
+        response = requests.post(url, headers=headers,
+                                 params=params, verify=ssl_verify)
+
+        resObj = googleplay_pb2.ResponseWrapper.FromString(response.content)
+        if "ErrorMessage" in str(resObj):
             raise DecodeError
-        url = response.appDeliveryData.downloadUrl
-        cookie = response.appDeliveryData.downloadAuthCookie[0]
-
-        cookies = {
-            str(cookie.name): str(cookie.value)
-        }
-
-        headers = {
-            "User-Agent": "AndroidDownloadManager/4.4.3 (Linux; U; " +
-                          "Android 4.4.3; Nexus S Build/JRO03E)",
-            "Accept-Encoding": "",
-        }
-
-        if not progress_bar:
+        else:
+            dlToken = resObj.payload.buyResponse.downloadToken
+            path = "delivery"
+            params['dtok'] = dlToken
+            url = "https://android.clients.google.com/fdfe/%s" % path
             response = requests.get(url, headers=headers,
-                                    cookies=cookies, verify=ssl_verify)
-            return response.content
-        # If progress_bar is asked
-        from clint.textui import progress
-        response_content = str()
-        response = requests.get(url,
-                                headers=headers,
-                                cookies=cookies,
-                                verify=ssl_verify,
-                                stream=True)
-        total_length = int(response.headers.get('content-length'))
-        for chunk in progress.bar(response.iter_content(chunk_size=1024),
-                                  expected_size=(total_length/1024) + 1):
-            if chunk:
-                response_content += chunk
-        return response_content
+                                     params=params, verify=ssl_verify)
+            resObj = googleplay_pb2.ResponseWrapper.FromString(response.content)
+            downloadUrl = resObj.payload.deliveryResponse.appDeliveryData.downloadUrl
+            cookie = resObj.payload.deliveryResponse.appDeliveryData.downloadAuthCookie[0]
+            cookies = {
+                str(cookie.name): str(cookie.value)
+            }
+            return requests.get(downloadUrl, headers=headers,
+                                cookies=cookies, verify=ssl_verify).content
+
