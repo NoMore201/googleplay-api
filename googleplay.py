@@ -52,15 +52,10 @@ class GooglePlayAPI(object):
     ACCOUNT_TYPE_HOSTED_OR_GOOGLE = "HOSTED_OR_GOOGLE"
     authSubToken = None
 
-    def __init__(self, androidId=None, lang=None, debug=False):
+    def __init__(self, debug=False):
         # you must use a device-associated androidId value
         self.preFetch = {}
-        if androidId is None:
-            androidId = config.ANDROID_ID
-        if lang is None:
-            lang = config.LANG
-        self.androidId = androidId
-        self.lang = lang
+        self.lang = config.LANG
         self.debug = debug
         self.gsfId = None
         self.ac2dmToken = None
@@ -191,7 +186,8 @@ class GooglePlayAPI(object):
 
         securityToken = "{0:x}".format(response.securityToken)
         gsfId = "{0:x}".format(response.androidId)
-        print("String representation of androidId: %s" % gsfId)
+        print("GsfId value: %d" % response.androidId)
+        print("Hex string representation of gsfId: %s" % gsfId)
 
         # checkin again to upload gfsid
         request2 = googleplay_pb2.AndroidCheckinRequest()
@@ -223,20 +219,28 @@ class GooglePlayAPI(object):
         print(res.text)
 
 
-    def login(self, email=None, password=None, authSubToken=None):
-        """Login to your Google Account. You must provide either:
-        - an email and password
-        - a valid Google authSubToken"""
-        if (authSubToken is not None):
-            self.setAuthSubToken(authSubToken)
+    def login(self, email=None, password=None, ac2dmToken=None, gsfId=None):
+        """Login to your Google Account.
+        For first time login you should provide:
+            * email
+            * password
+        For the following logins you need to provide all parameters (you
+        should save gsfId and ac2dmToken somewhere"""
+        encryptedPass = self.encrypt_password(email, password).decode('utf-8')
+        if (all( [each != None for each in [email, password, ac2dmToken, gsfId]] )):
+            # this means that we already setup our account, we just need to get
+            # a token
+            self.setAc2dmToken(ac2dmToken)
+            self.gsfId = gsfId
+            self.getAuthSubToken(email, encryptedPass)
             # check if token is valid with a simple search
             self.search('firefox', 1, None)
         else:
+            # First time setup, where we obtain an ac2dm token and
+            # upload device information
             if (email is None or password is None):
-                raise Exception("You should provide at least " +
-                                "authSubToken or (email and password)")
+                raise Exception("You should provide both email and pass")
 
-            encryptedPass = self.encrypt_password(email, password).decode('utf-8')
             # AC2DM token
             params = {
                 "Email": email,
@@ -254,7 +258,6 @@ class GooglePlayAPI(object):
             }
             response = requests.post(self.URL_LOGIN, data=params, verify=ssl_verify)
             data = response.text.split()
-            print(response.text)
             params = {}
             for d in data:
                 if "=" not in d:
@@ -288,7 +291,6 @@ class GooglePlayAPI(object):
         }
         response = requests.post(self.URL_LOGIN, data=params, verify=ssl_verify)
         data = response.text.split()
-        print(response.text)
         params = {}
         for d in data:
             if "=" not in d:
@@ -320,33 +322,26 @@ class GooglePlayAPI(object):
                 response = requests.get(url, headers=headers,
                                         verify=ssl_verify)
             data = response.content
-            print(data)
 
         message = googleplay_pb2.ResponseWrapper.FromString(data)
         self._try_register_preFetch(message)
 
         return message
 
-    def search(self, query, nb_results, offset=None):
-        """Search for apps."""
+    def search(self, query, nb_result, offset=None):
         path = "search?c=3&q=%s" % requests.utils.quote(query)
 
         if (offset is not None):
             path += "&o=%d" % int(offset)
 
-        message = self.executeRequestApi2(path)
-        response = message.payload.searchResponse
-        if len(response.doc) == 0:
-            raise DecodeError
-        remaining = int(nb_results) - len(response.doc[0].child)
-        messagenext = message
-        allmessages = message
-        while remaining > 0:
-            pathnext = response.doc[0].containerMetadata.nextPageUrl
-            messagenext = self.executeRequestApi2(pathnext)
-            remaining -= len(response.doc[0].child)
-            allmessages.MergeFrom(messagenext)
-        return allmessages.payload.searchResponse
+        headers = self.getDefaultHeaders()
+
+        url = "https://android.clients.google.com/fdfe/%s" % path
+        response = requests.get(url, headers=headers,
+                                verify=ssl_verify)
+        data = response.content
+        cluster = googleplay_pb2.SearchClusterResponse.FromString(data)
+        return cluster.preFetch[0].response.wrapper.wrapper.cluster[0] 
 
     def details(self, packageName):
         """Get app details from a package name.
