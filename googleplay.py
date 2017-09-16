@@ -417,7 +417,6 @@ class GooglePlayAPI(object):
                                  params=params, verify=ssl_verify)
 
         resObj = googleplay_pb2.ResponseWrapper.FromString(response.content)
-        print(resObj)
         if resObj.commands.displayErrorMessage != "":
             raise DecodeError(resObj.commands.displayErrorMessage)
         else:
