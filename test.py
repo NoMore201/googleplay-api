@@ -17,7 +17,7 @@ server.login(EMAIL, PASSWD, ac2dmToken, gsfId)
 app = server.search('telegram', 1, None).child[0]
 docid = app.docid
 version = app.details.appDetails.versionCode
-print('\nFirefox docid is: %s\n' % docid)
+print('\nTelegram docid is: %s\n' % docid)
 print('\nAttempting to download %s\n' % docid)
 fl = server.download(docid, version)
 with open(docid + '.apk', 'wb') as f:

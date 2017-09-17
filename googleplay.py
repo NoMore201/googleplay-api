@@ -41,8 +41,14 @@ class GooglePlayAPI(object):
     Usual APIs methods are login(), search(), details(), bulkDetails(),
     download(), browse(), reviews() and list()."""
 
-    URL_LOGIN = "https://android.clients.google.com/auth"
-    ACCOUNT_TYPE_HOSTED_OR_GOOGLE = "HOSTED_OR_GOOGLE"
+    BASE = "https://android.clients.google.com/"
+    FDFE = BASE + "fdfe/"
+    UPLOADURL = FDFE + "uploadDeviceConfig"
+    SEARCHURL = FDFE + "search"
+    CHECKINURL = BASE + "checkin"
+    AUTHURL = BASE + "auth"
+
+    ACCOUNT = "HOSTED_OR_GOOGLE"
     authSubToken = None
     ac2dmToken = None
     gsfId = None
@@ -54,14 +60,17 @@ class GooglePlayAPI(object):
         self.debug = debug
 
     def encrypt_password(self, login, passwd):
+        """Encrypt the password using the google publickey, using
+        the RSA encryption algorithm"""
 
         def readInt(byteArray, start):
-            # [start:] remove elements before start
-            # [0:4] select the first four elements from start
+            """Read the byte array, starting from *start* position,
+            as an 32-bit unsigned integer"""
             return struct.unpack("!L", byteArray[start:][0:4])[0]
 
 
         def toBigInt(byteArray):
+            """Convert the byte array to a BigInteger"""
             array = byteArray[::-1] # reverse array
             out = 0
             for key, value in enumerate(array):
@@ -140,7 +149,7 @@ class GooglePlayAPI(object):
             print("ac2dmToken: " + ac2dmToken)
 
     def getDefaultHeaders(self):
-        """Return the default set of request parameters, which
+        """Return the default set of request headers, which
         can later be updated, based on the request type"""
 
         headers = {
@@ -159,13 +168,12 @@ class GooglePlayAPI(object):
     def checkin(self, email):
         headers = self.getDefaultHeaders()
         headers["Content-Type"] = "application/x-protobuffer"
-        url = "https://android.clients.google.com/checkin"
 
         request = config.getAndroidCheckinRequest()
 
         stringRequest = request.SerializeToString()
-        res = requests.post(url, data=stringRequest,
-                                 headers=headers, verify=ssl_verify)
+        res = requests.post(self.CHECKINURL, data=stringRequest,
+                            headers=headers, verify=ssl_verify)
         response = googleplay_pb2.AndroidCheckinResponse()
         response.ParseFromString(res.content)
 
@@ -179,12 +187,15 @@ class GooglePlayAPI(object):
         request2.accountCookie.append("[" + email + "]")
         request2.accountCookie.append(self.ac2dmToken)
         stringRequest = request2.SerializeToString()
-        res2 = requests.post(url, data=stringRequest,
+        res2 = requests.post(self.CHECKINURL, data=stringRequest,
                              headers=headers, verify=ssl_verify)
 
         return response.androidId
 
     def uploadDeviceConfig(self):
+        """Upload the device configuration defined in the file
+        *device.properties* to the google account. Default device is a Google Nexus 6P"""
+
         upload = googleplay_pb2.UploadDeviceConfigRequest()
         upload.deviceConfiguration.CopyFrom(config.getDeviceConfig())
         headers = self.getDefaultHeaders()
@@ -193,9 +204,8 @@ class GooglePlayAPI(object):
         headers["X-DFE-Client-Id"] = "am-android-google"
         headers["X-DFE-SmallestScreenWidthDp"] = "320"
         headers["X-DFE-Filter-Level"] = "3"
-        url = "https://android.clients.google.com/fdfe/uploadDeviceConfig"
         stringRequest = upload.SerializeToString()
-        res = requests.post(url, data=stringRequest,
+        res = requests.post(self.UPLOADURL, data=stringRequest,
                             headers=headers, verify=ssl_verify)
         response = googleplay_pb2.ResponseWrapper.FromString(res.content)
 
@@ -228,7 +238,7 @@ class GooglePlayAPI(object):
                 "EncryptedPasswd": encryptedPass,
                 "service": "ac2dm",
                 "add_account": "1",
-                "accountType": self.ACCOUNT_TYPE_HOSTED_OR_GOOGLE,
+                "accountType": self.ACCOUNT,
                 "has_permission": "1",
                 "app": "com.google.android.gsf",
                 "source": "android",
@@ -237,7 +247,7 @@ class GooglePlayAPI(object):
                 "sdk_version": "25",
                 "client_sig": "38918a453d07199354f8b19af05ec6562ced5788"
             }
-            response = requests.post(self.URL_LOGIN, data=params, verify=ssl_verify)
+            response = requests.post(self.AUTHURL, data=params, verify=ssl_verify)
             data = response.text.split()
             params = {}
             for d in data:
@@ -264,7 +274,7 @@ class GooglePlayAPI(object):
         params = {
             "Email": email,
             "EncryptedPasswd": passwd,
-            "accountType": self.ACCOUNT_TYPE_HOSTED_OR_GOOGLE,
+            "accountType": self.ACCOUNT,
             "has_permission": "1",
             "source": "android",
             "device_country": "en",
@@ -274,7 +284,7 @@ class GooglePlayAPI(object):
             "sdk_version": "25",
             "client_sig": "38918a453d07199354f8b19af05ec6562ced5788"
         }
-        response = requests.post(self.URL_LOGIN, data=params, verify=ssl_verify)
+        response = requests.post(self.AUTHURL, data=params, verify=ssl_verify)
         data = response.text.split()
         params = {}
         for d in data:
@@ -299,7 +309,7 @@ class GooglePlayAPI(object):
             if datapost is not None:
                 headers["Content-Type"] = post_content_type
 
-            url = "https://android.clients.google.com/fdfe/%s" % path
+            url = self.FDFE + path
             if datapost is not None:
                 response = requests.post(url, data=str(datapost),
                                          headers=headers, verify=ssl_verify)
@@ -321,7 +331,7 @@ class GooglePlayAPI(object):
 
         headers = self.getDefaultHeaders()
 
-        url = "https://android.clients.google.com/fdfe/%s" % path
+        url = self.FDFE + path
         response = requests.get(url, headers=headers,
                                 verify=ssl_verify)
         data = response.content
@@ -412,7 +422,7 @@ class GooglePlayAPI(object):
             'vc': str(versionCode)
         }
 
-        url = "https://android.clients.google.com/fdfe/%s" % path
+        url = self.FDFE + path
         response = requests.post(url, headers=headers,
                                  params=params, verify=ssl_verify)
 
