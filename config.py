@@ -11,7 +11,6 @@ GOOGLE_PUBKEY   = "AAAAgMom/1a/v0lblO2Ubrt60J2gcuXSljGFQXgcyZWveWLEwo6prwgi3iJIZ
 
 config = configparser.ConfigParser()
 filepath = os.path.join( os.path.dirname( os.path.realpath(__file__) ), 'device.properties')
-print(filepath)
 config.read(filepath)
 device = {}
 for (key, value) in config.items('angler'):

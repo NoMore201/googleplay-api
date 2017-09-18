@@ -15,6 +15,7 @@ import googleplay_pb2
 import config
 import base64
 import struct
+import itertools
 
 ssl_verify = True
 
@@ -301,6 +302,8 @@ class GooglePlayAPI(object):
 
     def executeRequestApi2(self, path, datapost=None,
                            post_content_type="application/x-www-form-urlencoded; charset=UTF-8"):
+        if self.authSubToken == None:
+            raise Exception("You need to login before executing any request")
         if (datapost is None and path in self.preFetch):
             data = self.preFetch[path]
         else:
@@ -319,24 +322,70 @@ class GooglePlayAPI(object):
             data = response.content
 
         message = googleplay_pb2.ResponseWrapper.FromString(data)
+        if message.commands.displayErrorMessage != "":
+            raise DecodeError(message.commands.displayErrorMessage)
         self._try_register_preFetch(message)
 
         return message
 
     def search(self, query, nb_result, offset=None):
+        if self.authSubToken == None:
+            raise Exception("You need to login before executing any request")
         path = "search?c=3&q=%s" % requests.utils.quote(query)
 
         if (offset is not None):
             path += "&o=%d" % int(offset)
 
-        headers = self.getDefaultHeaders()
-
-        url = self.FDFE + path
-        response = requests.get(url, headers=headers,
-                                verify=ssl_verify)
-        data = response.content
-        cluster = googleplay_pb2.SearchClusterResponse.FromString(data)
-        return cluster.preFetch[0].response.wrapper.wrapper.cluster[0].doc[0]
+        data = self.executeRequestApi2(path)
+        # TODO: can response contain more than 1 cluster?
+        cluster = data.preFetch[0].response.payload.listResponse.cluster[0]
+        # cluster has more than 1 doc usually, and each doc has some
+        # childs representing the applications. So we chain together every child
+        # of every doc
+        apps = itertools.chain.from_iterable([doc.child for doc in cluster.doc])
+        output = []
+        for a in apps:
+            elem = {
+                "docId": a.docid,
+                "title": a.title,
+                "author": a.creator,
+                "offer": [{
+                    "micros": o.micros,
+                    "currencyCode": o.currencyCode,
+                    "formattedAmount": o.formattedAmount,
+                    "checkoutFlowRequired": o.checkoutFlowRequired,
+                    "offerType": o.offerType
+                } for o in a.offer],
+                "images": [{
+                    "imageType": img.imageType,
+                    "width": img.Dimension.width if hasattr(img.Dimension, "width") else 0,
+                    "height": img.Dimension.height if hasattr(img.Dimension, "height") else 0,
+                    "url": img.imageUrl,
+                    "supportsFifeUrlOptions": img.supportsFifeUrlOptions
+                } for img in a.image],
+                "versionCode": a.details.appDetails.versionCode,
+                "installationSize": a.details.appDetails.installationSize,
+                "numDownloads": a.details.appDetails.numDownloads,
+                "uploadDate": a.details.appDetails.uploadDate,
+                "files": [{
+                    "fileType": f.fileType,
+                    "version": f.versionCode,
+                    "size": f.size
+                } for f in a.details.appDetails.file],
+                "unstable": a.details.appDetails.unstable,
+                "containsAds": a.details.appDetails.containsAds,
+                "dependencies": [{
+                    "packageName": d.packageName,
+                    "version": d.version
+                } for d in a.details.appDetails.dependencies.dependency],
+                "category": {
+                    "appType": a.relatedLinks.categoryInfo.appType,
+                    "appCategory": a.relatedLinks.categoryInfo.appCategory
+                },
+                "detailsUrl": a.detailsUrl
+            }
+            output.append(elem)
+        return output
 
     def details(self, packageName):
         """Get app details from a package name.
@@ -412,16 +461,16 @@ class GooglePlayAPI(object):
         versionCode can be grabbed by using the details() method on the given
         app."""
 
+        if self.authSubToken == None:
+            raise Exception("You need to login before executing any request")
+
         path = "purchase"
-
         headers = self.getDefaultHeaders()
-
         params = {
             'ot': str(offerType),
             'doc': packageName,
             'vc': str(versionCode)
         }
-
         url = self.FDFE + path
         response = requests.post(url, headers=headers,
                                  params=params, verify=ssl_verify)
