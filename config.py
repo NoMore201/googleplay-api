@@ -9,6 +9,10 @@ SEPARATOR = ";"
 LANG            = "en_US"
 GOOGLE_PUBKEY   = "AAAAgMom/1a/v0lblO2Ubrt60J2gcuXSljGFQXgcyZWveWLEwo6prwgi3iJIZdodyhKZQrNWp5nKJ3srRXcUW+F1BD3baEVGcmEgqaLZUNBjm057pKRI16kB0YppeGx5qIQ5QjKzsR8ETQbKLNWgRY0QRNVz34kMJR3P/LgHax/6rmf5AAAAAwEAAQ=="
 
+# parse phone config from the file 'device.properties'.
+# if you want to add another phone, just create another section in
+# the file. Some configurations for common phones can be found here:
+# https://github.com/yeriomin/play-store-api/tree/master/src/main/resources
 config = configparser.ConfigParser()
 filepath = os.path.join( os.path.dirname( os.path.realpath(__file__) ), 'device.properties')
 config.read(filepath)
@@ -16,13 +20,15 @@ device = {}
 for (key, value) in config.items('angler'):
     device[key] = value
 
-libList = device['sharedlibraries'].split(",")
-featureList = device['features'].split(",")
-localeList = device['locales'].split(",")
-glList = device['gl.extensions'].split(",")
-platforms = device['platforms'].split(",")
+
 
 def getDeviceConfig():
+    libList = device['sharedlibraries'].split(",")
+    featureList = device['features'].split(",")
+    localeList = device['locales'].split(",")
+    glList = device['gl.extensions'].split(",")
+    platforms = device['platforms'].split(",")
+
     deviceConfig = googleplay_pb2.DeviceConfigurationProto()
     deviceConfig.touchScreen = int(device['touchscreen'])
     deviceConfig.keyboard = int(device['keyboard'])
