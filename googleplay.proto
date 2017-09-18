@@ -609,7 +609,7 @@ message Bucket {
 }
 message ListResponse {
   repeated Bucket bucket = 1;
-  repeated DocV2 doc = 2;
+  repeated SearchCluster cluster = 2;
 }
 message DocV1 {
   optional Document finskyDoc = 1;
@@ -1125,26 +1125,6 @@ message StatCounters {
 }
 message UsageStatsExtensionProto {
   optional AndroidDataUsageProto dataUsage = 1;
-}
-message SearchClusterResponse {
-  optional bytes info = 1;
-  repeated SearchPreFetch preFetch = 3;
-}
-message SearchPreFetch {
-  optional string url = 1;
-  optional SearchResponseWrapper response = 2;
-  optional string etag = 3;
-  optional int64 ttl = 4;
-  optional int64 softTtl = 5;
-}
-message SearchResponseWrapper {
-  optional SearchClusterWrapper wrapper = 1;
-}
-message SearchClusterWrapper {
-  optional SearchClusterWrapper2 wrapper = 1;
-}
-message SearchClusterWrapper2 {
-  repeated SearchCluster cluster = 2;
 }
 message SearchCluster {
   optional string id = 1;
