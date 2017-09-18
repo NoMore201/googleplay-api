@@ -14,9 +14,12 @@ gsfId = server.gsfId
 print('\nNow trying secondary login with ac2dm token and gsfId saved\n')
 server.login(EMAIL, PASSWD, ac2dmToken, gsfId)
 
-app = server.search('telegram', 1, None).child[0]
-docid = app.docid
-version = app.details.appDetails.versionCode
+apps = server.search('telegram', 1, None)
+print('\nFound those apps:\n')
+for a in apps:
+    print(a['docId'])
+docid = apps[0]['docId']
+version = apps[0]['versionCode']
 print('\nTelegram docid is: %s\n' % docid)
 print('\nAttempting to download %s\n' % docid)
 fl = server.download(docid, version)
