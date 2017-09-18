@@ -1,21 +1,23 @@
 #!/usr/bin/python
 
-import requests
 
 from google.protobuf import descriptor
 from google.protobuf.internal.containers import RepeatedCompositeFieldContainer
 from google.protobuf import text_format
-from google.protobuf.message import Message, DecodeError
+from google.protobuf.message import Message
 from Crypto.Util import asn1
 from Crypto.PublicKey import RSA
 from Crypto.Hash import SHA
 from Crypto.Cipher import PKCS1_OAEP
 
-import googleplay_pb2
+import requests
 import config
 import base64
 import struct
 import itertools
+
+import googleplay_pb2
+import utils
 
 ssl_verify = True
 
@@ -64,26 +66,11 @@ class GooglePlayAPI(object):
         """Encrypt the password using the google publickey, using
         the RSA encryption algorithm"""
 
-        def readInt(byteArray, start):
-            """Read the byte array, starting from *start* position,
-            as an 32-bit unsigned integer"""
-            return struct.unpack("!L", byteArray[start:][0:4])[0]
-
-
-        def toBigInt(byteArray):
-            """Convert the byte array to a BigInteger"""
-            array = byteArray[::-1] # reverse array
-            out = 0
-            for key, value in enumerate(array):
-                decoded = struct.unpack("B", bytes([value]))[0]
-                out = out | decoded << key*8
-            return out
-
         binaryKey = base64.b64decode(config.GOOGLE_PUBKEY)
-        i = readInt(binaryKey, 0)
-        modulus = toBigInt(binaryKey[4:][0:i])
-        j = readInt(binaryKey, i+4)
-        exponent = toBigInt(binaryKey[i+8:][0:j])
+        i = utils.readInt(binaryKey, 0)
+        modulus = utils.toBigInt(binaryKey[4:][0:i])
+        j = utils.readInt(binaryKey, i+4)
+        exponent = utils.toBigInt(binaryKey[i+8:][0:j])
 
         seq = asn1.DerSequence()
         seq.append(modulus)
@@ -95,39 +82,6 @@ class GooglePlayAPI(object):
         encrypted = cipher.encrypt(combined)
         h = b'\x00' + SHA.new(binaryKey).digest()[0:4]
         return base64.urlsafe_b64encode(h + encrypted)
-
-
-    def toDict(self, protoObj):
-        """Converts the (protobuf) result from an API call into a dict, for
-        easier introspection."""
-        iterable = False
-        if isinstance(protoObj, RepeatedCompositeFieldContainer):
-            iterable = True
-        else:
-            protoObj = [protoObj]
-        retlist = []
-
-        for po in protoObj:
-            msg = dict()
-            for fielddesc, value in po.ListFields():
-                # print value, type(value), getattr(value, "__iter__", False)
-                if fielddesc.type == descriptor.FieldDescriptor.TYPE_GROUP or \
-                        isinstance(value, RepeatedCompositeFieldContainer) or \
-                        isinstance(value, Message):
-                    msg[fielddesc.name] = self.toDict(value)
-                else:
-                    msg[fielddesc.name] = value
-            retlist.append(msg)
-        if not iterable:
-            if len(retlist) > 0:
-                return retlist[0]
-            else:
-                return None
-        return retlist
-
-    def toStr(self, protoObj):
-        """Used for pretty printing a result from the API."""
-        return text_format.MessageToString(protoObj)
 
     def _try_register_preFetch(self, protoObj):
         fields = [i.name for (i, _) in protoObj.ListFields()]
@@ -323,7 +277,7 @@ class GooglePlayAPI(object):
 
         message = googleplay_pb2.ResponseWrapper.FromString(data)
         if message.commands.displayErrorMessage != "":
-            raise DecodeError(message.commands.displayErrorMessage)
+            raise RequestError(message.commands.displayErrorMessage)
         self._try_register_preFetch(message)
 
         return message
@@ -343,48 +297,7 @@ class GooglePlayAPI(object):
         # childs representing the applications. So we chain together every child
         # of every doc
         apps = itertools.chain.from_iterable([doc.child for doc in cluster.doc])
-        output = []
-        for a in apps:
-            elem = {
-                "docId": a.docid,
-                "title": a.title,
-                "author": a.creator,
-                "offer": [{
-                    "micros": o.micros,
-                    "currencyCode": o.currencyCode,
-                    "formattedAmount": o.formattedAmount,
-                    "checkoutFlowRequired": o.checkoutFlowRequired,
-                    "offerType": o.offerType
-                } for o in a.offer],
-                "images": [{
-                    "imageType": img.imageType,
-                    "width": img.Dimension.width if hasattr(img.Dimension, "width") else 0,
-                    "height": img.Dimension.height if hasattr(img.Dimension, "height") else 0,
-                    "url": img.imageUrl,
-                    "supportsFifeUrlOptions": img.supportsFifeUrlOptions
-                } for img in a.image],
-                "versionCode": a.details.appDetails.versionCode,
-                "installationSize": a.details.appDetails.installationSize,
-                "numDownloads": a.details.appDetails.numDownloads,
-                "uploadDate": a.details.appDetails.uploadDate,
-                "files": [{
-                    "fileType": f.fileType,
-                    "version": f.versionCode,
-                    "size": f.size
-                } for f in a.details.appDetails.file],
-                "unstable": a.details.appDetails.unstable,
-                "containsAds": a.details.appDetails.containsAds,
-                "dependencies": [{
-                    "packageName": d.packageName,
-                    "version": d.version
-                } for d in a.details.appDetails.dependencies.dependency],
-                "category": {
-                    "appType": a.relatedLinks.categoryInfo.appType,
-                    "appCategory": a.relatedLinks.categoryInfo.appCategory
-                },
-                "detailsUrl": a.detailsUrl
-            }
-            output.append(elem)
+        output = list(map(utils.fromDocToDictionary, apps))
         return output
 
     def details(self, packageName):
@@ -401,6 +314,7 @@ class GooglePlayAPI(object):
         requires only one request.
 
         packageNames is a list of app ID (usually starting with 'com.')."""
+
         path = "bulkDetails"
         req = googleplay_pb2.BulkDetailsRequest()
         req.docid.extend(packageNames)
@@ -408,7 +322,10 @@ class GooglePlayAPI(object):
         message = self.executeRequestApi2(path,
                                           data.decode("utf-8"),
                                           "application/x-protobuf")
-        return message.payload.bulkDetailsResponse
+        response = message.payload.bulkDetailsResponse
+        detailsList = [entry.doc for entry in response.entry]
+        result = list(map(utils.fromDocToDictionary, detailsList))
+        return result
 
     def browse(self, cat=None, ctr=None):
         """Browse categories.
@@ -477,7 +394,7 @@ class GooglePlayAPI(object):
 
         resObj = googleplay_pb2.ResponseWrapper.FromString(response.content)
         if resObj.commands.displayErrorMessage != "":
-            raise DecodeError(resObj.commands.displayErrorMessage)
+            raise RequestError(resObj.commands.displayErrorMessage)
         else:
             dlToken = resObj.payload.buyResponse.downloadToken
             path = "delivery"

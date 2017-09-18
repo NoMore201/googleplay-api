@@ -20,8 +20,6 @@ device = {}
 for (key, value) in config.items('angler'):
     device[key] = value
 
-
-
 def getDeviceConfig():
     libList = device['sharedlibraries'].split(",")
     featureList = device['features'].split(",")
