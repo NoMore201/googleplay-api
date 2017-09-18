@@ -32,9 +32,20 @@ def fromDocToDictionary(app):
         } for f in app.details.appDetails.file],
         "unstable": app.details.appDetails.unstable,
         "containsAds": app.details.appDetails.containsAds,
+        "aggregateRating": {
+            "type": app.aggregateRating.type,
+            "starRating": app.aggregateRating.starRating,
+            "ratingsCount": app.aggregateRating.ratingsCount,
+            "oneStarRatings": app.aggregateRating.oneStarRatings,
+            "twoStarRatings": app.aggregateRating.twoStarRatings,
+            "threeStarRatings": app.aggregateRating.threeStarRatings,
+            "fourStarRatings": app.aggregateRating.fourStarRatings,
+            "fiveStarRatings": app.aggregateRating.fiveStarRatings,
+            "commentCount": app.aggregateRating.commentCount
+        },
         "dependencies": [{
-        "packageName": d.packageName,
-        "version": d.version
+            "packageName": d.packageName,
+            "version": d.version
         } for d in app.details.appDetails.dependencies.dependency],
         "category": {
             "appType": app.relatedLinks.categoryInfo.appType,
