@@ -1,4 +1,4 @@
-# Google play python3 API
+# Google play python3 API [![Build Status](https://travis-ci.org/NoMore201/googleplay-api.svg?branch=master)](https://travis-ci.org/NoMore201/googleplay-api)
 
 This project contains an unofficial API for google play interactions. The code mainly comes from
 [GooglePlayAPI project](https://github.com/egirault/googleplay-api/) which was written for python2 and it's not
