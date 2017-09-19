@@ -2,8 +2,8 @@ from googleplay import GooglePlayAPI
 
 import sys
 
-EMAIL = ""
-PASSWD = ""
+EMAIL = "maracaiboez"
+PASSWD = "fjgozwjmkwyvvutt"
 
 testApps = ['com.cpuid.cpu_z']
 server = GooglePlayAPI(True)
