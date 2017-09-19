@@ -14,5 +14,5 @@ Since I started playing with a more recent version of the GooglePlay API on Line
 Checkout the Documentation folder for more details on single API endpoints.
 
 # Development status
-[ ] - Investigate how paid apps download works
-[ ] - Investigate if it's possible to dowload apk with obb files
+- [ ] Investigate how paid apps download works
+- [ ] Investigate if it's possible to dowload apk with obb files
