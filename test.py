@@ -1,4 +1,4 @@
-from googleplay import GooglePlayAPI
+from gpapi.googleplay import GooglePlayAPI
 
 import sys
 

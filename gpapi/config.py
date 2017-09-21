@@ -1,4 +1,4 @@
-import googleplay_pb2
+from . import googleplay_pb2
 import time
 import os
 import configparser

@@ -11,13 +11,11 @@ from Crypto.Hash import SHA
 from Crypto.Cipher import PKCS1_OAEP
 
 import requests
-import config
 import base64
 import struct
 import itertools
 
-import googleplay_pb2
-import utils
+from . import googleplay_pb2, config, utils
 
 ssl_verify = True
 
@@ -165,7 +163,7 @@ class GooglePlayAPI(object):
         response = googleplay_pb2.ResponseWrapper.FromString(res.content)
 
 
-    def login(self, email=None, password=None, ac2dmToken=None, gsfId=None):
+    def login(self, email, password, ac2dmToken=None, gsfId=None):
         """Login to your Google Account.
         For first time login you should provide:
             * email
