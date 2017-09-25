@@ -14,9 +14,9 @@ def fromDocToDictionary(app):
         } for o in app.offer],
         "images": [{
             "imageType": img.imageType,
-            "width": img.Dimension.width if hasattr(img.Dimension, "width")
+            "width": img.dimension.width if hasattr(img.dimension, "width")
                                          else 0,
-            "height": img.Dimension.height if hasattr(img.Dimension, "height")
+            "height": img.dimension.height if hasattr(img.dimension, "height")
                                            else 0,
             "url": img.imageUrl,
             "supportsFifeUrlOptions": img.supportsFifeUrlOptions
