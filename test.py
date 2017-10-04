@@ -6,16 +6,17 @@ EMAIL = "maracaiboez"
 PASSWD = "fjgozwjmkwyvvutt"
 
 testApps = ['com.cpuid.cpu_z']
-server = GooglePlayAPI(True)
+server = GooglePlayAPI(debug=True)
 
 try:
     print('\nLogging in with email and password\n')
     server.login(EMAIL, PASSWD, None, None)
-    ac2dmToken = server.ac2dmToken
     gsfId = server.gsfId
+    authSubToken = server.authSubToken
 
     print('\nNow trying secondary login with ac2dm token and gsfId saved\n')
-    server.login(EMAIL, PASSWD, ac2dmToken, gsfId)
+    server = GooglePlayAPI(debug=True)
+    server.login(None, None, gsfId, authSubToken)
 
     apps = server.search('telegram', 1, None)
     print('\nFound those apps:\n')

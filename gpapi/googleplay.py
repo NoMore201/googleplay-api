@@ -51,7 +51,6 @@ class GooglePlayAPI(object):
 
     ACCOUNT = "HOSTED_OR_GOOGLE"
     authSubToken = None
-    ac2dmToken = None
     gsfId = None
 
     def __init__(self, debug=False):
@@ -94,13 +93,6 @@ class GooglePlayAPI(object):
         if self.debug:
             print("authSubToken: " + authSubToken)
 
-    def setAc2dmToken(self, ac2dmToken):
-        self.ac2dmToken = ac2dmToken
-
-        # put your auth token in config.py to avoid multiple login requests
-        if self.debug:
-            print("ac2dmToken: " + ac2dmToken)
-
     def getDefaultHeaders(self):
         """Return the default set of request headers, which
         can later be updated, based on the request type"""
@@ -118,7 +110,7 @@ class GooglePlayAPI(object):
             headers["Authorization"] = "GoogleLogin auth=%s" % self.authSubToken
         return headers
 
-    def checkin(self, email):
+    def checkin(self, email, ac2dmToken):
         headers = self.getDefaultHeaders()
         headers["Content-Type"] = "application/x-protobuffer"
 
@@ -138,7 +130,7 @@ class GooglePlayAPI(object):
         request2.id = response.androidId
         request2.securityToken = response.securityToken
         request2.accountCookie.append("[" + email + "]")
-        request2.accountCookie.append(self.ac2dmToken)
+        request2.accountCookie.append(ac2dmToken)
         stringRequest = request2.SerializeToString()
         res2 = requests.post(self.CHECKINURL, data=stringRequest,
                              headers=headers, verify=ssl_verify)
@@ -163,28 +155,19 @@ class GooglePlayAPI(object):
         response = googleplay_pb2.ResponseWrapper.FromString(res.content)
 
 
-    def login(self, email, password, ac2dmToken=None, gsfId=None):
+    def login(self, email=None, password=None, gsfId=None, authSubToken=None):
         """Login to your Google Account.
         For first time login you should provide:
             * email
             * password
-        For the following logins you need to provide all parameters (you
-        should save gsfId and ac2dmToken somewhere"""
-        encryptedPass = self.encrypt_password(email, password).decode('utf-8')
-        if (all( [each != None for each in [email, password, ac2dmToken, gsfId]] )):
-            # this means that we already setup our account, we just need to get
-            # a token
-            self.setAc2dmToken(ac2dmToken)
-            self.gsfId = gsfId
-            self.getAuthSubToken(email, encryptedPass)
-            # check if token is valid with a simple search
-            self.search('firefox', 1, None)
-        else:
+        For the following logins you need to provide:
+            * gsfId
+            * authSubToken"""
+        if email is not None and password is not None:
             # First time setup, where we obtain an ac2dm token and
             # upload device information
-            if (email is None or password is None):
-                raise Exception("You should provide both email and pass")
 
+            encryptedPass = self.encrypt_password(email, password).decode('utf-8')
             # AC2DM token
             params = {
                 "Email": email,
@@ -209,19 +192,27 @@ class GooglePlayAPI(object):
                 k, v = d.split("=")[0:2]
                 params[k.strip().lower()] = v.strip()
             if "auth" in params:
-                self.setAc2dmToken(params["auth"])
+                ac2dmToken = params["auth"]
             elif "error" in params:
                 raise LoginError("server says: " + params["error"])
             else:
                 raise LoginError("Auth token not found.")
 
-            self.gsfId = self.checkin(email)
+            self.gsfId = self.checkin(email, ac2dmToken)
             if self.debug:
                 print("Google Services Framework Id: %s" % "{0:x}".format(self.gsfId))
             self.getAuthSubToken(email, encryptedPass)
             if self.debug:
                 print("Uploading device configuration")
             self.uploadDeviceConfig()
+        elif gsfId is not None and authSubToken is not None:
+            # no need to initialize API
+            self.gsfId = gsfId
+            self.setAuthSubToken(authSubToken)
+            # check if token is valid with a simple search
+            self.search('firefox', 1, None)
+        else:
+            raise LoginError('Either (email,pass) or (gsfId, authSubToken) is needed')
 
     def getAuthSubToken(self, email, passwd):
         params = {
