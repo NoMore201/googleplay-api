@@ -328,16 +328,29 @@ class GooglePlayAPI(object):
         result = list(map(utils.fromDocToDictionary, detailsList))
         return result
 
-    def browse(self, cat=None, ctr=None):
+    def browse(self, cat=None, subCat=None):
         """Browse categories.
         cat (category ID) and ctr (subcategory ID) are used as filters."""
         path = "browse?c=3"
         if cat is not None:
             path += "&cat=%s" % requests.utils.quote(cat)
-        if ctr is not None:
-            path += "&ctr=%s" % requests.utils.quote(ctr)
-        message = self.executeRequestApi2(path)
-        return message.payload.browseResponse
+        if subCat is not None:
+            path += "&ctr=%s" % requests.utils.quote(subCat)
+        data = self.executeRequestApi2(path)
+        output = {}
+
+        if len(data.preFetch) > 0:
+            # get Play Store showcase categories
+            # (like Top Trending, Recently Updated ...)
+            for preFetch in data.preFetch:
+                doc = preFetch.response.payload.listResponse.cluster[0].doc
+                if len(doc) == 0:
+                    continue
+                categoryTitle = doc[0].title
+                output[categoryTitle] = list(map(utils.fromDocToDictionary,
+                                                 [apps for apps in doc[0].child]))
+
+        return output
 
     def list(self, cat, ctr=None, nb_results=None, offset=None):
         """List apps.
