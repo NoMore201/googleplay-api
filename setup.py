@@ -1,9 +1,9 @@
 from setuptools import setup
 
 setup(
-    name='googleplay-api',
+    name='gpapi',
     version='0.1.2',
-    description='Unofficial python3 api for google play',
+    description='Unofficial python api for google play',
     url='https://github.com/NoMore201/googleplay-api',
     author='NoMore201',
     author_email='domenico.iezzi.201@gmail.com',
