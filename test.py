@@ -48,9 +48,11 @@ with open(docid + '.apk', 'wb') as f:
 print('\nGetting details for %s\n' % testApps[0])
 bulk = server.bulkDetails(testApps)
 print(bulk)
+print()
 
 # BROWSE
+
 browse = server.browse(cat='MUSIC_AND_AUDIO')
+print(browse.keys())
 for key in list(browse.keys()):
-    print('First app for category %s is %s' %
-            (key, browse[key][0]['docId']))
+    print('First app for category %s is %s' % (key, browse[key][0]['docId']))
