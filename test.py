@@ -53,5 +53,4 @@ print()
 # BROWSE
 
 browse = server.browse(cat='MUSIC_AND_AUDIO')
-for key, value in browse.items():
-    print('First app for category %s is %s' % (key, value[0]['docId']))
+print(browse)
