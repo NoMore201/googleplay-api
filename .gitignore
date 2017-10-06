@@ -1,3 +1,6 @@
 __pycache__/
 *.swp
 *.apk
+build/
+dist/
+*.egg-info/

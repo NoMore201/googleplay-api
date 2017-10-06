@@ -53,4 +53,5 @@ print()
 # BROWSE
 
 browse = server.browse(cat='MUSIC_AND_AUDIO')
-print(browse)
+print(browse.keys())
+
