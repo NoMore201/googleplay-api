@@ -262,9 +262,8 @@ class GooglePlayAPI(object):
             else:
                 response = requests.get(url, headers=headers,
                                         verify=ssl_verify)
-            data = response.content
 
-        message = googleplay_pb2.ResponseWrapper.FromString(data)
+        message = googleplay_pb2.ResponseWrapper.FromString(response.content)
         if message.commands.displayErrorMessage != "":
             raise RequestError(message.commands.displayErrorMessage)
         self._try_register_preFetch(message)
@@ -329,31 +328,40 @@ class GooglePlayAPI(object):
         return result
 
     def browse(self, cat=None, subCat=None):
-        """Browse categories.
-        cat (category ID) and ctr (subcategory ID) are used as filters."""
+        """Browse categories. If neither cat nor subcat are specified,
+        return a list of categories, otherwise it return a list of apps
+        using cat (category ID) and subCat (subcategory ID) as filters."""
         path = "browse?c=3"
         if cat is not None:
             path += "&cat=%s" % requests.utils.quote(cat)
         if subCat is not None:
             path += "&ctr=%s" % requests.utils.quote(subCat)
         data = self.executeRequestApi2(path)
-        output = {}
+        output = []
 
-        if len(data.preFetch) > 0:
-            # get Play Store showcase categories
-            # (like Top Trending, Recently Updated ...)
-            for preFetch in data.preFetch:
-                doc = preFetch.response.payload.listResponse.cluster[0].doc
-                if len(doc) == 0:
-                    continue
-                categoryTitle = doc[0].title
-                output[categoryTitle] = list(map(utils.fromDocToDictionary,
-                                                 [apps for apps in doc[0].child]))
+        if cat is None and subCat is None:
+            # result contains all categories available
+            for cat in data.payload.browseResponse.category:
+                elem = { 'name': cat.name,
+                         'dataUrl': cat.dataUrl,
+                         'catId': cat.unknownCategoryContainer.categoryIdContainer.categoryId }
+                output.append(elem)
+        else:
+            # result contains apps of a specific category
+            # organized by sections
+            for pf in data.preFetch:
+                for cluster in pf.response.payload.listResponse.cluster:
+                    for doc in cluster.doc:
+                        section = { 'title': doc.title,
+                                    'docid': doc.docid,
+                                    'apps': list(map(utils.fromDocToDictionary,
+                                                     [a for a in doc.child])) }
+                        output.append(section)
 
         return output
 
     def list(self, cat, ctr=None, nb_results=None, offset=None):
-        """List apps.
+        """List apps for a specfic category *cat*.
 
         If ctr (subcategory ID) is None, returns a list of valid subcategories.
 
@@ -365,8 +373,22 @@ class GooglePlayAPI(object):
             path += "&n=%s" % requests.utils.quote(nb_results)
         if offset is not None:
             path += "&o=%s" % requests.utils.quote(offset)
-        message = self.executeRequestApi2(path)
-        return message.payload.listResponse
+        data = self.executeRequestApi2(path)
+        output = []
+        if ctr is None:
+            # list subcategories
+            for pf in data.preFetch:
+                for cluster in pf.response.payload.listResponse.cluster:
+                    for doc in cluster.doc:
+                        output.append(doc.docid)
+        else:
+            # list apps for specific subcat
+            for cluster in data.payload.listResponse.cluster:
+                for doc in cluster.doc:
+                    output += list(map(utils.fromDocToDictionary,
+                                           [a for a in doc.child]))
+
+        return output
 
     def reviews(self, packageName, filterByDevice=False, sort=2,
                 nb_results=None, offset=None):

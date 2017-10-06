@@ -21,7 +21,7 @@ server.login(None, None, gsfId, authSubToken)
 
 # SEARCH
 
-apps = server.search('telegram', 34, None)
+apps = server.search('termux', 34, None)
 
 print('nb_result: 34')
 print('number of results: %d' % len(apps))
@@ -35,7 +35,7 @@ for a in apps:
 
 docid = apps[0]['docId']
 version = apps[0]['versionCode']
-print('\nTelegram docid is: %s\n' % docid)
+print('\nTermux docid is: %s\n' % docid)
 print('\nAttempting to download %s\n' % docid)
 fl = server.download(docid, version)
 with open(docid + '.apk', 'wb') as f:
@@ -48,10 +48,28 @@ with open(docid + '.apk', 'wb') as f:
 print('\nGetting details for %s\n' % testApps[0])
 bulk = server.bulkDetails(testApps)
 print(bulk)
-print()
 
 # BROWSE
 
-browse = server.browse(cat='MUSIC_AND_AUDIO')
-print(browse.keys())
+print('\nBrowse play store categories\n')
+browse = server.browse()
+for b in browse:
+    print(b['name'])
 
+print('\nBrowsing the %s category\n' % browse[0]['catId'])
+browseCat = server.browse(browse[0]['catId'])
+for b in browseCat:
+    print('%s subcategory with %d apps' % (b['title'],len(b['apps'])))
+
+# LIST
+
+cat = 'MUSIC_AND_AUDIO'
+print('\nList %s subcategories\n' % cat)
+catList = server.list(cat)
+for c in catList:
+    print(c)
+
+print('\nList %s apps for %s category\n' % (catList[0],cat))
+appList = server.list(cat, catList[0])
+for app in appList:
+    print(app['docId'])
