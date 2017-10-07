@@ -405,9 +405,43 @@ class GooglePlayAPI(object):
         message = self.executeRequestApi2(path)
         return message.payload.reviewResponse
 
+    def delivery(self, packageName, versionCode,
+                 offerType=1, downloadToken=None):
+        """Download an already purchased app.
+
+        packageName is the app unique ID (usually starting with 'com.').
+
+        versionCode can be grabbed by using the details() method on the given
+        app."""
+        path = "delivery"
+        params = { 'ot': str(offerType),
+                   'doc': packageName,
+                   'vc': str(versionCode) }
+        headers = self.getDefaultHeaders()
+        if downloadToken is not None:
+            params['dtok'] = downloadToken
+        url = "https://android.clients.google.com/fdfe/%s" % path
+        response = requests.get(url, headers=headers,
+                                params=params, verify=ssl_verify)
+        resObj = googleplay_pb2.ResponseWrapper.FromString(response.content)
+        if resObj.commands.displayErrorMessage != "":
+            raise RequestError(resObj.commands.displayErrorMessage)
+        elif resObj.payload.deliveryResponse.appDeliveryData.downloadUrl == "":
+            raise RequestError('App not purchased')
+        else:
+            downloadUrl = resObj.payload.deliveryResponse.appDeliveryData.downloadUrl
+            cookie = resObj.payload.deliveryResponse.appDeliveryData.downloadAuthCookie[0]
+            cookies = {
+                str(cookie.name): str(cookie.value)
+            }
+            return requests.get(downloadUrl, headers=headers,
+                            cookies=cookies, verify=ssl_verify).content
+
     def download(self, packageName, versionCode,
-                 offerType=1, progress_bar=False):
-        """Download an app and return its raw data (APK file).
+                 offerType=1):
+        """Download an app and return its raw data (APK file). Free apps need
+        to be "purchased" first, in order to retrieve the download cookie.
+        If you want to download an already purchased app, use *delivery* method.
 
         packageName is the app unique ID (usually starting with 'com.').
 
@@ -433,17 +467,6 @@ class GooglePlayAPI(object):
             raise RequestError(resObj.commands.displayErrorMessage)
         else:
             dlToken = resObj.payload.buyResponse.downloadToken
-            path = "delivery"
-            params['dtok'] = dlToken
-            url = "https://android.clients.google.com/fdfe/%s" % path
-            response = requests.get(url, headers=headers,
-                                     params=params, verify=ssl_verify)
-            resObj = googleplay_pb2.ResponseWrapper.FromString(response.content)
-            downloadUrl = resObj.payload.deliveryResponse.appDeliveryData.downloadUrl
-            cookie = resObj.payload.deliveryResponse.appDeliveryData.downloadAuthCookie[0]
-            cookies = {
-                str(cookie.name): str(cookie.value)
-            }
-            return requests.get(downloadUrl, headers=headers,
-                                cookies=cookies, verify=ssl_verify).content
+            return self.delivery(packageName, versionCode,
+                                 offerType, dlToken)
 

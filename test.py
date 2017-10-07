@@ -1,4 +1,4 @@
-from gpapi.googleplay import GooglePlayAPI
+from gpapi.googleplay import GooglePlayAPI, RequestError
 
 import sys
 
@@ -32,7 +32,6 @@ for a in apps:
     print(a['docId'])
 
 # DOWNLOAD
-
 docid = apps[0]['docId']
 version = apps[0]['versionCode']
 print('\nTermux docid is: %s\n' % docid)
@@ -42,6 +41,28 @@ with open(docid + '.apk', 'wb') as f:
     f.write(fl)
     print('\nDownload successful\n')
     f.close()
+
+# DOWNLOAD APP NOT PURCHASED
+# Attempting to download Nova Launcher Prime
+# it should throw an error 'App Not Purchased'
+
+errorThrown = False
+try:
+    app = server.search('nova launcher prime', 3, None)
+    app = filter(lambda x: x['docId'] == 'com.teslacoilsw.launcher.prime', app)
+    app = list(app)[0]
+    fl = server.download(app['docId'], app['versionCode'])
+    with open(docid + '.apk', 'wb') as f:
+        f.write(fl)
+        print('\nDownload successful\n')
+        f.close()
+except RequestError as e:
+    errorThrown = True
+
+if not errorThrown:
+    print('Download of previous app should have failed')
+    sys.exit(1)
+
 
 # BULK DETAILS
 
