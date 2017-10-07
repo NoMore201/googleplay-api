@@ -9,6 +9,7 @@ from Crypto.Util import asn1
 from Crypto.PublicKey import RSA
 from Crypto.Hash import SHA
 from Crypto.Cipher import PKCS1_OAEP
+from clint.textui import progress
 
 import requests
 import base64
@@ -406,7 +407,7 @@ class GooglePlayAPI(object):
         return message.payload.reviewResponse
 
     def delivery(self, packageName, versionCode,
-                 offerType=1, downloadToken=None):
+                 offerType=1, downloadToken=None, progress_bar=False):
         """Download an already purchased app.
 
         packageName is the app unique ID (usually starting with 'com.').
@@ -434,11 +435,19 @@ class GooglePlayAPI(object):
             cookies = {
                 str(cookie.name): str(cookie.value)
             }
-            return requests.get(downloadUrl, headers=headers,
+            if not progress_bar:
+                return requests.get(downloadUrl, headers=headers,
                             cookies=cookies, verify=ssl_verify).content
 
+            response_content = bytes()
+            response = requests.get(downloadUrl, headers=headers, cookies=cookies, verify=ssl_verify, stream=True)
+            total_length = int(response.headers.get('content-length'))
+            for chunk in progress.bar(response.iter_content(chunk_size=1024), expected_size=(total_length >> 10) + 1):
+                response_content += chunk
+            return response_content
+
     def download(self, packageName, versionCode,
-                 offerType=1):
+                 offerType=1, progress_bar=False):
         """Download an app and return its raw data (APK file). Free apps need
         to be "purchased" first, in order to retrieve the download cookie.
         If you want to download an already purchased app, use *delivery* method.
@@ -468,5 +477,5 @@ class GooglePlayAPI(object):
         else:
             dlToken = resObj.payload.buyResponse.downloadToken
             return self.delivery(packageName, versionCode,
-                                 offerType, dlToken)
+                                 offerType, dlToken, progress_bar=progress_bar)
 
