@@ -36,7 +36,7 @@ docid = apps[0]['docId']
 version = apps[0]['versionCode']
 print('\nTermux docid is: %s\n' % docid)
 print('\nAttempting to download %s\n' % docid)
-fl = server.download(docid, version)
+fl = server.download(docid, version, progress_bar=True)
 with open(docid + '.apk', 'wb') as f:
     f.write(fl)
     print('\nDownload successful\n')
@@ -46,18 +46,20 @@ with open(docid + '.apk', 'wb') as f:
 # Attempting to download Nova Launcher Prime
 # it should throw an error 'App Not Purchased'
 
+print('\nAttempting to download "com.teslacoilsw.launcher.prime"\n')
 errorThrown = False
 try:
     app = server.search('nova launcher prime', 3, None)
     app = filter(lambda x: x['docId'] == 'com.teslacoilsw.launcher.prime', app)
     app = list(app)[0]
-    fl = server.download(app['docId'], app['versionCode'])
+    fl = server.delivery(app['docId'], app['versionCode'], progress_bar=True)
     with open(docid + '.apk', 'wb') as f:
         f.write(fl)
         print('\nDownload successful\n')
         f.close()
 except RequestError as e:
     errorThrown = True
+    print(e)
 
 if not errorThrown:
     print('Download of previous app should have failed')
