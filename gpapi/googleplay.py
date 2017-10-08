@@ -56,7 +56,6 @@ class GooglePlayAPI(object):
 
     def __init__(self, debug=False):
         # you must use a device-associated androidId value
-        self.preFetch = {}
         self.lang = config.LANG
         self.debug = debug
 
@@ -80,12 +79,6 @@ class GooglePlayAPI(object):
         encrypted = cipher.encrypt(combined)
         h = b'\x00' + SHA.new(binaryKey).digest()[0:4]
         return base64.urlsafe_b64encode(h + encrypted)
-
-    def _try_register_preFetch(self, protoObj):
-        fields = [i.name for (i, _) in protoObj.ListFields()]
-        if ("preFetch" in fields):
-            for p in protoObj.preFetch:
-                self.preFetch[p.url] = p.response
 
     def setAuthSubToken(self, authSubToken):
         self.authSubToken = authSubToken
@@ -248,30 +241,32 @@ class GooglePlayAPI(object):
                            post_content_type="application/x-www-form-urlencoded; charset=UTF-8"):
         if self.authSubToken == None:
             raise Exception("You need to login before executing any request")
-        if (datapost is None and path in self.preFetch):
-            data = self.preFetch[path]
+        headers = self.getDefaultHeaders()
+
+        if datapost is not None:
+            headers["Content-Type"] = post_content_type
+
+        url = self.FDFE + path
+        if datapost is not None:
+            response = requests.post(url, data=str(datapost),
+                                     headers=headers, verify=ssl_verify)
         else:
-            headers = self.getDefaultHeaders()
-
-            if datapost is not None:
-                headers["Content-Type"] = post_content_type
-
-            url = self.FDFE + path
-            if datapost is not None:
-                response = requests.post(url, data=str(datapost),
-                                         headers=headers, verify=ssl_verify)
-            else:
-                response = requests.get(url, headers=headers,
-                                        verify=ssl_verify)
+            response = requests.get(url, headers=headers,
+                                    verify=ssl_verify)
 
         message = googleplay_pb2.ResponseWrapper.FromString(response.content)
         if message.commands.displayErrorMessage != "":
             raise RequestError(message.commands.displayErrorMessage)
-        self._try_register_preFetch(message)
 
         return message
 
     def search(self, query, nb_result, offset=None):
+        """ Search the play store for an app.
+
+        nb_result is the maximum number of result to be returned.
+
+        offset is used to take result starting from an index.
+        """
         if self.authSubToken == None:
             raise Exception("You need to login before executing any request")
 
@@ -284,10 +279,17 @@ class GooglePlayAPI(object):
         while remaining > 0 and nextPath != None:
             currentPath = nextPath
             data = self.executeRequestApi2(currentPath)
-            if len(data.preFetch) == 0:
-                cluster = data.payload.listResponse.cluster[0]
+            if len(data.preFetch) > 0:
+                response = data.preFetch[0].response
             else:
-                cluster = data.preFetch[0].response.payload.listResponse.cluster[0]
+                response = data
+            if response.payload.HasField('searchResponse'):
+                # we still need to fetch the first page, so go to
+                # next loop iteration without decrementing counter
+                nextPath = response.payload.searchResponse.nextPageUrl
+                continue
+
+            cluster = response.payload.listResponse.cluster[0]
             if cluster.doc[0].containerMetadata.nextPageUrl != "":
                 nextPath = cluster.doc[0].containerMetadata.nextPageUrl
             else:
