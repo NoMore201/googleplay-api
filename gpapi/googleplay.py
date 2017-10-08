@@ -305,10 +305,12 @@ class GooglePlayAPI(object):
 
     def details(self, packageName):
         """Get app details from a package name.
+
         packageName is the app unique ID (usually starting with 'com.')."""
         path = "details?doc=%s" % requests.utils.quote(packageName)
-        message = self.executeRequestApi2(path)
-        return message.payload.detailsResponse
+        data = self.executeRequestApi2(path)
+        app = utils.fromDocToDictionary(data.payload.detailsResponse.docV2)
+        return app
 
     def bulkDetails(self, packageNames):
         """Get several apps details from a list of package names.

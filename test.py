@@ -26,7 +26,6 @@ apps = server.search('termux', 34, None)
 print('nb_result: 34')
 print('number of results: %d' % len(apps))
 
-
 print('\nFound those apps:\n')
 for a in apps:
     print(a['docId'])
@@ -68,9 +67,14 @@ if not errorThrown:
 
 # BULK DETAILS
 
-print('\nGetting details for %s\n' % testApps[0])
+print('\nGetting bulkDetails for %s\n' % testApps[0])
 bulk = server.bulkDetails(testApps)
 print(bulk)
+
+# DETAILS
+print('\nGetting details for %s\n' % testApps[0])
+details = server.details(testApps[0])
+print(details)
 
 # BROWSE
 
