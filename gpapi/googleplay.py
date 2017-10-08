@@ -442,8 +442,12 @@ class GooglePlayAPI(object):
             response_content = bytes()
             response = requests.get(downloadUrl, headers=headers, cookies=cookies, verify=ssl_verify, stream=True)
             total_length = int(response.headers.get('content-length'))
-            for chunk in progress.bar(response.iter_content(chunk_size=1024), expected_size=(total_length >> 10) + 1):
+            chunk_size = 32 * (1<<10) # 32 KB
+            bar = progress.Bar(expected_size=(total_length >> 10))
+            for index, chunk in enumerate(response.iter_content(chunk_size=chunk_size)):
                 response_content += chunk
+                bar.show(index * chunk_size >> 10)
+            bar.done()
             return response_content
 
     def download(self, packageName, versionCode,
