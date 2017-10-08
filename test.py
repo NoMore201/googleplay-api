@@ -76,6 +76,12 @@ print('\nGetting details for %s\n' % testApps[0])
 details = server.details(testApps[0])
 print(details)
 
+# REVIEWS
+print('\nGetting reviews for %s\n' % testApps[0])
+revs = server.reviews(testApps[0])
+for r in revs:
+    print(r['comment'])
+
 # BROWSE
 
 print('\nBrowse play store categories\n')

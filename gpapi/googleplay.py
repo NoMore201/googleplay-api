@@ -407,8 +407,15 @@ class GooglePlayAPI(object):
             path += "&o=%d" % int(offset)
         if(filterByDevice):
             path += "&dfil=1"
-        message = self.executeRequestApi2(path)
-        return message.payload.reviewResponse
+        data = self.executeRequestApi2(path)
+        reviews = [rev for rev in data.payload.reviewResponse.getResponse.review]
+        return [{ 'documentVersion': r.documentVersion,
+                  'timestampMsec': r.timestampMsec,
+                  'starRating': r.starRating,
+                  'comment': r.comment,
+                  'commentId': r.commentId,
+                  'author': r.author2.name } for r in reviews]
+
 
     def delivery(self, packageName, versionCode,
                  offerType=1, downloadToken=None, progress_bar=False):
