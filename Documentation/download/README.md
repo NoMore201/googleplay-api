@@ -33,4 +33,5 @@ Accept-Encoding:        gzip
 ```
 
 ### Notes
-Protobuf response is `download-delivery-byte`
+
+TODO

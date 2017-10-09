@@ -45,5 +45,4 @@ Token:                        <hidden>
 
 ### Notes
 
-Token in the URLEncoded query is the Master Token, not the Auth Token.
-Some info on Master Token [here](https://sbktech.blogspot.it/2014/01/inside-android-play-services-magic.html)
+TODO

@@ -22,7 +22,6 @@ a Google Service Framework ID (which, from now on, will be the android ID of a d
 
 For the next logins you **should** save the gsfId and the authSubToken, and provide them as parameters to the login function. If you login again with email and password only, this is the equivalent of re-initalizing your android device with a google account.
 
-# API reversing
+# Documentation
 
-Since I started playing with a more recent version of the GooglePlay API on LineageOS 14.1 (Android 7.1) using [mitmproxy](https://mitmproxy.org/), I gathered some information about new APIs.
-Checkout the Documentation folder for more details on single API endpoints.
+For some documentation about the google play API check out the relative folder.
