@@ -1,6 +1,7 @@
-Project is based on:
+## Parent projects
 
 [googleplay-api](https://github.com/egirault/googleplay-api) Copyright (c) 2012 BSD License
+
 [play-store-api](https://github.com/yeriomin/play-store-api) Copyright (c) 2016-2017 GPL v3
 
 ## License
