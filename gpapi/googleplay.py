@@ -104,11 +104,11 @@ class GooglePlayAPI(object):
             headers["Authorization"] = "GoogleLogin auth=%s" % self.authSubToken
         return headers
 
-    def checkin(self, email, ac2dmToken):
+    def checkin(self, email, ac2dmToken, device_codename):
         headers = self.getDefaultHeaders()
         headers["Content-Type"] = "application/x-protobuffer"
 
-        request = config.getAndroidCheckinRequest()
+        request = config.getAndroidCheckinRequest(device_codename)
 
         stringRequest = request.SerializeToString()
         res = requests.post(self.CHECKINURL, data=stringRequest,
@@ -149,7 +149,7 @@ class GooglePlayAPI(object):
         response = googleplay_pb2.ResponseWrapper.FromString(res.content)
 
 
-    def login(self, email=None, password=None, gsfId=None, authSubToken=None):
+    def login(self, email=None, password=None, gsfId=None, authSubToken=None, device_codename='angler'):
         """Login to your Google Account.
         For first time login you should provide:
             * email
@@ -192,7 +192,7 @@ class GooglePlayAPI(object):
             else:
                 raise LoginError("Auth token not found.")
 
-            self.gsfId = self.checkin(email, ac2dmToken)
+            self.gsfId = self.checkin(email, ac2dmToken, device_codename)
             if self.debug:
                 print("Google Services Framework Id: %s" % "{0:x}".format(self.gsfId))
             self.getAuthSubToken(email, encryptedPass)
@@ -494,3 +494,6 @@ class GooglePlayAPI(object):
             return self.delivery(packageName, versionCode,
                                  offerType, dlToken, progress_bar=progress_bar)
 
+    @staticmethod
+    def getDevicesCodenames():
+        return config.getDevicesCodenames()

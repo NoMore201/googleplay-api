@@ -27,8 +27,9 @@ else:
 filepath = os.path.join( os.path.dirname( os.path.realpath(__file__) ), 'device.properties')
 config.read(filepath)
 device = {}
-for (key, value) in config.items('angler'):
-    device[key] = value
+
+def getDevicesCodenames():
+    return config.sections()
 
 def getDeviceConfig():
     libList = device['sharedlibraries'].split(",")
@@ -88,7 +89,9 @@ def getAndroidCheckin():
     androidCheckin.userNumber = 0
     return androidCheckin
 
-def getAndroidCheckinRequest():
+def getAndroidCheckinRequest(device_codename):
+    for (key, value) in config.items(device_codename):
+        device[key] = value
     request = googleplay_pb2.AndroidCheckinRequest()
     request.id = 0
     request.checkin.CopyFrom(getAndroidCheckin())
