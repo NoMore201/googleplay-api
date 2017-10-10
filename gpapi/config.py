@@ -36,8 +36,7 @@ def getDevicesCodenames():
 
 
 def getDevicesReadableNames():
-    """Returns a list of tuples (codename, userReadableName)
-    for each device"""
+    """Returns codename and readable name for each device"""
     sections = getDevicesCodenames()
     output = []
     for s in sections:

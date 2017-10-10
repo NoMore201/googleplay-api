@@ -498,3 +498,7 @@ class GooglePlayAPI(object):
     @staticmethod
     def getDevicesCodenames():
         return config.getDevicesCodenames()
+
+    @staticmethod
+    def getDevicesReadableNames():
+        return config.getDevicesReadableNames()
