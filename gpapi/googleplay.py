@@ -402,13 +402,21 @@ class GooglePlayAPI(object):
         if(filterByDevice):
             path += "&dfil=1"
         data = self.executeRequestApi2(path)
-        reviews = [rev for rev in data.payload.reviewResponse.getResponse.review]
-        return [{'documentVersion': r.documentVersion,
-                 'timestampMsec': r.timestampMsec,
-                 'starRating': r.starRating,
-                 'comment': r.comment,
-                 'commentId': r.commentId,
-                 'author': r.author2.name} for r in reviews]
+        output = []
+        for rev in data.payload.reviewResponse.getResponse.review:
+            author = {'personIdString': rev.author2.personIdString,
+                      'personId': rev.author2.personId,
+                      'name': rev.author2.name,
+                      'profilePicUrl': rev.author2.urls.url,
+                      'googlePlusUrl': rev.author2.googlePlusUrl}
+            review = {'documentVersion': rev.documentVersion,
+                      'timestampMsec': rev.timestampMsec,
+                      'starRating': rev.starRating,
+                      'comment': rev.comment,
+                      'commentId': rev.commentId,
+                      'author': author}
+            output.append(review)
+        return output
 
     def delivery(self, packageName, versionCode,
                  offerType=1, downloadToken=None, progress_bar=False):
