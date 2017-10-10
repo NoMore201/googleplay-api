@@ -1,10 +1,6 @@
 #!/usr/bin/python
 
 
-from google.protobuf import descriptor
-from google.protobuf.internal.containers import RepeatedCompositeFieldContainer
-from google.protobuf import text_format
-from google.protobuf.message import Message
 from Crypto.Util import asn1
 from Crypto.PublicKey import RSA
 from Crypto.Hash import SHA
@@ -13,7 +9,6 @@ from clint.textui import progress
 
 import requests
 import base64
-import struct
 import itertools
 
 from . import googleplay_pb2, config, utils
@@ -116,8 +111,6 @@ class GooglePlayAPI(object):
         response = googleplay_pb2.AndroidCheckinResponse()
         response.ParseFromString(res.content)
 
-        securityToken = "{0:x}".format(response.securityToken)
-
         # checkin again to upload gfsid
         request2 = googleplay_pb2.AndroidCheckinRequest()
         request2.CopyFrom(request)
@@ -126,8 +119,8 @@ class GooglePlayAPI(object):
         request2.accountCookie.append("[" + email + "]")
         request2.accountCookie.append(ac2dmToken)
         stringRequest = request2.SerializeToString()
-        res2 = requests.post(self.CHECKINURL, data=stringRequest,
-                             headers=headers, verify=ssl_verify)
+        requests.post(self.CHECKINURL, data=stringRequest,
+                      headers=headers, verify=ssl_verify)
 
         return response.androidId
 
@@ -146,8 +139,7 @@ class GooglePlayAPI(object):
         stringRequest = upload.SerializeToString()
         res = requests.post(self.UPLOADURL, data=stringRequest,
                             headers=headers, verify=ssl_verify)
-        response = googleplay_pb2.ResponseWrapper.FromString(res.content)
-
+        googleplay_pb2.ResponseWrapper.FromString(res.content)
 
     def login(self, email=None, password=None, gsfId=None, authSubToken=None, device_codename='angler'):
         """Login to your Google Account.
@@ -239,7 +231,7 @@ class GooglePlayAPI(object):
 
     def executeRequestApi2(self, path, datapost=None,
                            post_content_type="application/x-www-form-urlencoded; charset=UTF-8"):
-        if self.authSubToken == None:
+        if self.authSubToken is None:
             raise Exception("You need to login before executing any request")
         headers = self.getDefaultHeaders()
 
@@ -267,7 +259,7 @@ class GooglePlayAPI(object):
 
         offset is used to take result starting from an index.
         """
-        if self.authSubToken == None:
+        if self.authSubToken is None:
             raise Exception("You need to login before executing any request")
 
         remaining = nb_result
@@ -276,7 +268,7 @@ class GooglePlayAPI(object):
         nextPath = "search?c=3&q=%s" % requests.utils.quote(query)
         if (offset is not None):
             nextPath += "&o=%d" % int(offset)
-        while remaining > 0 and nextPath != None:
+        while remaining > 0 and nextPath is not None:
             currentPath = nextPath
             data = self.executeRequestApi2(currentPath)
             if len(data.preFetch) > 0:
@@ -347,9 +339,9 @@ class GooglePlayAPI(object):
         if cat is None and subCat is None:
             # result contains all categories available
             for cat in data.payload.browseResponse.category:
-                elem = { 'name': cat.name,
-                         'dataUrl': cat.dataUrl,
-                         'catId': cat.unknownCategoryContainer.categoryIdContainer.categoryId }
+                elem = {'name': cat.name,
+                        'dataUrl': cat.dataUrl,
+                        'catId': cat.unknownCategoryContainer.categoryIdContainer.categoryId}
                 output.append(elem)
         else:
             # result contains apps of a specific category
@@ -357,12 +349,13 @@ class GooglePlayAPI(object):
             for pf in data.preFetch:
                 for cluster in pf.response.payload.listResponse.cluster:
                     for doc in cluster.doc:
-                        section = { 'title': doc.title,
-                                    'docid': doc.docid,
-                                    'apps': list(map(utils.fromDocToDictionary,
-                                                     [a for a in doc.child])) }
+                        apps = [a for a in doc.child]
+                        apps = list(map(utils.fromDocToDictionary,
+                                        apps))
+                        section = {'title': doc.title,
+                                   'docid': doc.docid,
+                                   'apps': apps}
                         output.append(section)
-
         return output
 
     def list(self, cat, ctr=None, nb_results=None, offset=None):
@@ -390,9 +383,10 @@ class GooglePlayAPI(object):
             # list apps for specific subcat
             for cluster in data.payload.listResponse.cluster:
                 for doc in cluster.doc:
-                    output += list(map(utils.fromDocToDictionary,
-                                           [a for a in doc.child]))
-
+                    apps = [a for a in doc.child]
+                    apps = list(map(utils.fromDocToDictionary,
+                                    apps))
+                    output += apps
         return output
 
     def reviews(self, packageName, filterByDevice=False, sort=2,
@@ -409,13 +403,12 @@ class GooglePlayAPI(object):
             path += "&dfil=1"
         data = self.executeRequestApi2(path)
         reviews = [rev for rev in data.payload.reviewResponse.getResponse.review]
-        return [{ 'documentVersion': r.documentVersion,
-                  'timestampMsec': r.timestampMsec,
-                  'starRating': r.starRating,
-                  'comment': r.comment,
-                  'commentId': r.commentId,
-                  'author': r.author2.name } for r in reviews]
-
+        return [{'documentVersion': r.documentVersion,
+                 'timestampMsec': r.timestampMsec,
+                 'starRating': r.starRating,
+                 'comment': r.comment,
+                 'commentId': r.commentId,
+                 'author': r.author2.name} for r in reviews]
 
     def delivery(self, packageName, versionCode,
                  offerType=1, downloadToken=None, progress_bar=False):
@@ -426,9 +419,9 @@ class GooglePlayAPI(object):
         versionCode can be grabbed by using the details() method on the given
         app."""
         path = "delivery"
-        params = { 'ot': str(offerType),
-                   'doc': packageName,
-                   'vc': str(versionCode) }
+        params = {'ot': str(offerType),
+                  'doc': packageName,
+                  'vc': str(versionCode)}
         headers = self.getDefaultHeaders()
         if downloadToken is not None:
             params['dtok'] = downloadToken
@@ -448,12 +441,12 @@ class GooglePlayAPI(object):
             }
             if not progress_bar:
                 return requests.get(downloadUrl, headers=headers,
-                            cookies=cookies, verify=ssl_verify).content
+                                    cookies=cookies, verify=ssl_verify).content
 
             response_content = bytes()
             response = requests.get(downloadUrl, headers=headers, cookies=cookies, verify=ssl_verify, stream=True)
             total_length = int(response.headers.get('content-length'))
-            chunk_size = 32 * (1<<10) # 32 KB
+            chunk_size = 32 * (1<<10)  # 32 KB
             bar = progress.Bar(expected_size=(total_length >> 10))
             for index, chunk in enumerate(response.iter_content(chunk_size=chunk_size)):
                 response_content += chunk
@@ -472,7 +465,7 @@ class GooglePlayAPI(object):
         versionCode can be grabbed by using the details() method on the given
         app."""
 
-        if self.authSubToken == None:
+        if self.authSubToken is None:
             raise Exception("You need to login before executing any request")
 
         path = "purchase"

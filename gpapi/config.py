@@ -12,8 +12,8 @@ else:
 # separator used by search.py, categories.py, ...
 SEPARATOR = ";"
 
-LANG            = "en_US"
-GOOGLE_PUBKEY   = "AAAAgMom/1a/v0lblO2Ubrt60J2gcuXSljGFQXgcyZWveWLEwo6prwgi3iJIZdodyhKZQrNWp5nKJ3srRXcUW+F1BD3baEVGcmEgqaLZUNBjm057pKRI16kB0YppeGx5qIQ5QjKzsR8ETQbKLNWgRY0QRNVz34kMJR3P/LgHax/6rmf5AAAAAwEAAQ=="
+LANG = "en_US"
+GOOGLE_PUBKEY = "AAAAgMom/1a/v0lblO2Ubrt60J2gcuXSljGFQXgcyZWveWLEwo6prwgi3iJIZdodyhKZQrNWp5nKJ3srRXcUW+F1BD3baEVGcmEgqaLZUNBjm057pKRI16kB0YppeGx5qIQ5QjKzsR8ETQbKLNWgRY0QRNVz34kMJR3P/LgHax/6rmf5AAAAAwEAAQ=="
 
 # parse phone config from the file 'device.properties'.
 # if you want to add another phone, just create another section in
@@ -24,12 +24,15 @@ if VERSION == 2:
 else:
     config = configparser.ConfigParser()
 
-filepath = os.path.join( os.path.dirname( os.path.realpath(__file__) ), 'device.properties')
+filepath = os.path.join(os.path.dirname(os.path.realpath(__file__)),
+                        'device.properties')
 config.read(filepath)
 device = {}
 
+
 def getDevicesCodenames():
     return config.sections()
+
 
 def getDeviceConfig():
     libList = device['sharedlibraries'].split(",")
@@ -61,6 +64,7 @@ def getDeviceConfig():
         deviceConfig.glExtension.append(x)
     return deviceConfig
 
+
 def getAndroidBuild():
     androidBuild = googleplay_pb2.AndroidBuildProto()
     androidBuild.id = device['build.fingerprint']
@@ -79,6 +83,7 @@ def getAndroidBuild():
     androidBuild.googleServices = int(device['gsf.version'])
     return androidBuild
 
+
 def getAndroidCheckin():
     androidCheckin = googleplay_pb2.AndroidCheckinProto()
     androidCheckin.build.CopyFrom(getAndroidBuild())
@@ -88,6 +93,7 @@ def getAndroidCheckin():
     androidCheckin.roaming = device['roaming']
     androidCheckin.userNumber = 0
     return androidCheckin
+
 
 def getAndroidCheckinRequest(device_codename):
     for (key, value) in config.items(device_codename):
