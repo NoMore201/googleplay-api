@@ -31,7 +31,20 @@ device = {}
 
 
 def getDevicesCodenames():
+    """Returns a list containing devices codenames"""
     return config.sections()
+
+
+def getDevicesReadableNames():
+    """Returns a list of tuples (codename, userReadableName)
+    for each device"""
+    sections = getDevicesCodenames()
+    output = []
+    for s in sections:
+        device = config[s]['userreadablename']
+        output.append({'codename': s,
+                       'readableName': config[s]['userreadablename']})
+    return output
 
 
 def getDeviceConfig():
