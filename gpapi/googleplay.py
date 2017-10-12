@@ -44,13 +44,11 @@ class GooglePlayAPI(object):
     SEARCHURL = FDFE + "search"
     CHECKINURL = BASE + "checkin"
     AUTHURL = BASE + "auth"
-
     ACCOUNT = "HOSTED_OR_GOOGLE"
-    authSubToken = None
-    gsfId = None
 
     def __init__(self, debug=False):
-        # you must use a device-associated androidId value
+        self.authSubToken = None
+        self.gsfId = None
         self.lang = config.LANG
         self.debug = debug
 
@@ -87,11 +85,9 @@ class GooglePlayAPI(object):
         can later be updated, based on the request type"""
 
         headers = {
-            "Accept-Language": "en-US",
-            "X-DFE-Encoded-Targets":
-                "CAEScFfqlIEG6gUYogFWrAISK1WDAg+hAZoCDgIU1gYEOIACFkLMAeQBnASLATlASUuyAyqCAjY5igOMBQzfA/IClwFbApUC4ANbtgKVAS7OAX8YswHFBhgDwAOPAmGEBt4OfKkB5weSB5AFASkiN68akgMaxAMSAQEBA9kBO7UBFE1KVwIDBGs3go6BBgEBAgMECQgJAQIEAQMEAQMBBQEBBAUEFQYCBgUEAwMBDwIBAgOrARwBEwMEAg0mrwESfTEcAQEKG4EBMxghChMBDwYGASI3hAEODEwXCVh/EREZA4sBYwEdFAgIIwkQcGQRDzQ2fTC2AjfVAQIBAYoBGRg2FhYFBwEqNzACJShzFFblAo0CFxpFNBzaAd0DHjIRI4sBJZcBPdwBCQGhAUd2A7kBLBVPngEECHl0UEUMtQETigHMAgUFCc0BBUUlTywdHDgBiAJ+vgKhAU0uAcYCAWQ/"
-                "5ALUAw1UwQHUBpIBCdQDhgL4AY4CBQICjARbGFBGWzA1CAEMOQH+BRAOCAZywAIDyQZ2MgM3BxsoAgUEBwcHFia3AgcGTBwHBYwBAlcBggFxSGgIrAEEBw4QEqUCASsWadsHCgUCBQMD7QICA3tXCUw7ugJZAwGyAUwpIwM5AwkDBQMJA5sBCw8BNxBVVBwVKhebARkBAwsQEAgEAhESAgQJEBCZATMdzgEBBwG8AQQYKSMUkAEDAwY/CTs4/wEaAUt1AwEDAQUBAgIEAwYEDx1dB2wGeBFgTQ",
-            "User-Agent": "Android-Finsky/7.1.15 (api=3,versionCode=80798000,sdk=23,device=angler,hardware=angler,product=angler)",
+            "Accept-Language": config.LANG.replace('_', '-'),
+            "X-DFE-Encoded-Targets": config.DFE_TARGETS,
+            "User-Agent": config.getUserAgent()
         }
         if self.gsfId is not None:
             headers["X-DFE-Device-Id"] = "{0:x}".format(self.gsfId)
