@@ -46,11 +46,12 @@ class GooglePlayAPI(object):
     AUTHURL = BASE + "auth"
     ACCOUNT = "HOSTED_OR_GOOGLE"
 
-    def __init__(self, debug=False):
+    def __init__(self, debug=False, device_codename='bacon'):
         self.authSubToken = None
         self.gsfId = None
         self.lang = config.LANG
         self.debug = debug
+        self.deviceBuilder = config.DeviceBuilder(device_codename)
 
     def encrypt_password(self, login, passwd):
         """Encrypt the password using the google publickey, using
@@ -87,7 +88,7 @@ class GooglePlayAPI(object):
         headers = {
             "Accept-Language": config.LANG.replace('_', '-'),
             "X-DFE-Encoded-Targets": config.DFE_TARGETS,
-            "User-Agent": config.getUserAgent()
+            "User-Agent": self.deviceBuilder.getUserAgent()
         }
         if self.gsfId is not None:
             headers["X-DFE-Device-Id"] = "{0:x}".format(self.gsfId)
@@ -95,11 +96,11 @@ class GooglePlayAPI(object):
             headers["Authorization"] = "GoogleLogin auth=%s" % self.authSubToken
         return headers
 
-    def checkin(self, email, ac2dmToken, device_codename):
+    def checkin(self, email, ac2dmToken):
         headers = self.getDefaultHeaders()
         headers["Content-Type"] = "application/x-protobuffer"
 
-        request = config.getAndroidCheckinRequest(device_codename)
+        request = self.deviceBuilder.getAndroidCheckinRequest()
 
         stringRequest = request.SerializeToString()
         res = requests.post(self.CHECKINURL, data=stringRequest,
@@ -125,7 +126,7 @@ class GooglePlayAPI(object):
         *device.properties* to the google account. Default device is a Google Nexus 6P"""
 
         upload = googleplay_pb2.UploadDeviceConfigRequest()
-        upload.deviceConfiguration.CopyFrom(config.getDeviceConfig())
+        upload.deviceConfiguration.CopyFrom(self.deviceBuilder.getDeviceConfig())
         headers = self.getDefaultHeaders()
         headers["X-DFE-Enabled-Experiments"] = "cl:billing.select_add_instrument_by_default"
         headers["X-DFE-Unsupported-Experiments"] = "nocache:billing.use_charging_poller,market_emails,buyer_currency,prod_baseline,checkin.set_asset_paid_app_field,shekel_test,content_ratings,buyer_currency_in_app,nocache:encrypted_apk,recent_changes"
@@ -137,8 +138,7 @@ class GooglePlayAPI(object):
                             headers=headers, verify=ssl_verify)
         googleplay_pb2.ResponseWrapper.FromString(res.content)
 
-    def login(self, email=None, password=None, gsfId=None,
-              authSubToken=None, device_codename='bacon'):
+    def login(self, email=None, password=None, gsfId=None, authSubToken=None):
         """Login to your Google Account.
         For first time login you should provide:
             * email
@@ -185,7 +185,7 @@ class GooglePlayAPI(object):
             else:
                 raise LoginError("Auth token not found.")
 
-            self.gsfId = self.checkin(email, ac2dmToken, device_codename)
+            self.gsfId = self.checkin(email, ac2dmToken)
             if self.debug:
                 print("Google Services Framework Id: %s" % "{0:x}".format(self.gsfId))
             self.getAuthSubToken(email, encryptedPass)
@@ -495,6 +495,9 @@ class GooglePlayAPI(object):
             dlToken = resObj.payload.buyResponse.downloadToken
             return self.delivery(packageName, versionCode,
                                  offerType, dlToken, progress_bar=progress_bar)
+
+    def changeDevice(self, device_codename):
+        self.deviceBuilder = config.DeviceBuilder(device_codename)
 
     @staticmethod
     def getDevicesCodenames():
