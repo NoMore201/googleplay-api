@@ -21,7 +21,7 @@ server.login(None, None, gsfId, authSubToken)
 
 # SEARCH
 
-apps = server.search('termux', 34, None)
+apps = server.search('telegram', 34, None)
 
 print('nb_result: 34')
 print('number of results: %d' % len(apps))
@@ -33,7 +33,7 @@ for a in apps:
 # DOWNLOAD
 docid = apps[0]['docId']
 version = apps[0]['versionCode']
-print('\nTermux docid is: %s\n' % docid)
+print('\nTelegram docid is: %s\n' % docid)
 print('\nAttempting to download %s\n' % docid)
 fl = server.download(docid, version, progress_bar=True)
 with open(docid + '.apk', 'wb') as f:
