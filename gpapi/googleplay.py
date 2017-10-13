@@ -8,7 +8,6 @@ from Crypto.Cipher import PKCS1_OAEP
 from clint.textui import progress
 
 import requests
-import sys
 import base64
 import itertools
 
@@ -178,10 +177,9 @@ class GooglePlayAPI(object):
                 ac2dmToken = params["auth"]
             elif "error" in params:
                 if "NeedsBrowser" in params["error"]:
-                    print("\nsecurity check is needed, try to visit\n"
-                          "https://accounts.google.com/b/0/DisplayUnlockCaptcha\n"
-                          "if you use 2FA it is recommended to setup an app specific password\n")
-                    sys.exit(1)
+                    raise LoginError("Security check is needed, try to visit "
+                                     "https://accounts.google.com/b/0/DisplayUnlockCaptcha "
+                                     "to unlock, or setup an app-specific password")
                 raise LoginError("server says: " + params["error"])
             else:
                 raise LoginError("Auth token not found.")
