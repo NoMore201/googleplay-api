@@ -51,17 +51,17 @@ def getDevicesReadableNames():
 
 
 def getUserAgent():
-    return "Android-Finsky/7.1.15 (" \
-           "api=3" \
-           ",versionCode={versionCode}" \
-           ",sdk={sdk}" \
-           ",device={device}" \
-           ",hardware={hardware}" \
-           ",product={product}".format(versionCode=device['vending.version'],
-                                       sdk=device['build.version.sdk_int'],
-                                       device=device['build.device'],
-                                       hardware=device['build.hardware'],
-                                       product=device['build.product'])
+    return ("Android-Finsky/8.1.72.S-all [6] [PR] 165478484 ("
+            "api=3"
+            ",versionCode={versionCode}"
+            ",sdk={sdk}"
+            ",device={device}"
+            ",hardware={hardware}"
+            ",product={product}").format(versionCode=device['vending.version'],
+                                         sdk=device['build.version.sdk_int'],
+                                         device=device['build.device'],
+                                         hardware=device['build.hardware'],
+                                         product=device['build.product'])
 
 
 def getDeviceConfig():
