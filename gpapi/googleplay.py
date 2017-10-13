@@ -137,7 +137,8 @@ class GooglePlayAPI(object):
                             headers=headers, verify=ssl_verify)
         googleplay_pb2.ResponseWrapper.FromString(res.content)
 
-    def login(self, email=None, password=None, gsfId=None, authSubToken=None, device_codename='angler'):
+    def login(self, email=None, password=None, gsfId=None,
+              authSubToken=None, device_codename='bacon'):
         """Login to your Google Account.
         For first time login you should provide:
             * email
