@@ -39,7 +39,6 @@ fl = server.download(docid, version, progress_bar=True)
 with open(docid + '.apk', 'wb') as f:
     f.write(fl)
     print('\nDownload successful\n')
-    f.close()
 
 # DOWNLOAD APP NOT PURCHASED
 # Attempting to download Nova Launcher Prime
