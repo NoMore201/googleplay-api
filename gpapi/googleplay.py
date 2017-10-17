@@ -7,7 +7,6 @@ from Crypto.Hash import SHA
 from Crypto.Cipher import PKCS1_OAEP
 from clint.textui import progress
 
-from os.path import splitext
 import requests
 import base64
 from itertools import chain
@@ -446,8 +445,8 @@ class GooglePlayAPI(object):
         bar.done()
         return response_content
 
-    def delivery(self, packageName, versionCode,
-                 offerType=1, downloadToken=None, progress_bar=False):
+    def delivery(self, packageName, versionCode, offerType=1,
+                 downloadToken=None, progress_bar=False, expansion_files=False):
         """Download an already purchased app.
 
         Args:
@@ -493,9 +492,12 @@ class GooglePlayAPI(object):
                 str(cookie.name): str(cookie.value)
             }
             result['data'] = self._deliver_data(downloadUrl, cookies, progress_bar)
-            count = 1
+            if not expansion_files:
+                return result
             for obb in resObj.payload.deliveryResponse.appDeliveryData.additionalFile:
                 a = {}
+                # fileType == 0 -> main
+                # fileType == 1 -> patch
                 if obb.fileType == 0:
                     obbType = 'main'
                 else:
@@ -506,9 +508,8 @@ class GooglePlayAPI(object):
                 result['additionalData'].append(a)
             return result
 
-
-    def download(self, packageName, versionCode,
-                 offerType=1, progress_bar=False):
+    def download(self, packageName, versionCode, offerType=1,
+                 progress_bar=False, expansion_files=False):
         """Download an app and return its raw data (APK file). Free apps need
         to be "purchased" first, in order to retrieve the download cookie.
         If you want to download an already purchased app, use *delivery* method.
@@ -544,8 +545,8 @@ class GooglePlayAPI(object):
             raise RequestError(resObj.commands.displayErrorMessage)
         else:
             dlToken = resObj.payload.buyResponse.downloadToken
-            return self.delivery(packageName, versionCode,
-                                 offerType, dlToken, progress_bar=progress_bar)
+            return self.delivery(packageName, versionCode, offerType, dlToken,
+                                 progress_bar=progress_bar, expansion_files=expansion_files)
 
     def changeDevice(self, device_codename):
         self.deviceBuilder = config.DeviceBuilder(device_codename)
