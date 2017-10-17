@@ -9,7 +9,7 @@ ap.add_argument('-p', '--password', dest='password', help='google password')
 
 args = ap.parse_args()
 
-testApps = ['com.cpuid.cpu_z']
+testApps = ['org.mozilla.firefox']
 server = GooglePlayAPI(debug=True)
 
 # LOGIN
