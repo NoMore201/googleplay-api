@@ -37,9 +37,8 @@ print('\nTelegram docid is: %s\n' % docid)
 print('\nAttempting to download %s\n' % docid)
 fl = server.download(docid, version, progress_bar=True)
 with open(docid + '.apk', 'wb') as f:
-    f.write(fl)
+    f.write(fl['data'])
     print('\nDownload successful\n')
-    f.close()
 
 # DOWNLOAD APP NOT PURCHASED
 # Attempting to download Nova Launcher Prime
@@ -53,9 +52,8 @@ try:
     app = list(app)[0]
     fl = server.delivery(app['docId'], app['versionCode'], progress_bar=True)
     with open(docid + '.apk', 'wb') as f:
-        f.write(fl)
+        f.write(fl['data'])
         print('\nDownload successful\n')
-        f.close()
 except RequestError as e:
     errorThrown = True
     print(e)

@@ -7,9 +7,10 @@ from Crypto.Hash import SHA
 from Crypto.Cipher import PKCS1_OAEP
 from clint.textui import progress
 
+from os.path import splitext
 import requests
 import base64
-import itertools
+from itertools import chain
 
 from . import googleplay_pb2, config, utils
 
@@ -287,7 +288,7 @@ class GooglePlayAPI(object):
                 nextPath = cluster.doc[0].containerMetadata.nextPageUrl
             else:
                 nextPath = None
-            apps = list(itertools.chain.from_iterable([doc.child for doc in cluster.doc]))
+            apps = list(chain.from_iterable([doc.child for doc in cluster.doc]))
             output += list(map(utils.fromDocToDictionary, apps))
             remaining -= len(apps)
 
@@ -392,9 +393,19 @@ class GooglePlayAPI(object):
 
     def reviews(self, packageName, filterByDevice=False, sort=2,
                 nb_results=None, offset=None):
-        """Browse reviews.
-        packageName is the app unique ID.
-        If filterByDevice is True, return only reviews for your device."""
+        """Browse reviews for an application
+
+        Args:
+            packageName (str): app unique ID.
+            filterByDevice (bool): filter results for current device
+            sort (int): sorting criteria (values are unknown)
+            nb_results (int): max number of reviews to return
+            offset (int): return reviews starting from an offset value
+
+        Returns:
+            dict object containing all the protobuf data returned from
+            the api
+        """
         path = "rev?doc=%s&sort=%d" % (requests.utils.quote(packageName), sort)
         if (nb_results is not None):
             path += "&n=%d" % int(nb_results)
@@ -419,14 +430,44 @@ class GooglePlayAPI(object):
             output.append(review)
         return output
 
+    def _deliver_data(self, url, cookies, progress_bar):
+        headers = self.getDefaultHeaders()
+        if not progress_bar:
+                return requests.get(url, headers=headers,
+                                    cookies=cookies, verify=ssl_verify).content
+        response_content = bytes()
+        response = requests.get(url, headers=headers, cookies=cookies, verify=ssl_verify, stream=True)
+        total_length = int(response.headers.get('content-length'))
+        chunk_size = 32 * (1<<10)  # 32 KB
+        bar = progress.Bar(expected_size=(total_length >> 10))
+        for index, chunk in enumerate(response.iter_content(chunk_size=chunk_size)):
+            response_content += chunk
+            bar.show(index * chunk_size >> 10)
+        bar.done()
+        return response_content
+
     def delivery(self, packageName, versionCode,
                  offerType=1, downloadToken=None, progress_bar=False):
         """Download an already purchased app.
 
-        packageName is the app unique ID (usually starting with 'com.').
+        Args:
+            packageName (str): app unique ID (usually starting with 'com.')
+            versionCode (int): version to download
+            offerType (int): different type of downloads (mostly unused for apks)
+            downloadToken (str): download token returned by 'purchase' API
+            progress_bar (bool): wether or not to print a progress bar to stdout
 
-        versionCode can be grabbed by using the details() method on the given
-        app."""
+        Returns:
+            Dictionary containing apk data and a list of expansion files. As stated
+            in android documentation, there can be at most 2 expansion files, one with
+            main content, and one for patching the main content. Their names should
+            follow this format:
+
+            [main|patch].<expansion-version>.<package-name>.obb
+
+            Data to build this name string is provided in the dict object. For more
+            info check https://developer.android.com/google/play/expansion-files.html
+        """
         path = "delivery"
         params = {'ot': str(offerType),
                   'doc': packageName,
@@ -443,25 +484,28 @@ class GooglePlayAPI(object):
         elif resObj.payload.deliveryResponse.appDeliveryData.downloadUrl == "":
             raise RequestError('App not purchased')
         else:
+            result = {}
+            result['docId'] = packageName
+            result['additionalData'] = []
             downloadUrl = resObj.payload.deliveryResponse.appDeliveryData.downloadUrl
             cookie = resObj.payload.deliveryResponse.appDeliveryData.downloadAuthCookie[0]
             cookies = {
                 str(cookie.name): str(cookie.value)
             }
-            if not progress_bar:
-                return requests.get(downloadUrl, headers=headers,
-                                    cookies=cookies, verify=ssl_verify).content
+            result['data'] = self._deliver_data(downloadUrl, cookies, progress_bar)
+            count = 1
+            for obb in resObj.payload.deliveryResponse.appDeliveryData.additionalFile:
+                a = {}
+                if obb.fileType == 0:
+                    obbType = 'main'
+                else:
+                    obbType = 'patch'
+                a['type'] = obbType
+                a['versionCode'] = obb.versionCode
+                a['data'] = self._deliver_data(obb.downloadUrl, None, progress_bar)
+                result['additionalData'].append(a)
+            return result
 
-            response_content = bytes()
-            response = requests.get(downloadUrl, headers=headers, cookies=cookies, verify=ssl_verify, stream=True)
-            total_length = int(response.headers.get('content-length'))
-            chunk_size = 32 * (1<<10)  # 32 KB
-            bar = progress.Bar(expected_size=(total_length >> 10))
-            for index, chunk in enumerate(response.iter_content(chunk_size=chunk_size)):
-                response_content += chunk
-                bar.show(index * chunk_size >> 10)
-            bar.done()
-            return response_content
 
     def download(self, packageName, versionCode,
                  offerType=1, progress_bar=False):
@@ -469,10 +513,17 @@ class GooglePlayAPI(object):
         to be "purchased" first, in order to retrieve the download cookie.
         If you want to download an already purchased app, use *delivery* method.
 
-        packageName is the app unique ID (usually starting with 'com.').
+        Args:
+            packageName (str): app unique ID (usually starting with 'com.')
+            versionCode (int): version to download
+            offerType (int): different type of downloads (mostly unused for apks)
+            downloadToken (str): download token returned by 'purchase' API
+            progress_bar (bool): wether or not to print a progress bar to stdout
 
-        versionCode can be grabbed by using the details() method on the given
-        app."""
+        Returns
+            Dictionary containing apk data and optional expansion files
+            (see *delivery*)
+        """
 
         if self.authSubToken is None:
             raise Exception("You need to login before executing any request")
