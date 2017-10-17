@@ -1,9 +1,13 @@
 from gpapi.googleplay import GooglePlayAPI, RequestError
 
 import sys
+import argparse
 
-EMAIL = "maracaiboez"
-PASSWD = "fjgozwjmkwyvvutt"
+ap = argparse.ArgumentParser(description='Test download of expansion files')
+ap.add_argument('-e', '--email', dest='email', help='google username')
+ap.add_argument('-p', '--password', dest='password', help='google password')
+
+args = ap.parse_args()
 
 testApps = ['com.cpuid.cpu_z']
 server = GooglePlayAPI(debug=True)
@@ -11,7 +15,7 @@ server = GooglePlayAPI(debug=True)
 # LOGIN
 
 print('\nLogging in with email and password\n')
-server.login(EMAIL, PASSWD, None, None)
+server.login(args.email, args.password, None, None)
 gsfId = server.gsfId
 authSubToken = server.authSubToken
 
@@ -90,7 +94,7 @@ for b in browse:
 print('\nBrowsing the %s category\n' % browse[0]['catId'])
 browseCat = server.browse(browse[0]['catId'])
 for b in browseCat:
-    print('%s subcategory with %d apps' % (b['title'],len(b['apps'])))
+    print('%s subcategory with %d apps' % (b['title'], len(b['apps'])))
 
 # LIST
 
@@ -100,7 +104,7 @@ catList = server.list(cat)
 for c in catList:
     print(c)
 
-print('\nList %s apps for %s category\n' % (catList[0],cat))
+print('\nList %s apps for %s category\n' % (catList[0], cat))
 appList = server.list(cat, catList[0])
 for app in appList:
     print(app['docId'])

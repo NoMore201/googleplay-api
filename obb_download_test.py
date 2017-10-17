@@ -1,25 +1,27 @@
-from gpapi.googleplay import GooglePlayAPI, RequestError
+from gpapi.googleplay import GooglePlayAPI
 
-import sys
+import argparse
 
-EMAIL = "dodo.godlike"
-PASSWD = "inpobgakicfmnhwc"
+ap = argparse.ArgumentParser(description='Test download of expansion files')
+ap.add_argument('-e', '--email', dest='email', help='google username')
+ap.add_argument('-p', '--password', dest='password', help='google password')
 
-testApps = ['com.cpuid.cpu_z']
+args = ap.parse_args()
+
 server = GooglePlayAPI(debug=True)
 
 # LOGIN
 
 print('\nLogging in with email and password\n')
-server.login(EMAIL, PASSWD, None, None)
+server.login(args.email, args.password, None, None)
 
-download = server.download('com.haikugamesco.escapeasylum', 21, progress_bar=True)
+download = server.download('com.mapswithme.maps.pro', 1754, progress_bar=True, expansion_files=True)
 with open(download['docId'] + '.apk', 'wb') as first:
     first.write(download['data'])
-    print('\nDownload successful\n')
 
 for obb in download['additionalData']:
     name = obb['type'] + '.' + str(obb['versionCode']) + '.' + download['docId'] + '.obb'
     with open(name, 'wb') as second:
         second.write(obb['data'])
-        print('\nDownloaded additional data\n')
+
+print('\nDownload successful\n')
