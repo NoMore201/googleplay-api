@@ -14,6 +14,7 @@ DFE_TARGETS = "CAEScFfqlIEG6gUYogFWrAISK1WDAg+hAZoCDgIU1gYEOIACFkLMAeQBnASLATlAS
 LANG = "en_US"
 TIMEZONE = 'America/New_York'
 GOOGLE_PUBKEY = "AAAAgMom/1a/v0lblO2Ubrt60J2gcuXSljGFQXgcyZWveWLEwo6prwgi3iJIZdodyhKZQrNWp5nKJ3srRXcUW+F1BD3baEVGcmEgqaLZUNBjm057pKRI16kB0YppeGx5qIQ5QjKzsR8ETQbKLNWgRY0QRNVz34kMJR3P/LgHax/6rmf5AAAAAwEAAQ=="
+ACCOUNT = "HOSTED_OR_GOOGLE"
 
 # parse phone config from the file 'device.properties'.
 # if you want to add another phone, just create another section in
@@ -64,6 +65,31 @@ class DeviceBuilder(object):
                            device=self.device['build.device'],
                            hardware=self.device['build.hardware'],
                            product=self.device['build.product'])
+
+    def getAuthParams(self, email, passwd):
+        return {"Email": email,
+                "EncryptedPasswd": passwd,
+                "accountType": ACCOUNT,
+                "has_permission": "1",
+                "source": "android",
+                "device_country": LANG[0:2],
+                "service": "androidmarket",
+                "app": "com.android.vending",
+                "lang": LANG,
+                "sdk_version": self.device['build.version.sdk_int']}
+
+    def getLoginParams(self, email, encryptedPass):
+        return {"Email": email,
+                "EncryptedPasswd": encryptedPass,
+                "service": "ac2dm",
+                "add_account": "1",
+                "accountType": ACCOUNT,
+                "has_permission": "1",
+                "app": "com.google.android.gsf",
+                "source": "android",
+                "device_country": LANG[0:2],
+                "lang": LANG,
+                "sdk_version": self.device['build.version.sdk_int']}
 
     def getAndroidCheckinRequest(self):
         request = googleplay_pb2.AndroidCheckinRequest()

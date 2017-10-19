@@ -44,12 +44,10 @@ class GooglePlayAPI(object):
     SEARCHURL = FDFE + "search"
     CHECKINURL = BASE + "checkin"
     AUTHURL = BASE + "auth"
-    ACCOUNT = "HOSTED_OR_GOOGLE"
 
     def __init__(self, debug=False, device_codename='bacon'):
         self.authSubToken = None
         self.gsfId = None
-        self.lang = config.LANG
         self.debug = debug
         self.deviceBuilder = config.DeviceBuilder(device_codename)
 
@@ -152,20 +150,7 @@ class GooglePlayAPI(object):
 
             encryptedPass = self.encrypt_password(email, password).decode('utf-8')
             # AC2DM token
-            params = {
-                "Email": email,
-                "EncryptedPasswd": encryptedPass,
-                "service": "ac2dm",
-                "add_account": "1",
-                "accountType": self.ACCOUNT,
-                "has_permission": "1",
-                "app": "com.google.android.gsf",
-                "source": "android",
-                "device_country": "en",
-                "lang": self.lang,
-                "sdk_version": "25",
-                "client_sig": "38918a453d07199354f8b19af05ec6562ced5788"
-            }
+            params = self.deviceBuilder.getLoginParams(email, encryptedPass)
             response = requests.post(self.AUTHURL, data=params, verify=ssl_verify)
             data = response.text.split()
             params = {}
@@ -202,19 +187,7 @@ class GooglePlayAPI(object):
             raise LoginError('Either (email,pass) or (gsfId, authSubToken) is needed')
 
     def getAuthSubToken(self, email, passwd):
-        params = {
-            "Email": email,
-            "EncryptedPasswd": passwd,
-            "accountType": self.ACCOUNT,
-            "has_permission": "1",
-            "source": "android",
-            "device_country": "en",
-            "service": "androidmarket",
-            "app": "com.android.vending",
-            "lang": self.lang,
-            "sdk_version": "25",
-            "client_sig": "38918a453d07199354f8b19af05ec6562ced5788"
-        }
+        params = self.deviceBuilder.getAuthParams(email, passwd)
         response = requests.post(self.AUTHURL, data=params, verify=ssl_verify)
         data = response.text.split()
         params = {}
