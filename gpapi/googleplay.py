@@ -242,10 +242,12 @@ class GooglePlayAPI(object):
         url = self.FDFE + path
         if datapost is not None:
             response = requests.post(url, data=str(datapost),
-                                     headers=headers, verify=ssl_verify)
+                                     headers=headers, verify=ssl_verify,
+                                     timeout=60)
         else:
             response = requests.get(url, headers=headers,
-                                    verify=ssl_verify)
+                                    verify=ssl_verify,
+                                    timeout=60)
 
         message = googleplay_pb2.ResponseWrapper.FromString(response.content)
         if message.commands.displayErrorMessage != "":
@@ -282,6 +284,11 @@ class GooglePlayAPI(object):
                 nextPath = response.payload.searchResponse.nextPageUrl
                 continue
 
+            if len(response.payload.listResponse.cluster) == 0:
+                # strange behaviour, probably due to
+                # expired token
+                raise RequestError('Unexpected behaviour, probably expired '
+                                   'token')
             cluster = response.payload.listResponse.cluster[0]
             if cluster.doc[0].containerMetadata.nextPageUrl != "":
                 nextPath = cluster.doc[0].containerMetadata.nextPageUrl
@@ -433,9 +440,12 @@ class GooglePlayAPI(object):
         headers = self.getDefaultHeaders()
         if not progress_bar:
                 return requests.get(url, headers=headers,
-                                    cookies=cookies, verify=ssl_verify).content
+                                    cookies=cookies, verify=ssl_verify,
+                                    timeout=60).content
         response_content = bytes()
-        response = requests.get(url, headers=headers, cookies=cookies, verify=ssl_verify, stream=True)
+        response = requests.get(url, headers=headers,
+                                cookies=cookies, verify=ssl_verify,
+                                stream=True, timeout=60)
         total_length = int(response.headers.get('content-length'))
         chunk_size = 32 * (1<<10)  # 32 KB
         bar = progress.Bar(expected_size=(total_length >> 10))
@@ -476,7 +486,8 @@ class GooglePlayAPI(object):
             params['dtok'] = downloadToken
         url = "https://android.clients.google.com/fdfe/%s" % path
         response = requests.get(url, headers=headers,
-                                params=params, verify=ssl_verify)
+                                params=params, verify=ssl_verify,
+                                timeout=60)
         resObj = googleplay_pb2.ResponseWrapper.FromString(response.content)
         if resObj.commands.displayErrorMessage != "":
             raise RequestError(resObj.commands.displayErrorMessage)
@@ -538,7 +549,8 @@ class GooglePlayAPI(object):
         }
         url = self.FDFE + path
         response = requests.post(url, headers=headers,
-                                 params=params, verify=ssl_verify)
+                                 params=params, verify=ssl_verify,
+                                 timeout=60)
 
         resObj = googleplay_pb2.ResponseWrapper.FromString(response.content)
         if resObj.commands.displayErrorMessage != "":
