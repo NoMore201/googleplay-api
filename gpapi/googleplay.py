@@ -260,7 +260,7 @@ class GooglePlayAPI(object):
             if len(response.payload.listResponse.cluster) == 0:
                 # strange behaviour, probably due to
                 # expired token
-                raise RequestError('Unexpected behaviour, probably expired '
+                raise LoginError('Unexpected behaviour, probably expired '
                                    'token')
             cluster = response.payload.listResponse.cluster[0]
             if cluster.doc[0].containerMetadata.nextPageUrl != "":
