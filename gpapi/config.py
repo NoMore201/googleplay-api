@@ -1,9 +1,10 @@
 from . import googleplay_pb2
-import time
-import os
-import sys
+from time import time
+from os import path
+from sys import version_info
+from locale import getdefaultlocale
 
-VERSION = sys.version_info[0]
+VERSION = version_info[0]
 if VERSION == 2:
     import ConfigParser
 else:
@@ -11,8 +12,6 @@ else:
 
 
 DFE_TARGETS = "CAEScFfqlIEG6gUYogFWrAISK1WDAg+hAZoCDgIU1gYEOIACFkLMAeQBnASLATlASUuyAyqCAjY5igOMBQzfA/IClwFbApUC4ANbtgKVAS7OAX8YswHFBhgDwAOPAmGEBt4OfKkB5weSB5AFASkiN68akgMaxAMSAQEBA9kBO7UBFE1KVwIDBGs3go6BBgEBAgMECQgJAQIEAQMEAQMBBQEBBAUEFQYCBgUEAwMBDwIBAgOrARwBEwMEAg0mrwESfTEcAQEKG4EBMxghChMBDwYGASI3hAEODEwXCVh/EREZA4sBYwEdFAgIIwkQcGQRDzQ2fTC2AjfVAQIBAYoBGRg2FhYFBwEqNzACJShzFFblAo0CFxpFNBzaAd0DHjIRI4sBJZcBPdwBCQGhAUd2A7kBLBVPngEECHl0UEUMtQETigHMAgUFCc0BBUUlTywdHDgBiAJ+vgKhAU0uAcYCAWQ/5ALUAw1UwQHUBpIBCdQDhgL4AY4CBQICjARbGFBGWzA1CAEMOQH+BRAOCAZywAIDyQZ2MgM3BxsoAgUEBwcHFia3AgcGTBwHBYwBAlcBggFxSGgIrAEEBw4QEqUCASsWadsHCgUCBQMD7QICA3tXCUw7ugJZAwGyAUwpIwM5AwkDBQMJA5sBCw8BNxBVVBwVKhebARkBAwsQEAgEAhESAgQJEBCZATMdzgEBBwG8AQQYKSMUkAEDAwY/CTs4/wEaAUt1AwEDAQUBAgIEAwYEDx1dB2wGeBFgTQ"
-LANG = "en_US"
-TIMEZONE = 'America/New_York'
 GOOGLE_PUBKEY = "AAAAgMom/1a/v0lblO2Ubrt60J2gcuXSljGFQXgcyZWveWLEwo6prwgi3iJIZdodyhKZQrNWp5nKJ3srRXcUW+F1BD3baEVGcmEgqaLZUNBjm057pKRI16kB0YppeGx5qIQ5QjKzsR8ETQbKLNWgRY0QRNVz34kMJR3P/LgHax/6rmf5AAAAAwEAAQ=="
 ACCOUNT = "HOSTED_OR_GOOGLE"
 
@@ -20,8 +19,8 @@ ACCOUNT = "HOSTED_OR_GOOGLE"
 # if you want to add another phone, just create another section in
 # the file. Some configurations for common phones can be found here:
 # https://github.com/yeriomin/play-store-api/tree/master/src/main/resources
-filepath = os.path.join(os.path.dirname(os.path.realpath(__file__)),
-                        'device.properties')
+filepath = path.join(path.dirname(path.realpath(__file__)),
+                     'device.properties')
 
 if VERSION == 2:
     config = ConfigParser.ConfigParser()
@@ -49,6 +48,8 @@ class DeviceBuilder(object):
 
     def __init__(self, device):
         self.device = {}
+        self.locale = getdefaultlocale()[0]
+        self.timezone = "Europe/Berlin"
         for (key, value) in config.items(device):
             self.device[key] = value
 
@@ -72,10 +73,10 @@ class DeviceBuilder(object):
                 "accountType": ACCOUNT,
                 "has_permission": "1",
                 "source": "android",
-                "device_country": LANG[0:2],
+                "device_country": self.locale[0:2],
                 "service": "androidmarket",
                 "app": "com.android.vending",
-                "lang": LANG,
+                "lang": self.locale,
                 "sdk_version": self.device['build.version.sdk_int']}
 
     def getLoginParams(self, email, encryptedPass):
@@ -87,16 +88,16 @@ class DeviceBuilder(object):
                 "has_permission": "1",
                 "app": "com.google.android.gsf",
                 "source": "android",
-                "device_country": LANG[0:2],
-                "lang": LANG,
+                "device_country": self.locale[0:2],
+                "lang": self.locale,
                 "sdk_version": self.device['build.version.sdk_int']}
 
     def getAndroidCheckinRequest(self):
         request = googleplay_pb2.AndroidCheckinRequest()
         request.id = 0
         request.checkin.CopyFrom(self.getAndroidCheckin())
-        request.locale = LANG
-        request.timeZone = TIMEZONE
+        request.locale = self.locale
+        request.timeZone = self.timezone
         request.version = 3
         request.deviceConfiguration.CopyFrom(self.getDeviceConfig())
         request.fragment = 0
@@ -148,7 +149,7 @@ class DeviceBuilder(object):
         androidBuild.buildProduct = self.device['build.product']
         androidBuild.client = self.device['client']
         androidBuild.otaInstalled = False
-        androidBuild.timestamp = int(time.time())
+        androidBuild.timestamp = int(time())
         androidBuild.googleServices = int(self.device['gsf.version'])
         return androidBuild
 

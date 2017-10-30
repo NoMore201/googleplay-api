@@ -84,7 +84,7 @@ class GooglePlayAPI(object):
         can later be updated, based on the request type"""
 
         headers = {
-            "Accept-Language": config.LANG.replace('_', '-'),
+            "Accept-Language": self.deviceBuilder.locale.replace('_', '-'),
             "X-DFE-Encoded-Targets": config.DFE_TARGETS,
             "User-Agent": self.deviceBuilder.getUserAgent()
         }
@@ -261,7 +261,7 @@ class GooglePlayAPI(object):
                 # strange behaviour, probably due to
                 # expired token
                 raise LoginError('Unexpected behaviour, probably expired '
-                                   'token')
+                                 'token')
             cluster = response.payload.listResponse.cluster[0]
             if cluster.doc[0].containerMetadata.nextPageUrl != "":
                 nextPath = cluster.doc[0].containerMetadata.nextPageUrl
@@ -420,7 +420,7 @@ class GooglePlayAPI(object):
                                 cookies=cookies, verify=ssl_verify,
                                 stream=True, timeout=60)
         total_length = int(response.headers.get('content-length'))
-        chunk_size = 32 * (1<<10)  # 32 KB
+        chunk_size = 32 * (1 << 10)  # 32 KB
         bar = progress.Bar(expected_size=(total_length >> 10))
         for index, chunk in enumerate(response.iter_content(chunk_size=chunk_size)):
             response_content += chunk
@@ -535,6 +535,20 @@ class GooglePlayAPI(object):
 
     def changeDevice(self, device_codename):
         self.deviceBuilder = config.DeviceBuilder(device_codename)
+
+    # Helpers
+
+    def getLocale(self):
+        return self.deviceBuilder.locale
+
+    def setLocale(self, locale):
+        self.deviceBuilder.locale = locale
+
+    def getTimeZone(self):
+        return self.deviceBuilder.timezone
+
+    def setTimeZone(self, timezone):
+        self.deviceBuilder.timezone = timezone
 
     @staticmethod
     def getDevicesCodenames():
