@@ -203,6 +203,11 @@ class GooglePlayAPI(object):
         else:
             raise LoginError("Auth token not found.")
 
+    def _check_response_integrity(self, apps):
+        if any([a['docId'] == '' for a in apps]):
+            raise LoginError('Unexpected behaviour, probably expired '
+                             'token')
+
     def executeRequestApi2(self, path, datapost=None,
                            post_content_type="application/x-www-form-urlencoded; charset=UTF-8"):
         if self.authSubToken is None:
@@ -283,6 +288,7 @@ class GooglePlayAPI(object):
         path = "details?doc=%s" % requests.utils.quote(packageName)
         data = self.executeRequestApi2(path)
         app = utils.fromDocToDictionary(data.payload.detailsResponse.docV2)
+        self._check_response_integrity([app])
         return app
 
     def bulkDetails(self, packageNames):
@@ -303,6 +309,7 @@ class GooglePlayAPI(object):
         response = message.payload.bulkDetailsResponse
         detailsList = [entry.doc for entry in response.entry]
         result = list(map(utils.fromDocToDictionary, detailsList))
+        self._check_response_integrity(result)
         return result
 
     def browse(self, cat=None, subCat=None):
