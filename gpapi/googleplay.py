@@ -204,6 +204,11 @@ class GooglePlayAPI(object):
             raise LoginError("Auth token not found.")
 
     def _check_response_integrity(self, apps):
+        """Like described in issue #18, after some time it seems
+        that google invalidates the token. And the strange thing is that when
+        sending requests with an invalid token, it won't throw an error but
+        it returns empty responses. This is a function used to check if the
+        content returned is valid (usually a docId field is always present)"""
         if any([a['docId'] == '' for a in apps]):
             raise LoginError('Unexpected behaviour, probably expired '
                              'token')
@@ -295,9 +300,15 @@ class GooglePlayAPI(object):
         """Get several apps details from a list of package names.
 
         This is much more efficient than calling N times details() since it
-        requires only one request.
+        requires only one request. If an item is not found it returns an empty object
+        instead of throwing a RequestError('Item not found') like the details() function
 
-        packageNames is a list of app ID (usually starting with 'com.')."""
+        Args:
+            packageNames (list): a list of app IDs (usually starting with 'com.').
+
+        Returns:
+            a list of dictionaries containing docv1 data, or None
+            if the app doesn't exist"""
 
         path = "bulkDetails"
         req = googleplay_pb2.BulkDetailsRequest()
@@ -307,9 +318,14 @@ class GooglePlayAPI(object):
                                           data.decode("utf-8"),
                                           "application/x-protobuf")
         response = message.payload.bulkDetailsResponse
-        detailsList = [entry.doc for entry in response.entry]
-        result = list(map(utils.fromDocToDictionary, detailsList))
-        self._check_response_integrity(result)
+        result = []
+        for entry in response.entry:
+            if not entry.HasField('doc'):
+                result.append(None)
+            else:
+                appDetails = utils.fromDocToDictionary(entry.doc)
+                self._check_response_integrity([appDetails])
+                result.append(appDetails)
         return result
 
     def browse(self, cat=None, subCat=None):

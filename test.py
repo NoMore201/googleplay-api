@@ -9,7 +9,6 @@ ap.add_argument('-p', '--password', dest='password', help='google password')
 
 args = ap.parse_args()
 
-testApps = ['org.mozilla.firefox']
 server = GooglePlayAPI(debug=True)
 
 # LOGIN
@@ -69,9 +68,16 @@ if not errorThrown:
 
 # BULK DETAILS
 
-print('\nGetting bulkDetails for %s\n' % testApps[0])
+testApps = ['org.mozilla.firefox', 'com.non.existing.app']
 bulk = server.bulkDetails(testApps)
-print(bulk)
+
+print('\nTesting behaviour for non-existing apps\n')
+if bulk[1] is not None:
+    print('bulkDetails should return None for non-existing apps')
+    sys.exit(1)
+
+print('\nResult from bulkDetails for %s\n' % testApps[0])
+print(bulk[0])
 
 # DETAILS
 print('\nGetting details for %s\n' % testApps[0])
