@@ -50,6 +50,8 @@ class GooglePlayAPI(object):
         self.gsfId = None
         self.debug = debug
         self.deviceBuilder = config.DeviceBuilder(device_codename)
+        # save last response text for error logging
+        self.lastResponseText = None
 
     def encrypt_password(self, login, passwd):
         """Encrypt the password using the google publickey, using
@@ -152,12 +154,14 @@ class GooglePlayAPI(object):
             # AC2DM token
             params = self.deviceBuilder.getLoginParams(email, encryptedPass)
             response = requests.post(self.AUTHURL, data=params, verify=ssl_verify)
+            if self.debug:
+                self.lastResponseText = response.text
             data = response.text.split()
             params = {}
             for d in data:
                 if "=" not in d:
                     continue
-                k, v = d.split("=")[0:2]
+                k, v = d.split("=", 1)
                 params[k.strip().lower()] = v.strip()
             if "auth" in params:
                 ac2dmToken = params["auth"]
@@ -168,6 +172,8 @@ class GooglePlayAPI(object):
                                      "to unlock, or setup an app-specific password")
                 raise LoginError("server says: " + params["error"])
             else:
+                if self.debug:
+                    print('Last response text: %s' % self.lastResponseText)
                 raise LoginError("Auth token not found.")
 
             self.gsfId = self.checkin(email, ac2dmToken)
@@ -187,31 +193,58 @@ class GooglePlayAPI(object):
             raise LoginError('Either (email,pass) or (gsfId, authSubToken) is needed')
 
     def getAuthSubToken(self, email, passwd):
-        params = self.deviceBuilder.getAuthParams(email, passwd)
-        response = requests.post(self.AUTHURL, data=params, verify=ssl_verify)
+        requestParams = self.deviceBuilder.getAuthParams(email, passwd)
+        response = requests.post(self.AUTHURL, data=requestParams, verify=ssl_verify)
         data = response.text.split()
+        if self.debug:
+            self.lastResponseText = response.text
         params = {}
         for d in data:
             if "=" not in d:
                 continue
-            k, v = d.split("=")[0:2]
+            k, v = d.split("=", 1)
             params[k.strip().lower()] = v.strip()
-        if "auth" in params:
-            self.setAuthSubToken(params["auth"])
+        if "token" in params:
+            firstToken = params["token"]
+            if self.debug:
+                print('Master token: %s' % firstToken)
+            secondToken = self.getSecondRoundToken(requestParams, firstToken)
+            self.setAuthSubToken(secondToken)
         elif "error" in params:
             raise LoginError("server says: " + params["error"])
         else:
+            if self.debug:
+                print('Last response text: %s' % self.lastResponseText)
             raise LoginError("Auth token not found.")
 
-    def _check_response_integrity(self, apps):
-        """Like described in issue #18, after some time it seems
-        that google invalidates the token. And the strange thing is that when
-        sending requests with an invalid token, it won't throw an error but
-        it returns empty responses. This is a function used to check if the
-        content returned is valid (usually a docId field is always present)"""
-        if any([a['docId'] == '' for a in apps]):
-            raise LoginError('Unexpected behaviour, probably expired '
-                             'token')
+    def getSecondRoundToken(self, previousParams, firstToken):
+        previousParams['Token'] = firstToken
+        previousParams['service'] = 'androidmarket'
+        previousParams['check_email'] = '1'
+        previousParams['token_request_options'] = 'CAA4AQ=='
+        previousParams['system_partition'] = '1'
+        previousParams['_opt_is_called_from_account_manager'] = '1'
+        previousParams['google_play_services_version'] = '11518448'
+        previousParams.pop('Email')
+        previousParams.pop('EncryptedPasswd')
+        response = requests.post(self.AUTHURL, data=previousParams, verify=ssl_verify)
+        data = response.text.split()
+        if self.debug:
+            self.lastResponseText = response.text
+        params = {}
+        for d in data:
+            if "=" not in d:
+                continue
+            k, v = d.split("=", 1)
+            params[k.strip().lower()] = v.strip()
+        if "auth" in params:
+            return params["auth"]
+        elif "error" in params:
+            raise LoginError("server says: " + params["error"])
+        else:
+            if self.debug:
+                print('Last response text: %s' % self.lastResponseText)
+            raise LoginError("Auth token not found.")
 
     def executeRequestApi2(self, path, datapost=None,
                            post_content_type="application/x-www-form-urlencoded; charset=UTF-8"):
@@ -232,8 +265,12 @@ class GooglePlayAPI(object):
                                     verify=ssl_verify,
                                     timeout=60)
 
+        if self.debug:
+            self.lastResponseText = response.text
         message = googleplay_pb2.ResponseWrapper.FromString(response.content)
         if message.commands.displayErrorMessage != "":
+            if self.debug:
+                print('Last response text: %s' % self.lastResponseText)
             raise RequestError(message.commands.displayErrorMessage)
 
         return message
@@ -270,6 +307,8 @@ class GooglePlayAPI(object):
             if len(response.payload.listResponse.cluster) == 0:
                 # strange behaviour, probably due to
                 # expired token
+                if self.debug:
+                    print('Last response text: %s' % self.lastResponseText)
                 raise LoginError('Unexpected behaviour, probably expired '
                                  'token')
             cluster = response.payload.listResponse.cluster[0]
@@ -293,7 +332,6 @@ class GooglePlayAPI(object):
         path = "details?doc=%s" % requests.utils.quote(packageName)
         data = self.executeRequestApi2(path)
         app = utils.fromDocToDictionary(data.payload.detailsResponse.docV2)
-        self._check_response_integrity([app])
         return app
 
     def bulkDetails(self, packageNames):
@@ -324,7 +362,6 @@ class GooglePlayAPI(object):
                 result.append(None)
             else:
                 appDetails = utils.fromDocToDictionary(entry.doc)
-                self._check_response_integrity([appDetails])
                 result.append(appDetails)
         return result
 
@@ -486,6 +523,8 @@ class GooglePlayAPI(object):
                                 timeout=60)
         resObj = googleplay_pb2.ResponseWrapper.FromString(response.content)
         if resObj.commands.displayErrorMessage != "":
+            if self.debug:
+                print('Last response text: %s' % self.lastResponseText)
             raise RequestError(resObj.commands.displayErrorMessage)
         elif resObj.payload.deliveryResponse.appDeliveryData.downloadUrl == "":
             raise RequestError('App not purchased')
@@ -550,6 +589,8 @@ class GooglePlayAPI(object):
 
         resObj = googleplay_pb2.ResponseWrapper.FromString(response.content)
         if resObj.commands.displayErrorMessage != "":
+            if self.debug:
+                print('Last response text: %s' % self.lastResponseText)
             raise RequestError(resObj.commands.displayErrorMessage)
         else:
             dlToken = resObj.payload.buyResponse.downloadToken
