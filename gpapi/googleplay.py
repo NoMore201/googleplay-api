@@ -312,11 +312,9 @@ class GooglePlayAPI(object):
                 raise LoginError('Unexpected behaviour, probably expired '
                                  'token')
             cluster = response.payload.listResponse.cluster[0]
-            try:
-                cluster.HasField('doc')
-            except ValueError as e:
-                if self.debug:
-                    print('No result for query: %s' % query)
+            print(cluster.doc)
+            if len(cluster.doc) == 0:
+                print('No results for query %s' % query)
                 break
             if cluster.doc[0].containerMetadata.nextPageUrl != "":
                 nextPath = cluster.doc[0].containerMetadata.nextPageUrl
