@@ -6,10 +6,11 @@ maintained anymore. The code was updated with some important changes:
 
 * ac2dm authentication with checkin and device info upload
 * updated search and download calls
-* using headers of a Nexus 6P. Add you own device under `device.properties` file
+* select the device you want to fake from a list of pre-defined values (check `device.properties`)
+(defaults to a OnePlus One)
 
 # Usage
-Check the test.py module for a simple example.
+Check `test.py` for a simple example.
 
 An important note about login function:
 ```
