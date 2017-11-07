@@ -8,7 +8,7 @@ from Crypto.Cipher import PKCS1_OAEP
 from clint.textui import progress
 
 import requests
-import base64
+from base64 import b64decode, urlsafe_b64encode
 from itertools import chain
 
 from . import googleplay_pb2, config, utils
@@ -57,7 +57,7 @@ class GooglePlayAPI(object):
         """Encrypt the password using the google publickey, using
         the RSA encryption algorithm"""
 
-        binaryKey = base64.b64decode(config.GOOGLE_PUBKEY)
+        binaryKey = b64decode(config.GOOGLE_PUBKEY)
         i = utils.readInt(binaryKey, 0)
         modulus = utils.toBigInt(binaryKey[4:][0:i])
         j = utils.readInt(binaryKey, i+4)
@@ -72,7 +72,7 @@ class GooglePlayAPI(object):
         combined = login.encode() + b'\x00' + passwd.encode()
         encrypted = cipher.encrypt(combined)
         h = b'\x00' + SHA.new(binaryKey).digest()[0:4]
-        return base64.urlsafe_b64encode(h + encrypted)
+        return urlsafe_b64encode(h + encrypted)
 
     def setAuthSubToken(self, authSubToken):
         self.authSubToken = authSubToken
@@ -83,13 +83,11 @@ class GooglePlayAPI(object):
 
     def getDefaultHeaders(self):
         """Return the default set of request headers, which
-        can later be updated, based on the request type"""
+        can later be expanded, based on the request type"""
 
-        headers = {
-            "Accept-Language": self.deviceBuilder.locale.replace('_', '-'),
-            "X-DFE-Encoded-Targets": config.DFE_TARGETS,
-            "User-Agent": self.deviceBuilder.getUserAgent()
-        }
+        headers = {"Accept-Language": self.deviceBuilder.locale.replace('_', '-'),
+                   "X-DFE-Encoded-Targets": config.DFE_TARGETS,
+                   "User-Agent": self.deviceBuilder.getUserAgent()}
         if self.gsfId is not None:
             headers["X-DFE-Device-Id"] = "{0:x}".format(self.gsfId)
         if self.authSubToken is not None:
@@ -122,8 +120,8 @@ class GooglePlayAPI(object):
         return response.androidId
 
     def uploadDeviceConfig(self):
-        """Upload the device configuration defined in the file
-        *device.properties* to the google account. Default device is a Google Nexus 6P"""
+        """Upload the device configuration of the fake device
+        selected in the __init__ methodi to the google account."""
 
         upload = googleplay_pb2.UploadDeviceConfigRequest()
         upload.deviceConfiguration.CopyFrom(self.deviceBuilder.getDeviceConfig())
@@ -227,7 +225,9 @@ class GooglePlayAPI(object):
         previousParams['google_play_services_version'] = '11518448'
         previousParams.pop('Email')
         previousParams.pop('EncryptedPasswd')
-        response = requests.post(self.AUTHURL, data=previousParams, verify=ssl_verify)
+        response = requests.post(self.AUTHURL,
+                                 data=previousParams,
+                                 verify=ssl_verify)
         data = response.text.split()
         if self.debug:
             self.lastResponseText = response.text

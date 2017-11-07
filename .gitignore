@@ -1,4 +1,5 @@
 __pycache__/
+.ropeproject/
 *.swp
 *.apk
 *.obb
