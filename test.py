@@ -35,10 +35,9 @@ for a in apps:
 
 # DOWNLOAD
 docid = apps[0]['docId']
-version = apps[0]['versionCode']
 print('\nTelegram docid is: %s\n' % docid)
 print('\nAttempting to download %s\n' % docid)
-fl = server.download(docid, version, progress_bar=True)
+fl = server.download(docid, None, progress_bar=True)
 with open(docid + '.apk', 'wb') as f:
     f.write(fl['data'])
     print('\nDownload successful\n')

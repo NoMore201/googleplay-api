@@ -491,7 +491,7 @@ class GooglePlayAPI(object):
         bar.done()
         return response_content
 
-    def delivery(self, packageName, versionCode, offerType=1,
+    def delivery(self, packageName, versionCode=None, offerType=1,
                  downloadToken=None, progress_bar=False, expansion_files=False):
         """Download an already purchased app.
 
@@ -513,6 +513,11 @@ class GooglePlayAPI(object):
             Data to build this name string is provided in the dict object. For more
             info check https://developer.android.com/google/play/expansion-files.html
         """
+
+        if versionCode is None:
+            # pick up latest version
+            versionCode = self.details(packageName)['versionCode']
+
         path = "delivery"
         params = {'ot': str(offerType),
                   'doc': packageName,
@@ -557,7 +562,7 @@ class GooglePlayAPI(object):
                 result['additionalData'].append(a)
             return result
 
-    def download(self, packageName, versionCode, offerType=1,
+    def download(self, packageName, versionCode=None, offerType=1,
                  progress_bar=False, expansion_files=False):
         """Download an app and return its raw data (APK file). Free apps need
         to be "purchased" first, in order to retrieve the download cookie.
@@ -577,6 +582,10 @@ class GooglePlayAPI(object):
 
         if self.authSubToken is None:
             raise Exception("You need to login before executing any request")
+
+        if versionCode is None:
+            # pick up latest version
+            versionCode = self.details(packageName)['versionCode']
 
         path = "purchase"
         headers = self.getDefaultHeaders()
