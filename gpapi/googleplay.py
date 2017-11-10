@@ -45,11 +45,21 @@ class GooglePlayAPI(object):
     CHECKINURL = BASE + "checkin"
     AUTHURL = BASE + "auth"
 
-    def __init__(self, debug=False, device_codename='bacon'):
+    def __init__(self, debug=False, device_codename='bacon',
+                 locale=None, timezone=None,
+                 sim_operator=None, cell_operator=None):
         self.authSubToken = None
         self.gsfId = None
         self.debug = debug
         self.deviceBuilder = config.DeviceBuilder(device_codename)
+        if locale is not None:
+            self.deviceBuilder.locale = locale
+        if timezone is not None:
+            self.deviceBuilder.timezone = timezone
+        if sim_operator is not None:
+            self.deviceBuilder.device['simoperator'] = sim_operator
+        if cell_operator is not None:
+            self.deviceBuilder.device['celloperator'] = cell_operator
         # save last response text for error logging
         self.lastResponseText = None
 
@@ -608,23 +618,6 @@ class GooglePlayAPI(object):
             dlToken = resObj.payload.buyResponse.downloadToken
             return self.delivery(packageName, versionCode, offerType, dlToken,
                                  progress_bar=progress_bar, expansion_files=expansion_files)
-
-    def changeDevice(self, device_codename):
-        self.deviceBuilder = config.DeviceBuilder(device_codename)
-
-    # Helpers
-
-    def getLocale(self):
-        return self.deviceBuilder.locale
-
-    def setLocale(self, locale):
-        self.deviceBuilder.locale = locale
-
-    def getTimeZone(self):
-        return self.deviceBuilder.timezone
-
-    def setTimeZone(self, timezone):
-        self.deviceBuilder.timezone = timezone
 
     @staticmethod
     def getDevicesCodenames():
