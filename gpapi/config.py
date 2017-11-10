@@ -149,7 +149,7 @@ class DeviceBuilder(object):
         androidBuild.buildProduct = self.device['build.product']
         androidBuild.client = self.device['client']
         androidBuild.otaInstalled = False
-        androidBuild.timestamp = int(time())
+        androidBuild.timestamp = int(time()/1000)
         androidBuild.googleServices = int(self.device['gsf.version'])
         return androidBuild
 
