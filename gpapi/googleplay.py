@@ -344,8 +344,7 @@ class GooglePlayAPI(object):
         packageName is the app unique ID (usually starting with 'com.')."""
         path = "details?doc=%s" % requests.utils.quote(packageName)
         data = self.executeRequestApi2(path)
-        app = utils.fromDocToDictionary(data.payload.detailsResponse.docV2)
-        return app
+        return utils.fromDocToDictionary(data.payload.detailsResponse.docV2)
 
     def bulkDetails(self, packageNames):
         """Get several apps details from a list of package names.
@@ -369,14 +368,9 @@ class GooglePlayAPI(object):
                                           data.decode("utf-8"),
                                           "application/x-protobuf")
         response = message.payload.bulkDetailsResponse
-        result = []
-        for entry in response.entry:
-            if not entry.HasField('doc'):
-                result.append(None)
-            else:
-                appDetails = utils.fromDocToDictionary(entry.doc)
-                result.append(appDetails)
-        return result
+        return [None if not entry.HasField('doc') else
+                utils.fromDocToDictionary(entry.doc)
+                for entry in response.entry]
 
     def browse(self, cat=None, subCat=None):
         """Browse categories. If neither cat nor subcat are specified,
@@ -392,11 +386,10 @@ class GooglePlayAPI(object):
 
         if cat is None and subCat is None:
             # result contains all categories available
-            for cat in data.payload.browseResponse.category:
-                elem = {'name': cat.name,
-                        'dataUrl': cat.dataUrl,
-                        'catId': cat.unknownCategoryContainer.categoryIdContainer.categoryId}
-                output.append(elem)
+            return [{'name': c.name,
+                     'dataUrl': c.dataUrl,
+                     'catId': c.unknownCategoryContainer.categoryIdContainer.categoryId}
+                    for c in data.payload.browseResponse.category]
         else:
             # result contains apps of a specific category
             # organized by sections
@@ -426,22 +419,19 @@ class GooglePlayAPI(object):
         if offset is not None:
             path += "&o=%s" % requests.utils.quote(offset)
         data = self.executeRequestApi2(path)
-        output = []
         if ctr is None:
             # list subcategories
-            for pf in data.preFetch:
-                for cluster in pf.response.payload.listResponse.cluster:
-                    for doc in cluster.doc:
-                        output.append(doc.docid)
+            clusters = chain.from_iterable([pf.response.payload.listResponse.cluster
+                                            for pf in data.preFetch])
+            docs = chain.from_iterable([c.doc for c in clusters])
+            return [d.docid for d in docs]
         else:
             # list apps for specific subcat
-            for cluster in data.payload.listResponse.cluster:
-                for doc in cluster.doc:
-                    apps = [a for a in doc.child]
-                    apps = list(map(utils.fromDocToDictionary,
-                                    apps))
-                    output += apps
-        return output
+            docs = chain.from_iterable([c.doc for c in
+                                        data.payload.listResponse.cluster])
+            childs = chain.from_iterable([d.child for d in docs])
+            return [utils.fromDocToDictionary(c)
+                    for c in childs]
 
     def reviews(self, packageName, filterByDevice=False, sort=2,
                 nb_results=None, offset=None):
@@ -485,9 +475,9 @@ class GooglePlayAPI(object):
     def _deliver_data(self, url, cookies, progress_bar):
         headers = self.getDefaultHeaders()
         if not progress_bar:
-                return requests.get(url, headers=headers,
-                                    cookies=cookies, verify=ssl_verify,
-                                    timeout=60).content
+            return requests.get(url, headers=headers,
+                                cookies=cookies, verify=ssl_verify,
+                                timeout=60).content
         response_content = bytes()
         response = requests.get(url, headers=headers,
                                 cookies=cookies, verify=ssl_verify,
@@ -599,11 +589,9 @@ class GooglePlayAPI(object):
 
         path = "purchase"
         headers = self.getDefaultHeaders()
-        params = {
-            'ot': str(offerType),
-            'doc': packageName,
-            'vc': str(versionCode)
-        }
+        params = {'ot': str(offerType),
+                  'doc': packageName,
+                  'vc': str(versionCode)}
         url = self.FDFE + path
         response = requests.post(url, headers=headers,
                                  params=params, verify=ssl_verify,
