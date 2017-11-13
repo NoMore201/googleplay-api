@@ -3,6 +3,7 @@ from time import time
 from os import path
 from sys import version_info
 from locale import getdefaultlocale
+from re import match
 
 VERSION = version_info[0]
 if VERSION == 2:
@@ -48,10 +49,19 @@ class DeviceBuilder(object):
 
     def __init__(self, device):
         self.device = {}
-        self.locale = getdefaultlocale()[0]
         self.timezone = "Europe/Berlin"
         for (key, value) in config.items(device):
             self.device[key] = value
+
+    def setLocale(self, locale):
+        if locale is None:
+            locale = getdefaultlocale()[0]
+
+        # check if locale matches the structure of a common
+        # value like "en_US"
+        if match(r'[a-z]{2}\_[A-Z]{2}', locale) is None:
+            locale = 'en_US'
+        self.locale = locale
 
     def getUserAgent(self):
         return ("Android-Finsky/8.1.72.S-all [6] [PR] 165478484 ("

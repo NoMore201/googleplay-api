@@ -52,8 +52,7 @@ class GooglePlayAPI(object):
         self.gsfId = None
         self.debug = debug
         self.deviceBuilder = config.DeviceBuilder(device_codename)
-        if locale is not None:
-            self.deviceBuilder.locale = locale
+        self.deviceBuilder.setLocale(locale)
         if timezone is not None:
             self.deviceBuilder.timezone = timezone
         if sim_operator is not None:
