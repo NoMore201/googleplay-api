@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='gpapi',
-      version='0.2.8',
+      version='0.3',
       description='Unofficial python api for google play',
       url='https://github.com/NoMore201/googleplay-api',
       author='NoMore201',
