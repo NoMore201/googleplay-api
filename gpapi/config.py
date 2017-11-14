@@ -54,8 +54,13 @@ class DeviceBuilder(object):
             self.device[key] = value
 
     def setLocale(self, locale):
-        if locale is None:
+        # test if provided locale is valid
+        if locale is None or type(locale) is not str:
+            # try to fetch it from system
             locale = getdefaultlocale()[0]
+            # getdefaultlocale may return None, we need another check
+            if locale is None:
+                locale = ''
 
         # check if locale matches the structure of a common
         # value like "en_US"
