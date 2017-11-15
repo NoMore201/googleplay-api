@@ -60,7 +60,6 @@ class GooglePlayAPI(object):
         if cell_operator is not None:
             self.deviceBuilder.device['celloperator'] = cell_operator
         # save last response text for error logging
-        self.lastResponseText = None
 
     def encrypt_password(self, login, passwd):
         """Encrypt the password using the google publickey, using
@@ -161,8 +160,6 @@ class GooglePlayAPI(object):
             # AC2DM token
             params = self.deviceBuilder.getLoginParams(email, encryptedPass)
             response = requests.post(self.AUTHURL, data=params, verify=ssl_verify)
-            if self.debug:
-                self.lastResponseText = response.text
             data = response.text.split()
             params = {}
             for d in data:
@@ -179,8 +176,6 @@ class GooglePlayAPI(object):
                                      "to unlock, or setup an app-specific password")
                 raise LoginError("server says: " + params["error"])
             else:
-                if self.debug:
-                    print('Last response text: %s' % self.lastResponseText)
                 raise LoginError("Auth token not found.")
 
             self.gsfId = self.checkin(email, ac2dmToken)
@@ -203,8 +198,6 @@ class GooglePlayAPI(object):
         requestParams = self.deviceBuilder.getAuthParams(email, passwd)
         response = requests.post(self.AUTHURL, data=requestParams, verify=ssl_verify)
         data = response.text.split()
-        if self.debug:
-            self.lastResponseText = response.text
         params = {}
         for d in data:
             if "=" not in d:
@@ -220,8 +213,6 @@ class GooglePlayAPI(object):
         elif "error" in params:
             raise LoginError("server says: " + params["error"])
         else:
-            if self.debug:
-                print('Last response text: %s' % self.lastResponseText)
             raise LoginError("Auth token not found.")
 
     def getSecondRoundToken(self, previousParams, firstToken):
@@ -238,8 +229,6 @@ class GooglePlayAPI(object):
                                  data=previousParams,
                                  verify=ssl_verify)
         data = response.text.split()
-        if self.debug:
-            self.lastResponseText = response.text
         params = {}
         for d in data:
             if "=" not in d:
@@ -251,8 +240,6 @@ class GooglePlayAPI(object):
         elif "error" in params:
             raise LoginError("server says: " + params["error"])
         else:
-            if self.debug:
-                print('Last response text: %s' % self.lastResponseText)
             raise LoginError("Auth token not found.")
 
     def executeRequestApi2(self, path, datapost=None,
@@ -274,12 +261,8 @@ class GooglePlayAPI(object):
                                     verify=ssl_verify,
                                     timeout=60)
 
-        if self.debug:
-            self.lastResponseText = response.text
         message = googleplay_pb2.ResponseWrapper.FromString(response.content)
         if message.commands.displayErrorMessage != "":
-            if self.debug:
-                print('Last response text: %s' % self.lastResponseText)
             raise RequestError(message.commands.displayErrorMessage)
 
         return message
@@ -316,8 +299,6 @@ class GooglePlayAPI(object):
             if len(response.payload.listResponse.cluster) == 0:
                 # strange behaviour, probably due to
                 # expired token
-                if self.debug:
-                    print('Last response text: %s' % self.lastResponseText)
                 raise LoginError('Unexpected behaviour, probably expired '
                                  'token')
             cluster = response.payload.listResponse.cluster[0]
@@ -530,8 +511,6 @@ class GooglePlayAPI(object):
                                 timeout=60)
         resObj = googleplay_pb2.ResponseWrapper.FromString(response.content)
         if resObj.commands.displayErrorMessage != "":
-            if self.debug:
-                print('Last response text: %s' % self.lastResponseText)
             raise RequestError(resObj.commands.displayErrorMessage)
         elif resObj.payload.deliveryResponse.appDeliveryData.downloadUrl == "":
             raise RequestError('App not purchased')
@@ -598,8 +577,6 @@ class GooglePlayAPI(object):
 
         resObj = googleplay_pb2.ResponseWrapper.FromString(response.content)
         if resObj.commands.displayErrorMessage != "":
-            if self.debug:
-                print('Last response text: %s' % self.lastResponseText)
             raise RequestError(resObj.commands.displayErrorMessage)
         else:
             dlToken = resObj.payload.buyResponse.downloadToken
