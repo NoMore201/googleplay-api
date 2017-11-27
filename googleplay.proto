@@ -926,6 +926,18 @@ message SearchResponse {
   repeated RelatedSearch relatedSearch = 6;
   optional string nextPageUrl = 10;
 }
+message UserProfileResponseWrapper {
+  optional UserProfilePayload payload = 1;
+  optional ServerCommands commands = 2;
+  repeated PreFetch preFetch = 3;
+  repeated Notification notification = 4;
+}
+message UserProfilePayload {
+  optional UserProfileResponse response = 5;
+}
+message UserProfileResponse {
+  repeated DocV2 doc = 1;
+}
 message SearchSuggestResponse {
   repeated SearchSuggestEntry entry = 1;
 }

@@ -328,6 +328,22 @@ class GooglePlayAPI(object):
 
         return output
 
+    def userProfile(self):
+        path = 'api/userProfile'
+        headers = self.getDefaultHeaders()
+
+        url = self.FDFE + path
+        response = requests.get(url, headers=headers,
+                                verify=ssl_verify,
+                                timeout=60)
+
+        message = googleplay_pb2.UserProfileResponseWrapper.FromString(response.content)
+        if message.commands.displayErrorMessage != "":
+            raise RequestError(message.commands.displayErrorMessage)
+
+        result = utils.fromDocToDictionary(message.payload.response.doc[0])
+        return result
+
     def details(self, packageName):
         """Get app details from a package name.
 
