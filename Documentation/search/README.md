@@ -1,17 +1,13 @@
-## Search
+# Search
 
-### Details
-
-**URL**
+## Request
 
     GET https://android.clients.google.com/fdfe/search?c=3&q=firefox HTTP/1.1
-
-**HEADERS**
 
 Required headers are marked with a '*'
 
     [ ] X-Ad-Id: 70417864-0f86-4451-b5aa-103de27a6af5
-    [ ] X-DFE-Content-Filters: 
+    [ ] X-DFE-Content-Filters:
     [ ] X-DFE-Network-Type: 4
     [*] X-DFE-Encoded-Targets: CAESqwGzlYEGDsgF3gTRAkIC2AMCFJIHgAIWjgi1AVhAmQGOA4ICb+kKmAHgAQyGAS9o8gLzAe0BFvsLuAMBAsADjwLDFYUBNS2lCJYStgEBfgegAm2xAgEoAQYo4wvDAtAFqwIB+APWArYDwgHhBf0BjAICU+MGmgGRAZsC0AFMmgPkAuUBKyHOAVIC5QECrwEYAQYBowFLYgGpBYgDhQEBY0o2SqEDggJpYYgDtAMa9gQTAg7OATu1AaABCFoCAwRrN4DTzwKCu7EDAQEDAgQJCAgBAQIIAwEBAgEBAQICAgYBBhQKAQcCAwMEAhABAQHKAQETAwQCDecBfQolAhYFAgEKG3UMMxcBIQoUDwYHIjeEAQ4MFk0JUwV/EREYAQMNfgRfHhQQIwsOcGQEDQ9qowHAAoQBBIQBAgEBfA4ZGDYVARgBCwEoZQICJShzFCehBQYRGg43GBxpjQG0AVnQAR4nCzQmL1vUAWV3CQEK3gF2A30tDAMsZJ4BBIEBdFAfcogBigHMAgUFCc0BBUWgATk4jQIaYDUuzgENcqoBASCLA5IBqAImlwNhrQKEBnbjBfgBXaEBAQ8GAQEChwQEc5YBBlVtAUUB3AUyDnuzAZIBA4YGKxihAQcwASEBBwIgCBIdB6YDOAEaRoQBAfsBQHWnARkiAqMCLBYPvAsDAoABIocBO8kBygG2AQENAyeIAx7bAVKoBIMEqgETKQSLAbIDOhAndFdEOBWjAQGNAfUBGguZAUUMCwgvWwFpGrkBDhEgP3wLuAEhBgIUAb4DFG8TIa4BjgFFBgQCAQECWUKdAmIVBAEUxwESASQLWgoeJQIChAXCAQYjFTISxwFoBSFHEAEBWcsBMU5KkgEW0wGeAQceCDtk6AEGU44CpAHRAZIBC88BegEiTV0HSgQBBLgBDSYIMB0VCwIBed8BLW4DATaWAT0odAwCXztnERRVDSoDCkM/IwfKAgIHXQwCP1Y2bgQM+QICBgcUBREEWCZMAwwUGCRVKlNjHAMGGET/AQwBCwUHBJMBAn8RBx8eTwUqAgsJCw8HFAYECgoWBFoK0wIWMwY
     [ ] X-DFE-Cookie: <hidden>
@@ -27,7 +23,7 @@ Required headers are marked with a '*'
     [ ] Connection: Keep-Alive
     [ ] Accept-Encoding: gzip
 
-### Notes
+## Notes
 Search results can be divided into two categories:
 
 1. Search query is *specific*.
