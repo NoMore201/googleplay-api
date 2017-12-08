@@ -1,15 +1,15 @@
 #!/usr/bin/python
 
 
-from Crypto.Util import asn1
-from Crypto.PublicKey import RSA
-from Crypto.Hash import SHA
-from Crypto.Cipher import PKCS1_OAEP
-from clint.textui import progress
-
-import requests
 from base64 import b64decode, urlsafe_b64encode
 from itertools import chain
+
+import requests
+from Crypto.Cipher import PKCS1_OAEP
+from Crypto.Hash import SHA
+from Crypto.PublicKey import RSA
+from Crypto.Util import asn1
+from clint.textui import progress
 
 from . import googleplay_pb2, config, utils
 
@@ -45,9 +45,12 @@ class GooglePlayAPI(object):
     CHECKINURL = BASE + "checkin"
     AUTHURL = BASE + "auth"
 
+    proxies_config = None
+
     def __init__(self, debug=False, device_codename='bacon',
                  locale=None, timezone=None,
-                 sim_operator=None, cell_operator=None):
+                 sim_operator=None, cell_operator=None,
+                 proxies_config=proxies_config):
         self.authSubToken = None
         self.gsfId = None
         self.debug = debug
@@ -59,7 +62,7 @@ class GooglePlayAPI(object):
             self.deviceBuilder.device['simoperator'] = sim_operator
         if cell_operator is not None:
             self.deviceBuilder.device['celloperator'] = cell_operator
-        # save last response text for error logging
+            # save last response text for error logging
 
     def encrypt_password(self, login, passwd):
         """Encrypt the password using the google publickey, using
@@ -68,8 +71,8 @@ class GooglePlayAPI(object):
         binaryKey = b64decode(config.GOOGLE_PUBKEY)
         i = utils.readInt(binaryKey, 0)
         modulus = utils.toBigInt(binaryKey[4:][0:i])
-        j = utils.readInt(binaryKey, i+4)
-        exponent = utils.toBigInt(binaryKey[i+8:][0:j])
+        j = utils.readInt(binaryKey, i + 4)
+        exponent = utils.toBigInt(binaryKey[i + 8:][0:j])
 
         seq = asn1.DerSequence()
         seq.append(modulus)
@@ -110,7 +113,8 @@ class GooglePlayAPI(object):
 
         stringRequest = request.SerializeToString()
         res = requests.post(self.CHECKINURL, data=stringRequest,
-                            headers=headers, verify=ssl_verify)
+                            headers=headers, verify=ssl_verify,
+                            proxies=self.proxies_config, )
         response = googleplay_pb2.AndroidCheckinResponse()
         response.ParseFromString(res.content)
 
@@ -123,7 +127,8 @@ class GooglePlayAPI(object):
         request2.accountCookie.append(ac2dmToken)
         stringRequest = request2.SerializeToString()
         requests.post(self.CHECKINURL, data=stringRequest,
-                      headers=headers, verify=ssl_verify)
+                      headers=headers, verify=ssl_verify,
+                      proxies=self.proxies_config, )
 
         return response.androidId
 
@@ -135,13 +140,15 @@ class GooglePlayAPI(object):
         upload.deviceConfiguration.CopyFrom(self.deviceBuilder.getDeviceConfig())
         headers = self.getDefaultHeaders()
         headers["X-DFE-Enabled-Experiments"] = "cl:billing.select_add_instrument_by_default"
-        headers["X-DFE-Unsupported-Experiments"] = "nocache:billing.use_charging_poller,market_emails,buyer_currency,prod_baseline,checkin.set_asset_paid_app_field,shekel_test,content_ratings,buyer_currency_in_app,nocache:encrypted_apk,recent_changes"
+        headers[
+            "X-DFE-Unsupported-Experiments"] = "nocache:billing.use_charging_poller,market_emails,buyer_currency,prod_baseline,checkin.set_asset_paid_app_field,shekel_test,content_ratings,buyer_currency_in_app,nocache:encrypted_apk,recent_changes"
         headers["X-DFE-Client-Id"] = "am-android-google"
         headers["X-DFE-SmallestScreenWidthDp"] = "320"
         headers["X-DFE-Filter-Level"] = "3"
         stringRequest = upload.SerializeToString()
         res = requests.post(self.UPLOADURL, data=stringRequest,
-                            headers=headers, verify=ssl_verify)
+                            headers=headers, verify=ssl_verify,
+                            proxies=self.proxies_config, )
         googleplay_pb2.ResponseWrapper.FromString(res.content)
 
     def login(self, email=None, password=None, gsfId=None, authSubToken=None):
@@ -159,7 +166,8 @@ class GooglePlayAPI(object):
             encryptedPass = self.encrypt_password(email, password).decode('utf-8')
             # AC2DM token
             params = self.deviceBuilder.getLoginParams(email, encryptedPass)
-            response = requests.post(self.AUTHURL, data=params, verify=ssl_verify)
+            response = requests.post(self.AUTHURL, data=params, verify=ssl_verify,
+                                     proxies=self.proxies_config, )
             data = response.text.split()
             params = {}
             for d in data:
@@ -196,7 +204,8 @@ class GooglePlayAPI(object):
 
     def getAuthSubToken(self, email, passwd):
         requestParams = self.deviceBuilder.getAuthParams(email, passwd)
-        response = requests.post(self.AUTHURL, data=requestParams, verify=ssl_verify)
+        response = requests.post(self.AUTHURL, data=requestParams, verify=ssl_verify,
+                                 proxies=self.proxies_config, )
         data = response.text.split()
         params = {}
         for d in data:
@@ -227,7 +236,8 @@ class GooglePlayAPI(object):
         previousParams.pop('EncryptedPasswd')
         response = requests.post(self.AUTHURL,
                                  data=previousParams,
-                                 verify=ssl_verify)
+                                 verify=ssl_verify,
+                                 proxies=self.proxies_config, )
         data = response.text.split()
         params = {}
         for d in data:
@@ -255,11 +265,13 @@ class GooglePlayAPI(object):
         if datapost is not None:
             response = requests.post(url, data=str(datapost),
                                      headers=headers, verify=ssl_verify,
-                                     timeout=60)
+                                     timeout=60,
+                                     proxies=self.proxies_config, )
         else:
             response = requests.get(url, headers=headers,
                                     verify=ssl_verify,
-                                    timeout=60)
+                                    timeout=60,
+                                    proxies=self.proxies_config, )
 
         message = googleplay_pb2.ResponseWrapper.FromString(response.content)
         if message.commands.displayErrorMessage != "":
@@ -433,7 +445,7 @@ class GooglePlayAPI(object):
             path += "&n=%d" % int(nb_results)
         if (offset is not None):
             path += "&o=%d" % int(offset)
-        if(filterByDevice):
+        if (filterByDevice):
             path += "&dfil=1"
         data = self.executeRequestApi2(path)
         output = []
@@ -457,11 +469,13 @@ class GooglePlayAPI(object):
         if not progress_bar:
             return requests.get(url, headers=headers,
                                 cookies=cookies, verify=ssl_verify,
-                                timeout=60).content
+                                timeout=60,
+                                proxies=self.proxies_config, ).content
         response_content = bytes()
         response = requests.get(url, headers=headers,
                                 cookies=cookies, verify=ssl_verify,
-                                stream=True, timeout=60)
+                                stream=True, timeout=60,
+                                proxies=self.proxies_config, )
         total_length = int(response.headers.get('content-length'))
         chunk_size = 32 * (1 << 10)  # 32 KB
         bar = progress.Bar(expected_size=(total_length >> 10))
@@ -508,7 +522,8 @@ class GooglePlayAPI(object):
         url = "https://android.clients.google.com/fdfe/%s" % path
         response = requests.get(url, headers=headers,
                                 params=params, verify=ssl_verify,
-                                timeout=60)
+                                timeout=60,
+                                proxies=self.proxies_config, )
         resObj = googleplay_pb2.ResponseWrapper.FromString(response.content)
         if resObj.commands.displayErrorMessage != "":
             raise RequestError(resObj.commands.displayErrorMessage)
@@ -573,7 +588,8 @@ class GooglePlayAPI(object):
         url = self.FDFE + path
         response = requests.post(url, headers=headers,
                                  params=params, verify=ssl_verify,
-                                 timeout=60)
+                                 timeout=60,
+                                 proxies=self.proxies_config, )
 
         resObj = googleplay_pb2.ResponseWrapper.FromString(response.content)
         if resObj.commands.displayErrorMessage != "":
