@@ -67,7 +67,7 @@ if not errorThrown:
 
 # BULK DETAILS
 
-testApps = ['org.mozilla.firefox', 'com.non.existing.app']
+testApps = ['org.mozilla.focus', 'com.non.existing.app']
 bulk = server.bulkDetails(testApps)
 
 print('\nTesting behaviour for non-existing apps\n')
