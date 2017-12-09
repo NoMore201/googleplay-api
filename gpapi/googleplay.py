@@ -347,7 +347,7 @@ class GooglePlayAPI(object):
             packageNames (list): a list of app IDs (usually starting with 'com.').
 
         Returns:
-            a list of dictionaries containing docv1 data, or None
+            a list of dictionaries containing docv2 data, or None
             if the app doesn't exist"""
 
         path = "bulkDetails"
@@ -358,7 +358,7 @@ class GooglePlayAPI(object):
                                           data.decode("utf-8"),
                                           "application/x-protobuf")
         response = message.payload.bulkDetailsResponse
-        return [None if not entry.HasField('doc') else
+        return [None if not utils.hasDoc(entry) else
                 utils.fromDocToDictionary(entry.doc)
                 for entry in response.entry]
 
@@ -372,7 +372,6 @@ class GooglePlayAPI(object):
         if subCat is not None:
             path += "&ctr=%s" % requests.utils.quote(subCat)
         data = self.executeRequestApi2(path)
-        output = []
 
         if cat is None and subCat is None:
             # result contains all categories available
@@ -380,19 +379,25 @@ class GooglePlayAPI(object):
                      'dataUrl': c.dataUrl,
                      'catId': c.unknownCategoryContainer.categoryIdContainer.categoryId}
                     for c in data.payload.browseResponse.category]
-        else:
-            # result contains apps of a specific category
-            # organized by sections
-            for pf in data.preFetch:
-                for cluster in pf.response.payload.listResponse.cluster:
-                    for doc in cluster.doc:
-                        apps = [a for a in doc.child]
-                        apps = list(map(utils.fromDocToDictionary,
-                                        apps))
-                        section = {'title': doc.title,
-                                   'docid': doc.docid,
-                                   'apps': apps}
-                        output.append(section)
+
+        output = []
+        clusters = []
+
+        if utils.hasPrefetch(data):
+            clusters = chain.from_iterable([pf.response.payload.listResponse.cluster
+                                            for pf in data.preFetch])
+
+        # result contains apps of a specific category
+        # organized by sections
+        for cluster in clusters:
+            for doc in cluster.doc:
+                apps = [a for a in doc.child]
+                apps = list(map(utils.fromDocToDictionary,
+                                apps))
+                section = {'title': doc.title,
+                           'docid': doc.docid,
+                           'apps': apps}
+                output.append(section)
         return output
 
     def list(self, cat, ctr=None, nb_results=None, offset=None):

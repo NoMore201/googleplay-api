@@ -69,26 +69,33 @@ def toBigInt(byteArray):
         out = out | decoded << key * 8
     return out
 
-def hasPrefetch(response):
-    if type(response) is not googleplay_pb2.ResponseWrapper:
-        return False
+def hasPrefetch(obj):
     try:
-        return response.HasField('preFetch')
+        return len(obj.preFetch) > 0
     except ValueError:
         return False
 
-def hasListResponse(payload):
-    if type(payload) is not googleplay_pb2.Payload:
-        return False
+def hasListResponse(obj):
     try:
-        return payload.HasField('listResponse')
+        return obj.HasField('listResponse')
     except ValueError:
         return False
 
-def hasSearchResponse(payload):
-    if type(payload) is not googleplay_pb2.Payload:
-        return False
+def hasSearchResponse(obj):
     try:
-        return payload.HasField('searchResponse')
+        return obj.HasField('searchResponse')
     except ValueError:
         return False
+
+def hasDoc(obj):
+    # doc an be a single object or a
+    # RepeatedComposite object
+    try:
+        existance = obj.HasField('doc')
+    except ValueError:
+        try:
+            existance = len(obj.doc) > 0
+        except TypeError:
+            existance = False
+
+    return existance
