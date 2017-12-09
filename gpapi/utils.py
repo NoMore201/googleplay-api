@@ -1,8 +1,8 @@
 import struct
 import sys
+from . import googleplay_pb2
 
 VERSION = sys.version_info[0]
-
 
 def fromDocToDictionary(app):
     return {"docId": app.docid,
@@ -68,3 +68,27 @@ def toBigInt(byteArray):
             decoded = struct.unpack("B", value)[0]
         out = out | decoded << key * 8
     return out
+
+def hasPrefetch(response):
+    if type(response) is not googleplay_pb2.ResponseWrapper:
+        return False
+    try:
+        return response.HasField('preFetch')
+    except ValueError:
+        return False
+
+def hasListResponse(payload):
+    if type(payload) is not googleplay_pb2.Payload:
+        return False
+    try:
+        return payload.HasField('listResponse')
+    except ValueError:
+        return False
+
+def hasSearchResponse(payload):
+    if type(payload) is not googleplay_pb2.Payload:
+        return False
+    try:
+        return payload.HasField('searchResponse')
+    except ValueError:
+        return False

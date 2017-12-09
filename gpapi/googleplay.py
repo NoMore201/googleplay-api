@@ -63,7 +63,6 @@ class GooglePlayAPI(object):
             self.deviceBuilder.device['simoperator'] = sim_operator
         if cell_operator is not None:
             self.deviceBuilder.device['celloperator'] = cell_operator
-        # save last response text for error logging
 
     def encrypt_password(self, login, passwd):
         """Encrypt the password using the google publickey, using
@@ -298,32 +297,31 @@ class GooglePlayAPI(object):
         while remaining > 0 and nextPath is not None:
             currentPath = nextPath
             data = self.executeRequestApi2(currentPath)
-            if len(data.preFetch) > 0:
+            if utils.hasPrefetch(data):
                 response = data.preFetch[0].response
             else:
                 response = data
-            if response.payload.HasField('searchResponse'):
+            if utils.hasSearchResponse(response.payload):
                 # we still need to fetch the first page, so go to
                 # next loop iteration without decrementing counter
                 nextPath = response.payload.searchResponse.nextPageUrl
                 continue
-
-            if len(response.payload.listResponse.cluster) == 0:
-                # strange behaviour, probably due to
-                # expired token
-                raise LoginError('Unexpected behaviour, probably expired '
-                                 'token')
-            cluster = response.payload.listResponse.cluster[0]
-            if len(cluster.doc) == 0:
-                print('No results for query %s' % query)
-                break
-            if cluster.doc[0].containerMetadata.nextPageUrl != "":
-                nextPath = cluster.doc[0].containerMetadata.nextPageUrl
-            else:
-                nextPath = None
-            apps = list(chain.from_iterable([doc.child for doc in cluster.doc]))
-            output += list(map(utils.fromDocToDictionary, apps))
-            remaining -= len(apps)
+            if utils.hasListResponse(response.payload):
+                cluster = response.payload.listResponse.cluster
+                if len(cluster) == 0:
+                    # strange behaviour, probably due to expired token
+                    raise LoginError('Unexpected behaviour, probably expired '
+                                     'token')
+                cluster = cluster[0]
+                if len(cluster.doc) == 0:
+                    break
+                if cluster.doc[0].containerMetadata.nextPageUrl != "":
+                    nextPath = cluster.doc[0].containerMetadata.nextPageUrl
+                else:
+                    nextPath = None
+                apps = list(chain.from_iterable([doc.child for doc in cluster.doc]))
+                output += list(map(utils.fromDocToDictionary, apps))
+                remaining -= len(apps)
 
         if len(output) > nb_result:
             output = output[:nb_result]
