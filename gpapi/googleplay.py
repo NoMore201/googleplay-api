@@ -335,7 +335,8 @@ class GooglePlayAPI(object):
         url = self.FDFE + path
         response = requests.get(url, headers=headers,
                                 verify=ssl_verify,
-                                timeout=60)
+                                timeout=60,
+                                proxies=self.proxies_config)
 
         message = googleplay_pb2.UserProfileResponseWrapper.FromString(response.content)
         if message.commands.displayErrorMessage != "":
