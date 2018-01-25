@@ -9,7 +9,7 @@ ap.add_argument('-p', '--password', dest='password', help='google password')
 
 args = ap.parse_args()
 
-server = GooglePlayAPI(debug=True)
+server = GooglePlayAPI(debug=True, locale='it_IT')
 
 # LOGIN
 
@@ -19,7 +19,7 @@ gsfId = server.gsfId
 authSubToken = server.authSubToken
 
 print('\nNow trying secondary login with ac2dm token and gsfId saved\n')
-server = GooglePlayAPI(debug=True)
+server = GooglePlayAPI(debug=True, locale='it_IT')
 server.login(None, None, gsfId, authSubToken)
 
 # SEARCH

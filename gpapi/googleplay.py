@@ -49,7 +49,6 @@ class GooglePlayAPI(object):
 
     def __init__(self, debug=False, device_codename='bacon',
                  locale=None, timezone=None,
-                 sim_operator=None, cell_operator=None,
                  proxies_config=None):
         self.authSubToken = None
         self.gsfId = None
@@ -57,12 +56,7 @@ class GooglePlayAPI(object):
         self.proxies_config = proxies_config
         self.deviceBuilder = config.DeviceBuilder(device_codename)
         self.deviceBuilder.setLocale(locale)
-        if timezone is not None:
-            self.deviceBuilder.timezone = timezone
-        if sim_operator is not None:
-            self.deviceBuilder.device['simoperator'] = sim_operator
-        if cell_operator is not None:
-            self.deviceBuilder.device['celloperator'] = cell_operator
+        self.deviceBuilder.set_timezone(timezone)
 
     def encrypt_password(self, login, passwd):
         """Encrypt the password using the google publickey, using
@@ -489,6 +483,7 @@ class GooglePlayAPI(object):
         if not progress_bar:
             return requests.get(url, headers=headers,
                                 cookies=cookies, verify=ssl_verify,
+                                stream=True,
                                 timeout=60,
                                 proxies=self.proxies_config).content
         response_content = bytes()

@@ -2,7 +2,6 @@ from . import googleplay_pb2
 from time import time
 from os import path
 from sys import version_info
-from locale import getdefaultlocale
 from re import match
 
 VERSION = version_info[0]
@@ -37,50 +36,53 @@ def getDevicesCodenames():
 
 def getDevicesReadableNames():
     """Returns codename and readable name for each device"""
-    sections = getDevicesCodenames()
-    output = []
-    for s in sections:
-        output.append({'codename': s,
-                       'readableName': config[s]['userreadablename']})
-    return output
+    return [{'codename': s,
+             'readableName': config.get(s).get('userreadablename')}
+            for s in getDevicesCodenames()]
 
 
 class DeviceBuilder(object):
 
     def __init__(self, device):
         self.device = {}
-        self.timezone = "Europe/Berlin"
         for (key, value) in config.items(device):
             self.device[key] = value
 
     def setLocale(self, locale):
         # test if provided locale is valid
         if locale is None or type(locale) is not str:
-            # try to fetch it from system
-            locale = getdefaultlocale()[0]
-            # getdefaultlocale may return None, we need another check
-            if locale is None:
-                locale = ''
+            raise Exception('Wrong locale supplied')
 
         # check if locale matches the structure of a common
         # value like "en_US"
         if match(r'[a-z]{2}\_[A-Z]{2}', locale) is None:
-            locale = 'en_US'
+            raise Exception('Wrong locale supplied')
         self.locale = locale
 
+    def set_timezone(self, timezone):
+        if timezone is None or type(timezone) is not str:
+            timezone = self.device.get('timezone')
+            if timezone is None:
+                raise Exception('Wrong timezone supplied')
+        self.timezone = timezone
+
     def getUserAgent(self):
-        return ("Android-Finsky/8.1.72.S-all [6] [PR] 165478484 ("
+        version_string = self.device.get('vending.versionstring')
+        if version_string is None:
+            version_string = '8.4.19.V-all [0] [FP] 175058788'
+        return ("Android-Finsky/{versionString} ("
                 "api=3"
                 ",versionCode={versionCode}"
                 ",sdk={sdk}"
                 ",device={device}"
                 ",hardware={hardware}"
                 ",product={product}"
-                "").format(versionCode=self.device['vending.version'],
-                           sdk=self.device['build.version.sdk_int'],
-                           device=self.device['build.device'],
-                           hardware=self.device['build.hardware'],
-                           product=self.device['build.product'])
+                "").format(versionString=version_string,
+                           versionCode=self.device.get('vending.version'),
+                           sdk=self.device.get('build.version.sdk_int'),
+                           device=self.device.get('build.device'),
+                           hardware=self.device.get('build.hardware'),
+                           product=self.device.get('build.product'))
 
     def getAuthParams(self, email, passwd):
         return {"Email": email,
