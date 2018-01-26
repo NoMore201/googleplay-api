@@ -102,30 +102,19 @@ class DeviceBuilder(object):
             headers['device'] = "{0:x}".format(gsfid)
         return headers
 
-    def getAuthParams(self, email, passwd):
-        return {"Email": email,
-                "EncryptedPasswd": passwd,
-                "accountType": ACCOUNT,
-                "has_permission": "1",
-                "source": "android",
-                "device_country": self.locale[0:2],
-                "service": "androidmarket",
-                "app": "com.android.vending",
-                "lang": self.locale,
-                "sdk_version": self.device['build.version.sdk_int']}
-
     def getLoginParams(self, email, encrypted_passwd):
         return {"Email": email,
                 "EncryptedPasswd": encrypted_passwd,
-                "service": "ac2dm",
                 "add_account": "1",
                 "accountType": ACCOUNT,
+                "google_play_services_version": self.device.get('gsf.version'),
                 "has_permission": "1",
-                "app": "com.google.android.gsf",
                 "source": "android",
                 "device_country": self.locale[0:2],
                 "lang": self.locale,
-                "sdk_version": self.device.get('build.version.sdk_int')}
+                "sdk_version": self.device.get('build.version.sdk_int'),
+                "client_sig": "38918a453d07199354f8b19af05ec6562ced5788",
+                "callerSig": "38918a453d07199354f8b19af05ec6562ced5788"}
 
     def getAndroidCheckinRequest(self):
         request = googleplay_pb2.AndroidCheckinRequest()

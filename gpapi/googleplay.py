@@ -158,6 +158,11 @@ class GooglePlayAPI(object):
             encryptedPass = self.encrypt_password(email, password).decode('utf-8')
             # AC2DM token
             params = self.deviceBuilder.getLoginParams(email, encryptedPass)
+            params['service'] = 'ac2dm'
+            params['add_account'] = '1'
+            params['callerPkg'] = 'com.google.android.gms'
+            headers = self.deviceBuilder.getAuthHeaders(self.gsfId)
+            headers['app'] = 'com.google.android.gsm'
             response = requests.post(self.AUTHURL, data=params, verify=ssl_verify,
                                      proxies=self.proxies_config)
             data = response.text.split()
@@ -195,8 +200,11 @@ class GooglePlayAPI(object):
             raise LoginError('Either (email,pass) or (gsfId, authSubToken) is needed')
 
     def getAuthSubToken(self, email, passwd):
-        requestParams = self.deviceBuilder.getAuthParams(email, passwd)
+        requestParams = self.deviceBuilder.getLoginParams(email, passwd)
+        requestParams['service'] = 'androidmarket'
+        requestParams['app'] = 'com.android.vending'
         headers = self.deviceBuilder.getAuthHeaders(self.gsfId)
+        headers['app'] = 'com.android.vending'
         response = requests.post(self.AUTHURL,
                                  data=requestParams,
                                  verify=ssl_verify,
@@ -221,16 +229,17 @@ class GooglePlayAPI(object):
             raise LoginError("auth token not found.")
 
     def getSecondRoundToken(self, first_token, params):
+        if self.gsfId is not None:
+            params['androidId'] = "{0:x}".format(self.gsfId)
         params['Token'] = first_token
-        params['service'] = 'androidmarket'
         params['check_email'] = '1'
         params['token_request_options'] = 'CAA4AQ=='
         params['system_partition'] = '1'
         params['_opt_is_called_from_account_manager'] = '1'
-        params['google_play_services_version'] = '11518448'
         params.pop('Email')
         params.pop('EncryptedPasswd')
         headers = self.deviceBuilder.getAuthHeaders(self.gsfId)
+        headers['app'] = 'com.android.vending'
         response = requests.post(self.AUTHURL,
                                  data=params,
                                  headers=headers,
