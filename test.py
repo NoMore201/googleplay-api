@@ -37,9 +37,10 @@ for a in apps:
 docid = apps[0]['docId']
 print('\nTelegram docid is: %s\n' % docid)
 print('\nAttempting to download %s\n' % docid)
-fl = server.download(docid, None, progress_bar=True)
-with open(docid + '.apk', 'wb') as f:
-    f.write(fl['data'])
+fl = server.delivery(docid, versionCode=None)
+with open(docid + '.apk', 'wb') as apk_file:
+    for chunk in fl.get('data'):
+        apk_file.write(chunk)
     print('\nDownload successful\n')
 
 # DOWNLOAD APP NOT PURCHASED
@@ -52,10 +53,7 @@ try:
     app = server.search('nova launcher prime', 3, None)
     app = filter(lambda x: x['docId'] == 'com.teslacoilsw.launcher.prime', app)
     app = list(app)[0]
-    fl = server.delivery(app['docId'], app['versionCode'], progress_bar=True)
-    with open(docid + '.apk', 'wb') as f:
-        f.write(fl['data'])
-        print('\nDownload successful\n')
+    fl = server.delivery(app['docId'], app['versionCode'])
 except RequestError as e:
     errorThrown = True
     print(e)

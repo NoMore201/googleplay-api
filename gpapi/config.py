@@ -77,12 +77,21 @@ class DeviceBuilder(object):
                 ",device={device}"
                 ",hardware={hardware}"
                 ",product={product}"
-                "").format(versionString=version_string,
-                           versionCode=self.device.get('vending.version'),
-                           sdk=self.device.get('build.version.sdk_int'),
-                           device=self.device.get('build.device'),
-                           hardware=self.device.get('build.hardware'),
-                           product=self.device.get('build.product'))
+                ",platformVersionRelease={platform_v}"
+                ",model={model}"
+                ",buildId={build_id}"
+                ",isWideScreen=0"
+                ",supportedAbis={supported_abis}"
+                ")").format(versionString=version_string,
+                            versionCode=self.device.get('vending.version'),
+                            sdk=self.device.get('build.version.sdk_int'),
+                            device=self.device.get('build.device'),
+                            hardware=self.device.get('build.hardware'),
+                            product=self.device.get('build.product'),
+                            platform_v=self.device.get('build.version.release'),
+                            model=self.device.get('build.model'),
+                            build_id=self.device.get('build.id'),
+                            supported_abis=self.device.get('platforms'))
 
     def getAuthParams(self, email, passwd):
         return {"Email": email,

@@ -11,5 +11,4 @@ setup(name='gpapi',
       package_data={'gpapi': ['device.properties']},
       install_requires=['pycryptodome',
                         'protobuf',
-                        'clint',
                         'requests'])

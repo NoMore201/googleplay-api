@@ -5,7 +5,6 @@ from Crypto.Util import asn1
 from Crypto.PublicKey import RSA
 from Crypto.Hash import SHA
 from Crypto.Cipher import PKCS1_OAEP
-from clint.textui import progress
 
 import requests
 from base64 import b64decode, urlsafe_b64encode
@@ -478,30 +477,16 @@ class GooglePlayAPI(object):
             output.append(review)
         return output
 
-    def _deliver_data(self, url, cookies, progress_bar):
+    def _deliver_data(self, url, cookies):
         headers = self.getDefaultHeaders()
-        if not progress_bar:
-            return requests.get(url, headers=headers,
-                                cookies=cookies, verify=ssl_verify,
-                                stream=True,
-                                timeout=60,
-                                proxies=self.proxies_config).content
-        response_content = bytes()
         response = requests.get(url, headers=headers,
                                 cookies=cookies, verify=ssl_verify,
                                 stream=True, timeout=60,
                                 proxies=self.proxies_config)
-        total_length = int(response.headers.get('content-length'))
-        chunk_size = 32 * (1 << 10)  # 32 KB
-        bar = progress.Bar(expected_size=(total_length >> 10))
-        for index, chunk in enumerate(response.iter_content(chunk_size=chunk_size)):
-            response_content += chunk
-            bar.show(index * chunk_size >> 10)
-        bar.done()
-        return response_content
+        return response.iter_content(chunk_size=(32 * 1 << 10))
 
     def delivery(self, packageName, versionCode=None, offerType=1,
-                 downloadToken=None, progress_bar=False, expansion_files=False):
+                 downloadToken=None, expansion_files=False):
         """Download an already purchased app.
 
         Args:
@@ -553,7 +538,7 @@ class GooglePlayAPI(object):
             cookies = {
                 str(cookie.name): str(cookie.value)
             }
-            result['data'] = self._deliver_data(downloadUrl, cookies, progress_bar)
+            result['data'] = self._deliver_data(downloadUrl, cookies)
             if not expansion_files:
                 return result
             for obb in resObj.payload.deliveryResponse.appDeliveryData.additionalFile:
@@ -566,12 +551,11 @@ class GooglePlayAPI(object):
                     obbType = 'patch'
                 a['type'] = obbType
                 a['versionCode'] = obb.versionCode
-                a['data'] = self._deliver_data(obb.downloadUrl, None, progress_bar)
+                a['data'] = self._deliver_data(obb.downloadUrl, None)
                 result['additionalData'].append(a)
             return result
 
-    def download(self, packageName, versionCode=None, offerType=1,
-                 progress_bar=False, expansion_files=False):
+    def download(self, packageName, versionCode=None, offerType=1, expansion_files=False):
         """Download an app and return its raw data (APK file). Free apps need
         to be "purchased" first, in order to retrieve the download cookie.
         If you want to download an already purchased app, use *delivery* method.
@@ -612,7 +596,7 @@ class GooglePlayAPI(object):
         else:
             dlToken = resObj.payload.buyResponse.downloadToken
             return self.delivery(packageName, versionCode, offerType, dlToken,
-                                 progress_bar=progress_bar, expansion_files=expansion_files)
+                                 expansion_files=expansion_files)
 
     @staticmethod
     def getDevicesCodenames():
