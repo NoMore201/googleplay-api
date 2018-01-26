@@ -91,7 +91,16 @@ class DeviceBuilder(object):
                             platform_v=self.device.get('build.version.release'),
                             model=self.device.get('build.model'),
                             build_id=self.device.get('build.id'),
-                            supported_abis=self.device.get('platforms'))
+                            supported_abis=self.device.get('platforms').replace(',', ';'))
+
+    def getAuthHeaders(self, gsfid):
+        headers = {"User-Agent": ("GoogleAuth/1.4 ("
+                                  "{device} {id}"
+                                  ")").format(device=self.device.get('build.device'),
+                                              id=self.device.get('build.id'))}
+        if gsfid is not None:
+            headers['device'] = "{0:x}".format(gsfid)
+        return headers
 
     def getAuthParams(self, email, passwd):
         return {"Email": email,
@@ -105,9 +114,9 @@ class DeviceBuilder(object):
                 "lang": self.locale,
                 "sdk_version": self.device['build.version.sdk_int']}
 
-    def getLoginParams(self, email, encryptedPass):
+    def getLoginParams(self, email, encrypted_passwd):
         return {"Email": email,
-                "EncryptedPasswd": encryptedPass,
+                "EncryptedPasswd": encrypted_passwd,
                 "service": "ac2dm",
                 "add_account": "1",
                 "accountType": ACCOUNT,
@@ -116,7 +125,7 @@ class DeviceBuilder(object):
                 "source": "android",
                 "device_country": self.locale[0:2],
                 "lang": self.locale,
-                "sdk_version": self.device['build.version.sdk_int']}
+                "sdk_version": self.device.get('build.version.sdk_int')}
 
     def getAndroidCheckinRequest(self):
         request = googleplay_pb2.AndroidCheckinRequest()

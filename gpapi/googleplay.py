@@ -196,7 +196,11 @@ class GooglePlayAPI(object):
 
     def getAuthSubToken(self, email, passwd):
         requestParams = self.deviceBuilder.getAuthParams(email, passwd)
-        response = requests.post(self.AUTHURL, data=requestParams, verify=ssl_verify,
+        headers = self.deviceBuilder.getAuthHeaders(self.gsfId)
+        response = requests.post(self.AUTHURL,
+                                 data=requestParams,
+                                 verify=ssl_verify,
+                                 headers=headers,
                                  proxies=self.proxies_config)
         data = response.text.split()
         params = {}
@@ -209,25 +213,27 @@ class GooglePlayAPI(object):
             firstToken = params["token"]
             if self.debug:
                 print('Master token: %s' % firstToken)
-            secondToken = self.getSecondRoundToken(requestParams, firstToken)
+            secondToken = self.getSecondRoundToken(firstToken, requestParams)
             self.setAuthSubToken(secondToken)
         elif "error" in params:
             raise LoginError("server says: " + params["error"])
         else:
-            raise LoginError("Auth token not found.")
+            raise LoginError("auth token not found.")
 
-    def getSecondRoundToken(self, previousParams, firstToken):
-        previousParams['Token'] = firstToken
-        previousParams['service'] = 'androidmarket'
-        previousParams['check_email'] = '1'
-        previousParams['token_request_options'] = 'CAA4AQ=='
-        previousParams['system_partition'] = '1'
-        previousParams['_opt_is_called_from_account_manager'] = '1'
-        previousParams['google_play_services_version'] = '11518448'
-        previousParams.pop('Email')
-        previousParams.pop('EncryptedPasswd')
+    def getSecondRoundToken(self, first_token, params):
+        params['Token'] = first_token
+        params['service'] = 'androidmarket'
+        params['check_email'] = '1'
+        params['token_request_options'] = 'CAA4AQ=='
+        params['system_partition'] = '1'
+        params['_opt_is_called_from_account_manager'] = '1'
+        params['google_play_services_version'] = '11518448'
+        params.pop('Email')
+        params.pop('EncryptedPasswd')
+        headers = self.deviceBuilder.getAuthHeaders(self.gsfId)
         response = requests.post(self.AUTHURL,
-                                 data=previousParams,
+                                 data=params,
+                                 headers=headers,
                                  verify=ssl_verify,
                                  proxies=self.proxies_config)
         data = response.text.split()
@@ -255,12 +261,15 @@ class GooglePlayAPI(object):
 
         url = self.FDFE + path
         if datapost is not None:
-            response = requests.post(url, data=str(datapost),
-                                     headers=headers, verify=ssl_verify,
+            response = requests.post(url,
+                                     data=str(datapost),
+                                     headers=headers,
+                                     verify=ssl_verify,
                                      timeout=60,
                                      proxies=self.proxies_config)
         else:
-            response = requests.get(url, headers=headers,
+            response = requests.get(url,
+                                    headers=headers,
                                     verify=ssl_verify,
                                     timeout=60,
                                     proxies=self.proxies_config)
@@ -326,7 +335,8 @@ class GooglePlayAPI(object):
         headers = self.getDefaultHeaders()
 
         url = self.FDFE + path
-        response = requests.get(url, headers=headers,
+        response = requests.get(url,
+                                headers=headers,
                                 verify=ssl_verify,
                                 timeout=60,
                                 proxies=self.proxies_config)
@@ -510,7 +520,7 @@ class GooglePlayAPI(object):
 
         if versionCode is None:
             # pick up latest version
-            versionCode = self.details(packageName)['versionCode']
+            versionCode = self.details(packageName).get('versionCode')
 
         path = "delivery"
         params = {'ot': str(offerType),
@@ -577,7 +587,7 @@ class GooglePlayAPI(object):
 
         if versionCode is None:
             # pick up latest version
-            versionCode = self.details(packageName)['versionCode']
+            versionCode = self.details(packageName).get('versionCode')
 
         path = "purchase"
         headers = self.getDefaultHeaders()
