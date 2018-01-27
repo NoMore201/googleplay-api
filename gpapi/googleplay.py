@@ -46,8 +46,7 @@ class GooglePlayAPI(object):
 
     proxies_config = None
 
-    def __init__(self, debug=False, device_codename='bacon',
-                 locale=None, timezone=None,
+    def __init__(self, locale, timezone, debug=False, device_codename='bacon',
                  proxies_config=None):
         self.authSubToken = None
         self.gsfId = None
