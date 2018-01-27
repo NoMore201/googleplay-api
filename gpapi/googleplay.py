@@ -53,7 +53,13 @@ class GooglePlayAPI(object):
         self.debug = debug
         self.proxies_config = proxies_config
         self.deviceBuilder = config.DeviceBuilder(device_codename)
-        self.deviceBuilder.setLocale(locale)
+        self.set_locale(locale)
+        self.set_timezone(timezone)
+
+    def set_locale(self, locale):
+        self.deviceBuilder.set_locale(locale)
+
+    def set_timezone(self, timezone):
         self.deviceBuilder.set_timezone(timezone)
 
     def encrypt_password(self, login, passwd):

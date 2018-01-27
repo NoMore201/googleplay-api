@@ -48,7 +48,7 @@ class DeviceBuilder(object):
         for (key, value) in config.items(device):
             self.device[key] = value
 
-    def setLocale(self, locale):
+    def set_locale(self, locale):
         # test if provided locale is valid
         if locale is None or type(locale) is not str:
             raise Exception('Wrong locale supplied')
