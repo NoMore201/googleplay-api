@@ -39,7 +39,7 @@ print('\nTelegram docid is: %s\n' % docid)
 print('\nAttempting to download %s\n' % docid)
 fl = server.delivery(docid, versionCode=None)
 with open(docid + '.apk', 'wb') as apk_file:
-    for chunk in fl.get('data'):
+    for chunk in fl.get('file').get('data'):
         apk_file.write(chunk)
     print('\nDownload successful\n')
 

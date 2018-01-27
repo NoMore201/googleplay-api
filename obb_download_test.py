@@ -8,20 +8,25 @@ ap.add_argument('-p', '--password', dest='password', help='google password')
 
 args = ap.parse_args()
 
-server = GooglePlayAPI(debug=True)
+server = GooglePlayAPI(debug=True, locale='it_IT', timezone='Europe/Rome')
 
 # LOGIN
 
 print('\nLogging in with email and password\n')
 server.login(args.email, args.password, None, None)
+docid = 'com.pixel.gun3d'
 
-download = server.download('com.mapswithme.maps.pro', 1754, progress_bar=True, expansion_files=True)
+print('\nDownloading apk\n')
+download = server.delivery(docid, versionCode=None, expansion_files=True)
 with open(download['docId'] + '.apk', 'wb') as first:
-    first.write(download['data'])
+    for chunk in download.get('file').get('data'):
+        first.write(chunk)
 
+print('\nDownloading additional files\n')
 for obb in download['additionalData']:
     name = obb['type'] + '.' + str(obb['versionCode']) + '.' + download['docId'] + '.obb'
     with open(name, 'wb') as second:
-        second.write(obb['data'])
+        for chunk in obb.get('file').get('data'):
+            second.write(chunk)
 
 print('\nDownload successful\n')

@@ -502,7 +502,11 @@ class GooglePlayAPI(object):
                                 cookies=cookies, verify=ssl_verify,
                                 stream=True, timeout=60,
                                 proxies=self.proxies_config)
-        return response.iter_content(chunk_size=(32 * 1 << 10))
+        total_size = response.headers.get('content-length')
+        chunk_size = 32 * (1 << 10)
+        return {'data': response.iter_content(chunk_size=chunk_size),
+                'total_size': total_size,
+                'chunk_size': chunk_size}
 
     def delivery(self, packageName, versionCode=None, offerType=1,
                  downloadToken=None, expansion_files=False):
@@ -557,7 +561,7 @@ class GooglePlayAPI(object):
             cookies = {
                 str(cookie.name): str(cookie.value)
             }
-            result['data'] = self._deliver_data(downloadUrl, cookies)
+            result['file'] = self._deliver_data(downloadUrl, cookies)
             if not expansion_files:
                 return result
             for obb in resObj.payload.deliveryResponse.appDeliveryData.additionalFile:
@@ -570,7 +574,7 @@ class GooglePlayAPI(object):
                     obbType = 'patch'
                 a['type'] = obbType
                 a['versionCode'] = obb.versionCode
-                a['data'] = self._deliver_data(obb.downloadUrl, None)
+                a['file'] = self._deliver_data(obb.downloadUrl, None)
                 result['additionalData'].append(a)
             return result
 
