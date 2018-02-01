@@ -81,13 +81,6 @@ print('\nGetting details for %s\n' % testApps[0])
 details = server.details(testApps[0])
 print(details)
 
-# USER PROFILE
-print('\nGettung user profile information\n')
-user = server.userProfile()
-if 'Noto Sans' not in user['title']:
-    raise Exception("Wrong userProfile behaviour")
-    sys.exit(1)
-
 # REVIEWS
 print('\nGetting reviews for %s\n' % testApps[0])
 revs = server.reviews(testApps[0])
