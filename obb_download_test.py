@@ -17,7 +17,7 @@ server.login(args.email, args.password, None, None)
 docid = 'com.pixel.gun3d'
 
 print('\nDownloading apk\n')
-download = server.delivery(docid, versionCode=None, expansion_files=True)
+download = server.download(docid, expansion_files=True)
 with open(download['docId'] + '.apk', 'wb') as first:
     for chunk in download.get('file').get('data'):
         first.write(chunk)

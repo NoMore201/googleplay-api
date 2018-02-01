@@ -37,7 +37,7 @@ for a in apps:
 docid = apps[0]['docId']
 print('\nTelegram docid is: %s\n' % docid)
 print('\nAttempting to download %s\n' % docid)
-fl = server.delivery(docid, versionCode=None)
+fl = server.download(docid)
 with open(docid + '.apk', 'wb') as apk_file:
     for chunk in fl.get('file').get('data'):
         apk_file.write(chunk)

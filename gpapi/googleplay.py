@@ -9,6 +9,7 @@ from Crypto.Cipher import PKCS1_OAEP
 import requests
 from base64 import b64decode, urlsafe_b64encode
 from itertools import chain
+from datetime import datetime
 
 from . import googleplay_pb2, config, utils
 
@@ -43,6 +44,7 @@ class GooglePlayAPI(object):
     SEARCHURL = FDFE + "search"
     CHECKINURL = BASE + "checkin"
     AUTHURL = BASE + "auth"
+    LOGURL = FDFE + "log"
 
     proxies_config = None
 
@@ -613,6 +615,7 @@ class GooglePlayAPI(object):
                   'doc': packageName,
                   'vc': str(versionCode)}
         url = self.FDFE + path
+        self.log(packageName)
         response = requests.post(url, headers=headers,
                                  params=params, verify=ssl_verify,
                                  timeout=60,
@@ -625,6 +628,24 @@ class GooglePlayAPI(object):
             dlToken = resObj.payload.buyResponse.downloadToken
             return self.delivery(packageName, versionCode, offerType, dlToken,
                                  expansion_files=expansion_files)
+
+    def log(self, docid):
+        log_request = googleplay_pb2.LogRequest()
+        log_request.downloadConfirmationQuery = "confirmFreeDownload?doc=" + docid
+        timestamp = int(datetime.now().timestamp())
+        log_request.timestamp = timestamp
+
+        string_request = log_request.SerializeToString()
+        response = requests.post(self.LOGURL,
+                                 data=string_request,
+                                 headers=self.getDefaultHeaders(),
+                                 verify=ssl_verify,
+                                 timeout=60,
+                                 proxies=self.proxies_config)
+        response = googleplay_pb2.ResponseWrapper.FromString(response.content)
+        if response.commands.displayErrorMessage != "":
+            raise RequestError(resObj.commands.displayErrorMessage)
+
 
     @staticmethod
     def getDevicesCodenames():
