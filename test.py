@@ -9,7 +9,7 @@ ap.add_argument('-p', '--password', dest='password', help='google password')
 
 args = ap.parse_args()
 
-server = GooglePlayAPI('it_IT', 'Europe/Rome', debug=True)
+server = GooglePlayAPI('it_IT', 'Europe/Rome')
 
 # LOGIN
 
@@ -19,7 +19,7 @@ gsfId = server.gsfId
 authSubToken = server.authSubToken
 
 print('\nNow trying secondary login with ac2dm token and gsfId saved\n')
-server = GooglePlayAPI('it_IT', 'Europe/Rome', debug=True)
+server = GooglePlayAPI('it_IT', 'Europe/Rome')
 server.login(None, None, gsfId, authSubToken)
 
 # SEARCH
@@ -64,7 +64,6 @@ if not errorThrown:
 
 
 # BULK DETAILS
-
 testApps = ['org.mozilla.focus', 'com.non.existing.app']
 bulk = server.bulkDetails(testApps)
 

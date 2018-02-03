@@ -8,7 +8,7 @@ ap.add_argument('-p', '--password', dest='password', help='google password')
 
 args = ap.parse_args()
 
-server = GooglePlayAPI(debug=True, locale='it_IT', timezone='Europe/Rome')
+server = GooglePlayAPI('it_IT', 'Europe/Rome')
 
 # LOGIN
 
