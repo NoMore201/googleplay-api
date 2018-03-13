@@ -232,6 +232,7 @@ message Offer {
   optional SubscriptionTerms subscriptionTerms = 12;
   optional string formattedName = 13;
   optional string formattedDescription = 14;
+  optional string saleEnds = 31;
 }
 message OwnershipInfo {
   optional int64 initiationTimestampMsec = 1;
