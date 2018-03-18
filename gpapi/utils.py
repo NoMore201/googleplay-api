@@ -32,6 +32,7 @@ def fromDocToDictionary(app):
             "installationSize": app.details.appDetails.installationSize,
             "numDownloads": app.details.appDetails.numDownloads,
             "uploadDate": app.details.appDetails.uploadDate,
+            "permission": [p for p in app.details.appDetails.permission],
             "files": [{"fileType": f.fileType,
                        "version": f.versionCode,
                        "size": f.size}
