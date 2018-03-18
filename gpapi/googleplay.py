@@ -95,6 +95,7 @@ class GooglePlayAPI(object):
                    "X-DFE-Encoded-Targets": config.DFE_TARGETS,
                    "User-Agent": self.deviceBuilder.getUserAgent(),
                    "X-DFE-Client-Id": "am-android-google",
+                   "X-DFE-MCCMNC": self.deviceBuilder.device.get('celloperator'),
                    "X-DFE-Network-Type": "4",
                    "X-DFE-Content-Filters": "",
                    "X-DFE-Request-Params": "timeoutMs=4000"}
@@ -268,7 +269,7 @@ class GooglePlayAPI(object):
         else:
             raise LoginError("Auth token not found.")
 
-    def executeRequestApi2(self, path, post_data=None, content_type=None):
+    def executeRequestApi2(self, path, post_data=None, content_type=None, params=None):
         if self.authSubToken is None:
             raise Exception("You need to login before executing any request")
         headers = self.getDefaultHeaders()
@@ -281,12 +282,14 @@ class GooglePlayAPI(object):
             response = requests.post(url,
                                      data=str(post_data),
                                      headers=headers,
+                                     params=params,
                                      verify=ssl_verify,
                                      timeout=60,
                                      proxies=self.proxies_config)
         else:
             response = requests.get(url,
                                     headers=headers,
+                                    params=params,
                                     verify=ssl_verify,
                                     timeout=60,
                                     proxies=self.proxies_config)
@@ -370,16 +373,29 @@ class GooglePlayAPI(object):
             if the app doesn't exist"""
 
         path = "bulkDetails"
+        params = {'au': '1'}
         req = googleplay_pb2.BulkDetailsRequest()
         req.docid.extend(packageNames)
         data = req.SerializeToString()
         message = self.executeRequestApi2(path,
                                           post_data=data.decode("utf-8"),
-                                          content_type="application/x-protobuf")
+                                          content_type="application/x-protobuf",
+                                          params=params)
         response = message.payload.bulkDetailsResponse
         return [None if not utils.hasDoc(entry) else
                 utils.fromDocToDictionary(entry.doc)
                 for entry in response.entry]
+
+    def getHomeApps(self):
+        path = "homeV2?c=3&nocache_isui=true"
+        data = self.executeRequestApi2(path)
+        output = []
+        cluster = data.preFetch[0].response.payload.listResponse.cluster[0]
+        for doc in cluster.doc:
+            output.append({"categoryId": doc.docid,
+                           "categoryStr": doc.title,
+                           "apps": [utils.fromDocToDictionary(c) for c in doc.child]})
+        return output
 
     def browse(self, cat=None, subCat=None):
         """Browse categories. If neither cat nor subcat are specified,

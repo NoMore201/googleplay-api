@@ -33,6 +33,15 @@ print('\nFound those apps:\n')
 for a in apps:
     print(a['docId'])
 
+# HOME APPS
+
+print('\nFetching apps from play store home\n')
+home = server.getHomeApps()
+
+for cat in home:
+    print("cat {0} with {1} apps".format(cat.get('categoryId'),
+                                         str(len(cat.get('apps')))))
+
 # DOWNLOAD
 docid = apps[0]['docId']
 print('\nTelegram docid is: %s\n' % docid)
