@@ -7,3 +7,7 @@ build/
 dist/
 *.egg-info/
 .idea/
+# Python virtual-environment
+/venv
+# Created by pytest
+.pytest_cache
