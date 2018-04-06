@@ -26,6 +26,9 @@ server.login(None, None, gsfId, authSubToken)
 
 apps = server.search('telegram', 34, None)
 
+print('\nSearch suggestion for "fir"\n')
+print(server.searchSuggest('fir'))
+
 print('nb_result: 34')
 print('number of results: %d' % len(apps))
 

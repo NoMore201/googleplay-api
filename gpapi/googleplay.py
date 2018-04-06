@@ -300,6 +300,17 @@ class GooglePlayAPI(object):
 
         return message
 
+    def searchSuggest(self, query):
+        params = {"c": "3",
+                  "q": requests.utils.quote(query),
+                  "ssis": "120",
+                  "sst": "2"}
+        data = self.executeRequestApi2("searchSuggest", params=params)
+        response = data.payload.searchSuggestResponse
+        return [{"type": e.type,
+                 "suggestedQuery": e.suggestedQuery,
+                 "title": e.title} for e in response.entry]
+
     def search(self, query, nb_result, offset=None):
         """ Search the play store for an app.
 
