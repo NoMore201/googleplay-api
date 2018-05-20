@@ -9,7 +9,9 @@ from Crypto.Cipher import PKCS1_OAEP
 import requests
 from base64 import b64decode, urlsafe_b64encode
 from itertools import chain
-from datetime import datetime
+import time
+import os
+import pickle
 
 from . import googleplay_pb2, config, utils
 
@@ -23,6 +25,7 @@ CHECKINURL = BASE + "checkin"
 AUTHURL = BASE + "auth"
 LOGURL = FDFE + "log"
 TOCURL = FDFE + "toc"
+CACHEDIR = ".gpapicache/"
 
 
 class LoginError(Exception):
@@ -50,6 +53,7 @@ class GooglePlayAPI(object):
     def __init__(self, locale, timezone, device_codename='bacon',
                  proxies_config=None):
         self.authSubToken = None
+        self.cachefile = CACHEDIR + device_codename + '.txt'
         self.gsfId = None
         self.device_config_token = None
         self.proxies_config = proxies_config
@@ -642,7 +646,7 @@ class GooglePlayAPI(object):
     def log(self, docid):
         log_request = googleplay_pb2.LogRequest()
         log_request.downloadConfirmationQuery = "confirmFreeDownload?doc=" + docid
-        timestamp = int(datetime.now().timestamp())
+        timestamp = int(time.strftime('%H%M%S'))
         log_request.timestamp = timestamp
 
         string_request = log_request.SerializeToString()
@@ -663,3 +667,35 @@ class GooglePlayAPI(object):
     @staticmethod
     def getDevicesReadableNames():
         return config.getDevicesReadableNames()
+
+    def write_cache(self, gsfId, token):
+        if not os.path.exists(CACHEDIR):
+            os.makedirs(os.path.dirname(CACHEDIR))
+        info = {'gsfId': gsfId, 'token': token}
+        pickle.dump(info, open(self.cachefile, "wb"))
+
+    def read_cache(self):
+        try:
+            with open(self.cachefile, "rb") as f:
+                info = pickle.load(f)
+        except:
+            info = None
+        return info
+
+    def refresh_cache(self, email, password):
+        self.login(email, password, None, None)
+        self.write_cache(self.gsfId, self.authSubToken)
+        return self
+
+    def do_login(self, email, password):
+        cacheinfo = self.read_cache()
+        if cacheinfo:
+            # Sign in using cached info
+            try:
+                self.login(None, None, cacheinfo['gsfId'], cacheinfo['token'])
+            except:
+                self.refresh_cache(email, password)
+        else:
+            # Re-authenticate using email and pass and save info to cache
+            self.refresh_cache(email, password)
+        return self
