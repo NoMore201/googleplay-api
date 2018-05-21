@@ -6,6 +6,7 @@ ap = argparse.ArgumentParser(description='Token auth test')
 ap.add_argument('-e', '--email', dest='email', help='google username')
 ap.add_argument('-p', '--password', dest='password', help='google password')
 ap.add_argument('-d', '--device', dest='device', help='device name', default='hero2lte')
+ap.add_argument('-id', '--packageId', dest='package', help='app package id', default='com.evozi.deviceid')
 
 args = ap.parse_args()
 
@@ -15,7 +16,7 @@ server = GooglePlayAPI('en_PK', 'Asia/Karachi', args.device)
 server.do_login(args.email, args.password)
 
 # Download a tiny file to test
-packageId = 'com.evozi.deviceid'
+packageId = args.package
 fl = server.download(packageId)
 with open(packageId + '.apk', 'wb') as apk_file:
 	for chunk in fl.get('file').get('data'):
