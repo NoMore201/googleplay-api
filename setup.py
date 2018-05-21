@@ -1,11 +1,11 @@
 from setuptools import setup
 
-setup(name='gpapi',
-      version='0.4.2',
-      description='Unofficial python api for google play',
-      url='https://github.com/NoMore201/googleplay-api',
-      author='NoMore201',
-      author_email='domenico.iezzi.201@gmail.com',
+setup(name='rwgpapi',
+      version='0.1',
+      description='A fork of https://github.com/NoMore201/googleplay-api with some enhancements.',
+      url='https://github.com/rehmatworks/googleplay-api',
+      author='Rehmat',
+      author_email='contact@rehmat.works',
       license='GPL3',
       packages=['gpapi'],
       package_data={'gpapi': ['device.properties']},
