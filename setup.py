@@ -1,6 +1,6 @@
 from setuptools import setup
 
-setup(name='rwgpapi',
+setup(name='gpapi',
       version='0.1',
       description='A fork of https://github.com/NoMore201/googleplay-api with some enhancements.',
       url='https://github.com/rehmatworks/googleplay-api',

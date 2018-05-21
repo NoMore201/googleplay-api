@@ -1,4 +1,4 @@
-from rwgpapi.googleplay import GooglePlayAPI, RequestError
+from gpapi.googleplay import GooglePlayAPI, RequestError
 import sys
 import argparse
 
