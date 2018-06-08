@@ -8,7 +8,6 @@ from Crypto.Cipher import PKCS1_OAEP
 
 import requests
 from base64 import b64decode, urlsafe_b64encode
-from itertools import chain
 from datetime import datetime
 
 from . import googleplay_pb2, config, utils
@@ -17,12 +16,24 @@ ssl_verify = True
 
 BASE = "https://android.clients.google.com/"
 FDFE = BASE + "fdfe/"
-UPLOADURL = FDFE + "uploadDeviceConfig"
-SEARCHURL = FDFE + "search"
-CHECKINURL = BASE + "checkin"
-AUTHURL = BASE + "auth"
-LOGURL = FDFE + "log"
-TOCURL = FDFE + "toc"
+CHECKIN_URL = BASE + "checkin"
+AUTH_URL = BASE + "auth"
+
+UPLOAD_URL = FDFE + "uploadDeviceConfig"
+SEARCH_URL = FDFE + "search"
+DETAILS_URL = FDFE + "details"
+HOME_URL = FDFE + "homeV2"
+BROWSE_URL = FDFE + "browse"
+DELIVERY_URL = FDFE + "delivery"
+PURCHASE_URL = FDFE + "purchase"
+SEARCH_SUGGEST_URL = FDFE + "searchSuggest"
+BULK_URL = FDFE + "bulkDetails"
+LOG_URL = FDFE + "log"
+TOC_URL = FDFE + "toc"
+LIST_URL = FDFE + "list"
+REVIEWS_URL = FDFE + "rev"
+
+CONTENT_TYPE_URLENC = "application/x-www-form-urlencoded; charset=UTF-8"
 
 
 class LoginError(Exception):
@@ -70,8 +81,8 @@ class GooglePlayAPI(object):
         binaryKey = b64decode(config.GOOGLE_PUBKEY)
         i = utils.readInt(binaryKey, 0)
         modulus = utils.toBigInt(binaryKey[4:][0:i])
-        j = utils.readInt(binaryKey, i+4)
-        exponent = utils.toBigInt(binaryKey[i+8:][0:j])
+        j = utils.readInt(binaryKey, i + 4)
+        exponent = utils.toBigInt(binaryKey[i + 8:][0:j])
 
         seq = asn1.DerSequence()
         seq.append(modulus)
@@ -114,7 +125,7 @@ class GooglePlayAPI(object):
         request = self.deviceBuilder.getAndroidCheckinRequest()
 
         stringRequest = request.SerializeToString()
-        res = requests.post(CHECKINURL, data=stringRequest,
+        res = requests.post(CHECKIN_URL, data=stringRequest,
                             headers=headers, verify=ssl_verify,
                             proxies=self.proxies_config)
         response = googleplay_pb2.AndroidCheckinResponse()
@@ -128,7 +139,7 @@ class GooglePlayAPI(object):
         request2.accountCookie.append("[" + email + "]")
         request2.accountCookie.append(ac2dmToken)
         stringRequest = request2.SerializeToString()
-        requests.post(CHECKINURL, data=stringRequest,
+        requests.post(CHECKIN_URL, data=stringRequest,
                       headers=headers, verify=ssl_verify,
                       proxies=self.proxies_config)
 
@@ -146,7 +157,7 @@ class GooglePlayAPI(object):
         headers["X-DFE-SmallestScreenWidthDp"] = "320"
         headers["X-DFE-Filter-Level"] = "3"
         stringRequest = upload.SerializeToString()
-        response = requests.post(UPLOADURL, data=stringRequest,
+        response = requests.post(UPLOAD_URL, data=stringRequest,
                                  headers=headers,
                                  verify=ssl_verify,
                                  timeout=60,
@@ -179,7 +190,7 @@ class GooglePlayAPI(object):
             params['callerPkg'] = 'com.google.android.gms'
             headers = self.deviceBuilder.getAuthHeaders(self.gsfId)
             headers['app'] = 'com.google.android.gsm'
-            response = requests.post(AUTHURL, data=params, verify=ssl_verify,
+            response = requests.post(AUTH_URL, data=params, verify=ssl_verify,
                                      proxies=self.proxies_config)
             data = response.text.split()
             params = {}
@@ -217,7 +228,7 @@ class GooglePlayAPI(object):
         requestParams['app'] = 'com.android.vending'
         headers = self.deviceBuilder.getAuthHeaders(self.gsfId)
         headers['app'] = 'com.android.vending'
-        response = requests.post(AUTHURL,
+        response = requests.post(AUTH_URL,
                                  data=requestParams,
                                  verify=ssl_verify,
                                  headers=headers,
@@ -250,7 +261,7 @@ class GooglePlayAPI(object):
         params.pop('EncryptedPasswd')
         headers = self.deviceBuilder.getAuthHeaders(self.gsfId)
         headers['app'] = 'com.android.vending'
-        response = requests.post(AUTHURL,
+        response = requests.post(AUTH_URL,
                                  data=params,
                                  headers=headers,
                                  verify=ssl_verify,
@@ -269,17 +280,14 @@ class GooglePlayAPI(object):
         else:
             raise LoginError("Auth token not found.")
 
-    def executeRequestApi2(self, path, post_data=None, content_type=None, params=None):
+    def executeRequestApi2(self, path, post_data=None, content_type=CONTENT_TYPE_URLENC, params=None):
         if self.authSubToken is None:
             raise Exception("You need to login before executing any request")
         headers = self.getDefaultHeaders()
-
-        if content_type is None:
-            content_type = "application/x-www-form-urlencoded; charset=UTF-8"
         headers["Content-Type"] = content_type
-        url = FDFE + path
+
         if post_data is not None:
-            response = requests.post(url,
+            response = requests.post(path,
                                      data=str(post_data),
                                      headers=headers,
                                      params=params,
@@ -287,7 +295,7 @@ class GooglePlayAPI(object):
                                      timeout=60,
                                      proxies=self.proxies_config)
         else:
-            response = requests.get(url,
+            response = requests.get(path,
                                     headers=headers,
                                     params=params,
                                     verify=ssl_verify,
@@ -305,7 +313,7 @@ class GooglePlayAPI(object):
                   "q": requests.utils.quote(query),
                   "ssis": "120",
                   "sst": "2"}
-        data = self.executeRequestApi2("searchSuggest", params=params)
+        data = self.executeRequestApi2(SEARCH_SUGGEST_URL, params=params)
         response = data.payload.searchSuggestResponse
         return [{"type": e.type,
                  "suggestedQuery": e.suggestedQuery,
@@ -324,9 +332,9 @@ class GooglePlayAPI(object):
         remaining = nb_result
         output = []
 
-        nextPath = "search?c=3&q=%s" % requests.utils.quote(query)
+        nextPath = SEARCH_URL + "?c=3&q={}".format(requests.utils.quote(query))
         if (offset is not None):
-            nextPath += "&o=%d" % int(offset)
+            nextPath += "&o={}".format(offset)
         while remaining > 0 and nextPath is not None:
             currentPath = nextPath
             data = self.executeRequestApi2(currentPath)
@@ -337,12 +345,12 @@ class GooglePlayAPI(object):
             if utils.hasSearchResponse(response.payload):
                 # we still need to fetch the first page, so go to
                 # next loop iteration without decrementing counter
-                nextPath = response.payload.searchResponse.nextPageUrl
+                nextPath = FDFE + response.payload.searchResponse.nextPageUrl
                 continue
             if utils.hasListResponse(response.payload):
                 cluster = response.payload.listResponse.cluster
                 if len(cluster) == 0:
-                    # strange behaviour, probably due to expired token
+                    # unexpected behaviour, probably due to expired token
                     raise LoginError('Unexpected behaviour, probably expired '
                                      'token')
                 cluster = cluster[0]
@@ -352,7 +360,9 @@ class GooglePlayAPI(object):
                     nextPath = cluster.doc[0].containerMetadata.nextPageUrl
                 else:
                     nextPath = None
-                apps = list(chain.from_iterable([doc.child for doc in cluster.doc]))
+                apps = []
+                for doc in cluster.doc:
+                    apps.extend(doc.child)
                 output += list(map(utils.fromDocToDictionary, apps))
                 remaining -= len(apps)
 
@@ -365,7 +375,7 @@ class GooglePlayAPI(object):
         """Get app details from a package name.
 
         packageName is the app unique ID (usually starting with 'com.')."""
-        path = "details?doc=%s" % requests.utils.quote(packageName)
+        path = DETAILS_URL + "?doc={}".format(requests.utils.quote(packageName))
         data = self.executeRequestApi2(path)
         return utils.fromDocToDictionary(data.payload.detailsResponse.docV2)
 
@@ -383,12 +393,11 @@ class GooglePlayAPI(object):
             a list of dictionaries containing docv2 data, or None
             if the app doesn't exist"""
 
-        path = "bulkDetails"
         params = {'au': '1'}
         req = googleplay_pb2.BulkDetailsRequest()
         req.docid.extend(packageNames)
         data = req.SerializeToString()
-        message = self.executeRequestApi2(path,
+        message = self.executeRequestApi2(BULK_URL,
                                           post_data=data.decode("utf-8"),
                                           content_type="application/x-protobuf",
                                           params=params)
@@ -398,7 +407,7 @@ class GooglePlayAPI(object):
                 for entry in response.entry]
 
     def getHomeApps(self):
-        path = "homeV2?c=3&nocache_isui=true"
+        path = HOME_URL + "?c=3&nocache_isui=true"
         data = self.executeRequestApi2(path)
         output = []
         cluster = data.preFetch[0].response.payload.listResponse.cluster[0]
@@ -412,11 +421,11 @@ class GooglePlayAPI(object):
         """Browse categories. If neither cat nor subcat are specified,
         return a list of categories, otherwise it return a list of apps
         using cat (category ID) and subCat (subcategory ID) as filters."""
-        path = "browse?c=3"
+        path = BROWSE_URL + "?c=3"
         if cat is not None:
-            path += "&cat=%s" % requests.utils.quote(cat)
+            path += "&cat={}".format(requests.utils.quote(cat))
         if subCat is not None:
-            path += "&ctr=%s" % requests.utils.quote(subCat)
+            path += "&ctr={}".format(requests.utils.quote(subCat))
         data = self.executeRequestApi2(path)
 
         if cat is None and subCat is None:
@@ -430,8 +439,8 @@ class GooglePlayAPI(object):
         clusters = []
 
         if utils.hasPrefetch(data):
-            clusters = chain.from_iterable([pf.response.payload.listResponse.cluster
-                                            for pf in data.preFetch])
+            for pf in data.preFetch:
+                clusters.extend(pf.response.payload.listResponse.cluster)
 
         # result contains apps of a specific category
         # organized by sections
@@ -452,25 +461,30 @@ class GooglePlayAPI(object):
         If ctr (subcategory ID) is None, returns a list of valid subcategories.
 
         If ctr is provided, list apps within this subcategory."""
-        path = "list?c=3&cat=%s" % requests.utils.quote(cat)
+        path = LIST_URL + "?c=3&cat={}".format(requests.utils.quote(cat))
         if ctr is not None:
-            path += "&ctr=%s" % requests.utils.quote(ctr)
+            path += "&ctr={}".format(requests.utils.quote(ctr))
         if nb_results is not None:
-            path += "&n=%s" % requests.utils.quote(nb_results)
+            path += "&n={}".format(requests.utils.quote(nb_results))
         if offset is not None:
-            path += "&o=%s" % requests.utils.quote(offset)
+            path += "&o={}".format(requests.utils.quote(offset))
         data = self.executeRequestApi2(path)
+        clusters = []
+        docs = []
         if ctr is None:
             # list subcategories
-            clusters = chain.from_iterable([pf.response.payload.listResponse.cluster
-                                            for pf in data.preFetch])
-            docs = chain.from_iterable([c.doc for c in clusters])
+            for pf in data.preFetch:
+                clusters.extend(pf.response.payload.listResponse.cluster)
+            for c in clusters:
+                docs.extend(c.doc)
             return [d.docid for d in docs]
         else:
-            # list apps for specific subcat
-            docs = chain.from_iterable([c.doc for c in
-                                        data.payload.listResponse.cluster])
-            childs = chain.from_iterable([d.child for d in docs])
+            childs = []
+            clusters.extend(data.payload.listResponse.cluster)
+            for c in clusters:
+                docs.extend(c.doc)
+            for d in docs:
+                childs.extend(d.child)
             return [utils.fromDocToDictionary(c)
                     for c in childs]
 
@@ -489,12 +503,12 @@ class GooglePlayAPI(object):
             dict object containing all the protobuf data returned from
             the api
         """
-        path = "rev?doc=%s&sort=%d" % (requests.utils.quote(packageName), sort)
-        if (nb_results is not None):
-            path += "&n=%d" % int(nb_results)
-        if (offset is not None):
-            path += "&o=%d" % int(offset)
-        if(filterByDevice):
+        path = REVIEWS_URL + "?doc={}&sort={}".format(requests.utils.quote(packageName), sort)
+        if nb_results is not None:
+            path += "&n={}".format(nb_results)
+        if offset is not None:
+            path += "&o={}".format(offset)
+        if filterByDevice:
             path += "&dfil=1"
         data = self.executeRequestApi2(path)
         output = []
@@ -552,15 +566,13 @@ class GooglePlayAPI(object):
             # pick up latest version
             versionCode = self.details(packageName).get('versionCode')
 
-        path = "delivery"
         params = {'ot': str(offerType),
                   'doc': packageName,
                   'vc': str(versionCode)}
         headers = self.getDefaultHeaders()
         if downloadToken is not None:
             params['dtok'] = downloadToken
-        url = "https://android.clients.google.com/fdfe/%s" % path
-        response = requests.get(url, headers=headers,
+        response = requests.get(DELIVERY_URL, headers=headers,
                                 params=params, verify=ssl_verify,
                                 timeout=60,
                                 proxies=self.proxies_config)
@@ -619,14 +631,12 @@ class GooglePlayAPI(object):
             # pick up latest version
             versionCode = self.details(packageName).get('versionCode')
 
-        path = "purchase"
         headers = self.getDefaultHeaders()
         params = {'ot': str(offerType),
                   'doc': packageName,
                   'vc': str(versionCode)}
-        url = FDFE + path
         self.log(packageName)
-        response = requests.post(url, headers=headers,
+        response = requests.post(PURCHASE_URL, headers=headers,
                                  params=params, verify=ssl_verify,
                                  timeout=60,
                                  proxies=self.proxies_config)
@@ -646,7 +656,7 @@ class GooglePlayAPI(object):
         log_request.timestamp = timestamp
 
         string_request = log_request.SerializeToString()
-        response = requests.post(LOGURL,
+        response = requests.post(LOG_URL,
                                  data=string_request,
                                  headers=self.getDefaultHeaders(),
                                  verify=ssl_verify,
