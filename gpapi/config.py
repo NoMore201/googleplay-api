@@ -66,6 +66,27 @@ class DeviceBuilder(object):
                 raise Exception('Wrong timezone supplied')
         self.timezone = timezone
 
+    def getBaseHeaders(self):
+        return {"Accept-Language": self.locale.replace('_', '-'),
+                "X-DFE-Encoded-Targets": DFE_TARGETS,
+                "User-Agent": self.getUserAgent(),
+                "X-DFE-Client-Id": "am-android-google",
+                "X-DFE-MCCMNC": self.device.get('celloperator'),
+                "X-DFE-Network-Type": "4",
+                "X-DFE-Content-Filters": "",
+                "X-DFE-Request-Params": "timeoutMs=4000"}
+
+    def getDeviceUploadHeaders(self):
+        headers = self.getBaseHeaders()
+        headers["X-DFE-Enabled-Experiments"] = "cl:billing.select_add_instrument_by_default"
+        headers["X-DFE-Unsupported-Experiments"] = ("nocache:billing.use_charging_poller,"
+            "market_emails,buyer_currency,prod_baseline,checkin.set_asset_paid_app_field,"
+            "shekel_test,content_ratings,buyer_currency_in_app,nocache:encrypted_apk,recent_changes")
+        headers["X-DFE-SmallestScreenWidthDp"] = "320"
+        headers["X-DFE-Filter-Level"] = "3"
+        return headers
+
+
     def getUserAgent(self):
         version_string = self.device.get('vending.versionstring')
         if version_string is None:

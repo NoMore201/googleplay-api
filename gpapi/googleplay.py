@@ -34,6 +34,7 @@ LIST_URL = FDFE + "list"
 REVIEWS_URL = FDFE + "rev"
 
 CONTENT_TYPE_URLENC = "application/x-www-form-urlencoded; charset=UTF-8"
+CONTENT_TYPE_PROTO = "application/x-protobuf"
 
 
 class LoginError(Exception):
@@ -98,18 +99,14 @@ class GooglePlayAPI(object):
     def setAuthSubToken(self, authSubToken):
         self.authSubToken = authSubToken
 
-    def getDefaultHeaders(self):
+    def getHeaders(self, upload_fields=False):
         """Return the default set of request headers, which
         can later be expanded, based on the request type"""
 
-        headers = {"Accept-Language": self.deviceBuilder.locale.replace('_', '-'),
-                   "X-DFE-Encoded-Targets": config.DFE_TARGETS,
-                   "User-Agent": self.deviceBuilder.getUserAgent(),
-                   "X-DFE-Client-Id": "am-android-google",
-                   "X-DFE-MCCMNC": self.deviceBuilder.device.get('celloperator'),
-                   "X-DFE-Network-Type": "4",
-                   "X-DFE-Content-Filters": "",
-                   "X-DFE-Request-Params": "timeoutMs=4000"}
+        if upload_fields:
+            headers = self.deviceBuilder.getDeviceUploadHeaders()
+        else:
+            headers = self.deviceBuilder.getBaseHeaders()
         if self.gsfId is not None:
             headers["X-DFE-Device-Id"] = "{0:x}".format(self.gsfId)
         if self.authSubToken is not None:
@@ -119,8 +116,8 @@ class GooglePlayAPI(object):
         return headers
 
     def checkin(self, email, ac2dmToken):
-        headers = self.getDefaultHeaders()
-        headers["Content-Type"] = "application/x-protobuffer"
+        headers = self.getHeaders()
+        headers["Content-Type"] = CONTENT_TYPE_PROTO
 
         request = self.deviceBuilder.getAndroidCheckinRequest()
 
@@ -132,15 +129,15 @@ class GooglePlayAPI(object):
         response.ParseFromString(res.content)
 
         # checkin again to upload gfsid
-        request2 = googleplay_pb2.AndroidCheckinRequest()
-        request2.CopyFrom(request)
-        request2.id = response.androidId
-        request2.securityToken = response.securityToken
-        request2.accountCookie.append("[" + email + "]")
-        request2.accountCookie.append(ac2dmToken)
-        stringRequest = request2.SerializeToString()
-        requests.post(CHECKIN_URL, data=stringRequest,
-                      headers=headers, verify=ssl_verify,
+        request.id = response.androidId
+        request.securityToken = response.securityToken
+        request.accountCookie.append("[" + email + "]")
+        request.accountCookie.append(ac2dmToken)
+        stringRequest = request.SerializeToString()
+        requests.post(CHECKIN_URL,
+                      data=stringRequest,
+                      headers=headers,
+                      verify=ssl_verify,
                       proxies=self.proxies_config)
 
         return response.androidId
@@ -151,11 +148,7 @@ class GooglePlayAPI(object):
 
         upload = googleplay_pb2.UploadDeviceConfigRequest()
         upload.deviceConfiguration.CopyFrom(self.deviceBuilder.getDeviceConfig())
-        headers = self.getDefaultHeaders()
-        headers["X-DFE-Enabled-Experiments"] = "cl:billing.select_add_instrument_by_default"
-        headers["X-DFE-Unsupported-Experiments"] = "nocache:billing.use_charging_poller,market_emails,buyer_currency,prod_baseline,checkin.set_asset_paid_app_field,shekel_test,content_ratings,buyer_currency_in_app,nocache:encrypted_apk,recent_changes"
-        headers["X-DFE-SmallestScreenWidthDp"] = "320"
-        headers["X-DFE-Filter-Level"] = "3"
+        headers = self.getHeaders(upload_fields=True)
         stringRequest = upload.SerializeToString()
         response = requests.post(UPLOAD_URL, data=stringRequest,
                                  headers=headers,
@@ -283,7 +276,7 @@ class GooglePlayAPI(object):
     def executeRequestApi2(self, path, post_data=None, content_type=CONTENT_TYPE_URLENC, params=None):
         if self.authSubToken is None:
             raise Exception("You need to login before executing any request")
-        headers = self.getDefaultHeaders()
+        headers = self.getHeaders()
         headers["Content-Type"] = content_type
 
         if post_data is not None:
@@ -399,7 +392,7 @@ class GooglePlayAPI(object):
         data = req.SerializeToString()
         message = self.executeRequestApi2(BULK_URL,
                                           post_data=data.decode("utf-8"),
-                                          content_type="application/x-protobuf",
+                                          content_type=CONTENT_TYPE_PROTO,
                                           params=params)
         response = message.payload.bulkDetailsResponse
         return [None if not utils.hasDoc(entry) else
@@ -528,7 +521,7 @@ class GooglePlayAPI(object):
         return output
 
     def _deliver_data(self, url, cookies):
-        headers = self.getDefaultHeaders()
+        headers = self.getHeaders()
         response = requests.get(url, headers=headers,
                                 cookies=cookies, verify=ssl_verify,
                                 stream=True, timeout=60,
@@ -569,7 +562,7 @@ class GooglePlayAPI(object):
         params = {'ot': str(offerType),
                   'doc': packageName,
                   'vc': str(versionCode)}
-        headers = self.getDefaultHeaders()
+        headers = self.getHeaders()
         if downloadToken is not None:
             params['dtok'] = downloadToken
         response = requests.get(DELIVERY_URL, headers=headers,
@@ -631,7 +624,7 @@ class GooglePlayAPI(object):
             # pick up latest version
             versionCode = self.details(packageName).get('versionCode')
 
-        headers = self.getDefaultHeaders()
+        headers = self.getHeaders()
         params = {'ot': str(offerType),
                   'doc': packageName,
                   'vc': str(versionCode)}
@@ -658,7 +651,7 @@ class GooglePlayAPI(object):
         string_request = log_request.SerializeToString()
         response = requests.post(LOG_URL,
                                  data=string_request,
-                                 headers=self.getDefaultHeaders(),
+                                 headers=self.getHeaders(),
                                  verify=ssl_verify,
                                  timeout=60,
                                  proxies=self.proxies_config)
