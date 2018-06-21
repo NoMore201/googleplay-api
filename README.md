@@ -26,3 +26,6 @@ For the next logins you **should** save the gsfId and the authSubToken, and prov
 # Documentation
 
 For some documentation about the google play API check out the relative folder.
+
+### Command Line Implementation
+[rehmatworks/gplaydl](https://github.com/rehmatworks/gplaydl)
