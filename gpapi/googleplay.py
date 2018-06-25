@@ -350,7 +350,7 @@ class GooglePlayAPI(object):
                 if len(cluster.doc) == 0:
                     break
                 if cluster.doc[0].containerMetadata.nextPageUrl != "":
-                    nextPath = cluster.doc[0].containerMetadata.nextPageUrl
+                    nextPath = FDFE + cluster.doc[0].containerMetadata.nextPageUrl
                 else:
                     nextPath = None
                 apps = []
