@@ -1,14 +1,15 @@
 #!/usr/bin/python
 
-
-from Crypto.Util import asn1
-from Crypto.PublicKey import RSA
-from Crypto.Hash import SHA
-from Crypto.Cipher import PKCS1_OAEP
-
-import requests
 from base64 import b64decode, urlsafe_b64encode
 from datetime import datetime
+
+from cryptography.hazmat.primitives.asymmetric.utils import encode_dss_signature
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.serialization import load_der_public_key
+from cryptography.hazmat.primitives.asymmetric import padding
+
+import requests
 
 from . import googleplay_pb2, config, utils
 
@@ -76,25 +77,45 @@ class GooglePlayAPI(object):
         self.deviceBuilder.set_timezone(timezone)
 
     def encrypt_password(self, login, passwd):
-        """Encrypt the password using the google publickey, using
-        the RSA encryption algorithm"""
+        """Encrypt credentials using the google publickey, with the
+        RSA algorithm"""
 
+        # structure of the binary key:
+        #
+        # *-------------------------------------------------------*
+        # | modulus_length | modulus | exponent_length | exponent |
+        # *-------------------------------------------------------*
+        #
+        # modulus_length and exponent_length are uint32
         binaryKey = b64decode(config.GOOGLE_PUBKEY)
+        # modulus
         i = utils.readInt(binaryKey, 0)
         modulus = utils.toBigInt(binaryKey[4:][0:i])
+        # exponent
         j = utils.readInt(binaryKey, i + 4)
         exponent = utils.toBigInt(binaryKey[i + 8:][0:j])
 
-        seq = asn1.DerSequence()
-        seq.append(modulus)
-        seq.append(exponent)
+        # calculate SHA1 of the pub key
+        digest = hashes.Hash(hashes.SHA1(), backend=default_backend())
+        digest.update(binaryKey)
+        h = b'\x00' + digest.finalize()[0:4]
 
-        publicKey = RSA.importKey(seq.encode())
-        cipher = PKCS1_OAEP.new(publicKey)
-        combined = login.encode() + b'\x00' + passwd.encode()
-        encrypted = cipher.encrypt(combined)
-        h = b'\x00' + SHA.new(binaryKey).digest()[0:4]
-        return urlsafe_b64encode(h + encrypted)
+        # generate a public key
+        der_data = encode_dss_signature(modulus, exponent)
+        publicKey = load_der_public_key(der_data, backend=default_backend())
+
+        # encrypt email and password using pubkey
+        to_be_encrypted = login.encode() + b'\x00' + passwd.encode()
+        ciphertext = publicKey.encrypt(
+            to_be_encrypted,
+            padding.OAEP(
+                mgf=padding.MGF1(algorithm=hashes.SHA1()),
+                algorithm=hashes.SHA1(),
+                label=None
+            )
+        )
+
+        return urlsafe_b64encode(h + ciphertext)
 
     def setAuthSubToken(self, authSubToken):
         self.authSubToken = authSubToken

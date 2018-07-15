@@ -9,6 +9,6 @@ setup(name='gpapi',
       license='GPL3',
       packages=['gpapi'],
       package_data={'gpapi': ['device.properties']},
-      install_requires=['pycryptodome',
+      install_requires=['cryptography>=2.2',
                         'protobuf>=3.5.2',
                         'requests'])
