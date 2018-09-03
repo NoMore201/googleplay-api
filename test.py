@@ -123,14 +123,15 @@ appList = server.list(cat, catList[0])
 for app in appList:
     print(app['docId'])
 
-print("testing scrolling feature...")
+print("\ntesting list scrolling feature...\n")
 
 res = server.list("ART_AND_DESIGN","apps_topselling_free")
 array = []
 for x in res:
     print(x['docId'])
     array.append(x['docId'])
-print("query with offset: %s" % len(array))
+
+print("\n query with offset: %s \n" % len(array))
 res = server.list("ART_AND_DESIGN","apps_topselling_free", offset=len(array))
 for x in res:
     print(x['docId'])
