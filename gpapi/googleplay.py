@@ -9,6 +9,7 @@ from Crypto.Cipher import PKCS1_OAEP
 import requests
 from base64 import b64decode, urlsafe_b64encode
 from datetime import datetime
+import string
 
 from . import googleplay_pb2, config, utils
 
@@ -448,6 +449,20 @@ class GooglePlayAPI(object):
                 output.append(section)
         return output
 
+    def get_token(self, offset):
+        code="AEIMQUYcgkosw048"
+        code_suffix="=BCDEFGHIJKLMNOPQRSTUVWXYZ"
+        if offset >= 254:
+            offset += 1
+        i = offset // 16
+        j = offset % 16
+        s = offset // 128
+        if s > 0:
+            i -= 8 * (s-1)
+        key = string.ascii_uppercase[i] + code[j]
+        token = "C" + key + requests.utils.quote(code_suffix[s])
+        return token
+
     def list(self, cat, ctr=None, nb_results=None, offset=None):
         """List apps for a specfic category *cat*.
 
@@ -460,7 +475,7 @@ class GooglePlayAPI(object):
         if nb_results is not None:
             path += "&n={}".format(requests.utils.quote(nb_results))
         if offset is not None:
-            path += "&o={}".format(requests.utils.quote(offset))
+            path += "&ctntkn=" + self.get_token(int(offset))
         data = self.executeRequestApi2(path)
         clusters = []
         docs = []
