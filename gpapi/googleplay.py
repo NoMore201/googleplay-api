@@ -54,7 +54,11 @@ class RequestError(Exception):
         return repr(self.value)
 
 class SecurityCheckError(Exception):
-    pass
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
 
 
 class GooglePlayAPI(object):
@@ -220,7 +224,9 @@ class GooglePlayAPI(object):
                 ac2dmToken = params["auth"]
             elif "error" in params:
                 if "NeedsBrowser" in params["error"]:
-                    raise SecurityCheckError()
+                    raise SecurityCheckError("Security check is needed, try to visit "
+                                     "https://accounts.google.com/b/0/DisplayUnlockCaptcha "
+                                     "to unlock, or setup an app-specific passwor")
                 raise LoginError("server says: " + params["error"])
             else:
                 raise LoginError("Auth token not found.")
