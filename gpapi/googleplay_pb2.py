@@ -7,7 +7,6 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -19,7 +18,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='googleplay.proto',
   package='',
   syntax='proto2',
-  serialized_pb=_b('\n\x10googleplay.proto\"\x8b\x03\n\x16\x41ndroidAppDeliveryData\x12\x14\n\x0c\x64ownloadSize\x18\x01 \x01(\x03\x12\x11\n\tsignature\x18\x02 \x01(\t\x12\x13\n\x0b\x64ownloadUrl\x18\x03 \x01(\t\x12(\n\x0e\x61\x64\x64itionalFile\x18\x04 \x03(\x0b\x32\x10.AppFileMetadata\x12\'\n\x12\x64ownloadAuthCookie\x18\x05 \x03(\x0b\x32\x0b.HttpCookie\x12\x15\n\rforwardLocked\x18\x06 \x01(\x08\x12\x15\n\rrefundTimeout\x18\x07 \x01(\x03\x12\x17\n\x0fserverInitiated\x18\x08 \x01(\x08\x12%\n\x1dpostInstallRefundWindowMillis\x18\t \x01(\x03\x12\x1c\n\x14immediateStartNeeded\x18\n \x01(\x08\x12\'\n\tpatchData\x18\x0b \x01(\x0b\x32\x14.AndroidAppPatchData\x12+\n\x10\x65ncryptionParams\x18\x0c \x01(\x0b\x32\x11.EncryptionParams\"\x85\x01\n\x13\x41ndroidAppPatchData\x12\x17\n\x0f\x62\x61seVersionCode\x18\x01 \x01(\x05\x12\x15\n\rbaseSignature\x18\x02 \x01(\t\x12\x13\n\x0b\x64ownloadUrl\x18\x03 \x01(\t\x12\x13\n\x0bpatchFormat\x18\x04 \x01(\x05\x12\x14\n\x0cmaxPatchSize\x18\x05 \x01(\x03\"[\n\x0f\x41ppFileMetadata\x12\x10\n\x08\x66ileType\x18\x01 \x01(\x05\x12\x13\n\x0bversionCode\x18\x02 \x01(\x05\x12\x0c\n\x04size\x18\x03 \x01(\x03\x12\x13\n\x0b\x64ownloadUrl\x18\x04 \x01(\t\"K\n\x10\x45ncryptionParams\x12\x0f\n\x07version\x18\x01 \x01(\x05\x12\x15\n\rencryptionKey\x18\x02 \x01(\t\x12\x0f\n\x07hmacKey\x18\x03 \x01(\t\")\n\nHttpCookie\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"\xad\x02\n\x07\x41\x64\x64ress\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x64\x64ressLine1\x18\x02 \x01(\t\x12\x14\n\x0c\x61\x64\x64ressLine2\x18\x03 \x01(\t\x12\x0c\n\x04\x63ity\x18\x04 \x01(\t\x12\r\n\x05state\x18\x05 \x01(\t\x12\x12\n\npostalCode\x18\x06 \x01(\t\x12\x15\n\rpostalCountry\x18\x07 \x01(\t\x12\x19\n\x11\x64\x65pendentLocality\x18\x08 \x01(\t\x12\x13\n\x0bsortingCode\x18\t \x01(\t\x12\x14\n\x0clanguageCode\x18\n \x01(\t\x12\x13\n\x0bphoneNumber\x18\x0b \x01(\t\x12\x11\n\tisReduced\x18\x0c \x01(\x08\x12\x11\n\tfirstName\x18\r \x01(\t\x12\x10\n\x08lastName\x18\x0e \x01(\t\x12\r\n\x05\x65mail\x18\x0f \x01(\t\"J\n\nBookAuthor\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x17\n\x0f\x64\x65precatedQuery\x18\x02 \x01(\t\x12\x15\n\x05\x64ocid\x18\x03 \x01(\x0b\x32\x06.Docid\"\xc3\x03\n\x0b\x42ookDetails\x12\x1d\n\x07subject\x18\x03 \x03(\x0b\x32\x0c.BookSubject\x12\x11\n\tpublisher\x18\x04 \x01(\t\x12\x17\n\x0fpublicationDate\x18\x05 \x01(\t\x12\x0c\n\x04isbn\x18\x06 \x01(\t\x12\x15\n\rnumberOfPages\x18\x07 \x01(\x05\x12\x10\n\x08subtitle\x18\x08 \x01(\t\x12\x1b\n\x06\x61uthor\x18\t \x03(\x0b\x32\x0b.BookAuthor\x12\x11\n\treaderUrl\x18\n \x01(\t\x12\x17\n\x0f\x64ownloadEpubUrl\x18\x0b \x01(\t\x12\x16\n\x0e\x64ownloadPdfUrl\x18\x0c \x01(\t\x12\x17\n\x0f\x61\x63sEpubTokenUrl\x18\r \x01(\t\x12\x16\n\x0e\x61\x63sPdfTokenUrl\x18\x0e \x01(\t\x12\x15\n\repubAvailable\x18\x0f \x01(\x08\x12\x14\n\x0cpdfAvailable\x18\x10 \x01(\x08\x12\x16\n\x0e\x61\x62outTheAuthor\x18\x11 \x01(\t\x12+\n\nidentifier\x18\x12 \x03(\n2\x17.BookDetails.Identifier\x1a.\n\nIdentifier\x12\x0c\n\x04type\x18\x13 \x01(\x05\x12\x12\n\nidentifier\x18\x14 \x01(\t\"=\n\x0b\x42ookSubject\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05query\x18\x02 \x01(\t\x12\x11\n\tsubjectId\x18\x03 \x01(\t\"~\n\nBrowseLink\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07\x64\x61taUrl\x18\x03 \x01(\t\x12\x14\n\x04icon\x18\x05 \x01(\x0b\x32\x06.Image\x12;\n\x18unknownCategoryContainer\x18\x04 \x01(\x0b\x32\x19.UnknownCategoryContainer\"M\n\x18UnknownCategoryContainer\x12\x31\n\x13\x63\x61tegoryIdContainer\x18\x05 \x01(\x0b\x32\x14.CategoryIdContainer\")\n\x13\x43\x61tegoryIdContainer\x12\x12\n\ncategoryId\x18\x04 \x01(\t\"\xa6\x01\n\x0e\x42rowseResponse\x12\x13\n\x0b\x63ontentsUrl\x18\x01 \x01(\t\x12\x10\n\x08promoUrl\x18\x02 \x01(\t\x12\x1d\n\x08\x63\x61tegory\x18\x03 \x03(\x0b\x32\x0b.BrowseLink\x12\x1f\n\nbreadcrumb\x18\x04 \x03(\x0b\x32\x0b.BrowseLink\x12-\n\x11\x63\x61tegoryContainer\x18\t \x01(\x0b\x32\x12.CategoryContainer\"2\n\x11\x43\x61tegoryContainer\x12\x1d\n\x08\x63\x61tegory\x18\x04 \x03(\x0b\x32\x0b.BrowseLink\"\x8f\x02\n\x10\x41\x64\x64ressChallenge\x12\x1c\n\x14responseAddressParam\x18\x01 \x01(\t\x12\x1f\n\x17responseCheckboxesParam\x18\x02 \x01(\t\x12\r\n\x05title\x18\x03 \x01(\t\x12\x17\n\x0f\x64\x65scriptionHtml\x18\x04 \x01(\t\x12\x1f\n\x08\x63heckbox\x18\x05 \x03(\x0b\x32\r.FormCheckbox\x12\x19\n\x07\x61\x64\x64ress\x18\x06 \x01(\x0b\x32\x08.Address\x12.\n\x0f\x65rrorInputField\x18\x07 \x03(\x0b\x32\x15.InputValidationError\x12\x11\n\terrorHtml\x18\x08 \x01(\t\x12\x15\n\rrequiredField\x18\t \x03(\x05\"\xef\x01\n\x17\x41uthenticationChallenge\x12\x1a\n\x12\x61uthenticationType\x18\x01 \x01(\x05\x12\'\n\x1fresponseAuthenticationTypeParam\x18\x02 \x01(\t\x12\x1f\n\x17responseRetryCountParam\x18\x03 \x01(\t\x12\x15\n\rpinHeaderText\x18\x04 \x01(\t\x12\x1e\n\x16pinDescriptionTextHtml\x18\x05 \x01(\t\x12\x16\n\x0egaiaHeaderText\x18\x06 \x01(\t\x12\x1f\n\x17gaiaDescriptionTextHtml\x18\x07 \x01(\t\"\x98\t\n\x0b\x42uyResponse\x12\x37\n\x10purchaseResponse\x18\x01 \x01(\x0b\x32\x1d.PurchaseNotificationResponse\x12/\n\x0c\x63heckoutinfo\x18\x02 \x01(\n2\x19.BuyResponse.CheckoutInfo\x12\x16\n\x0e\x63ontinueViaUrl\x18\x08 \x01(\t\x12\x19\n\x11purchaseStatusUrl\x18\t \x01(\t\x12\x19\n\x11\x63heckoutServiceId\x18\x0c \x01(\t\x12\x1d\n\x15\x63heckoutTokenRequired\x18\r \x01(\x08\x12\x17\n\x0f\x62\x61seCheckoutUrl\x18\x0e \x01(\t\x12\x17\n\x0ftosCheckboxHtml\x18% \x03(\t\x12\x1a\n\x12iabPermissionError\x18& \x01(\x05\x12\x37\n\x16purchaseStatusResponse\x18\' \x01(\x0b\x32\x17.PurchaseStatusResponse\x12\x16\n\x0epurchaseCookie\x18. \x01(\t\x12\x1d\n\tchallenge\x18\x31 \x01(\x0b\x32\n.Challenge\x12\x15\n\rdownloadToken\x18\x37 \x01(\t\x1a\xdc\x05\n\x0c\x43heckoutInfo\x12\x17\n\x04item\x18\x03 \x01(\x0b\x32\t.LineItem\x12\x1a\n\x07subItem\x18\x04 \x03(\x0b\x32\t.LineItem\x12@\n\x0e\x63heckoutoption\x18\x05 \x03(\n2(.BuyResponse.CheckoutInfo.CheckoutOption\x12\x1d\n\x15\x64\x65precatedCheckoutUrl\x18\n \x01(\t\x12\x18\n\x10\x61\x64\x64InstrumentUrl\x18\x0b \x01(\t\x12\x12\n\nfooterHtml\x18\x14 \x03(\t\x12 \n\x18\x65ligibleInstrumentFamily\x18\x1f \x03(\x05\x12\x14\n\x0c\x66ootnoteHtml\x18$ \x03(\t\x12\'\n\x12\x65ligibleInstrument\x18, \x03(\x0b\x32\x0b.Instrument\x1a\xa6\x03\n\x0e\x43heckoutOption\x12\x15\n\rformOfPayment\x18\x06 \x01(\t\x12\x1b\n\x13\x65ncodedAdjustedCart\x18\x07 \x01(\t\x12\x14\n\x0cinstrumentId\x18\x0f \x01(\t\x12\x17\n\x04item\x18\x10 \x03(\x0b\x32\t.LineItem\x12\x1a\n\x07subItem\x18\x11 \x03(\x0b\x32\t.LineItem\x12\x18\n\x05total\x18\x12 \x01(\x0b\x32\t.LineItem\x12\x12\n\nfooterHtml\x18\x13 \x03(\t\x12\x18\n\x10instrumentFamily\x18\x1d \x01(\x05\x12.\n&deprecatedInstrumentInapplicableReason\x18\x1e \x03(\x05\x12\x1a\n\x12selectedInstrument\x18  \x01(\x08\x12\x1a\n\x07summary\x18! \x01(\x0b\x32\t.LineItem\x12\x14\n\x0c\x66ootnoteHtml\x18# \x03(\t\x12\x1f\n\ninstrument\x18+ \x01(\x0b\x32\x0b.Instrument\x12\x16\n\x0epurchaseCookie\x18- \x01(\t\x12\x16\n\x0e\x64isabledReason\x18\x30 \x03(\t\"s\n\tChallenge\x12+\n\x10\x61\x64\x64ressChallenge\x18\x01 \x01(\x0b\x32\x11.AddressChallenge\x12\x39\n\x17\x61uthenticationChallenge\x18\x02 \x01(\x0b\x32\x18.AuthenticationChallenge\"F\n\x0c\x46ormCheckbox\x12\x13\n\x0b\x64\x65scription\x18\x01 \x01(\t\x12\x0f\n\x07\x63hecked\x18\x02 \x01(\x08\x12\x10\n\x08required\x18\x03 \x01(\x08\"\\\n\x08LineItem\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x15\n\x05offer\x18\x03 \x01(\x0b\x32\x06.Offer\x12\x16\n\x06\x61mount\x18\x04 \x01(\x0b\x32\x06.Money\"F\n\x05Money\x12\x0e\n\x06micros\x18\x01 \x01(\x03\x12\x14\n\x0c\x63urrencyCode\x18\x02 \x01(\t\x12\x17\n\x0f\x66ormattedAmount\x18\x03 \x01(\t\"\x80\x01\n\x1cPurchaseNotificationResponse\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x1d\n\tdebugInfo\x18\x02 \x01(\x0b\x32\n.DebugInfo\x12\x1d\n\x15localizedErrorMessage\x18\x03 \x01(\t\x12\x12\n\npurchaseId\x18\x04 \x01(\t\"\xf9\x01\n\x16PurchaseStatusResponse\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x11\n\tstatusMsg\x18\x02 \x01(\t\x12\x13\n\x0bstatusTitle\x18\x03 \x01(\t\x12\x14\n\x0c\x62riefMessage\x18\x04 \x01(\t\x12\x0f\n\x07infoUrl\x18\x05 \x01(\t\x12%\n\rlibraryUpdate\x18\x06 \x01(\x0b\x32\x0e.LibraryUpdate\x12\'\n\x12rejectedInstrument\x18\x07 \x01(\x0b\x32\x0b.Instrument\x12\x30\n\x0f\x61ppDeliveryData\x18\x08 \x01(\x0b\x32\x17.AndroidAppDeliveryData\"D\n\x10\x44\x65liveryResponse\x12\x30\n\x0f\x61ppDeliveryData\x18\x02 \x01(\x0b\x32\x17.AndroidAppDeliveryData\"<\n\x05\x44ocid\x12\x14\n\x0c\x62\x61\x63kendDocid\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\x05\x12\x0f\n\x07\x62\x61\x63kend\x18\x03 \x01(\x05\">\n\x07Install\x12\x11\n\tandroidId\x18\x01 \x01(\x06\x12\x0f\n\x07version\x18\x02 \x01(\x05\x12\x0f\n\x07\x62undled\x18\x03 \x01(\x08\"\x92\x03\n\x05Offer\x12\x0e\n\x06micros\x18\x01 \x01(\x03\x12\x14\n\x0c\x63urrencyCode\x18\x02 \x01(\t\x12\x17\n\x0f\x66ormattedAmount\x18\x03 \x01(\t\x12\x1e\n\x0e\x63onvertedPrice\x18\x04 \x03(\x0b\x32\x06.Offer\x12\x1c\n\x14\x63heckoutFlowRequired\x18\x05 \x01(\x08\x12\x17\n\x0f\x66ullPriceMicros\x18\x06 \x01(\x03\x12\x1b\n\x13\x66ormattedFullAmount\x18\x07 \x01(\t\x12\x11\n\tofferType\x18\x08 \x01(\x05\x12!\n\x0brentalTerms\x18\t \x01(\x0b\x32\x0c.RentalTerms\x12\x12\n\nonSaleDate\x18\n \x01(\x03\x12\x16\n\x0epromotionLabel\x18\x0b \x03(\t\x12-\n\x11subscriptionTerms\x18\x0c \x01(\x0b\x32\x12.SubscriptionTerms\x12\x15\n\rformattedName\x18\r \x01(\t\x12\x1c\n\x14\x66ormattedDescription\x18\x0e \x01(\t\x12\x10\n\x08saleEnds\x18\x1f \x01(\t\"\xb1\x01\n\rOwnershipInfo\x12\x1f\n\x17initiationTimestampMsec\x18\x01 \x01(\x03\x12\x1f\n\x17validUntilTimestampMsec\x18\x02 \x01(\x03\x12\x14\n\x0c\x61utoRenewing\x18\x03 \x01(\x08\x12\"\n\x1arefundTimeoutTimestampMsec\x18\x04 \x01(\x03\x12$\n\x1cpostDeliveryRefundWindowMsec\x18\x05 \x01(\x03\"H\n\x0bRentalTerms\x12\x1a\n\x12grantPeriodSeconds\x18\x01 \x01(\x05\x12\x1d\n\x15\x61\x63tivatePeriodSeconds\x18\x02 \x01(\x05\"[\n\x11SubscriptionTerms\x12$\n\x0frecurringPeriod\x18\x01 \x01(\x0b\x32\x0b.TimePeriod\x12 \n\x0btrialPeriod\x18\x02 \x01(\x0b\x32\x0b.TimePeriod\")\n\nTimePeriod\x12\x0c\n\x04unit\x18\x01 \x01(\x05\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\"G\n\x12\x42illingAddressSpec\x12\x1a\n\x12\x62illingAddressType\x18\x01 \x01(\x05\x12\x15\n\rrequiredField\x18\x02 \x03(\x05\">\n\x19\x43\x61rrierBillingCredentials\x12\r\n\x05value\x18\x01 \x01(\t\x12\x12\n\nexpiration\x18\x02 \x01(\x03\"\xa9\x02\n\x18\x43\x61rrierBillingInstrument\x12\x15\n\rinstrumentKey\x18\x01 \x01(\t\x12\x13\n\x0b\x61\x63\x63ountType\x18\x02 \x01(\t\x12\x14\n\x0c\x63urrencyCode\x18\x03 \x01(\t\x12\x18\n\x10transactionLimit\x18\x04 \x01(\x03\x12\x1c\n\x14subscriberIdentifier\x18\x05 \x01(\t\x12\x39\n\x17\x65ncryptedSubscriberInfo\x18\x06 \x01(\x0b\x32\x18.EncryptedSubscriberInfo\x12/\n\x0b\x63redentials\x18\x07 \x01(\x0b\x32\x1a.CarrierBillingCredentials\x12\'\n\x12\x61\x63\x63\x65ptedCarrierTos\x18\x08 \x01(\x0b\x32\x0b.CarrierTos\"\xca\x01\n\x1e\x43\x61rrierBillingInstrumentStatus\x12\x1f\n\ncarrierTos\x18\x01 \x01(\x0b\x32\x0b.CarrierTos\x12\x1b\n\x13\x61ssociationRequired\x18\x02 \x01(\x08\x12\x18\n\x10passwordRequired\x18\x03 \x01(\x08\x12.\n\x15\x63\x61rrierPasswordPrompt\x18\x04 \x01(\x0b\x32\x0f.PasswordPrompt\x12\x12\n\napiVersion\x18\x05 \x01(\x05\x12\x0c\n\x04name\x18\x06 \x01(\t\"\x8e\x01\n\nCarrierTos\x12 \n\x06\x64\x63\x62Tos\x18\x01 \x01(\x0b\x32\x10.CarrierTosEntry\x12 \n\x06piiTos\x18\x02 \x01(\x0b\x32\x10.CarrierTosEntry\x12\x1d\n\x15needsDcbTosAcceptance\x18\x03 \x01(\x08\x12\x1d\n\x15needsPiiTosAcceptance\x18\x04 \x01(\x08\"/\n\x0f\x43\x61rrierTosEntry\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x0f\n\x07version\x18\x02 \x01(\t\"\xa2\x01\n\x14\x43reditCardInstrument\x12\x0c\n\x04type\x18\x01 \x01(\x05\x12\x14\n\x0c\x65scrowHandle\x18\x02 \x01(\t\x12\x12\n\nlastDigits\x18\x03 \x01(\t\x12\x17\n\x0f\x65xpirationMonth\x18\x04 \x01(\x05\x12\x16\n\x0e\x65xpirationYear\x18\x05 \x01(\x05\x12!\n\x0e\x65scrowEfeParam\x18\x06 \x03(\x0b\x32\t.EfeParam\"&\n\x08\x45\x66\x65Param\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\t\"@\n\x14InputValidationError\x12\x12\n\ninputField\x18\x01 \x01(\x05\x12\x14\n\x0c\x65rrorMessage\x18\x02 \x01(\t\"\xc2\x02\n\nInstrument\x12\x14\n\x0cinstrumentId\x18\x01 \x01(\t\x12 \n\x0e\x62illingAddress\x18\x02 \x01(\x0b\x32\x08.Address\x12)\n\ncreditCard\x18\x03 \x01(\x0b\x32\x15.CreditCardInstrument\x12\x31\n\x0e\x63\x61rrierBilling\x18\x04 \x01(\x0b\x32\x19.CarrierBillingInstrument\x12/\n\x12\x62illingAddressSpec\x18\x05 \x01(\x0b\x32\x13.BillingAddressSpec\x12\x18\n\x10instrumentFamily\x18\x06 \x01(\x05\x12=\n\x14\x63\x61rrierBillingStatus\x18\x07 \x01(\x0b\x32\x1f.CarrierBillingInstrumentStatus\x12\x14\n\x0c\x64isplayTitle\x18\x08 \x01(\t\";\n\x0ePasswordPrompt\x12\x0e\n\x06prompt\x18\x01 \x01(\t\x12\x19\n\x11\x66orgotPasswordUrl\x18\x02 \x01(\t\"\x92\x01\n\x11\x43ontainerMetadata\x12\x11\n\tbrowseUrl\x18\x01 \x01(\t\x12\x13\n\x0bnextPageUrl\x18\x02 \x01(\t\x12\x11\n\trelevance\x18\x03 \x01(\x01\x12\x18\n\x10\x65stimatedResults\x18\x04 \x01(\x03\x12\x17\n\x0f\x61nalyticsCookie\x18\x05 \x01(\t\x12\x0f\n\x07ordered\x18\x06 \x01(\x08\"i\n\tDebugInfo\x12\x0f\n\x07message\x18\x01 \x03(\t\x12!\n\x06timing\x18\x02 \x03(\n2\x11.DebugInfo.Timing\x1a(\n\x06Timing\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x10\n\x08timeInMs\x18\x04 \x01(\x01\"\'\n\x10\x42ulkDetailsEntry\x12\x13\n\x03\x64oc\x18\x01 \x01(\x0b\x32\x06.DocV2\"=\n\x12\x42ulkDetailsRequest\x12\r\n\x05\x64ocid\x18\x01 \x03(\t\x12\x18\n\x10includeChildDocs\x18\x02 \x01(\x08\"7\n\x13\x42ulkDetailsResponse\x12 \n\x05\x65ntry\x18\x01 \x03(\x0b\x32\x11.BulkDetailsEntry\"\xa0\x01\n\x0f\x44\x65tailsResponse\x12\x15\n\x05\x64ocV1\x18\x01 \x01(\x0b\x32\x06.DocV1\x12\x17\n\x0f\x61nalyticsCookie\x18\x02 \x01(\t\x12\x1b\n\nuserReview\x18\x03 \x01(\x0b\x32\x07.Review\x12\x15\n\x05\x64ocV2\x18\x04 \x01(\x0b\x32\x06.DocV2\x12\x12\n\nfooterHtml\x18\x05 \x01(\t\x12\x15\n\x05\x62\x61\x64ge\x18\x07 \x03(\x0b\x32\x06.Badge\"\'\n\x05\x42\x61\x64ge\x12\r\n\x05label\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x0b \x01(\t\"\xb5\x03\n\x18\x44\x65viceConfigurationProto\x12\x13\n\x0btouchScreen\x18\x01 \x01(\x05\x12\x10\n\x08keyboard\x18\x02 \x01(\x05\x12\x12\n\nnavigation\x18\x03 \x01(\x05\x12\x14\n\x0cscreenLayout\x18\x04 \x01(\x05\x12\x17\n\x0fhasHardKeyboard\x18\x05 \x01(\x08\x12\x1c\n\x14hasFiveWayNavigation\x18\x06 \x01(\x08\x12\x15\n\rscreenDensity\x18\x07 \x01(\x05\x12\x13\n\x0bglEsVersion\x18\x08 \x01(\x05\x12\x1b\n\x13systemSharedLibrary\x18\t \x03(\t\x12\x1e\n\x16systemAvailableFeature\x18\n \x03(\t\x12\x16\n\x0enativePlatform\x18\x0b \x03(\t\x12\x13\n\x0bscreenWidth\x18\x0c \x01(\x05\x12\x14\n\x0cscreenHeight\x18\r \x01(\x05\x12\x1d\n\x15systemSupportedLocale\x18\x0e \x03(\t\x12\x13\n\x0bglExtension\x18\x0f \x03(\t\x12\x13\n\x0b\x64\x65viceClass\x18\x10 \x01(\x05\x12\x1c\n\x14maxApkDownloadSizeMb\x18\x11 \x01(\x05\"\xff\x03\n\x08\x44ocument\x12\x15\n\x05\x64ocid\x18\x01 \x01(\x0b\x32\x06.Docid\x12\x1a\n\nfetchDocid\x18\x02 \x01(\x0b\x32\x06.Docid\x12\x1b\n\x0bsampleDocid\x18\x03 \x01(\x0b\x32\x06.Docid\x12\r\n\x05title\x18\x04 \x01(\t\x12\x0b\n\x03url\x18\x05 \x01(\t\x12\x0f\n\x07snippet\x18\x06 \x03(\t\x12\x1f\n\x0fpriceDeprecated\x18\x07 \x01(\x0b\x32\x06.Offer\x12#\n\x0c\x61vailability\x18\t \x01(\x0b\x32\r.Availability\x12\x15\n\x05image\x18\n \x03(\x0b\x32\x06.Image\x12\x18\n\x05\x63hild\x18\x0b \x03(\x0b\x32\t.Document\x12)\n\x0f\x61ggregateRating\x18\r \x01(\x0b\x32\x10.AggregateRating\x12\x15\n\x05offer\x18\x0e \x03(\x0b\x32\x06.Offer\x12*\n\x11translatedSnippet\x18\x0f \x03(\x0b\x32\x0f.TranslatedText\x12)\n\x0f\x64ocumentVariant\x18\x10 \x03(\x0b\x32\x10.DocumentVariant\x12\x12\n\ncategoryId\x18\x11 \x03(\t\x12\x1d\n\ndecoration\x18\x12 \x03(\x0b\x32\t.Document\x12\x19\n\x06parent\x18\x13 \x03(\x0b\x32\t.Document\x12\x18\n\x10privacyPolicyUrl\x18\x14 \x01(\t\"\x81\x02\n\x0f\x44ocumentVariant\x12\x15\n\rvariationType\x18\x01 \x01(\x05\x12\x13\n\x04rule\x18\x02 \x01(\x0b\x32\x05.Rule\x12\r\n\x05title\x18\x03 \x01(\t\x12\x0f\n\x07snippet\x18\x04 \x03(\t\x12\x15\n\rrecentChanges\x18\x05 \x01(\t\x12(\n\x0f\x61utoTranslation\x18\x06 \x03(\x0b\x32\x0f.TranslatedText\x12\x15\n\x05offer\x18\x07 \x03(\x0b\x32\x06.Offer\x12\x11\n\tchannelId\x18\t \x01(\x03\x12\x18\n\x05\x63hild\x18\n \x03(\x0b\x32\t.Document\x12\x1d\n\ndecoration\x18\x0b \x03(\x0b\x32\t.Document\"\xc9\x02\n\x05Image\x12\x11\n\timageType\x18\x01 \x01(\x05\x12#\n\tdimension\x18\x02 \x01(\n2\x10.Image.Dimension\x12\x10\n\x08imageUrl\x18\x05 \x01(\t\x12\x18\n\x10\x61ltTextLocalized\x18\x06 \x01(\t\x12\x11\n\tsecureUrl\x18\x07 \x01(\t\x12\x1a\n\x12positionInSequence\x18\x08 \x01(\x05\x12\x1e\n\x16supportsFifeUrlOptions\x18\t \x01(\x08\x12!\n\x08\x63itation\x18\n \x01(\n2\x0f.Image.Citation\x12\r\n\x05\x63olor\x18\x0f \x01(\t\x1a*\n\tDimension\x12\r\n\x05width\x18\x03 \x01(\x05\x12\x0e\n\x06height\x18\x04 \x01(\x05\x1a/\n\x08\x43itation\x12\x16\n\x0etitleLocalized\x18\x0b \x01(\t\x12\x0b\n\x03url\x18\x0c \x01(\t\"J\n\x0eTranslatedText\x12\x0c\n\x04text\x18\x01 \x01(\t\x12\x14\n\x0csourceLocale\x18\x02 \x01(\t\x12\x14\n\x0ctargetLocale\x18\x03 \x01(\t\"i\n\x0bPlusOneData\x12\x11\n\tsetByUser\x18\x01 \x01(\x08\x12\r\n\x05total\x18\x02 \x01(\x03\x12\x14\n\x0c\x63irclesTotal\x18\x03 \x01(\x03\x12\"\n\rcirclesPeople\x18\x04 \x03(\x0b\x32\x0b.PlusPerson\":\n\nPlusPerson\x12\x13\n\x0b\x64isplayName\x18\x02 \x01(\t\x12\x17\n\x0fprofileImageUrl\x18\x04 \x01(\t\"c\n\x0c\x41lbumDetails\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1e\n\x07\x64\x65tails\x18\x02 \x01(\x0b\x32\r.MusicDetails\x12%\n\rdisplayArtist\x18\x03 \x01(\x0b\x32\x0e.ArtistDetails\"\xb6\x04\n\nAppDetails\x12\x15\n\rdeveloperName\x18\x01 \x01(\t\x12\x1a\n\x12majorVersionNumber\x18\x02 \x01(\x05\x12\x13\n\x0bversionCode\x18\x03 \x01(\x05\x12\x15\n\rversionString\x18\x04 \x01(\t\x12\r\n\x05title\x18\x05 \x01(\t\x12\x13\n\x0b\x61ppCategory\x18\x07 \x03(\t\x12\x15\n\rcontentRating\x18\x08 \x01(\x05\x12\x18\n\x10installationSize\x18\t \x01(\x03\x12\x12\n\npermission\x18\n \x03(\t\x12\x16\n\x0e\x64\x65veloperEmail\x18\x0b \x01(\t\x12\x18\n\x10\x64\x65veloperWebsite\x18\x0c \x01(\t\x12\x14\n\x0cnumDownloads\x18\r \x01(\t\x12\x13\n\x0bpackageName\x18\x0e \x01(\t\x12\x19\n\x11recentChangesHtml\x18\x0f \x01(\t\x12\x12\n\nuploadDate\x18\x10 \x01(\t\x12\x1b\n\x04\x66ile\x18\x11 \x03(\x0b\x32\r.FileMetadata\x12\x0f\n\x07\x61ppType\x18\x12 \x01(\t\x12\x10\n\x08unstable\x18\x15 \x01(\x08\x12\x13\n\x0b\x63ontainsAds\x18\x1e \x01(\t\x12#\n\x0c\x64\x65pendencies\x18\" \x01(\x0b\x32\r.Dependencies\x12/\n\x12testingProgramInfo\x18# \x01(\x0b\x32\x13.TestingProgramInfo\x12)\n\x0f\x65\x61rlyAccessInfo\x18$ \x01(\x0b\x32\x10.EarlyAccessInfo\"e\n\x0c\x44\x65pendencies\x12\x10\n\x08unknown1\x18\x01 \x01(\x05\x12\x10\n\x08unknown2\x18\x02 \x01(\x03\x12\x1f\n\ndependency\x18\x03 \x03(\x0b\x32\x0b.Dependency\x12\x10\n\x08unknown3\x18\x04 \x01(\x05\"D\n\nDependency\x12\x13\n\x0bpackageName\x18\x01 \x01(\t\x12\x0f\n\x07version\x18\x02 \x01(\x05\x12\x10\n\x08unknown4\x18\x04 \x01(\x05\"Z\n\x12TestingProgramInfo\x12\x12\n\nsubscribed\x18\x02 \x01(\x08\x12\x13\n\x0bsubscribed1\x18\x03 \x01(\x08\x12\x1b\n\x13testingProgramEmail\x18\x05 \x01(\t\" \n\x0f\x45\x61rlyAccessInfo\x12\r\n\x05\x65mail\x18\x03 \x01(\t\"^\n\rArtistDetails\x12\x12\n\ndetailsUrl\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12+\n\rexternalLinks\x18\x03 \x01(\x0b\x32\x14.ArtistExternalLinks\"b\n\x13\x41rtistExternalLinks\x12\x12\n\nwebsiteUrl\x18\x01 \x03(\t\x12\x1c\n\x14googlePlusProfileUrl\x18\x02 \x01(\t\x12\x19\n\x11youtubeChannelUrl\x18\x03 \x01(\t\"\xc6\x03\n\x0f\x44ocumentDetails\x12\x1f\n\nappDetails\x18\x01 \x01(\x0b\x32\x0b.AppDetails\x12#\n\x0c\x61lbumDetails\x18\x02 \x01(\x0b\x32\r.AlbumDetails\x12%\n\rartistDetails\x18\x03 \x01(\x0b\x32\x0e.ArtistDetails\x12!\n\x0bsongDetails\x18\x04 \x01(\x0b\x32\x0c.SongDetails\x12!\n\x0b\x62ookDetails\x18\x05 \x01(\x0b\x32\x0c.BookDetails\x12#\n\x0cvideoDetails\x18\x06 \x01(\x0b\x32\r.VideoDetails\x12\x31\n\x13subscriptionDetails\x18\x07 \x01(\x0b\x32\x14.SubscriptionDetails\x12)\n\x0fmagazineDetails\x18\x08 \x01(\x0b\x32\x10.MagazineDetails\x12%\n\rtvShowDetails\x18\t \x01(\x0b\x32\x0e.TvShowDetails\x12)\n\x0ftvSeasonDetails\x18\n \x01(\x0b\x32\x10.TvSeasonDetails\x12+\n\x10tvEpisodeDetails\x18\x0b \x01(\x0b\x32\x11.TvEpisodeDetails\"C\n\x0c\x46ileMetadata\x12\x10\n\x08\x66ileType\x18\x01 \x01(\x05\x12\x13\n\x0bversionCode\x18\x02 \x01(\x05\x12\x0c\n\x04size\x18\x03 \x01(\x03\"\x94\x01\n\x0fMagazineDetails\x12\x18\n\x10parentDetailsUrl\x18\x01 \x01(\t\x12)\n!deviceAvailabilityDescriptionHtml\x18\x02 \x01(\t\x12\x16\n\x0epsvDescription\x18\x03 \x01(\t\x12$\n\x1c\x64\x65liveryFrequencyDescription\x18\x04 \x01(\t\"\xbb\x01\n\x0cMusicDetails\x12\x11\n\tcensoring\x18\x01 \x01(\x05\x12\x13\n\x0b\x64urationSec\x18\x02 \x01(\x05\x12\x1b\n\x13originalReleaseDate\x18\x03 \x01(\t\x12\r\n\x05label\x18\x04 \x01(\t\x12\x1e\n\x06\x61rtist\x18\x05 \x03(\x0b\x32\x0e.ArtistDetails\x12\r\n\x05genre\x18\x06 \x03(\t\x12\x13\n\x0breleaseDate\x18\x07 \x01(\t\x12\x13\n\x0breleaseType\x18\x08 \x03(\x05\"\x9e\x01\n\x0bSongDetails\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1e\n\x07\x64\x65tails\x18\x02 \x01(\x0b\x32\r.MusicDetails\x12\x11\n\talbumName\x18\x03 \x01(\t\x12\x13\n\x0btrackNumber\x18\x04 \x01(\x05\x12\x12\n\npreviewUrl\x18\x05 \x01(\t\x12%\n\rdisplayArtist\x18\x06 \x01(\x0b\x32\x0e.ArtistDetails\"1\n\x13SubscriptionDetails\x12\x1a\n\x12subscriptionPeriod\x18\x01 \x01(\x05\"e\n\x07Trailer\x12\x11\n\ttrailerId\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\x14\n\x0cthumbnailUrl\x18\x03 \x01(\t\x12\x10\n\x08watchUrl\x18\x04 \x01(\t\x12\x10\n\x08\x64uration\x18\x05 \x01(\t\"W\n\x10TvEpisodeDetails\x12\x18\n\x10parentDetailsUrl\x18\x01 \x01(\t\x12\x14\n\x0c\x65pisodeIndex\x18\x02 \x01(\x05\x12\x13\n\x0breleaseDate\x18\x03 \x01(\t\"j\n\x0fTvSeasonDetails\x12\x18\n\x10parentDetailsUrl\x18\x01 \x01(\t\x12\x13\n\x0bseasonIndex\x18\x02 \x01(\x05\x12\x13\n\x0breleaseDate\x18\x03 \x01(\t\x12\x13\n\x0b\x62roadcaster\x18\x04 \x01(\t\"]\n\rTvShowDetails\x12\x13\n\x0bseasonCount\x18\x01 \x01(\x05\x12\x11\n\tstartYear\x18\x02 \x01(\x05\x12\x0f\n\x07\x65ndYear\x18\x03 \x01(\x05\x12\x13\n\x0b\x62roadcaster\x18\x04 \x01(\t\"?\n\x0bVideoCredit\x12\x12\n\ncreditType\x18\x01 \x01(\x05\x12\x0e\n\x06\x63redit\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x03(\t\"\xdb\x01\n\x0cVideoDetails\x12\x1c\n\x06\x63redit\x18\x01 \x03(\x0b\x32\x0c.VideoCredit\x12\x10\n\x08\x64uration\x18\x02 \x01(\t\x12\x13\n\x0breleaseDate\x18\x03 \x01(\t\x12\x15\n\rcontentRating\x18\x04 \x01(\t\x12\r\n\x05likes\x18\x05 \x01(\x03\x12\x10\n\x08\x64islikes\x18\x06 \x01(\x03\x12\r\n\x05genre\x18\x07 \x03(\t\x12\x19\n\x07trailer\x18\x08 \x03(\x0b\x32\x08.Trailer\x12$\n\nrentalTerm\x18\t \x03(\x0b\x32\x10.VideoRentalTerm\"\xa0\x01\n\x0fVideoRentalTerm\x12\x11\n\tofferType\x18\x01 \x01(\x05\x12\x19\n\x11offerAbbreviation\x18\x02 \x01(\t\x12\x14\n\x0crentalHeader\x18\x03 \x01(\t\x12#\n\x04term\x18\x04 \x03(\n2\x15.VideoRentalTerm.Term\x1a$\n\x04Term\x12\x0e\n\x06header\x18\x05 \x01(\t\x12\x0c\n\x04\x62ody\x18\x06 \x01(\t\"\xf9\x01\n\x06\x42ucket\x12\x18\n\x08\x64ocument\x18\x01 \x03(\x0b\x32\x06.DocV1\x12\x13\n\x0bmultiCorpus\x18\x02 \x01(\x08\x12\r\n\x05title\x18\x03 \x01(\t\x12\x0f\n\x07iconUrl\x18\x04 \x01(\t\x12\x17\n\x0f\x66ullContentsUrl\x18\x05 \x01(\t\x12\x11\n\trelevance\x18\x06 \x01(\x01\x12\x18\n\x10\x65stimatedResults\x18\x07 \x01(\x03\x12\x17\n\x0f\x61nalyticsCookie\x18\x08 \x01(\t\x12\x1b\n\x13\x66ullContentsListUrl\x18\t \x01(\t\x12\x13\n\x0bnextPageUrl\x18\n \x01(\t\x12\x0f\n\x07ordered\x18\x0b \x01(\x08\"H\n\x0cListResponse\x12\x17\n\x06\x62ucket\x18\x01 \x03(\x0b\x32\x07.Bucket\x12\x1f\n\x07\x63luster\x18\x02 \x03(\x0b\x32\x0e.SearchCluster\"\x94\x03\n\x05\x44ocV1\x12\x1c\n\tfinskyDoc\x18\x01 \x01(\x0b\x32\t.Document\x12\r\n\x05\x64ocid\x18\x02 \x01(\t\x12\x12\n\ndetailsUrl\x18\x03 \x01(\t\x12\x12\n\nreviewsUrl\x18\x04 \x01(\t\x12\x16\n\x0erelatedListUrl\x18\x05 \x01(\t\x12\x15\n\rmoreByListUrl\x18\x06 \x01(\t\x12\x10\n\x08shareUrl\x18\x07 \x01(\t\x12\x0f\n\x07\x63reator\x18\x08 \x01(\t\x12!\n\x07\x64\x65tails\x18\t \x01(\x0b\x32\x10.DocumentDetails\x12\x17\n\x0f\x64\x65scriptionHtml\x18\n \x01(\t\x12\x18\n\x10relatedBrowseUrl\x18\x0b \x01(\t\x12\x17\n\x0fmoreByBrowseUrl\x18\x0c \x01(\t\x12\x15\n\rrelatedHeader\x18\r \x01(\t\x12\x14\n\x0cmoreByHeader\x18\x0e \x01(\t\x12\r\n\x05title\x18\x0f \x01(\t\x12!\n\x0bplusOneData\x18\x10 \x01(\x0b\x32\x0c.PlusOneData\x12\x16\n\x0ewarningMessage\x18\x11 \x01(\t\"\xc9\x04\n\x05\x44ocV2\x12\r\n\x05\x64ocid\x18\x01 \x01(\t\x12\x14\n\x0c\x62\x61\x63kendDocid\x18\x02 \x01(\t\x12\x0f\n\x07\x64ocType\x18\x03 \x01(\x05\x12\x11\n\tbackendId\x18\x04 \x01(\x05\x12\r\n\x05title\x18\x05 \x01(\t\x12\x0f\n\x07\x63reator\x18\x06 \x01(\t\x12\x17\n\x0f\x64\x65scriptionHtml\x18\x07 \x01(\t\x12\x15\n\x05offer\x18\x08 \x03(\x0b\x32\x06.Offer\x12#\n\x0c\x61vailability\x18\t \x01(\x0b\x32\r.Availability\x12\x15\n\x05image\x18\n \x03(\x0b\x32\x06.Image\x12\x15\n\x05\x63hild\x18\x0b \x03(\x0b\x32\x06.DocV2\x12-\n\x11\x63ontainerMetadata\x18\x0c \x01(\x0b\x32\x12.ContainerMetadata\x12!\n\x07\x64\x65tails\x18\r \x01(\x0b\x32\x10.DocumentDetails\x12)\n\x0f\x61ggregateRating\x18\x0e \x01(\x0b\x32\x10.AggregateRating\x12#\n\x0crelatedLinks\x18\x0f \x01(\x0b\x32\r.RelatedLinks\x12\x12\n\ndetailsUrl\x18\x10 \x01(\t\x12\x10\n\x08shareUrl\x18\x11 \x01(\t\x12\x12\n\nreviewsUrl\x18\x12 \x01(\t\x12\x12\n\nbackendUrl\x18\x13 \x01(\t\x12\x1a\n\x12purchaseDetailsUrl\x18\x14 \x01(\t\x12\x17\n\x0f\x64\x65tailsReusable\x18\x15 \x01(\x08\x12\x10\n\x08subtitle\x18\x16 \x01(\t\x12\x1d\n\tunknown25\x18\x19 \x01(\x0b\x32\n.Unknown25\")\n\tUnknown25\x12\x1c\n\x04item\x18\x02 \x03(\x0b\x32\x0e.Unknown25Item\"F\n\rUnknown25Item\x12\r\n\x05label\x18\x01 \x01(\t\x12&\n\tcontainer\x18\x03 \x01(\x0b\x32\x13.Unknown25Container\"#\n\x12Unknown25Container\x12\r\n\x05value\x18\x02 \x01(\t\"\xd9\x01\n\x0cRelatedLinks\x12\'\n\x08unknown1\x18\n \x01(\x0b\x32\x15.RelatedLinksUnknown1\x12\x18\n\x10privacyPolicyUrl\x18\x12 \x01(\t\x12&\n\x10youMightAlsoLike\x18\x18 \x01(\x0b\x32\x0c.RelatedLink\x12\x15\n\x05rated\x18\x1d \x01(\x0b\x32\x06.Rated\x12\"\n\x0crelatedLinks\x18\" \x03(\x0b\x32\x0c.RelatedLink\x12#\n\x0c\x63\x61tegoryInfo\x18\x35 \x01(\x0b\x32\r.CategoryInfo\"?\n\x14RelatedLinksUnknown1\x12\'\n\x08unknown2\x18\x02 \x01(\x0b\x32\x15.RelatedLinksUnknown2\"+\n\x14RelatedLinksUnknown2\x12\x13\n\x0bnextPageUrl\x18\x03 \x01(\t\"H\n\x05Rated\x12\r\n\x05label\x18\x01 \x01(\t\x12\x15\n\x05image\x18\x02 \x01(\x0b\x32\x06.Image\x12\x19\n\x11learnMoreHtmlLink\x18\x04 \x01(\t\"8\n\x0bRelatedLink\x12\r\n\x05label\x18\x01 \x01(\t\x12\x0c\n\x04url1\x18\x02 \x01(\t\x12\x0c\n\x04url2\x18\x03 \x01(\t\"4\n\x0c\x43\x61tegoryInfo\x12\x0f\n\x07\x61ppType\x18\x01 \x01(\t\x12\x13\n\x0b\x61ppCategory\x18\x02 \x01(\t\"\x99\x01\n\x17\x45ncryptedSubscriberInfo\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\x12\x14\n\x0c\x65ncryptedKey\x18\x02 \x01(\t\x12\x11\n\tsignature\x18\x03 \x01(\t\x12\x12\n\ninitVector\x18\x04 \x01(\t\x12\x18\n\x10googleKeyVersion\x18\x05 \x01(\x05\x12\x19\n\x11\x63\x61rrierKeyVersion\x18\x06 \x01(\x05\"\xbd\x03\n\x0c\x41vailability\x12\x13\n\x0brestriction\x18\x05 \x01(\x05\x12\x11\n\tofferType\x18\x06 \x01(\x05\x12\x13\n\x04rule\x18\x07 \x01(\x0b\x32\x05.Rule\x12X\n perdeviceavailabilityrestriction\x18\t \x03(\n2..Availability.PerDeviceAvailabilityRestriction\x12\x18\n\x10\x61vailableIfOwned\x18\r \x01(\x08\x12\x19\n\x07install\x18\x0e \x03(\x0b\x32\x08.Install\x12)\n\nfilterInfo\x18\x10 \x01(\x0b\x32\x15.FilterEvaluationInfo\x12%\n\rownershipInfo\x18\x11 \x01(\x0b\x32\x0e.OwnershipInfo\x1a\x8e\x01\n PerDeviceAvailabilityRestriction\x12\x11\n\tandroidId\x18\n \x01(\x06\x12\x19\n\x11\x64\x65viceRestriction\x18\x0b \x01(\x05\x12\x11\n\tchannelId\x18\x0c \x01(\x03\x12)\n\nfilterInfo\x18\x0f \x01(\x0b\x32\x15.FilterEvaluationInfo\"?\n\x14\x46ilterEvaluationInfo\x12\'\n\x0eruleEvaluation\x18\x01 \x03(\x0b\x32\x0f.RuleEvaluation\"\xd4\x01\n\x04Rule\x12\x0e\n\x06negate\x18\x01 \x01(\x08\x12\x10\n\x08operator\x18\x02 \x01(\x05\x12\x0b\n\x03key\x18\x03 \x01(\x05\x12\x11\n\tstringArg\x18\x04 \x03(\t\x12\x0f\n\x07longArg\x18\x05 \x03(\x03\x12\x11\n\tdoubleArg\x18\x06 \x03(\x01\x12\x16\n\x07subrule\x18\x07 \x03(\x0b\x32\x05.Rule\x12\x14\n\x0cresponseCode\x18\x08 \x01(\x05\x12\x0f\n\x07\x63omment\x18\t \x01(\t\x12\x15\n\rstringArgHash\x18\n \x03(\x06\x12\x10\n\x08\x63onstArg\x18\x0b \x03(\x05\"\x8d\x01\n\x0eRuleEvaluation\x12\x13\n\x04rule\x18\x01 \x01(\x0b\x32\x05.Rule\x12\x19\n\x11\x61\x63tualStringValue\x18\x02 \x03(\t\x12\x17\n\x0f\x61\x63tualLongValue\x18\x03 \x03(\x03\x12\x17\n\x0f\x61\x63tualBoolValue\x18\x04 \x03(\x08\x12\x19\n\x11\x61\x63tualDoubleValue\x18\x05 \x03(\x01\"v\n\x11LibraryAppDetails\x12\x17\n\x0f\x63\x65rtificateHash\x18\x02 \x01(\t\x12\"\n\x1arefundTimeoutTimestampMsec\x18\x03 \x01(\x03\x12$\n\x1cpostDeliveryRefundWindowMsec\x18\x04 \x01(\x03\"D\n\x13LibraryInAppDetails\x12\x1a\n\x12signedPurchaseData\x18\x01 \x01(\t\x12\x11\n\tsignature\x18\x02 \x01(\t\"\xf0\x01\n\x0fLibraryMutation\x12\x15\n\x05\x64ocid\x18\x01 \x01(\x0b\x32\x06.Docid\x12\x11\n\tofferType\x18\x02 \x01(\x05\x12\x14\n\x0c\x64ocumentHash\x18\x03 \x01(\x03\x12\x0f\n\x07\x64\x65leted\x18\x04 \x01(\x08\x12&\n\nappDetails\x18\x05 \x01(\x0b\x32\x12.LibraryAppDetails\x12\x38\n\x13subscriptionDetails\x18\x06 \x01(\x0b\x32\x1b.LibrarySubscriptionDetails\x12*\n\x0cinAppDetails\x18\x07 \x01(\x0b\x32\x14.LibraryInAppDetails\"\x95\x01\n\x1aLibrarySubscriptionDetails\x12\x1f\n\x17initiationTimestampMsec\x18\x01 \x01(\x03\x12\x1f\n\x17validUntilTimestampMsec\x18\x02 \x01(\x03\x12\x14\n\x0c\x61utoRenewing\x18\x03 \x01(\x08\x12\x1f\n\x17trialUntilTimestampMsec\x18\x04 \x01(\x03\"\x8c\x01\n\rLibraryUpdate\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x0e\n\x06\x63orpus\x18\x02 \x01(\x05\x12\x13\n\x0bserverToken\x18\x03 \x01(\x0c\x12\"\n\x08mutation\x18\x04 \x03(\x0b\x32\x10.LibraryMutation\x12\x0f\n\x07hasMore\x18\x05 \x01(\x08\x12\x11\n\tlibraryId\x18\x06 \x01(\t\"B\n\x1a\x41ndroidAppNotificationData\x12\x13\n\x0bversionCode\x18\x01 \x01(\x05\x12\x0f\n\x07\x61ssetId\x18\x02 \x01(\t\"M\n\x15InAppNotificationData\x12\x17\n\x0f\x63heckoutOrderId\x18\x01 \x01(\t\x12\x1b\n\x13inAppNotificationId\x18\x02 \x01(\t\"#\n\x10LibraryDirtyData\x12\x0f\n\x07\x62\x61\x63kend\x18\x01 \x01(\x05\"\x97\x04\n\x0cNotification\x12\x18\n\x10notificationType\x18\x01 \x01(\x05\x12\x11\n\ttimestamp\x18\x03 \x01(\x03\x12\x15\n\x05\x64ocid\x18\x04 \x01(\x0b\x32\x06.Docid\x12\x10\n\x08\x64ocTitle\x18\x05 \x01(\t\x12\x11\n\tuserEmail\x18\x06 \x01(\t\x12,\n\x07\x61ppData\x18\x07 \x01(\x0b\x32\x1b.AndroidAppNotificationData\x12\x30\n\x0f\x61ppDeliveryData\x18\x08 \x01(\x0b\x32\x17.AndroidAppDeliveryData\x12\x31\n\x13purchaseRemovalData\x18\t \x01(\x0b\x32\x14.PurchaseRemovalData\x12\x33\n\x14userNotificationData\x18\n \x01(\x0b\x32\x15.UserNotificationData\x12\x35\n\x15inAppNotificationData\x18\x0b \x01(\x0b\x32\x16.InAppNotificationData\x12\x33\n\x14purchaseDeclinedData\x18\x0c \x01(\x0b\x32\x15.PurchaseDeclinedData\x12\x16\n\x0enotificationId\x18\r \x01(\t\x12%\n\rlibraryUpdate\x18\x0e \x01(\x0b\x32\x0e.LibraryUpdate\x12+\n\x10libraryDirtyData\x18\x0f \x01(\x0b\x32\x11.LibraryDirtyData\"@\n\x14PurchaseDeclinedData\x12\x0e\n\x06reason\x18\x01 \x01(\x05\x12\x18\n\x10showNotification\x18\x02 \x01(\x08\"(\n\x13PurchaseRemovalData\x12\x11\n\tmalicious\x18\x01 \x01(\x08\"\x88\x01\n\x14UserNotificationData\x12\x19\n\x11notificationTitle\x18\x01 \x01(\t\x12\x18\n\x10notificationText\x18\x02 \x01(\t\x12\x12\n\ntickerText\x18\x03 \x01(\t\x12\x13\n\x0b\x64ialogTitle\x18\x04 \x01(\t\x12\x12\n\ndialogText\x18\x05 \x01(\t\"\xa7\x02\n\x0f\x41ggregateRating\x12\x0c\n\x04type\x18\x01 \x01(\x05\x12\x12\n\nstarRating\x18\x02 \x01(\x02\x12\x14\n\x0cratingsCount\x18\x03 \x01(\x04\x12\x16\n\x0eoneStarRatings\x18\x04 \x01(\x04\x12\x16\n\x0etwoStarRatings\x18\x05 \x01(\x04\x12\x18\n\x10threeStarRatings\x18\x06 \x01(\x04\x12\x17\n\x0f\x66ourStarRatings\x18\x07 \x01(\x04\x12\x17\n\x0f\x66iveStarRatings\x18\x08 \x01(\x04\x12\x15\n\rthumbsUpCount\x18\t \x01(\x04\x12\x17\n\x0fthumbsDownCount\x18\n \x01(\x04\x12\x14\n\x0c\x63ommentCount\x18\x0b \x01(\x04\x12\x1a\n\x12\x62\x61yesianMeanRating\x18\x0c \x01(\x01\"\x8f\x05\n\x07Payload\x12#\n\x0clistResponse\x18\x01 \x01(\x0b\x32\r.ListResponse\x12)\n\x0f\x64\x65tailsResponse\x18\x02 \x01(\x0b\x32\x10.DetailsResponse\x12\'\n\x0ereviewResponse\x18\x03 \x01(\x0b\x32\x0f.ReviewResponse\x12!\n\x0b\x62uyResponse\x18\x04 \x01(\x0b\x32\x0c.BuyResponse\x12\'\n\x0esearchResponse\x18\x05 \x01(\x0b\x32\x0f.SearchResponse\x12\'\n\x0e\x62rowseResponse\x18\x07 \x01(\x0b\x32\x0f.BrowseResponse\x12\x37\n\x16purchaseStatusResponse\x18\x08 \x01(\x0b\x32\x17.PurchaseStatusResponse\x12\x13\n\x0blogResponse\x18\n \x01(\t\x12\x31\n\x13\x62ulkDetailsResponse\x18\x13 \x01(\x0b\x32\x14.BulkDetailsResponse\x12+\n\x10\x64\x65liveryResponse\x18\x15 \x01(\x0b\x32\x11.DeliveryResponse\x12?\n\x1auploadDeviceConfigResponse\x18\x19 \x01(\x0b\x32\x1b.UploadDeviceConfigResponse\x12\x37\n\x16\x61ndroidCheckinResponse\x18\x1a \x01(\x0b\x32\x17.AndroidCheckinResponse\x12\x35\n\x15searchSuggestResponse\x18( \x01(\x0b\x32\x16.SearchSuggestResponse\x12\x37\n\x16testingProgramResponse\x18P \x01(\x0b\x32\x17.TestingProgramResponse\"g\n\x08PreFetch\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\"\n\x08response\x18\x02 \x01(\x0b\x32\x10.ResponseWrapper\x12\x0c\n\x04\x65tag\x18\x03 \x01(\t\x12\x0b\n\x03ttl\x18\x04 \x01(\x03\x12\x0f\n\x07softTtl\x18\x05 \x01(\x03\"\x91\x01\n\x0fResponseWrapper\x12\x19\n\x07payload\x18\x01 \x01(\x0b\x32\x08.Payload\x12!\n\x08\x63ommands\x18\x02 \x01(\x0b\x32\x0f.ServerCommands\x12\x1b\n\x08preFetch\x18\x03 \x03(\x0b\x32\t.PreFetch\x12#\n\x0cnotification\x18\x04 \x03(\x0b\x32\r.Notification\"]\n\x0eServerCommands\x12\x12\n\nclearCache\x18\x01 \x01(\x08\x12\x1b\n\x13\x64isplayErrorMessage\x18\x02 \x01(\t\x12\x1a\n\x12logErrorStacktrace\x18\x03 \x01(\t\"D\n\x12GetReviewsResponse\x12\x17\n\x06review\x18\x01 \x03(\x0b\x32\x07.Review\x12\x15\n\rmatchingCount\x18\x02 \x01(\x03\"\xa7\x02\n\x06Review\x12\x12\n\nauthorName\x18\x01 \x01(\t\x12\x0b\n\x03url\x18\x02 \x01(\t\x12\x0e\n\x06source\x18\x03 \x01(\t\x12\x17\n\x0f\x64ocumentVersion\x18\x04 \x01(\t\x12\x15\n\rtimestampMsec\x18\x05 \x01(\x03\x12\x12\n\nstarRating\x18\x06 \x01(\x05\x12\r\n\x05title\x18\x07 \x01(\t\x12\x0f\n\x07\x63omment\x18\x08 \x01(\t\x12\x11\n\tcommentId\x18\t \x01(\t\x12\x12\n\ndeviceName\x18\x13 \x01(\t\x12\x11\n\treplyText\x18\x1d \x01(\t\x12\x1a\n\x12replyTimestampMsec\x18\x1e \x01(\x03\x12\x17\n\x06\x61uthor\x18\x1f \x01(\x0b\x32\x07.Author\x12\x19\n\x07\x61uthor2\x18! \x01(\x0b\x32\x08.Author2\"-\n\x06\x41uthor\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x15\n\x04urls\x18\x05 \x01(\x0b\x32\x07.Avatar\"\xae\x01\n\x07\x41uthor2\x12\x16\n\x0epersonIdString\x18\x01 \x01(\t\x12\x10\n\x08personId\x18\x02 \x01(\t\x12\x10\n\x08unknown1\x18\x03 \x01(\x05\x12\x10\n\x08unknown2\x18\x04 \x01(\x05\x12\x0c\n\x04name\x18\x05 \x01(\t\x12\x15\n\x04urls\x18\n \x01(\x0b\x32\x07.Avatar\x12\x15\n\rgooglePlusUrl\x18\x13 \x01(\t\x12\x19\n\x11googlePlusTagline\x18\x16 \x01(\t\"^\n\x06\x41vatar\x12\x10\n\x08unknown1\x18\x01 \x01(\x05\x12\x0b\n\x03url\x18\x05 \x01(\t\x12\x11\n\tsecureUrl\x18\x07 \x01(\t\x12\x10\n\x08unknown2\x18\t \x01(\x08\x12\x10\n\x08unknown3\x18\x16 \x01(\x08\"l\n\x0eReviewResponse\x12(\n\x0bgetResponse\x18\x01 \x01(\x0b\x32\x13.GetReviewsResponse\x12\x13\n\x0bnextPageUrl\x18\x02 \x01(\t\x12\x1b\n\nuserReview\x18\x03 \x01(\x0b\x32\x07.Review\"g\n\rRelatedSearch\x12\x11\n\tsearchUrl\x18\x01 \x01(\t\x12\x0e\n\x06header\x18\x02 \x01(\t\x12\x11\n\tbackendId\x18\x03 \x01(\x05\x12\x0f\n\x07\x64ocType\x18\x04 \x01(\x05\x12\x0f\n\x07\x63urrent\x18\x05 \x01(\x08\"\xc1\x01\n\x0eSearchResponse\x12\x15\n\roriginalQuery\x18\x01 \x01(\t\x12\x16\n\x0esuggestedQuery\x18\x02 \x01(\t\x12\x16\n\x0e\x61ggregateQuery\x18\x03 \x01(\x08\x12\x17\n\x06\x62ucket\x18\x04 \x03(\x0b\x32\x07.Bucket\x12\x13\n\x03\x64oc\x18\x05 \x03(\x0b\x32\x06.DocV2\x12%\n\rrelatedSearch\x18\x06 \x03(\x0b\x32\x0e.RelatedSearch\x12\x13\n\x0bnextPageUrl\x18\n \x01(\t\"\xa7\x01\n\x1aUserProfileResponseWrapper\x12$\n\x07payload\x18\x01 \x01(\x0b\x32\x13.UserProfilePayload\x12!\n\x08\x63ommands\x18\x02 \x01(\x0b\x32\x0f.ServerCommands\x12\x1b\n\x08preFetch\x18\x03 \x03(\x0b\x32\t.PreFetch\x12#\n\x0cnotification\x18\x04 \x03(\x0b\x32\r.Notification\"<\n\x12UserProfilePayload\x12&\n\x08response\x18\x05 \x01(\x0b\x32\x14.UserProfileResponse\"*\n\x13UserProfileResponse\x12\x13\n\x03\x64oc\x18\x01 \x03(\x0b\x32\x06.DocV2\";\n\x15SearchSuggestResponse\x12\"\n\x05\x65ntry\x18\x01 \x03(\x0b\x32\x13.SearchSuggestEntry\"\x9e\x02\n\x12SearchSuggestEntry\x12\x0c\n\x04type\x18\x01 \x01(\x05\x12\x16\n\x0esuggestedQuery\x18\x02 \x01(\t\x12:\n\x0eimageContainer\x18\x05 \x01(\x0b\x32\".SearchSuggestEntry.ImageContainer\x12\r\n\x05title\x18\x06 \x01(\t\x12\x46\n\x14packageNameContainer\x18\x08 \x01(\x0b\x32(.SearchSuggestEntry.PackageNameContainer\x1a\"\n\x0eImageContainer\x12\x10\n\x08imageUrl\x18\x05 \x01(\t\x1a+\n\x14PackageNameContainer\x12\x13\n\x0bpackageName\x18\x01 \x01(\t\"?\n\x16TestingProgramResponse\x12%\n\x06result\x18\x02 \x01(\x0b\x32\x15.TestingProgramResult\"?\n\x14TestingProgramResult\x12\'\n\x07\x64\x65tails\x18\x04 \x01(\x0b\x32\x16.TestingProgramDetails\"H\n\x15TestingProgramDetails\x12\r\n\x05\x66lag1\x18\x02 \x01(\x08\x12\n\n\x02id\x18\x03 \x01(\x03\x12\x14\n\x0cunsubscribed\x18\x04 \x01(\x08\"B\n\nLogRequest\x12\x11\n\ttimestamp\x18\x01 \x01(\x03\x12!\n\x19\x64ownloadConfirmationQuery\x18\x02 \x01(\t\"?\n\x15TestingProgramRequest\x12\x13\n\x0bpackageName\x18\x01 \x01(\t\x12\x11\n\tsubscribe\x18\x02 \x01(\x08\"\x84\x01\n\x19UploadDeviceConfigRequest\x12\x36\n\x13\x64\x65viceConfiguration\x18\x01 \x01(\x0b\x32\x19.DeviceConfigurationProto\x12\x14\n\x0cmanufacturer\x18\x02 \x01(\t\x12\x19\n\x11gcmRegistrationId\x18\x03 \x01(\t\"=\n\x1aUploadDeviceConfigResponse\x12\x1f\n\x17uploadDeviceConfigToken\x18\x01 \x01(\t\"\xe7\x03\n\x15\x41ndroidCheckinRequest\x12\x0c\n\x04imei\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\x03\x12\x0e\n\x06\x64igest\x18\x03 \x01(\t\x12%\n\x07\x63heckin\x18\x04 \x01(\x0b\x32\x14.AndroidCheckinProto\x12\x14\n\x0c\x64\x65siredBuild\x18\x05 \x01(\t\x12\x0e\n\x06locale\x18\x06 \x01(\t\x12\x11\n\tloggingId\x18\x07 \x01(\x03\x12\x15\n\rmarketCheckin\x18\x08 \x01(\t\x12\x0f\n\x07macAddr\x18\t \x03(\t\x12\x0c\n\x04meid\x18\n \x01(\t\x12\x15\n\raccountCookie\x18\x0b \x03(\t\x12\x10\n\x08timeZone\x18\x0c \x01(\t\x12\x15\n\rsecurityToken\x18\r \x01(\x06\x12\x0f\n\x07version\x18\x0e \x01(\x05\x12\x0f\n\x07otaCert\x18\x0f \x03(\t\x12\x14\n\x0cserialNumber\x18\x10 \x01(\t\x12\x0b\n\x03\x65sn\x18\x11 \x01(\t\x12\x36\n\x13\x64\x65viceConfiguration\x18\x12 \x01(\x0b\x32\x19.DeviceConfigurationProto\x12\x13\n\x0bmacAddrType\x18\x13 \x03(\t\x12\x10\n\x08\x66ragment\x18\x14 \x01(\x05\x12\x10\n\x08userName\x18\x15 \x01(\t\x12\x18\n\x10userSerialNumber\x18\x16 \x01(\x05\"\xfd\x01\n\x16\x41ndroidCheckinResponse\x12\x0f\n\x07statsOk\x18\x01 \x01(\x08\x12#\n\x06intent\x18\x02 \x03(\x0b\x32\x13.AndroidIntentProto\x12\x10\n\x08timeMsec\x18\x03 \x01(\x03\x12\x0e\n\x06\x64igest\x18\x04 \x01(\t\x12\"\n\x07setting\x18\x05 \x03(\x0b\x32\x11.GservicesSetting\x12\x10\n\x08marketOk\x18\x06 \x01(\x08\x12\x11\n\tandroidId\x18\x07 \x01(\x06\x12\x15\n\rsecurityToken\x18\x08 \x01(\x06\x12\x14\n\x0csettingsDiff\x18\t \x01(\x08\x12\x15\n\rdeleteSetting\x18\n \x03(\t\"/\n\x10GservicesSetting\x12\x0c\n\x04name\x18\x01 \x01(\x0c\x12\r\n\x05value\x18\x02 \x01(\x0c\"\x94\x02\n\x11\x41ndroidBuildProto\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07product\x18\x02 \x01(\t\x12\x0f\n\x07\x63\x61rrier\x18\x03 \x01(\t\x12\r\n\x05radio\x18\x04 \x01(\t\x12\x12\n\nbootloader\x18\x05 \x01(\t\x12\x0e\n\x06\x63lient\x18\x06 \x01(\t\x12\x11\n\ttimestamp\x18\x07 \x01(\x03\x12\x16\n\x0egoogleServices\x18\x08 \x01(\x05\x12\x0e\n\x06\x64\x65vice\x18\t \x01(\t\x12\x12\n\nsdkVersion\x18\n \x01(\x05\x12\r\n\x05model\x18\x0b \x01(\t\x12\x14\n\x0cmanufacturer\x18\x0c \x01(\t\x12\x14\n\x0c\x62uildProduct\x18\r \x01(\t\x12\x14\n\x0cotaInstalled\x18\x0e \x01(\x08\"\x82\x02\n\x13\x41ndroidCheckinProto\x12!\n\x05\x62uild\x18\x01 \x01(\x0b\x32\x12.AndroidBuildProto\x12\x17\n\x0flastCheckinMsec\x18\x02 \x01(\x03\x12!\n\x05\x65vent\x18\x03 \x03(\x0b\x32\x12.AndroidEventProto\x12$\n\x04stat\x18\x04 \x03(\x0b\x32\x16.AndroidStatisticProto\x12\x16\n\x0erequestedGroup\x18\x05 \x03(\t\x12\x14\n\x0c\x63\x65llOperator\x18\x06 \x01(\t\x12\x13\n\x0bsimOperator\x18\x07 \x01(\t\x12\x0f\n\x07roaming\x18\x08 \x01(\t\x12\x12\n\nuserNumber\x18\t \x01(\x05\"A\n\x11\x41ndroidEventProto\x12\x0b\n\x03tag\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\x12\x10\n\x08timeMsec\x18\x03 \x01(\x03\"\xaa\x01\n\x12\x41ndroidIntentProto\x12\x0e\n\x06\x61\x63tion\x18\x01 \x01(\t\x12\x0f\n\x07\x64\x61taUri\x18\x02 \x01(\t\x12\x10\n\x08mimeType\x18\x03 \x01(\t\x12\x11\n\tjavaClass\x18\x04 \x01(\t\x12(\n\x05\x65xtra\x18\x05 \x03(\n2\x19.AndroidIntentProto.Extra\x1a$\n\x05\x45xtra\x12\x0c\n\x04name\x18\x06 \x01(\t\x12\r\n\x05value\x18\x07 \x01(\t\"@\n\x15\x41ndroidStatisticProto\x12\x0b\n\x03tag\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\x12\x0b\n\x03sum\x18\x03 \x01(\x02\"v\n\x12\x43lientLibraryState\x12\x0e\n\x06\x63orpus\x18\x01 \x01(\x05\x12\x13\n\x0bserverToken\x18\x02 \x01(\x0c\x12\x13\n\x0bhashCodeSum\x18\x03 \x01(\x03\x12\x13\n\x0blibrarySize\x18\x04 \x01(\x05\x12\x11\n\tlibraryId\x18\x05 \x01(\t\"\xe2\x01\n\x15\x41ndroidDataUsageProto\x12\x0f\n\x07version\x18\x01 \x01(\x05\x12\x19\n\x11\x63urrentReportMsec\x18\x02 \x01(\x03\x12\x39\n\x17keyToPackageNameMapping\x18\x03 \x03(\x0b\x32\x18.KeyToPackageNameMapping\x12\x31\n\x13payloadLevelAppStat\x18\x04 \x03(\x0b\x32\x14.PayloadLevelAppStat\x12/\n\x12ipLayerNetworkStat\x18\x05 \x03(\x0b\x32\x13.IpLayerNetworkStat\"n\n\x17\x41ndroidUsageStatsReport\x12\x11\n\tandroidId\x18\x01 \x01(\x03\x12\x11\n\tloggingId\x18\x02 \x01(\x03\x12-\n\nusageStats\x18\x03 \x01(\x0b\x32\x19.UsageStatsExtensionProto\"}\n\tAppBucket\x12\x17\n\x0f\x62ucketStartMsec\x18\x01 \x01(\x03\x12\x1a\n\x12\x62ucketDurationMsec\x18\x02 \x01(\x03\x12#\n\x0cstatCounters\x18\x03 \x03(\x0b\x32\r.StatCounters\x12\x16\n\x0eoperationCount\x18\x04 \x01(\x03\"-\n\x0b\x43ounterData\x12\r\n\x05\x62ytes\x18\x01 \x01(\x03\x12\x0f\n\x07packets\x18\x02 \x01(\x03\"b\n\x0eIpLayerAppStat\x12\x12\n\npackageKey\x18\x01 \x01(\x05\x12\x16\n\x0e\x61pplicationTag\x18\x02 \x01(\x05\x12$\n\x10ipLayerAppBucket\x18\x03 \x03(\x0b\x32\n.AppBucket\"\x8f\x01\n\x14IpLayerNetworkBucket\x12\x17\n\x0f\x62ucketStartMsec\x18\x01 \x01(\x03\x12\x1a\n\x12\x62ucketDurationMsec\x18\x02 \x01(\x03\x12#\n\x0cstatCounters\x18\x03 \x03(\x0b\x32\r.StatCounters\x12\x1d\n\x15networkActiveDuration\x18\x04 \x01(\x03\"\x98\x01\n\x12IpLayerNetworkStat\x12\x16\n\x0enetworkDetails\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\x05\x12\x33\n\x14ipLayerNetworkBucket\x18\x03 \x03(\x0b\x32\x15.IpLayerNetworkBucket\x12\'\n\x0eipLayerAppStat\x18\x04 \x03(\x0b\x32\x0f.IpLayerAppStat\"g\n\x17KeyToPackageNameMapping\x12\x12\n\npackageKey\x18\x01 \x01(\x05\x12\x0f\n\x07uidName\x18\x02 \x01(\t\x12\'\n\x11sharedPackageList\x18\x03 \x03(\x0b\x32\x0c.PackageInfo\"3\n\x0bPackageInfo\x12\x0f\n\x07pkgName\x18\x01 \x01(\t\x12\x13\n\x0bversionCode\x18\x02 \x01(\x05\"l\n\x13PayloadLevelAppStat\x12\x12\n\npackageKey\x18\x01 \x01(\x05\x12\x16\n\x0e\x61pplicationTag\x18\x02 \x01(\x05\x12)\n\x15payloadLevelAppBucket\x18\x03 \x03(\x0b\x32\n.AppBucket\"h\n\x0cStatCounters\x12\x14\n\x0cnetworkProto\x18\x01 \x01(\x05\x12\x11\n\tdirection\x18\x02 \x01(\x05\x12!\n\x0b\x63ounterData\x18\x03 \x01(\x0b\x32\x0c.CounterData\x12\x0c\n\x04\x66gBg\x18\x04 \x01(\x05\"E\n\x18UsageStatsExtensionProto\x12)\n\tdataUsage\x18\x01 \x01(\x0b\x32\x16.AndroidDataUsageProto\"l\n\rSearchCluster\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x0c\n\x04int1\x18\x03 \x01(\x03\x12\x0c\n\x04int2\x18\x04 \x01(\x03\x12\x10\n\x08\x63\x61tegory\x18\x05 \x01(\t\x12\x13\n\x03\x64oc\x18\x0b \x03(\x0b\x32\x06.DocV2')
+  serialized_options=None,
+  serialized_pb=_b('\n\x10googleplay.proto\"\xe6\x03\n\x16\x41ndroidAppDeliveryData\x12\x14\n\x0c\x64ownloadSize\x18\x01 \x01(\x03\x12\x0c\n\x04sha1\x18\x02 \x01(\t\x12\x13\n\x0b\x64ownloadUrl\x18\x03 \x01(\t\x12(\n\x0e\x61\x64\x64itionalFile\x18\x04 \x03(\x0b\x32\x10.AppFileMetadata\x12\'\n\x12\x64ownloadAuthCookie\x18\x05 \x03(\x0b\x32\x0b.HttpCookie\x12\x15\n\rforwardLocked\x18\x06 \x01(\x08\x12\x15\n\rrefundTimeout\x18\x07 \x01(\x03\x12\x17\n\x0fserverInitiated\x18\x08 \x01(\x08\x12%\n\x1dpostInstallRefundWindowMillis\x18\t \x01(\x03\x12\x1c\n\x14immediateStartNeeded\x18\n \x01(\x08\x12\'\n\tpatchData\x18\x0b \x01(\x0b\x32\x14.AndroidAppPatchData\x12+\n\x10\x65ncryptionParams\x18\x0c \x01(\x0b\x32\x11.EncryptionParams\x12\x1a\n\x12\x64ownloadUrlGzipped\x18\r \x01(\t\x12\x1b\n\x13\x64ownloadSizeGzipped\x18\x0e \x01(\x03\x12\x15\n\x05split\x18\x0f \x03(\x0b\x32\x06.Split\x12\x0e\n\x06sha256\x18\x13 \x01(\t\"\x87\x01\n\x05Split\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04size\x18\x02 \x01(\x03\x12\x13\n\x0bsizeGzipped\x18\x03 \x01(\x03\x12\x0c\n\x04sha1\x18\x04 \x01(\t\x12\x13\n\x0b\x64ownloadUrl\x18\x05 \x01(\t\x12\x1a\n\x12\x64ownloadUrlGzipped\x18\x06 \x01(\t\x12\x0e\n\x06sha256\x18\t \x01(\t\"\x80\x01\n\x13\x41ndroidAppPatchData\x12\x17\n\x0f\x62\x61seVersionCode\x18\x01 \x01(\x05\x12\x10\n\x08\x62\x61seSha1\x18\x02 \x01(\t\x12\x13\n\x0b\x64ownloadUrl\x18\x03 \x01(\t\x12\x13\n\x0bpatchFormat\x18\x04 \x01(\x05\x12\x14\n\x0cmaxPatchSize\x18\x05 \x01(\x03\"\x9a\x01\n\x0f\x41ppFileMetadata\x12\x10\n\x08\x66ileType\x18\x01 \x01(\x05\x12\x13\n\x0bversionCode\x18\x02 \x01(\x05\x12\x0c\n\x04size\x18\x03 \x01(\x03\x12\x13\n\x0b\x64ownloadUrl\x18\x04 \x01(\t\x12\x13\n\x0bsizeGzipped\x18\x06 \x01(\x03\x12\x1a\n\x12\x64ownloadUrlGzipped\x18\x07 \x01(\t\x12\x0c\n\x04sha1\x18\x08 \x01(\t\"K\n\x10\x45ncryptionParams\x12\x0f\n\x07version\x18\x01 \x01(\x05\x12\x15\n\rencryptionKey\x18\x02 \x01(\t\x12\x0f\n\x07hmacKey\x18\x03 \x01(\t\")\n\nHttpCookie\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"\xad\x02\n\x07\x41\x64\x64ress\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x64\x64ressLine1\x18\x02 \x01(\t\x12\x14\n\x0c\x61\x64\x64ressLine2\x18\x03 \x01(\t\x12\x0c\n\x04\x63ity\x18\x04 \x01(\t\x12\r\n\x05state\x18\x05 \x01(\t\x12\x12\n\npostalCode\x18\x06 \x01(\t\x12\x15\n\rpostalCountry\x18\x07 \x01(\t\x12\x19\n\x11\x64\x65pendentLocality\x18\x08 \x01(\t\x12\x13\n\x0bsortingCode\x18\t \x01(\t\x12\x14\n\x0clanguageCode\x18\n \x01(\t\x12\x13\n\x0bphoneNumber\x18\x0b \x01(\t\x12\x11\n\tisReduced\x18\x0c \x01(\x08\x12\x11\n\tfirstName\x18\r \x01(\t\x12\x10\n\x08lastName\x18\x0e \x01(\t\x12\r\n\x05\x65mail\x18\x0f \x01(\t\"J\n\nBookAuthor\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x17\n\x0f\x64\x65precatedQuery\x18\x02 \x01(\t\x12\x15\n\x05\x64ocid\x18\x03 \x01(\x0b\x32\x06.Docid\"\xc3\x03\n\x0b\x42ookDetails\x12\x1d\n\x07subject\x18\x03 \x03(\x0b\x32\x0c.BookSubject\x12\x11\n\tpublisher\x18\x04 \x01(\t\x12\x17\n\x0fpublicationDate\x18\x05 \x01(\t\x12\x0c\n\x04isbn\x18\x06 \x01(\t\x12\x15\n\rnumberOfPages\x18\x07 \x01(\x05\x12\x10\n\x08subtitle\x18\x08 \x01(\t\x12\x1b\n\x06\x61uthor\x18\t \x03(\x0b\x32\x0b.BookAuthor\x12\x11\n\treaderUrl\x18\n \x01(\t\x12\x17\n\x0f\x64ownloadEpubUrl\x18\x0b \x01(\t\x12\x16\n\x0e\x64ownloadPdfUrl\x18\x0c \x01(\t\x12\x17\n\x0f\x61\x63sEpubTokenUrl\x18\r \x01(\t\x12\x16\n\x0e\x61\x63sPdfTokenUrl\x18\x0e \x01(\t\x12\x15\n\repubAvailable\x18\x0f \x01(\x08\x12\x14\n\x0cpdfAvailable\x18\x10 \x01(\x08\x12\x16\n\x0e\x61\x62outTheAuthor\x18\x11 \x01(\t\x12+\n\nidentifier\x18\x12 \x03(\n2\x17.BookDetails.Identifier\x1a.\n\nIdentifier\x12\x0c\n\x04type\x18\x13 \x01(\x05\x12\x12\n\nidentifier\x18\x14 \x01(\t\"=\n\x0b\x42ookSubject\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05query\x18\x02 \x01(\t\x12\x11\n\tsubjectId\x18\x03 \x01(\t\"~\n\nBrowseLink\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07\x64\x61taUrl\x18\x03 \x01(\t\x12\x14\n\x04icon\x18\x05 \x01(\x0b\x32\x06.Image\x12;\n\x18unknownCategoryContainer\x18\x04 \x01(\x0b\x32\x19.UnknownCategoryContainer\"M\n\x18UnknownCategoryContainer\x12\x31\n\x13\x63\x61tegoryIdContainer\x18\x05 \x01(\x0b\x32\x14.CategoryIdContainer\")\n\x13\x43\x61tegoryIdContainer\x12\x12\n\ncategoryId\x18\x04 \x01(\t\"\xa6\x01\n\x0e\x42rowseResponse\x12\x13\n\x0b\x63ontentsUrl\x18\x01 \x01(\t\x12\x10\n\x08promoUrl\x18\x02 \x01(\t\x12\x1d\n\x08\x63\x61tegory\x18\x03 \x03(\x0b\x32\x0b.BrowseLink\x12\x1f\n\nbreadcrumb\x18\x04 \x03(\x0b\x32\x0b.BrowseLink\x12-\n\x11\x63\x61tegoryContainer\x18\t \x01(\x0b\x32\x12.CategoryContainer\"2\n\x11\x43\x61tegoryContainer\x12\x1d\n\x08\x63\x61tegory\x18\x04 \x03(\x0b\x32\x0b.BrowseLink\"\x8f\x02\n\x10\x41\x64\x64ressChallenge\x12\x1c\n\x14responseAddressParam\x18\x01 \x01(\t\x12\x1f\n\x17responseCheckboxesParam\x18\x02 \x01(\t\x12\r\n\x05title\x18\x03 \x01(\t\x12\x17\n\x0f\x64\x65scriptionHtml\x18\x04 \x01(\t\x12\x1f\n\x08\x63heckbox\x18\x05 \x03(\x0b\x32\r.FormCheckbox\x12\x19\n\x07\x61\x64\x64ress\x18\x06 \x01(\x0b\x32\x08.Address\x12.\n\x0f\x65rrorInputField\x18\x07 \x03(\x0b\x32\x15.InputValidationError\x12\x11\n\terrorHtml\x18\x08 \x01(\t\x12\x15\n\rrequiredField\x18\t \x03(\x05\"\xef\x01\n\x17\x41uthenticationChallenge\x12\x1a\n\x12\x61uthenticationType\x18\x01 \x01(\x05\x12\'\n\x1fresponseAuthenticationTypeParam\x18\x02 \x01(\t\x12\x1f\n\x17responseRetryCountParam\x18\x03 \x01(\t\x12\x15\n\rpinHeaderText\x18\x04 \x01(\t\x12\x1e\n\x16pinDescriptionTextHtml\x18\x05 \x01(\t\x12\x16\n\x0egaiaHeaderText\x18\x06 \x01(\t\x12\x1f\n\x17gaiaDescriptionTextHtml\x18\x07 \x01(\t\"\x98\t\n\x0b\x42uyResponse\x12\x37\n\x10purchaseResponse\x18\x01 \x01(\x0b\x32\x1d.PurchaseNotificationResponse\x12/\n\x0c\x63heckoutinfo\x18\x02 \x01(\n2\x19.BuyResponse.CheckoutInfo\x12\x16\n\x0e\x63ontinueViaUrl\x18\x08 \x01(\t\x12\x19\n\x11purchaseStatusUrl\x18\t \x01(\t\x12\x19\n\x11\x63heckoutServiceId\x18\x0c \x01(\t\x12\x1d\n\x15\x63heckoutTokenRequired\x18\r \x01(\x08\x12\x17\n\x0f\x62\x61seCheckoutUrl\x18\x0e \x01(\t\x12\x17\n\x0ftosCheckboxHtml\x18% \x03(\t\x12\x1a\n\x12iabPermissionError\x18& \x01(\x05\x12\x37\n\x16purchaseStatusResponse\x18\' \x01(\x0b\x32\x17.PurchaseStatusResponse\x12\x16\n\x0epurchaseCookie\x18. \x01(\t\x12\x1d\n\tchallenge\x18\x31 \x01(\x0b\x32\n.Challenge\x12\x15\n\rdownloadToken\x18\x37 \x01(\t\x1a\xdc\x05\n\x0c\x43heckoutInfo\x12\x17\n\x04item\x18\x03 \x01(\x0b\x32\t.LineItem\x12\x1a\n\x07subItem\x18\x04 \x03(\x0b\x32\t.LineItem\x12@\n\x0e\x63heckoutoption\x18\x05 \x03(\n2(.BuyResponse.CheckoutInfo.CheckoutOption\x12\x1d\n\x15\x64\x65precatedCheckoutUrl\x18\n \x01(\t\x12\x18\n\x10\x61\x64\x64InstrumentUrl\x18\x0b \x01(\t\x12\x12\n\nfooterHtml\x18\x14 \x03(\t\x12 \n\x18\x65ligibleInstrumentFamily\x18\x1f \x03(\x05\x12\x14\n\x0c\x66ootnoteHtml\x18$ \x03(\t\x12\'\n\x12\x65ligibleInstrument\x18, \x03(\x0b\x32\x0b.Instrument\x1a\xa6\x03\n\x0e\x43heckoutOption\x12\x15\n\rformOfPayment\x18\x06 \x01(\t\x12\x1b\n\x13\x65ncodedAdjustedCart\x18\x07 \x01(\t\x12\x14\n\x0cinstrumentId\x18\x0f \x01(\t\x12\x17\n\x04item\x18\x10 \x03(\x0b\x32\t.LineItem\x12\x1a\n\x07subItem\x18\x11 \x03(\x0b\x32\t.LineItem\x12\x18\n\x05total\x18\x12 \x01(\x0b\x32\t.LineItem\x12\x12\n\nfooterHtml\x18\x13 \x03(\t\x12\x18\n\x10instrumentFamily\x18\x1d \x01(\x05\x12.\n&deprecatedInstrumentInapplicableReason\x18\x1e \x03(\x05\x12\x1a\n\x12selectedInstrument\x18  \x01(\x08\x12\x1a\n\x07summary\x18! \x01(\x0b\x32\t.LineItem\x12\x14\n\x0c\x66ootnoteHtml\x18# \x03(\t\x12\x1f\n\ninstrument\x18+ \x01(\x0b\x32\x0b.Instrument\x12\x16\n\x0epurchaseCookie\x18- \x01(\t\x12\x16\n\x0e\x64isabledReason\x18\x30 \x03(\t\"s\n\tChallenge\x12+\n\x10\x61\x64\x64ressChallenge\x18\x01 \x01(\x0b\x32\x11.AddressChallenge\x12\x39\n\x17\x61uthenticationChallenge\x18\x02 \x01(\x0b\x32\x18.AuthenticationChallenge\"F\n\x0c\x46ormCheckbox\x12\x13\n\x0b\x64\x65scription\x18\x01 \x01(\t\x12\x0f\n\x07\x63hecked\x18\x02 \x01(\x08\x12\x10\n\x08required\x18\x03 \x01(\x08\"\\\n\x08LineItem\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x15\n\x05offer\x18\x03 \x01(\x0b\x32\x06.Offer\x12\x16\n\x06\x61mount\x18\x04 \x01(\x0b\x32\x06.Money\"F\n\x05Money\x12\x0e\n\x06micros\x18\x01 \x01(\x03\x12\x14\n\x0c\x63urrencyCode\x18\x02 \x01(\t\x12\x17\n\x0f\x66ormattedAmount\x18\x03 \x01(\t\"\x80\x01\n\x1cPurchaseNotificationResponse\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x1d\n\tdebugInfo\x18\x02 \x01(\x0b\x32\n.DebugInfo\x12\x1d\n\x15localizedErrorMessage\x18\x03 \x01(\t\x12\x12\n\npurchaseId\x18\x04 \x01(\t\"\xf9\x01\n\x16PurchaseStatusResponse\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x11\n\tstatusMsg\x18\x02 \x01(\t\x12\x13\n\x0bstatusTitle\x18\x03 \x01(\t\x12\x14\n\x0c\x62riefMessage\x18\x04 \x01(\t\x12\x0f\n\x07infoUrl\x18\x05 \x01(\t\x12%\n\rlibraryUpdate\x18\x06 \x01(\x0b\x32\x0e.LibraryUpdate\x12\'\n\x12rejectedInstrument\x18\x07 \x01(\x0b\x32\x0b.Instrument\x12\x30\n\x0f\x61ppDeliveryData\x18\x08 \x01(\x0b\x32\x17.AndroidAppDeliveryData\"D\n\x10\x44\x65liveryResponse\x12\x30\n\x0f\x61ppDeliveryData\x18\x02 \x01(\x0b\x32\x17.AndroidAppDeliveryData\"<\n\x05\x44ocid\x12\x14\n\x0c\x62\x61\x63kendDocid\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\x05\x12\x0f\n\x07\x62\x61\x63kend\x18\x03 \x01(\x05\">\n\x07Install\x12\x11\n\tandroidId\x18\x01 \x01(\x06\x12\x0f\n\x07version\x18\x02 \x01(\x05\x12\x0f\n\x07\x62undled\x18\x03 \x01(\x08\"\xce\x03\n\x05Offer\x12\x0e\n\x06micros\x18\x01 \x01(\x03\x12\x14\n\x0c\x63urrencyCode\x18\x02 \x01(\t\x12\x17\n\x0f\x66ormattedAmount\x18\x03 \x01(\t\x12\x1e\n\x0e\x63onvertedPrice\x18\x04 \x03(\x0b\x32\x06.Offer\x12\x1c\n\x14\x63heckoutFlowRequired\x18\x05 \x01(\x08\x12\x17\n\x0f\x66ullPriceMicros\x18\x06 \x01(\x03\x12\x1b\n\x13\x66ormattedFullAmount\x18\x07 \x01(\t\x12\x11\n\tofferType\x18\x08 \x01(\x05\x12!\n\x0brentalTerms\x18\t \x01(\x0b\x32\x0c.RentalTerms\x12\x12\n\nonSaleDate\x18\n \x01(\x03\x12\x16\n\x0epromotionLabel\x18\x0b \x03(\t\x12-\n\x11subscriptionTerms\x18\x0c \x01(\x0b\x32\x12.SubscriptionTerms\x12\x15\n\rformattedName\x18\r \x01(\t\x12\x1c\n\x14\x66ormattedDescription\x18\x0e \x01(\t\x12\x0c\n\x04sale\x18\x16 \x01(\x08\x12\x0f\n\x07message\x18\x1a \x01(\t\x12\x18\n\x10saleEndTimestamp\x18\x1e \x01(\x03\x12\x13\n\x0bsaleMessage\x18\x1f \x01(\t\"\xb1\x01\n\rOwnershipInfo\x12\x1f\n\x17initiationTimestampMsec\x18\x01 \x01(\x03\x12\x1f\n\x17validUntilTimestampMsec\x18\x02 \x01(\x03\x12\x14\n\x0c\x61utoRenewing\x18\x03 \x01(\x08\x12\"\n\x1arefundTimeoutTimestampMsec\x18\x04 \x01(\x03\x12$\n\x1cpostDeliveryRefundWindowMsec\x18\x05 \x01(\x03\"H\n\x0bRentalTerms\x12\x1a\n\x12grantPeriodSeconds\x18\x01 \x01(\x05\x12\x1d\n\x15\x61\x63tivatePeriodSeconds\x18\x02 \x01(\x05\"[\n\x11SubscriptionTerms\x12$\n\x0frecurringPeriod\x18\x01 \x01(\x0b\x32\x0b.TimePeriod\x12 \n\x0btrialPeriod\x18\x02 \x01(\x0b\x32\x0b.TimePeriod\")\n\nTimePeriod\x12\x0c\n\x04unit\x18\x01 \x01(\x05\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\"G\n\x12\x42illingAddressSpec\x12\x1a\n\x12\x62illingAddressType\x18\x01 \x01(\x05\x12\x15\n\rrequiredField\x18\x02 \x03(\x05\">\n\x19\x43\x61rrierBillingCredentials\x12\r\n\x05value\x18\x01 \x01(\t\x12\x12\n\nexpiration\x18\x02 \x01(\x03\"\xa9\x02\n\x18\x43\x61rrierBillingInstrument\x12\x15\n\rinstrumentKey\x18\x01 \x01(\t\x12\x13\n\x0b\x61\x63\x63ountType\x18\x02 \x01(\t\x12\x14\n\x0c\x63urrencyCode\x18\x03 \x01(\t\x12\x18\n\x10transactionLimit\x18\x04 \x01(\x03\x12\x1c\n\x14subscriberIdentifier\x18\x05 \x01(\t\x12\x39\n\x17\x65ncryptedSubscriberInfo\x18\x06 \x01(\x0b\x32\x18.EncryptedSubscriberInfo\x12/\n\x0b\x63redentials\x18\x07 \x01(\x0b\x32\x1a.CarrierBillingCredentials\x12\'\n\x12\x61\x63\x63\x65ptedCarrierTos\x18\x08 \x01(\x0b\x32\x0b.CarrierTos\"\xca\x01\n\x1e\x43\x61rrierBillingInstrumentStatus\x12\x1f\n\ncarrierTos\x18\x01 \x01(\x0b\x32\x0b.CarrierTos\x12\x1b\n\x13\x61ssociationRequired\x18\x02 \x01(\x08\x12\x18\n\x10passwordRequired\x18\x03 \x01(\x08\x12.\n\x15\x63\x61rrierPasswordPrompt\x18\x04 \x01(\x0b\x32\x0f.PasswordPrompt\x12\x12\n\napiVersion\x18\x05 \x01(\x05\x12\x0c\n\x04name\x18\x06 \x01(\t\"\x8e\x01\n\nCarrierTos\x12 \n\x06\x64\x63\x62Tos\x18\x01 \x01(\x0b\x32\x10.CarrierTosEntry\x12 \n\x06piiTos\x18\x02 \x01(\x0b\x32\x10.CarrierTosEntry\x12\x1d\n\x15needsDcbTosAcceptance\x18\x03 \x01(\x08\x12\x1d\n\x15needsPiiTosAcceptance\x18\x04 \x01(\x08\"/\n\x0f\x43\x61rrierTosEntry\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x0f\n\x07version\x18\x02 \x01(\t\"\xa2\x01\n\x14\x43reditCardInstrument\x12\x0c\n\x04type\x18\x01 \x01(\x05\x12\x14\n\x0c\x65scrowHandle\x18\x02 \x01(\t\x12\x12\n\nlastDigits\x18\x03 \x01(\t\x12\x17\n\x0f\x65xpirationMonth\x18\x04 \x01(\x05\x12\x16\n\x0e\x65xpirationYear\x18\x05 \x01(\x05\x12!\n\x0e\x65scrowEfeParam\x18\x06 \x03(\x0b\x32\t.EfeParam\"&\n\x08\x45\x66\x65Param\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\t\"@\n\x14InputValidationError\x12\x12\n\ninputField\x18\x01 \x01(\x05\x12\x14\n\x0c\x65rrorMessage\x18\x02 \x01(\t\"\xc2\x02\n\nInstrument\x12\x14\n\x0cinstrumentId\x18\x01 \x01(\t\x12 \n\x0e\x62illingAddress\x18\x02 \x01(\x0b\x32\x08.Address\x12)\n\ncreditCard\x18\x03 \x01(\x0b\x32\x15.CreditCardInstrument\x12\x31\n\x0e\x63\x61rrierBilling\x18\x04 \x01(\x0b\x32\x19.CarrierBillingInstrument\x12/\n\x12\x62illingAddressSpec\x18\x05 \x01(\x0b\x32\x13.BillingAddressSpec\x12\x18\n\x10instrumentFamily\x18\x06 \x01(\x05\x12=\n\x14\x63\x61rrierBillingStatus\x18\x07 \x01(\x0b\x32\x1f.CarrierBillingInstrumentStatus\x12\x14\n\x0c\x64isplayTitle\x18\x08 \x01(\t\";\n\x0ePasswordPrompt\x12\x0e\n\x06prompt\x18\x01 \x01(\t\x12\x19\n\x11\x66orgotPasswordUrl\x18\x02 \x01(\t\"\x92\x01\n\x11\x43ontainerMetadata\x12\x11\n\tbrowseUrl\x18\x01 \x01(\t\x12\x13\n\x0bnextPageUrl\x18\x02 \x01(\t\x12\x11\n\trelevance\x18\x03 \x01(\x01\x12\x18\n\x10\x65stimatedResults\x18\x04 \x01(\x03\x12\x17\n\x0f\x61nalyticsCookie\x18\x05 \x01(\t\x12\x0f\n\x07ordered\x18\x06 \x01(\x08\"i\n\tDebugInfo\x12\x0f\n\x07message\x18\x01 \x03(\t\x12!\n\x06timing\x18\x02 \x03(\n2\x11.DebugInfo.Timing\x1a(\n\x06Timing\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x10\n\x08timeInMs\x18\x04 \x01(\x01\"\'\n\x10\x42ulkDetailsEntry\x12\x13\n\x03\x64oc\x18\x01 \x01(\x0b\x32\x06.DocV2\"=\n\x12\x42ulkDetailsRequest\x12\r\n\x05\x64ocid\x18\x01 \x03(\t\x12\x18\n\x10includeChildDocs\x18\x02 \x01(\x08\"7\n\x13\x42ulkDetailsResponse\x12 \n\x05\x65ntry\x18\x01 \x03(\x0b\x32\x11.BulkDetailsEntry\"\x93\x02\n\x0f\x44\x65tailsResponse\x12\x15\n\x05\x64ocV1\x18\x01 \x01(\x0b\x32\x06.DocV1\x12\x17\n\x0f\x61nalyticsCookie\x18\x02 \x01(\t\x12\x1b\n\nuserReview\x18\x03 \x01(\x0b\x32\x07.Review\x12\x15\n\x05\x64ocV2\x18\x04 \x01(\x0b\x32\x06.DocV2\x12\x12\n\nfooterHtml\x18\x05 \x01(\t\x12\x15\n\x05\x62\x61\x64ge\x18\x07 \x03(\x0b\x32\x06.Badge\x12\x1b\n\x08\x66\x65\x61tures\x18\x0c \x01(\x0b\x32\t.Features\x12\x18\n\x10\x64\x65tailsStreamUrl\x18\r \x01(\t\x12\x15\n\ruserReviewUrl\x18\x0e \x01(\t\x12#\n\x1bpostAcquireDetailsStreamUrl\x18\x11 \x01(\t\"i\n\x05\x42\x61\x64ge\x12\r\n\x05label\x18\x01 \x01(\t\x12\x15\n\x05image\x18\x02 \x01(\x0b\x32\x06.Image\x12)\n\x0f\x62\x61\x64geContainer1\x18\x04 \x01(\x0b\x32\x10.BadgeContainer1\x12\x0f\n\x07message\x18\x0b \x01(\t\"<\n\x0f\x42\x61\x64geContainer1\x12)\n\x0f\x62\x61\x64geContainer2\x18\x01 \x01(\x0b\x32\x10.BadgeContainer2\"B\n\x0f\x42\x61\x64geContainer2\x12/\n\x12\x62\x61\x64geLinkContainer\x18\x02 \x01(\x0b\x32\x13.BadgeLinkContainer\"\"\n\x12\x42\x61\x64geLinkContainer\x12\x0c\n\x04link\x18\x02 \x01(\t\"N\n\x08\x46\x65\x61tures\x12!\n\x0f\x66\x65\x61turePresence\x18\x01 \x03(\x0b\x32\x08.Feature\x12\x1f\n\rfeatureRating\x18\x02 \x03(\x0b\x32\x08.Feature\"\'\n\x07\x46\x65\x61ture\x12\r\n\x05label\x18\x01 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\t\"\xb5\x03\n\x18\x44\x65viceConfigurationProto\x12\x13\n\x0btouchScreen\x18\x01 \x01(\x05\x12\x10\n\x08keyboard\x18\x02 \x01(\x05\x12\x12\n\nnavigation\x18\x03 \x01(\x05\x12\x14\n\x0cscreenLayout\x18\x04 \x01(\x05\x12\x17\n\x0fhasHardKeyboard\x18\x05 \x01(\x08\x12\x1c\n\x14hasFiveWayNavigation\x18\x06 \x01(\x08\x12\x15\n\rscreenDensity\x18\x07 \x01(\x05\x12\x13\n\x0bglEsVersion\x18\x08 \x01(\x05\x12\x1b\n\x13systemSharedLibrary\x18\t \x03(\t\x12\x1e\n\x16systemAvailableFeature\x18\n \x03(\t\x12\x16\n\x0enativePlatform\x18\x0b \x03(\t\x12\x13\n\x0bscreenWidth\x18\x0c \x01(\x05\x12\x14\n\x0cscreenHeight\x18\r \x01(\x05\x12\x1d\n\x15systemSupportedLocale\x18\x0e \x03(\t\x12\x13\n\x0bglExtension\x18\x0f \x03(\t\x12\x13\n\x0b\x64\x65viceClass\x18\x10 \x01(\x05\x12\x1c\n\x14maxApkDownloadSizeMb\x18\x11 \x01(\x05\"\xff\x03\n\x08\x44ocument\x12\x15\n\x05\x64ocid\x18\x01 \x01(\x0b\x32\x06.Docid\x12\x1a\n\nfetchDocid\x18\x02 \x01(\x0b\x32\x06.Docid\x12\x1b\n\x0bsampleDocid\x18\x03 \x01(\x0b\x32\x06.Docid\x12\r\n\x05title\x18\x04 \x01(\t\x12\x0b\n\x03url\x18\x05 \x01(\t\x12\x0f\n\x07snippet\x18\x06 \x03(\t\x12\x1f\n\x0fpriceDeprecated\x18\x07 \x01(\x0b\x32\x06.Offer\x12#\n\x0c\x61vailability\x18\t \x01(\x0b\x32\r.Availability\x12\x15\n\x05image\x18\n \x03(\x0b\x32\x06.Image\x12\x18\n\x05\x63hild\x18\x0b \x03(\x0b\x32\t.Document\x12)\n\x0f\x61ggregateRating\x18\r \x01(\x0b\x32\x10.AggregateRating\x12\x15\n\x05offer\x18\x0e \x03(\x0b\x32\x06.Offer\x12*\n\x11translatedSnippet\x18\x0f \x03(\x0b\x32\x0f.TranslatedText\x12)\n\x0f\x64ocumentVariant\x18\x10 \x03(\x0b\x32\x10.DocumentVariant\x12\x12\n\ncategoryId\x18\x11 \x03(\t\x12\x1d\n\ndecoration\x18\x12 \x03(\x0b\x32\t.Document\x12\x19\n\x06parent\x18\x13 \x03(\x0b\x32\t.Document\x12\x18\n\x10privacyPolicyUrl\x18\x14 \x01(\t\"\x81\x02\n\x0f\x44ocumentVariant\x12\x15\n\rvariationType\x18\x01 \x01(\x05\x12\x13\n\x04rule\x18\x02 \x01(\x0b\x32\x05.Rule\x12\r\n\x05title\x18\x03 \x01(\t\x12\x0f\n\x07snippet\x18\x04 \x03(\t\x12\x15\n\rrecentChanges\x18\x05 \x01(\t\x12(\n\x0f\x61utoTranslation\x18\x06 \x03(\x0b\x32\x0f.TranslatedText\x12\x15\n\x05offer\x18\x07 \x03(\x0b\x32\x06.Offer\x12\x11\n\tchannelId\x18\t \x01(\x03\x12\x18\n\x05\x63hild\x18\n \x03(\x0b\x32\t.Document\x12\x1d\n\ndecoration\x18\x0b \x03(\x0b\x32\t.Document\"\xe6\x02\n\x05Image\x12\x11\n\timageType\x18\x01 \x01(\x05\x12#\n\tdimension\x18\x02 \x01(\n2\x10.Image.Dimension\x12\x10\n\x08imageUrl\x18\x05 \x01(\t\x12\x18\n\x10\x61ltTextLocalized\x18\x06 \x01(\t\x12\x11\n\tsecureUrl\x18\x07 \x01(\t\x12\x1a\n\x12positionInSequence\x18\x08 \x01(\x05\x12\x1e\n\x16supportsFifeUrlOptions\x18\t \x01(\x08\x12!\n\x08\x63itation\x18\n \x01(\n2\x0f.Image.Citation\x12\r\n\x05\x63olor\x18\x0f \x01(\t\x12\x1b\n\x13screenshotSetNumber\x18\x15 \x01(\x05\x1a*\n\tDimension\x12\r\n\x05width\x18\x03 \x01(\x05\x12\x0e\n\x06height\x18\x04 \x01(\x05\x1a/\n\x08\x43itation\x12\x16\n\x0etitleLocalized\x18\x0b \x01(\t\x12\x0b\n\x03url\x18\x0c \x01(\t\"J\n\x0eTranslatedText\x12\x0c\n\x04text\x18\x01 \x01(\t\x12\x14\n\x0csourceLocale\x18\x02 \x01(\t\x12\x14\n\x0ctargetLocale\x18\x03 \x01(\t\"i\n\x0bPlusOneData\x12\x11\n\tsetByUser\x18\x01 \x01(\x08\x12\r\n\x05total\x18\x02 \x01(\x03\x12\x14\n\x0c\x63irclesTotal\x18\x03 \x01(\x03\x12\"\n\rcirclesPeople\x18\x04 \x03(\x0b\x32\x0b.PlusPerson\":\n\nPlusPerson\x12\x13\n\x0b\x64isplayName\x18\x02 \x01(\t\x12\x17\n\x0fprofileImageUrl\x18\x04 \x01(\t\"c\n\x0c\x41lbumDetails\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1e\n\x07\x64\x65tails\x18\x02 \x01(\x0b\x32\r.MusicDetails\x12%\n\rdisplayArtist\x18\x03 \x01(\x0b\x32\x0e.ArtistDetails\"\xfd\x04\n\nAppDetails\x12\x15\n\rdeveloperName\x18\x01 \x01(\t\x12\x1a\n\x12majorVersionNumber\x18\x02 \x01(\x05\x12\x13\n\x0bversionCode\x18\x03 \x01(\x05\x12\x15\n\rversionString\x18\x04 \x01(\t\x12\r\n\x05title\x18\x05 \x01(\t\x12\x13\n\x0b\x61ppCategory\x18\x07 \x03(\t\x12\x15\n\rcontentRating\x18\x08 \x01(\x05\x12\x18\n\x10installationSize\x18\t \x01(\x03\x12\x12\n\npermission\x18\n \x03(\t\x12\x16\n\x0e\x64\x65veloperEmail\x18\x0b \x01(\t\x12\x18\n\x10\x64\x65veloperWebsite\x18\x0c \x01(\t\x12\x14\n\x0cnumDownloads\x18\r \x01(\t\x12\x13\n\x0bpackageName\x18\x0e \x01(\t\x12\x19\n\x11recentChangesHtml\x18\x0f \x01(\t\x12\x12\n\nuploadDate\x18\x10 \x01(\t\x12\x1b\n\x04\x66ile\x18\x11 \x03(\x0b\x32\r.FileMetadata\x12\x0f\n\x07\x61ppType\x18\x12 \x01(\t\x12\x10\n\x08unstable\x18\x15 \x01(\x08\x12\x16\n\x0ehasInstantLink\x18\x18 \x01(\x08\x12\x13\n\x0b\x63ontainsAds\x18\x1e \x01(\t\x12#\n\x0c\x64\x65pendencies\x18\" \x01(\x0b\x32\r.Dependencies\x12/\n\x12testingProgramInfo\x18# \x01(\x0b\x32\x13.TestingProgramInfo\x12)\n\x0f\x65\x61rlyAccessInfo\x18$ \x01(\x0b\x32\x10.EarlyAccessInfo\x12\x13\n\x0binstantLink\x18+ \x01(\t\x12\x18\n\x10\x64\x65veloperAddress\x18- \x01(\t\"e\n\x0c\x44\x65pendencies\x12\x10\n\x08unknown1\x18\x01 \x01(\x05\x12\x10\n\x08unknown2\x18\x02 \x01(\x03\x12\x1f\n\ndependency\x18\x03 \x03(\x0b\x32\x0b.Dependency\x12\x10\n\x08unknown3\x18\x04 \x01(\x05\"D\n\nDependency\x12\x13\n\x0bpackageName\x18\x01 \x01(\t\x12\x0f\n\x07version\x18\x02 \x01(\x05\x12\x10\n\x08unknown4\x18\x04 \x01(\x05\"Z\n\x12TestingProgramInfo\x12\x12\n\nsubscribed\x18\x02 \x01(\x08\x12\x13\n\x0bsubscribed1\x18\x03 \x01(\x08\x12\x1b\n\x13testingProgramEmail\x18\x05 \x01(\t\" \n\x0f\x45\x61rlyAccessInfo\x12\r\n\x05\x65mail\x18\x03 \x01(\t\"^\n\rArtistDetails\x12\x12\n\ndetailsUrl\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12+\n\rexternalLinks\x18\x03 \x01(\x0b\x32\x14.ArtistExternalLinks\"b\n\x13\x41rtistExternalLinks\x12\x12\n\nwebsiteUrl\x18\x01 \x03(\t\x12\x1c\n\x14googlePlusProfileUrl\x18\x02 \x01(\t\x12\x19\n\x11youtubeChannelUrl\x18\x03 \x01(\t\"\xc6\x03\n\x0f\x44ocumentDetails\x12\x1f\n\nappDetails\x18\x01 \x01(\x0b\x32\x0b.AppDetails\x12#\n\x0c\x61lbumDetails\x18\x02 \x01(\x0b\x32\r.AlbumDetails\x12%\n\rartistDetails\x18\x03 \x01(\x0b\x32\x0e.ArtistDetails\x12!\n\x0bsongDetails\x18\x04 \x01(\x0b\x32\x0c.SongDetails\x12!\n\x0b\x62ookDetails\x18\x05 \x01(\x0b\x32\x0c.BookDetails\x12#\n\x0cvideoDetails\x18\x06 \x01(\x0b\x32\r.VideoDetails\x12\x31\n\x13subscriptionDetails\x18\x07 \x01(\x0b\x32\x14.SubscriptionDetails\x12)\n\x0fmagazineDetails\x18\x08 \x01(\x0b\x32\x10.MagazineDetails\x12%\n\rtvShowDetails\x18\t \x01(\x0b\x32\x0e.TvShowDetails\x12)\n\x0ftvSeasonDetails\x18\n \x01(\x0b\x32\x10.TvSeasonDetails\x12+\n\x10tvEpisodeDetails\x18\x0b \x01(\x0b\x32\x11.TvEpisodeDetails\"C\n\x0c\x46ileMetadata\x12\x10\n\x08\x66ileType\x18\x01 \x01(\x05\x12\x13\n\x0bversionCode\x18\x02 \x01(\x05\x12\x0c\n\x04size\x18\x03 \x01(\x03\"\x94\x01\n\x0fMagazineDetails\x12\x18\n\x10parentDetailsUrl\x18\x01 \x01(\t\x12)\n!deviceAvailabilityDescriptionHtml\x18\x02 \x01(\t\x12\x16\n\x0epsvDescription\x18\x03 \x01(\t\x12$\n\x1c\x64\x65liveryFrequencyDescription\x18\x04 \x01(\t\"\xbb\x01\n\x0cMusicDetails\x12\x11\n\tcensoring\x18\x01 \x01(\x05\x12\x13\n\x0b\x64urationSec\x18\x02 \x01(\x05\x12\x1b\n\x13originalReleaseDate\x18\x03 \x01(\t\x12\r\n\x05label\x18\x04 \x01(\t\x12\x1e\n\x06\x61rtist\x18\x05 \x03(\x0b\x32\x0e.ArtistDetails\x12\r\n\x05genre\x18\x06 \x03(\t\x12\x13\n\x0breleaseDate\x18\x07 \x01(\t\x12\x13\n\x0breleaseType\x18\x08 \x03(\x05\"\x9e\x01\n\x0bSongDetails\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1e\n\x07\x64\x65tails\x18\x02 \x01(\x0b\x32\r.MusicDetails\x12\x11\n\talbumName\x18\x03 \x01(\t\x12\x13\n\x0btrackNumber\x18\x04 \x01(\x05\x12\x12\n\npreviewUrl\x18\x05 \x01(\t\x12%\n\rdisplayArtist\x18\x06 \x01(\x0b\x32\x0e.ArtistDetails\"1\n\x13SubscriptionDetails\x12\x1a\n\x12subscriptionPeriod\x18\x01 \x01(\x05\"e\n\x07Trailer\x12\x11\n\ttrailerId\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\x14\n\x0cthumbnailUrl\x18\x03 \x01(\t\x12\x10\n\x08watchUrl\x18\x04 \x01(\t\x12\x10\n\x08\x64uration\x18\x05 \x01(\t\"W\n\x10TvEpisodeDetails\x12\x18\n\x10parentDetailsUrl\x18\x01 \x01(\t\x12\x14\n\x0c\x65pisodeIndex\x18\x02 \x01(\x05\x12\x13\n\x0breleaseDate\x18\x03 \x01(\t\"j\n\x0fTvSeasonDetails\x12\x18\n\x10parentDetailsUrl\x18\x01 \x01(\t\x12\x13\n\x0bseasonIndex\x18\x02 \x01(\x05\x12\x13\n\x0breleaseDate\x18\x03 \x01(\t\x12\x13\n\x0b\x62roadcaster\x18\x04 \x01(\t\"]\n\rTvShowDetails\x12\x13\n\x0bseasonCount\x18\x01 \x01(\x05\x12\x11\n\tstartYear\x18\x02 \x01(\x05\x12\x0f\n\x07\x65ndYear\x18\x03 \x01(\x05\x12\x13\n\x0b\x62roadcaster\x18\x04 \x01(\t\"?\n\x0bVideoCredit\x12\x12\n\ncreditType\x18\x01 \x01(\x05\x12\x0e\n\x06\x63redit\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x03(\t\"\xdb\x01\n\x0cVideoDetails\x12\x1c\n\x06\x63redit\x18\x01 \x03(\x0b\x32\x0c.VideoCredit\x12\x10\n\x08\x64uration\x18\x02 \x01(\t\x12\x13\n\x0breleaseDate\x18\x03 \x01(\t\x12\x15\n\rcontentRating\x18\x04 \x01(\t\x12\r\n\x05likes\x18\x05 \x01(\x03\x12\x10\n\x08\x64islikes\x18\x06 \x01(\x03\x12\r\n\x05genre\x18\x07 \x03(\t\x12\x19\n\x07trailer\x18\x08 \x03(\x0b\x32\x08.Trailer\x12$\n\nrentalTerm\x18\t \x03(\x0b\x32\x10.VideoRentalTerm\"\xa0\x01\n\x0fVideoRentalTerm\x12\x11\n\tofferType\x18\x01 \x01(\x05\x12\x19\n\x11offerAbbreviation\x18\x02 \x01(\t\x12\x14\n\x0crentalHeader\x18\x03 \x01(\t\x12#\n\x04term\x18\x04 \x03(\n2\x15.VideoRentalTerm.Term\x1a$\n\x04Term\x12\x0e\n\x06header\x18\x05 \x01(\t\x12\x0c\n\x04\x62ody\x18\x06 \x01(\t\"\xf9\x01\n\x06\x42ucket\x12\x18\n\x08\x64ocument\x18\x01 \x03(\x0b\x32\x06.DocV1\x12\x13\n\x0bmultiCorpus\x18\x02 \x01(\x08\x12\r\n\x05title\x18\x03 \x01(\t\x12\x0f\n\x07iconUrl\x18\x04 \x01(\t\x12\x17\n\x0f\x66ullContentsUrl\x18\x05 \x01(\t\x12\x11\n\trelevance\x18\x06 \x01(\x01\x12\x18\n\x10\x65stimatedResults\x18\x07 \x01(\x03\x12\x17\n\x0f\x61nalyticsCookie\x18\x08 \x01(\t\x12\x1b\n\x13\x66ullContentsListUrl\x18\t \x01(\t\x12\x13\n\x0bnextPageUrl\x18\n \x01(\t\x12\x0f\n\x07ordered\x18\x0b \x01(\x08\"<\n\x0cListResponse\x12\x17\n\x06\x62ucket\x18\x01 \x03(\x0b\x32\x07.Bucket\x12\x13\n\x03\x64oc\x18\x02 \x03(\x0b\x32\x06.DocV2\"\x94\x03\n\x05\x44ocV1\x12\x1c\n\tfinskyDoc\x18\x01 \x01(\x0b\x32\t.Document\x12\r\n\x05\x64ocid\x18\x02 \x01(\t\x12\x12\n\ndetailsUrl\x18\x03 \x01(\t\x12\x12\n\nreviewsUrl\x18\x04 \x01(\t\x12\x16\n\x0erelatedListUrl\x18\x05 \x01(\t\x12\x15\n\rmoreByListUrl\x18\x06 \x01(\t\x12\x10\n\x08shareUrl\x18\x07 \x01(\t\x12\x0f\n\x07\x63reator\x18\x08 \x01(\t\x12!\n\x07\x64\x65tails\x18\t \x01(\x0b\x32\x10.DocumentDetails\x12\x17\n\x0f\x64\x65scriptionHtml\x18\n \x01(\t\x12\x18\n\x10relatedBrowseUrl\x18\x0b \x01(\t\x12\x17\n\x0fmoreByBrowseUrl\x18\x0c \x01(\t\x12\x15\n\rrelatedHeader\x18\r \x01(\t\x12\x14\n\x0cmoreByHeader\x18\x0e \x01(\t\x12\r\n\x05title\x18\x0f \x01(\t\x12!\n\x0bplusOneData\x18\x10 \x01(\x0b\x32\x0c.PlusOneData\x12\x16\n\x0ewarningMessage\x18\x11 \x01(\t\"\xd7\x05\n\x05\x44ocV2\x12\r\n\x05\x64ocid\x18\x01 \x01(\t\x12\x14\n\x0c\x62\x61\x63kendDocid\x18\x02 \x01(\t\x12\x0f\n\x07\x64ocType\x18\x03 \x01(\x05\x12\x11\n\tbackendId\x18\x04 \x01(\x05\x12\r\n\x05title\x18\x05 \x01(\t\x12\x0f\n\x07\x63reator\x18\x06 \x01(\t\x12\x17\n\x0f\x64\x65scriptionHtml\x18\x07 \x01(\t\x12\x15\n\x05offer\x18\x08 \x03(\x0b\x32\x06.Offer\x12#\n\x0c\x61vailability\x18\t \x01(\x0b\x32\r.Availability\x12\x15\n\x05image\x18\n \x03(\x0b\x32\x06.Image\x12\x15\n\x05\x63hild\x18\x0b \x03(\x0b\x32\x06.DocV2\x12-\n\x11\x63ontainerMetadata\x18\x0c \x01(\x0b\x32\x12.ContainerMetadata\x12!\n\x07\x64\x65tails\x18\r \x01(\x0b\x32\x10.DocumentDetails\x12)\n\x0f\x61ggregateRating\x18\x0e \x01(\x0b\x32\x10.AggregateRating\x12#\n\x0crelatedLinks\x18\x0f \x01(\x0b\x32\r.RelatedLinks\x12\x12\n\ndetailsUrl\x18\x10 \x01(\t\x12\x10\n\x08shareUrl\x18\x11 \x01(\t\x12\x12\n\nreviewsUrl\x18\x12 \x01(\t\x12\x12\n\nbackendUrl\x18\x13 \x01(\t\x12\x1a\n\x12purchaseDetailsUrl\x18\x14 \x01(\t\x12\x17\n\x0f\x64\x65tailsReusable\x18\x15 \x01(\x08\x12\x10\n\x08subtitle\x18\x16 \x01(\t\x12;\n\x18unknownCategoryContainer\x18\x18 \x01(\x0b\x32\x19.UnknownCategoryContainer\x12\x1d\n\tunknown25\x18\x19 \x01(\x0b\x32\n.Unknown25\x12\x18\n\x10\x64\x65scriptionShort\x18\x1b \x01(\t\x12\x19\n\x11reviewSnippetsUrl\x18\x1f \x01(\t\x12\x1a\n\x12reviewQuestionsUrl\x18\" \x01(\t\")\n\tUnknown25\x12\x1c\n\x04item\x18\x02 \x03(\x0b\x32\x0e.Unknown25Item\"F\n\rUnknown25Item\x12\r\n\x05label\x18\x01 \x01(\t\x12&\n\tcontainer\x18\x03 \x01(\x0b\x32\x13.Unknown25Container\"#\n\x12Unknown25Container\x12\r\n\x05value\x18\x02 \x01(\t\"\xd9\x01\n\x0cRelatedLinks\x12\'\n\x08unknown1\x18\n \x01(\x0b\x32\x15.RelatedLinksUnknown1\x12\x18\n\x10privacyPolicyUrl\x18\x12 \x01(\t\x12&\n\x10youMightAlsoLike\x18\x18 \x01(\x0b\x32\x0c.RelatedLink\x12\x15\n\x05rated\x18\x1d \x01(\x0b\x32\x06.Rated\x12\"\n\x0crelatedLinks\x18\" \x03(\x0b\x32\x0c.RelatedLink\x12#\n\x0c\x63\x61tegoryInfo\x18\x35 \x01(\x0b\x32\r.CategoryInfo\"?\n\x14RelatedLinksUnknown1\x12\'\n\x08unknown2\x18\x02 \x01(\x0b\x32\x15.RelatedLinksUnknown2\"<\n\x14RelatedLinksUnknown2\x12\x0f\n\x07homeUrl\x18\x02 \x01(\t\x12\x13\n\x0bnextPageUrl\x18\x03 \x01(\t\"H\n\x05Rated\x12\r\n\x05label\x18\x01 \x01(\t\x12\x15\n\x05image\x18\x02 \x01(\x0b\x32\x06.Image\x12\x19\n\x11learnMoreHtmlLink\x18\x04 \x01(\t\"8\n\x0bRelatedLink\x12\r\n\x05label\x18\x01 \x01(\t\x12\x0c\n\x04url1\x18\x02 \x01(\t\x12\x0c\n\x04url2\x18\x03 \x01(\t\"4\n\x0c\x43\x61tegoryInfo\x12\x0f\n\x07\x61ppType\x18\x01 \x01(\t\x12\x13\n\x0b\x61ppCategory\x18\x02 \x01(\t\"\x99\x01\n\x17\x45ncryptedSubscriberInfo\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\x12\x14\n\x0c\x65ncryptedKey\x18\x02 \x01(\t\x12\x11\n\tsignature\x18\x03 \x01(\t\x12\x12\n\ninitVector\x18\x04 \x01(\t\x12\x18\n\x10googleKeyVersion\x18\x05 \x01(\x05\x12\x19\n\x11\x63\x61rrierKeyVersion\x18\x06 \x01(\x05\"\xbd\x03\n\x0c\x41vailability\x12\x13\n\x0brestriction\x18\x05 \x01(\x05\x12\x11\n\tofferType\x18\x06 \x01(\x05\x12\x13\n\x04rule\x18\x07 \x01(\x0b\x32\x05.Rule\x12X\n perdeviceavailabilityrestriction\x18\t \x03(\n2..Availability.PerDeviceAvailabilityRestriction\x12\x18\n\x10\x61vailableIfOwned\x18\r \x01(\x08\x12\x19\n\x07install\x18\x0e \x03(\x0b\x32\x08.Install\x12)\n\nfilterInfo\x18\x10 \x01(\x0b\x32\x15.FilterEvaluationInfo\x12%\n\rownershipInfo\x18\x11 \x01(\x0b\x32\x0e.OwnershipInfo\x1a\x8e\x01\n PerDeviceAvailabilityRestriction\x12\x11\n\tandroidId\x18\n \x01(\x06\x12\x19\n\x11\x64\x65viceRestriction\x18\x0b \x01(\x05\x12\x11\n\tchannelId\x18\x0c \x01(\x03\x12)\n\nfilterInfo\x18\x0f \x01(\x0b\x32\x15.FilterEvaluationInfo\"?\n\x14\x46ilterEvaluationInfo\x12\'\n\x0eruleEvaluation\x18\x01 \x03(\x0b\x32\x0f.RuleEvaluation\"\xd4\x01\n\x04Rule\x12\x0e\n\x06negate\x18\x01 \x01(\x08\x12\x10\n\x08operator\x18\x02 \x01(\x05\x12\x0b\n\x03key\x18\x03 \x01(\x05\x12\x11\n\tstringArg\x18\x04 \x03(\t\x12\x0f\n\x07longArg\x18\x05 \x03(\x03\x12\x11\n\tdoubleArg\x18\x06 \x03(\x01\x12\x16\n\x07subrule\x18\x07 \x03(\x0b\x32\x05.Rule\x12\x14\n\x0cresponseCode\x18\x08 \x01(\x05\x12\x0f\n\x07\x63omment\x18\t \x01(\t\x12\x15\n\rstringArgHash\x18\n \x03(\x06\x12\x10\n\x08\x63onstArg\x18\x0b \x03(\x05\"\x8d\x01\n\x0eRuleEvaluation\x12\x13\n\x04rule\x18\x01 \x01(\x0b\x32\x05.Rule\x12\x19\n\x11\x61\x63tualStringValue\x18\x02 \x03(\t\x12\x17\n\x0f\x61\x63tualLongValue\x18\x03 \x03(\x03\x12\x17\n\x0f\x61\x63tualBoolValue\x18\x04 \x03(\x08\x12\x19\n\x11\x61\x63tualDoubleValue\x18\x05 \x03(\x01\"v\n\x11LibraryAppDetails\x12\x17\n\x0f\x63\x65rtificateHash\x18\x02 \x01(\t\x12\"\n\x1arefundTimeoutTimestampMsec\x18\x03 \x01(\x03\x12$\n\x1cpostDeliveryRefundWindowMsec\x18\x04 \x01(\x03\"D\n\x13LibraryInAppDetails\x12\x1a\n\x12signedPurchaseData\x18\x01 \x01(\t\x12\x11\n\tsignature\x18\x02 \x01(\t\"\xf0\x01\n\x0fLibraryMutation\x12\x15\n\x05\x64ocid\x18\x01 \x01(\x0b\x32\x06.Docid\x12\x11\n\tofferType\x18\x02 \x01(\x05\x12\x14\n\x0c\x64ocumentHash\x18\x03 \x01(\x03\x12\x0f\n\x07\x64\x65leted\x18\x04 \x01(\x08\x12&\n\nappDetails\x18\x05 \x01(\x0b\x32\x12.LibraryAppDetails\x12\x38\n\x13subscriptionDetails\x18\x06 \x01(\x0b\x32\x1b.LibrarySubscriptionDetails\x12*\n\x0cinAppDetails\x18\x07 \x01(\x0b\x32\x14.LibraryInAppDetails\"\x95\x01\n\x1aLibrarySubscriptionDetails\x12\x1f\n\x17initiationTimestampMsec\x18\x01 \x01(\x03\x12\x1f\n\x17validUntilTimestampMsec\x18\x02 \x01(\x03\x12\x14\n\x0c\x61utoRenewing\x18\x03 \x01(\x08\x12\x1f\n\x17trialUntilTimestampMsec\x18\x04 \x01(\x03\"\x8c\x01\n\rLibraryUpdate\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x0e\n\x06\x63orpus\x18\x02 \x01(\x05\x12\x13\n\x0bserverToken\x18\x03 \x01(\x0c\x12\"\n\x08mutation\x18\x04 \x03(\x0b\x32\x10.LibraryMutation\x12\x0f\n\x07hasMore\x18\x05 \x01(\x08\x12\x11\n\tlibraryId\x18\x06 \x01(\t\"B\n\x1a\x41ndroidAppNotificationData\x12\x13\n\x0bversionCode\x18\x01 \x01(\x05\x12\x0f\n\x07\x61ssetId\x18\x02 \x01(\t\"M\n\x15InAppNotificationData\x12\x17\n\x0f\x63heckoutOrderId\x18\x01 \x01(\t\x12\x1b\n\x13inAppNotificationId\x18\x02 \x01(\t\"#\n\x10LibraryDirtyData\x12\x0f\n\x07\x62\x61\x63kend\x18\x01 \x01(\x05\"\x97\x04\n\x0cNotification\x12\x18\n\x10notificationType\x18\x01 \x01(\x05\x12\x11\n\ttimestamp\x18\x03 \x01(\x03\x12\x15\n\x05\x64ocid\x18\x04 \x01(\x0b\x32\x06.Docid\x12\x10\n\x08\x64ocTitle\x18\x05 \x01(\t\x12\x11\n\tuserEmail\x18\x06 \x01(\t\x12,\n\x07\x61ppData\x18\x07 \x01(\x0b\x32\x1b.AndroidAppNotificationData\x12\x30\n\x0f\x61ppDeliveryData\x18\x08 \x01(\x0b\x32\x17.AndroidAppDeliveryData\x12\x31\n\x13purchaseRemovalData\x18\t \x01(\x0b\x32\x14.PurchaseRemovalData\x12\x33\n\x14userNotificationData\x18\n \x01(\x0b\x32\x15.UserNotificationData\x12\x35\n\x15inAppNotificationData\x18\x0b \x01(\x0b\x32\x16.InAppNotificationData\x12\x33\n\x14purchaseDeclinedData\x18\x0c \x01(\x0b\x32\x15.PurchaseDeclinedData\x12\x16\n\x0enotificationId\x18\r \x01(\t\x12%\n\rlibraryUpdate\x18\x0e \x01(\x0b\x32\x0e.LibraryUpdate\x12+\n\x10libraryDirtyData\x18\x0f \x01(\x0b\x32\x11.LibraryDirtyData\"@\n\x14PurchaseDeclinedData\x12\x0e\n\x06reason\x18\x01 \x01(\x05\x12\x18\n\x10showNotification\x18\x02 \x01(\x08\"(\n\x13PurchaseRemovalData\x12\x11\n\tmalicious\x18\x01 \x01(\x08\"\x88\x01\n\x14UserNotificationData\x12\x19\n\x11notificationTitle\x18\x01 \x01(\t\x12\x18\n\x10notificationText\x18\x02 \x01(\t\x12\x12\n\ntickerText\x18\x03 \x01(\t\x12\x13\n\x0b\x64ialogTitle\x18\x04 \x01(\t\x12\x12\n\ndialogText\x18\x05 \x01(\t\"\xa7\x02\n\x0f\x41ggregateRating\x12\x0c\n\x04type\x18\x01 \x01(\x05\x12\x12\n\nstarRating\x18\x02 \x01(\x02\x12\x14\n\x0cratingsCount\x18\x03 \x01(\x04\x12\x16\n\x0eoneStarRatings\x18\x04 \x01(\x04\x12\x16\n\x0etwoStarRatings\x18\x05 \x01(\x04\x12\x18\n\x10threeStarRatings\x18\x06 \x01(\x04\x12\x17\n\x0f\x66ourStarRatings\x18\x07 \x01(\x04\x12\x17\n\x0f\x66iveStarRatings\x18\x08 \x01(\x04\x12\x15\n\rthumbsUpCount\x18\t \x01(\x04\x12\x17\n\x0fthumbsDownCount\x18\n \x01(\x04\x12\x14\n\x0c\x63ommentCount\x18\x0b \x01(\x04\x12\x1a\n\x12\x62\x61yesianMeanRating\x18\x0c \x01(\x01\"\x13\n\x11\x41\x63\x63\x65ptTosResponse\"\xe9\x01\n\x14\x43\x61rrierBillingConfig\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x12\n\napiVersion\x18\x03 \x01(\x05\x12\x17\n\x0fprovisioningUrl\x18\x04 \x01(\t\x12\x16\n\x0e\x63redentialsUrl\x18\x05 \x01(\t\x12\x13\n\x0btosRequired\x18\x06 \x01(\x08\x12)\n!perTransactionCredentialsRequired\x18\x07 \x01(\x08\x12\x32\n*sendSubscriberIdWithCarrierBillingRequests\x18\x08 \x01(\x08\"^\n\rBillingConfig\x12\x33\n\x14\x63\x61rrierBillingConfig\x18\x01 \x01(\x0b\x32\x15.CarrierBillingConfig\x12\x18\n\x10maxIabApiVersion\x18\x02 \x01(\x05\"\x81\x01\n\x0e\x43orpusMetadata\x12\x0f\n\x07\x62\x61\x63kend\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x12\n\nlandingUrl\x18\x03 \x01(\t\x12\x13\n\x0blibraryName\x18\x04 \x01(\t\x12\x15\n\rrecsWidgetUrl\x18\x06 \x01(\t\x12\x10\n\x08shopName\x18\x07 \x01(\t\"#\n\x0b\x45xperiments\x12\x14\n\x0c\x65xperimentId\x18\x01 \x03(\t\"3\n\x10SelfUpdateConfig\x12\x1f\n\x17latestClientVersionCode\x18\x01 \x01(\x05\"\xb1\x04\n\x0bTocResponse\x12\x1f\n\x06\x63orpus\x18\x01 \x03(\x0b\x32\x0f.CorpusMetadata\x12\x1c\n\x14tosVersionDeprecated\x18\x02 \x01(\x05\x12\x12\n\ntosContent\x18\x03 \x01(\t\x12\x0f\n\x07homeUrl\x18\x04 \x01(\t\x12!\n\x0b\x65xperiments\x18\x05 \x01(\x0b\x32\x0c.Experiments\x12&\n\x1etosCheckboxTextMarketingEmails\x18\x06 \x01(\t\x12\x10\n\x08tosToken\x18\x07 \x01(\t\x12\x17\n\x0ficonOverrideUrl\x18\t \x01(\t\x12+\n\x10selfUpdateConfig\x18\n \x01(\x0b\x32\x11.SelfUpdateConfig\x12\"\n\x1arequiresUploadDeviceConfig\x18\x0b \x01(\x08\x12%\n\rbillingConfig\x18\x0c \x01(\x0b\x32\x0e.BillingConfig\x12\x15\n\rrecsWidgetUrl\x18\r \x01(\t\x12\x15\n\rsocialHomeUrl\x18\x0f \x01(\t\x12\x1f\n\x17\x61geVerificationRequired\x18\x10 \x01(\x08\x12\x1a\n\x12gplusSignupEnabled\x18\x11 \x01(\x08\x12\x15\n\rredeemEnabled\x18\x12 \x01(\x08\x12\x0f\n\x07helpUrl\x18\x13 \x01(\t\x12\x0f\n\x07themeId\x18\x14 \x01(\x05\x12\x1c\n\x14\x65ntertainmentHomeUrl\x18\x15 \x01(\t\x12\x0e\n\x06\x63ookie\x18\x16 \x01(\t\"\xfe\x05\n\x07Payload\x12#\n\x0clistResponse\x18\x01 \x01(\x0b\x32\r.ListResponse\x12)\n\x0f\x64\x65tailsResponse\x18\x02 \x01(\x0b\x32\x10.DetailsResponse\x12\'\n\x0ereviewResponse\x18\x03 \x01(\x0b\x32\x0f.ReviewResponse\x12!\n\x0b\x62uyResponse\x18\x04 \x01(\x0b\x32\x0c.BuyResponse\x12\'\n\x0esearchResponse\x18\x05 \x01(\x0b\x32\x0f.SearchResponse\x12!\n\x0btocResponse\x18\x06 \x01(\x0b\x32\x0c.TocResponse\x12\'\n\x0e\x62rowseResponse\x18\x07 \x01(\x0b\x32\x0f.BrowseResponse\x12\x37\n\x16purchaseStatusResponse\x18\x08 \x01(\x0b\x32\x17.PurchaseStatusResponse\x12\x13\n\x0blogResponse\x18\n \x01(\t\x12\x1b\n\x13\x66lagContentResponse\x18\r \x01(\t\x12\x31\n\x13\x62ulkDetailsResponse\x18\x13 \x01(\x0b\x32\x14.BulkDetailsResponse\x12+\n\x10\x64\x65liveryResponse\x18\x15 \x01(\x0b\x32\x11.DeliveryResponse\x12-\n\x11\x61\x63\x63\x65ptTosResponse\x18\x16 \x01(\x0b\x32\x12.AcceptTosResponse\x12\x37\n\x16\x61ndroidCheckinResponse\x18\x1a \x01(\x0b\x32\x17.AndroidCheckinResponse\x12?\n\x1auploadDeviceConfigResponse\x18\x1c \x01(\x0b\x32\x1b.UploadDeviceConfigResponse\x12\x35\n\x15searchSuggestResponse\x18( \x01(\x0b\x32\x16.SearchSuggestResponse\x12\x37\n\x16testingProgramResponse\x18P \x01(\x0b\x32\x17.TestingProgramResponse\"g\n\x08PreFetch\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\"\n\x08response\x18\x02 \x01(\x0b\x32\x10.ResponseWrapper\x12\x0c\n\x04\x65tag\x18\x03 \x01(\t\x12\x0b\n\x03ttl\x18\x04 \x01(\x03\x12\x0f\n\x07softTtl\x18\x05 \x01(\x03\"\'\n\x0eServerMetadata\x12\x15\n\rlatencyMillis\x18\x01 \x01(\x03\".\n\x07Targets\x12\x10\n\x08targetId\x18\x01 \x03(\x03\x12\x11\n\tsignature\x18\x02 \x01(\x0c\"+\n\x0cServerCookie\x12\x0c\n\x04type\x18\x01 \x01(\x05\x12\r\n\x05token\x18\x02 \x01(\x0c\"4\n\rServerCookies\x12#\n\x0cserverCookie\x18\x01 \x03(\x0b\x32\r.ServerCookie\"\x96\x02\n\x0fResponseWrapper\x12\x19\n\x07payload\x18\x01 \x01(\x0b\x32\x08.Payload\x12!\n\x08\x63ommands\x18\x02 \x01(\x0b\x32\x0f.ServerCommands\x12\x1b\n\x08preFetch\x18\x03 \x03(\x0b\x32\t.PreFetch\x12#\n\x0cnotification\x18\x04 \x03(\x0b\x32\r.Notification\x12\'\n\x0eserverMetadata\x18\x05 \x01(\x0b\x32\x0f.ServerMetadata\x12\x19\n\x07targets\x18\x06 \x01(\x0b\x32\x08.Targets\x12%\n\rserverCookies\x18\x07 \x01(\x0b\x32\x0e.ServerCookies\x12\x18\n\x10serverLogsCookie\x18\t \x01(\x0c\"2\n\x12ResponseWrapperApi\x12\x1c\n\x07payload\x18\x01 \x01(\x0b\x32\x0b.PayloadApi\"?\n\nPayloadApi\x12\x31\n\x13userProfileResponse\x18\x05 \x01(\x0b\x32\x14.UserProfileResponse\"8\n\x13UserProfileResponse\x12!\n\x0buserProfile\x18\x01 \x01(\x0b\x32\x0c.UserProfile\"]\n\x0eServerCommands\x12\x12\n\nclearCache\x18\x01 \x01(\x08\x12\x1b\n\x13\x64isplayErrorMessage\x18\x02 \x01(\t\x12\x1a\n\x12logErrorStacktrace\x18\x03 \x01(\t\"D\n\x12GetReviewsResponse\x12\x17\n\x06review\x18\x01 \x03(\x0b\x32\x07.Review\x12\x15\n\rmatchingCount\x18\x02 \x01(\x03\"\xb5\x02\n\x06Review\x12\x12\n\nauthorName\x18\x01 \x01(\t\x12\x0b\n\x03url\x18\x02 \x01(\t\x12\x0e\n\x06source\x18\x03 \x01(\t\x12\x17\n\x0f\x64ocumentVersion\x18\x04 \x01(\t\x12\x15\n\rtimestampMsec\x18\x05 \x01(\x03\x12\x12\n\nstarRating\x18\x06 \x01(\x05\x12\r\n\x05title\x18\x07 \x01(\t\x12\x0f\n\x07\x63omment\x18\x08 \x01(\t\x12\x11\n\tcommentId\x18\t \x01(\t\x12\x12\n\ndeviceName\x18\x13 \x01(\t\x12\x11\n\treplyText\x18\x1d \x01(\t\x12\x1a\n\x12replyTimestampMsec\x18\x1e \x01(\x03\x12\x1d\n\x06\x61uthor\x18\x1f \x01(\x0b\x32\r.ReviewAuthor\x12!\n\x0buserProfile\x18! \x01(\x0b\x32\x0c.UserProfile\"4\n\x0cReviewAuthor\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x16\n\x06\x61vatar\x18\x05 \x01(\x0b\x32\x06.Image\"\xb2\x01\n\x0bUserProfile\x12\x16\n\x0epersonIdString\x18\x01 \x01(\t\x12\x10\n\x08personId\x18\x02 \x01(\t\x12\x10\n\x08unknown1\x18\x03 \x01(\x05\x12\x10\n\x08unknown2\x18\x04 \x01(\x05\x12\x0c\n\x04name\x18\x05 \x01(\t\x12\x15\n\x05image\x18\n \x03(\x0b\x32\x06.Image\x12\x15\n\rgooglePlusUrl\x18\x13 \x01(\t\x12\x19\n\x11googlePlusTagline\x18\x16 \x01(\t\"l\n\x0eReviewResponse\x12(\n\x0bgetResponse\x18\x01 \x01(\x0b\x32\x13.GetReviewsResponse\x12\x13\n\x0bnextPageUrl\x18\x02 \x01(\t\x12\x1b\n\nuserReview\x18\x03 \x01(\x0b\x32\x07.Review\"g\n\rRelatedSearch\x12\x11\n\tsearchUrl\x18\x01 \x01(\t\x12\x0e\n\x06header\x18\x02 \x01(\t\x12\x11\n\tbackendId\x18\x03 \x01(\x05\x12\x0f\n\x07\x64ocType\x18\x04 \x01(\x05\x12\x0f\n\x07\x63urrent\x18\x05 \x01(\x08\"\xc1\x01\n\x0eSearchResponse\x12\x15\n\roriginalQuery\x18\x01 \x01(\t\x12\x16\n\x0esuggestedQuery\x18\x02 \x01(\t\x12\x16\n\x0e\x61ggregateQuery\x18\x03 \x01(\x08\x12\x17\n\x06\x62ucket\x18\x04 \x03(\x0b\x32\x07.Bucket\x12\x13\n\x03\x64oc\x18\x05 \x03(\x0b\x32\x06.DocV2\x12%\n\rrelatedSearch\x18\x06 \x03(\x0b\x32\x0e.RelatedSearch\x12\x13\n\x0bnextPageUrl\x18\n \x01(\t\";\n\x15SearchSuggestResponse\x12\"\n\x05\x65ntry\x18\x01 \x03(\x0b\x32\x13.SearchSuggestEntry\"\x9e\x02\n\x12SearchSuggestEntry\x12\x0c\n\x04type\x18\x01 \x01(\x05\x12\x16\n\x0esuggestedQuery\x18\x02 \x01(\t\x12:\n\x0eimageContainer\x18\x05 \x01(\x0b\x32\".SearchSuggestEntry.ImageContainer\x12\r\n\x05title\x18\x06 \x01(\t\x12\x46\n\x14packageNameContainer\x18\x08 \x01(\x0b\x32(.SearchSuggestEntry.PackageNameContainer\x1a\"\n\x0eImageContainer\x12\x10\n\x08imageUrl\x18\x05 \x01(\t\x1a+\n\x14PackageNameContainer\x12\x13\n\x0bpackageName\x18\x01 \x01(\t\"?\n\x16TestingProgramResponse\x12%\n\x06result\x18\x02 \x01(\x0b\x32\x15.TestingProgramResult\"?\n\x14TestingProgramResult\x12\'\n\x07\x64\x65tails\x18\x04 \x01(\x0b\x32\x16.TestingProgramDetails\"H\n\x15TestingProgramDetails\x12\r\n\x05\x66lag1\x18\x02 \x01(\x08\x12\n\n\x02id\x18\x03 \x01(\x03\x12\x14\n\x0cunsubscribed\x18\x04 \x01(\x08\"B\n\nLogRequest\x12\x11\n\ttimestamp\x18\x01 \x01(\x03\x12!\n\x19\x64ownloadConfirmationQuery\x18\x02 \x01(\t\"?\n\x15TestingProgramRequest\x12\x13\n\x0bpackageName\x18\x01 \x01(\t\x12\x11\n\tsubscribe\x18\x02 \x01(\x08\"\x84\x01\n\x19UploadDeviceConfigRequest\x12\x36\n\x13\x64\x65viceConfiguration\x18\x01 \x01(\x0b\x32\x19.DeviceConfigurationProto\x12\x14\n\x0cmanufacturer\x18\x02 \x01(\t\x12\x19\n\x11gcmRegistrationId\x18\x03 \x01(\t\"=\n\x1aUploadDeviceConfigResponse\x12\x1f\n\x17uploadDeviceConfigToken\x18\x01 \x01(\t\"\xe7\x03\n\x15\x41ndroidCheckinRequest\x12\x0c\n\x04imei\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\x03\x12\x0e\n\x06\x64igest\x18\x03 \x01(\t\x12%\n\x07\x63heckin\x18\x04 \x01(\x0b\x32\x14.AndroidCheckinProto\x12\x14\n\x0c\x64\x65siredBuild\x18\x05 \x01(\t\x12\x0e\n\x06locale\x18\x06 \x01(\t\x12\x11\n\tloggingId\x18\x07 \x01(\x03\x12\x15\n\rmarketCheckin\x18\x08 \x01(\t\x12\x0f\n\x07macAddr\x18\t \x03(\t\x12\x0c\n\x04meid\x18\n \x01(\t\x12\x15\n\raccountCookie\x18\x0b \x03(\t\x12\x10\n\x08timeZone\x18\x0c \x01(\t\x12\x15\n\rsecurityToken\x18\r \x01(\x06\x12\x0f\n\x07version\x18\x0e \x01(\x05\x12\x0f\n\x07otaCert\x18\x0f \x03(\t\x12\x14\n\x0cserialNumber\x18\x10 \x01(\t\x12\x0b\n\x03\x65sn\x18\x11 \x01(\t\x12\x36\n\x13\x64\x65viceConfiguration\x18\x12 \x01(\x0b\x32\x19.DeviceConfigurationProto\x12\x13\n\x0bmacAddrType\x18\x13 \x03(\t\x12\x10\n\x08\x66ragment\x18\x14 \x01(\x05\x12\x10\n\x08userName\x18\x15 \x01(\t\x12\x18\n\x10userSerialNumber\x18\x16 \x01(\x05\"\xa4\x02\n\x16\x41ndroidCheckinResponse\x12\x0f\n\x07statsOk\x18\x01 \x01(\x08\x12#\n\x06intent\x18\x02 \x03(\x0b\x32\x13.AndroidIntentProto\x12\x10\n\x08timeMsec\x18\x03 \x01(\x03\x12\x0e\n\x06\x64igest\x18\x04 \x01(\t\x12\"\n\x07setting\x18\x05 \x03(\x0b\x32\x11.GservicesSetting\x12\x10\n\x08marketOk\x18\x06 \x01(\x08\x12\x11\n\tandroidId\x18\x07 \x01(\x06\x12\x15\n\rsecurityToken\x18\x08 \x01(\x06\x12\x14\n\x0csettingsDiff\x18\t \x01(\x08\x12\x15\n\rdeleteSetting\x18\n \x03(\t\x12%\n\x1d\x64\x65viceCheckinConsistencyToken\x18\x0c \x01(\t\"/\n\x10GservicesSetting\x12\x0c\n\x04name\x18\x01 \x01(\x0c\x12\r\n\x05value\x18\x02 \x01(\x0c\"\x94\x02\n\x11\x41ndroidBuildProto\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07product\x18\x02 \x01(\t\x12\x0f\n\x07\x63\x61rrier\x18\x03 \x01(\t\x12\r\n\x05radio\x18\x04 \x01(\t\x12\x12\n\nbootloader\x18\x05 \x01(\t\x12\x0e\n\x06\x63lient\x18\x06 \x01(\t\x12\x11\n\ttimestamp\x18\x07 \x01(\x03\x12\x16\n\x0egoogleServices\x18\x08 \x01(\x05\x12\x0e\n\x06\x64\x65vice\x18\t \x01(\t\x12\x12\n\nsdkVersion\x18\n \x01(\x05\x12\r\n\x05model\x18\x0b \x01(\t\x12\x14\n\x0cmanufacturer\x18\x0c \x01(\t\x12\x14\n\x0c\x62uildProduct\x18\r \x01(\t\x12\x14\n\x0cotaInstalled\x18\x0e \x01(\x08\"\x82\x02\n\x13\x41ndroidCheckinProto\x12!\n\x05\x62uild\x18\x01 \x01(\x0b\x32\x12.AndroidBuildProto\x12\x17\n\x0flastCheckinMsec\x18\x02 \x01(\x03\x12!\n\x05\x65vent\x18\x03 \x03(\x0b\x32\x12.AndroidEventProto\x12$\n\x04stat\x18\x04 \x03(\x0b\x32\x16.AndroidStatisticProto\x12\x16\n\x0erequestedGroup\x18\x05 \x03(\t\x12\x14\n\x0c\x63\x65llOperator\x18\x06 \x01(\t\x12\x13\n\x0bsimOperator\x18\x07 \x01(\t\x12\x0f\n\x07roaming\x18\x08 \x01(\t\x12\x12\n\nuserNumber\x18\t \x01(\x05\"A\n\x11\x41ndroidEventProto\x12\x0b\n\x03tag\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\x12\x10\n\x08timeMsec\x18\x03 \x01(\x03\"\xaa\x01\n\x12\x41ndroidIntentProto\x12\x0e\n\x06\x61\x63tion\x18\x01 \x01(\t\x12\x0f\n\x07\x64\x61taUri\x18\x02 \x01(\t\x12\x10\n\x08mimeType\x18\x03 \x01(\t\x12\x11\n\tjavaClass\x18\x04 \x01(\t\x12(\n\x05\x65xtra\x18\x05 \x03(\n2\x19.AndroidIntentProto.Extra\x1a$\n\x05\x45xtra\x12\x0c\n\x04name\x18\x06 \x01(\t\x12\r\n\x05value\x18\x07 \x01(\t\"@\n\x15\x41ndroidStatisticProto\x12\x0b\n\x03tag\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\x12\x0b\n\x03sum\x18\x03 \x01(\x02\"v\n\x12\x43lientLibraryState\x12\x0e\n\x06\x63orpus\x18\x01 \x01(\x05\x12\x13\n\x0bserverToken\x18\x02 \x01(\x0c\x12\x13\n\x0bhashCodeSum\x18\x03 \x01(\x03\x12\x13\n\x0blibrarySize\x18\x04 \x01(\x05\x12\x11\n\tlibraryId\x18\x05 \x01(\t\"\xe2\x01\n\x15\x41ndroidDataUsageProto\x12\x0f\n\x07version\x18\x01 \x01(\x05\x12\x19\n\x11\x63urrentReportMsec\x18\x02 \x01(\x03\x12\x39\n\x17keyToPackageNameMapping\x18\x03 \x03(\x0b\x32\x18.KeyToPackageNameMapping\x12\x31\n\x13payloadLevelAppStat\x18\x04 \x03(\x0b\x32\x14.PayloadLevelAppStat\x12/\n\x12ipLayerNetworkStat\x18\x05 \x03(\x0b\x32\x13.IpLayerNetworkStat\"n\n\x17\x41ndroidUsageStatsReport\x12\x11\n\tandroidId\x18\x01 \x01(\x03\x12\x11\n\tloggingId\x18\x02 \x01(\x03\x12-\n\nusageStats\x18\x03 \x01(\x0b\x32\x19.UsageStatsExtensionProto\"}\n\tAppBucket\x12\x17\n\x0f\x62ucketStartMsec\x18\x01 \x01(\x03\x12\x1a\n\x12\x62ucketDurationMsec\x18\x02 \x01(\x03\x12#\n\x0cstatCounters\x18\x03 \x03(\x0b\x32\r.StatCounters\x12\x16\n\x0eoperationCount\x18\x04 \x01(\x03\"-\n\x0b\x43ounterData\x12\r\n\x05\x62ytes\x18\x01 \x01(\x03\x12\x0f\n\x07packets\x18\x02 \x01(\x03\"b\n\x0eIpLayerAppStat\x12\x12\n\npackageKey\x18\x01 \x01(\x05\x12\x16\n\x0e\x61pplicationTag\x18\x02 \x01(\x05\x12$\n\x10ipLayerAppBucket\x18\x03 \x03(\x0b\x32\n.AppBucket\"\x8f\x01\n\x14IpLayerNetworkBucket\x12\x17\n\x0f\x62ucketStartMsec\x18\x01 \x01(\x03\x12\x1a\n\x12\x62ucketDurationMsec\x18\x02 \x01(\x03\x12#\n\x0cstatCounters\x18\x03 \x03(\x0b\x32\r.StatCounters\x12\x1d\n\x15networkActiveDuration\x18\x04 \x01(\x03\"\x98\x01\n\x12IpLayerNetworkStat\x12\x16\n\x0enetworkDetails\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\x05\x12\x33\n\x14ipLayerNetworkBucket\x18\x03 \x03(\x0b\x32\x15.IpLayerNetworkBucket\x12\'\n\x0eipLayerAppStat\x18\x04 \x03(\x0b\x32\x0f.IpLayerAppStat\"g\n\x17KeyToPackageNameMapping\x12\x12\n\npackageKey\x18\x01 \x01(\x05\x12\x0f\n\x07uidName\x18\x02 \x01(\t\x12\'\n\x11sharedPackageList\x18\x03 \x03(\x0b\x32\x0c.PackageInfo\"3\n\x0bPackageInfo\x12\x0f\n\x07pkgName\x18\x01 \x01(\t\x12\x13\n\x0bversionCode\x18\x02 \x01(\x05\"l\n\x13PayloadLevelAppStat\x12\x12\n\npackageKey\x18\x01 \x01(\x05\x12\x16\n\x0e\x61pplicationTag\x18\x02 \x01(\x05\x12)\n\x15payloadLevelAppBucket\x18\x03 \x03(\x0b\x32\n.AppBucket\"h\n\x0cStatCounters\x12\x14\n\x0cnetworkProto\x18\x01 \x01(\x05\x12\x11\n\tdirection\x18\x02 \x01(\x05\x12!\n\x0b\x63ounterData\x18\x03 \x01(\x0b\x32\x0c.CounterData\x12\x0c\n\x04\x66gBg\x18\x04 \x01(\x05\"E\n\x18UsageStatsExtensionProto\x12)\n\tdataUsage\x18\x01 \x01(\x0b\x32\x16.AndroidDataUsageProto\"\\\n\x14ModifyLibraryRequest\x12\x11\n\tlibraryId\x18\x01 \x01(\t\x12\x16\n\x0e\x61\x64\x64PackageName\x18\x02 \x03(\t\x12\x19\n\x11removePackageName\x18\x03 \x03(\t\"H\n\x11UrlRequestWrapper\x12\x33\n\x14\x64\x65veloperAppsRequest\x18\x31 \x01(\x0b\x32\x15.DeveloperAppsRequest\"\x97\x01\n\x14\x44\x65veloperAppsRequest\x12\x34\n\x15\x64\x65veloperIdContainer1\x18\x01 \x01(\x0b\x32\x15.DeveloperIdContainer\x12\x34\n\x15\x64\x65veloperIdContainer2\x18\x02 \x01(\x0b\x32\x15.DeveloperIdContainer\x12\x13\n\x0bunknownInt3\x18\x03 \x01(\x05\"U\n\x14\x44\x65veloperIdContainer\x12\x13\n\x0b\x64\x65veloperId\x18\x01 \x01(\t\x12\x13\n\x0bunknownInt2\x18\x02 \x01(\x05\x12\x13\n\x0bunknownInt3\x18\x03 \x01(\x05')
 )
 
 
@@ -38,98 +38,199 @@ _ANDROIDAPPDELIVERYDATA = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='signature', full_name='AndroidAppDeliveryData.signature', index=1,
+      name='sha1', full_name='AndroidAppDeliveryData.sha1', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='downloadUrl', full_name='AndroidAppDeliveryData.downloadUrl', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='additionalFile', full_name='AndroidAppDeliveryData.additionalFile', index=3,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='downloadAuthCookie', full_name='AndroidAppDeliveryData.downloadAuthCookie', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='forwardLocked', full_name='AndroidAppDeliveryData.forwardLocked', index=5,
       number=6, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='refundTimeout', full_name='AndroidAppDeliveryData.refundTimeout', index=6,
       number=7, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='serverInitiated', full_name='AndroidAppDeliveryData.serverInitiated', index=7,
       number=8, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='postInstallRefundWindowMillis', full_name='AndroidAppDeliveryData.postInstallRefundWindowMillis', index=8,
       number=9, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='immediateStartNeeded', full_name='AndroidAppDeliveryData.immediateStartNeeded', index=9,
       number=10, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='patchData', full_name='AndroidAppDeliveryData.patchData', index=10,
       number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='encryptionParams', full_name='AndroidAppDeliveryData.encryptionParams', index=11,
       number=12, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='downloadUrlGzipped', full_name='AndroidAppDeliveryData.downloadUrlGzipped', index=12,
+      number=13, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='downloadSizeGzipped', full_name='AndroidAppDeliveryData.downloadSizeGzipped', index=13,
+      number=14, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='split', full_name='AndroidAppDeliveryData.split', index=14,
+      number=15, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='sha256', full_name='AndroidAppDeliveryData.sha256', index=15,
+      number=19, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=21,
-  serialized_end=416,
+  serialized_end=507,
+)
+
+
+_SPLIT = _descriptor.Descriptor(
+  name='Split',
+  full_name='Split',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='Split.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='size', full_name='Split.size', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='sizeGzipped', full_name='Split.sizeGzipped', index=2,
+      number=3, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='sha1', full_name='Split.sha1', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='downloadUrl', full_name='Split.downloadUrl', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='downloadUrlGzipped', full_name='Split.downloadUrlGzipped', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='sha256', full_name='Split.sha256', index=6,
+      number=9, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=510,
+  serialized_end=645,
 )
 
 
@@ -146,49 +247,49 @@ _ANDROIDAPPPATCHDATA = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='baseSignature', full_name='AndroidAppPatchData.baseSignature', index=1,
+      name='baseSha1', full_name='AndroidAppPatchData.baseSha1', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='downloadUrl', full_name='AndroidAppPatchData.downloadUrl', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='patchFormat', full_name='AndroidAppPatchData.patchFormat', index=3,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='maxPatchSize', full_name='AndroidAppPatchData.maxPatchSize', index=4,
       number=5, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=419,
-  serialized_end=552,
+  serialized_start=648,
+  serialized_end=776,
 )
 
 
@@ -205,42 +306,63 @@ _APPFILEMETADATA = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='versionCode', full_name='AppFileMetadata.versionCode', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='size', full_name='AppFileMetadata.size', index=2,
       number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='downloadUrl', full_name='AppFileMetadata.downloadUrl', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='sizeGzipped', full_name='AppFileMetadata.sizeGzipped', index=4,
+      number=6, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='downloadUrlGzipped', full_name='AppFileMetadata.downloadUrlGzipped', index=5,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='sha1', full_name='AppFileMetadata.sha1', index=6,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=554,
-  serialized_end=645,
+  serialized_start=779,
+  serialized_end=933,
 )
 
 
@@ -257,35 +379,35 @@ _ENCRYPTIONPARAMS = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='encryptionKey', full_name='EncryptionParams.encryptionKey', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='hmacKey', full_name='EncryptionParams.hmacKey', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=647,
-  serialized_end=722,
+  serialized_start=935,
+  serialized_end=1010,
 )
 
 
@@ -302,28 +424,28 @@ _HTTPCOOKIE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='HttpCookie.value', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=724,
-  serialized_end=765,
+  serialized_start=1012,
+  serialized_end=1053,
 )
 
 
@@ -340,119 +462,119 @@ _ADDRESS = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='addressLine1', full_name='Address.addressLine1', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='addressLine2', full_name='Address.addressLine2', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='city', full_name='Address.city', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='state', full_name='Address.state', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='postalCode', full_name='Address.postalCode', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='postalCountry', full_name='Address.postalCountry', index=6,
       number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='dependentLocality', full_name='Address.dependentLocality', index=7,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='sortingCode', full_name='Address.sortingCode', index=8,
       number=9, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='languageCode', full_name='Address.languageCode', index=9,
       number=10, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='phoneNumber', full_name='Address.phoneNumber', index=10,
       number=11, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='isReduced', full_name='Address.isReduced', index=11,
       number=12, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='firstName', full_name='Address.firstName', index=12,
       number=13, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='lastName', full_name='Address.lastName', index=13,
       number=14, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='email', full_name='Address.email', index=14,
       number=15, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=768,
-  serialized_end=1069,
+  serialized_start=1056,
+  serialized_end=1357,
 )
 
 
@@ -469,35 +591,35 @@ _BOOKAUTHOR = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='deprecatedQuery', full_name='BookAuthor.deprecatedQuery', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='docid', full_name='BookAuthor.docid', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1071,
-  serialized_end=1145,
+  serialized_start=1359,
+  serialized_end=1433,
 )
 
 
@@ -514,28 +636,28 @@ _BOOKDETAILS_IDENTIFIER = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='identifier', full_name='BookDetails.Identifier.identifier', index=1,
       number=20, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1553,
-  serialized_end=1599,
+  serialized_start=1841,
+  serialized_end=1887,
 )
 
 _BOOKDETAILS = _descriptor.Descriptor(
@@ -551,126 +673,126 @@ _BOOKDETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='publisher', full_name='BookDetails.publisher', index=1,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='publicationDate', full_name='BookDetails.publicationDate', index=2,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='isbn', full_name='BookDetails.isbn', index=3,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='numberOfPages', full_name='BookDetails.numberOfPages', index=4,
       number=7, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='subtitle', full_name='BookDetails.subtitle', index=5,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='author', full_name='BookDetails.author', index=6,
       number=9, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='readerUrl', full_name='BookDetails.readerUrl', index=7,
       number=10, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='downloadEpubUrl', full_name='BookDetails.downloadEpubUrl', index=8,
       number=11, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='downloadPdfUrl', full_name='BookDetails.downloadPdfUrl', index=9,
       number=12, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='acsEpubTokenUrl', full_name='BookDetails.acsEpubTokenUrl', index=10,
       number=13, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='acsPdfTokenUrl', full_name='BookDetails.acsPdfTokenUrl', index=11,
       number=14, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='epubAvailable', full_name='BookDetails.epubAvailable', index=12,
       number=15, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='pdfAvailable', full_name='BookDetails.pdfAvailable', index=13,
       number=16, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='aboutTheAuthor', full_name='BookDetails.aboutTheAuthor', index=14,
       number=17, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='identifier', full_name='BookDetails.identifier', index=15,
       number=18, type=10, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_BOOKDETAILS_IDENTIFIER, ],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1148,
-  serialized_end=1599,
+  serialized_start=1436,
+  serialized_end=1887,
 )
 
 
@@ -687,35 +809,35 @@ _BOOKSUBJECT = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='query', full_name='BookSubject.query', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='subjectId', full_name='BookSubject.subjectId', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1601,
-  serialized_end=1662,
+  serialized_start=1889,
+  serialized_end=1950,
 )
 
 
@@ -732,42 +854,42 @@ _BROWSELINK = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='dataUrl', full_name='BrowseLink.dataUrl', index=1,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='icon', full_name='BrowseLink.icon', index=2,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='unknownCategoryContainer', full_name='BrowseLink.unknownCategoryContainer', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1664,
-  serialized_end=1790,
+  serialized_start=1952,
+  serialized_end=2078,
 )
 
 
@@ -784,21 +906,21 @@ _UNKNOWNCATEGORYCONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1792,
-  serialized_end=1869,
+  serialized_start=2080,
+  serialized_end=2157,
 )
 
 
@@ -815,21 +937,21 @@ _CATEGORYIDCONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1871,
-  serialized_end=1912,
+  serialized_start=2159,
+  serialized_end=2200,
 )
 
 
@@ -846,49 +968,49 @@ _BROWSERESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='promoUrl', full_name='BrowseResponse.promoUrl', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='category', full_name='BrowseResponse.category', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='breadcrumb', full_name='BrowseResponse.breadcrumb', index=3,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='categoryContainer', full_name='BrowseResponse.categoryContainer', index=4,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1915,
-  serialized_end=2081,
+  serialized_start=2203,
+  serialized_end=2369,
 )
 
 
@@ -905,21 +1027,21 @@ _CATEGORYCONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2083,
-  serialized_end=2133,
+  serialized_start=2371,
+  serialized_end=2421,
 )
 
 
@@ -936,77 +1058,77 @@ _ADDRESSCHALLENGE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='responseCheckboxesParam', full_name='AddressChallenge.responseCheckboxesParam', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='title', full_name='AddressChallenge.title', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='descriptionHtml', full_name='AddressChallenge.descriptionHtml', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='checkbox', full_name='AddressChallenge.checkbox', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='address', full_name='AddressChallenge.address', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='errorInputField', full_name='AddressChallenge.errorInputField', index=6,
       number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='errorHtml', full_name='AddressChallenge.errorHtml', index=7,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='requiredField', full_name='AddressChallenge.requiredField', index=8,
       number=9, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2136,
-  serialized_end=2407,
+  serialized_start=2424,
+  serialized_end=2695,
 )
 
 
@@ -1023,63 +1145,63 @@ _AUTHENTICATIONCHALLENGE = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='responseAuthenticationTypeParam', full_name='AuthenticationChallenge.responseAuthenticationTypeParam', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='responseRetryCountParam', full_name='AuthenticationChallenge.responseRetryCountParam', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='pinHeaderText', full_name='AuthenticationChallenge.pinHeaderText', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='pinDescriptionTextHtml', full_name='AuthenticationChallenge.pinDescriptionTextHtml', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='gaiaHeaderText', full_name='AuthenticationChallenge.gaiaHeaderText', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='gaiaDescriptionTextHtml', full_name='AuthenticationChallenge.gaiaDescriptionTextHtml', index=6,
       number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2410,
-  serialized_end=2649,
+  serialized_start=2698,
+  serialized_end=2937,
 )
 
 
@@ -1096,119 +1218,119 @@ _BUYRESPONSE_CHECKOUTINFO_CHECKOUTOPTION = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='encodedAdjustedCart', full_name='BuyResponse.CheckoutInfo.CheckoutOption.encodedAdjustedCart', index=1,
       number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='instrumentId', full_name='BuyResponse.CheckoutInfo.CheckoutOption.instrumentId', index=2,
       number=15, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='item', full_name='BuyResponse.CheckoutInfo.CheckoutOption.item', index=3,
       number=16, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='subItem', full_name='BuyResponse.CheckoutInfo.CheckoutOption.subItem', index=4,
       number=17, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='total', full_name='BuyResponse.CheckoutInfo.CheckoutOption.total', index=5,
       number=18, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='footerHtml', full_name='BuyResponse.CheckoutInfo.CheckoutOption.footerHtml', index=6,
       number=19, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='instrumentFamily', full_name='BuyResponse.CheckoutInfo.CheckoutOption.instrumentFamily', index=7,
       number=29, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='deprecatedInstrumentInapplicableReason', full_name='BuyResponse.CheckoutInfo.CheckoutOption.deprecatedInstrumentInapplicableReason', index=8,
       number=30, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='selectedInstrument', full_name='BuyResponse.CheckoutInfo.CheckoutOption.selectedInstrument', index=9,
       number=32, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='summary', full_name='BuyResponse.CheckoutInfo.CheckoutOption.summary', index=10,
       number=33, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='footnoteHtml', full_name='BuyResponse.CheckoutInfo.CheckoutOption.footnoteHtml', index=11,
       number=35, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='instrument', full_name='BuyResponse.CheckoutInfo.CheckoutOption.instrument', index=12,
       number=43, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='purchaseCookie', full_name='BuyResponse.CheckoutInfo.CheckoutOption.purchaseCookie', index=13,
       number=45, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='disabledReason', full_name='BuyResponse.CheckoutInfo.CheckoutOption.disabledReason', index=14,
       number=48, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3406,
-  serialized_end=3828,
+  serialized_start=3694,
+  serialized_end=4116,
 )
 
 _BUYRESPONSE_CHECKOUTINFO = _descriptor.Descriptor(
@@ -1224,77 +1346,77 @@ _BUYRESPONSE_CHECKOUTINFO = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='subItem', full_name='BuyResponse.CheckoutInfo.subItem', index=1,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='checkoutoption', full_name='BuyResponse.CheckoutInfo.checkoutoption', index=2,
       number=5, type=10, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='deprecatedCheckoutUrl', full_name='BuyResponse.CheckoutInfo.deprecatedCheckoutUrl', index=3,
       number=10, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='addInstrumentUrl', full_name='BuyResponse.CheckoutInfo.addInstrumentUrl', index=4,
       number=11, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='footerHtml', full_name='BuyResponse.CheckoutInfo.footerHtml', index=5,
       number=20, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='eligibleInstrumentFamily', full_name='BuyResponse.CheckoutInfo.eligibleInstrumentFamily', index=6,
       number=31, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='footnoteHtml', full_name='BuyResponse.CheckoutInfo.footnoteHtml', index=7,
       number=36, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='eligibleInstrument', full_name='BuyResponse.CheckoutInfo.eligibleInstrument', index=8,
       number=44, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_BUYRESPONSE_CHECKOUTINFO_CHECKOUTOPTION, ],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3096,
-  serialized_end=3828,
+  serialized_start=3384,
+  serialized_end=4116,
 )
 
 _BUYRESPONSE = _descriptor.Descriptor(
@@ -1310,105 +1432,105 @@ _BUYRESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='checkoutinfo', full_name='BuyResponse.checkoutinfo', index=1,
       number=2, type=10, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='continueViaUrl', full_name='BuyResponse.continueViaUrl', index=2,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='purchaseStatusUrl', full_name='BuyResponse.purchaseStatusUrl', index=3,
       number=9, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='checkoutServiceId', full_name='BuyResponse.checkoutServiceId', index=4,
       number=12, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='checkoutTokenRequired', full_name='BuyResponse.checkoutTokenRequired', index=5,
       number=13, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='baseCheckoutUrl', full_name='BuyResponse.baseCheckoutUrl', index=6,
       number=14, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='tosCheckboxHtml', full_name='BuyResponse.tosCheckboxHtml', index=7,
       number=37, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='iabPermissionError', full_name='BuyResponse.iabPermissionError', index=8,
       number=38, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='purchaseStatusResponse', full_name='BuyResponse.purchaseStatusResponse', index=9,
       number=39, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='purchaseCookie', full_name='BuyResponse.purchaseCookie', index=10,
       number=46, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='challenge', full_name='BuyResponse.challenge', index=11,
       number=49, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='downloadToken', full_name='BuyResponse.downloadToken', index=12,
       number=55, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_BUYRESPONSE_CHECKOUTINFO, ],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2652,
-  serialized_end=3828,
+  serialized_start=2940,
+  serialized_end=4116,
 )
 
 
@@ -1425,28 +1547,28 @@ _CHALLENGE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='authenticationChallenge', full_name='Challenge.authenticationChallenge', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3830,
-  serialized_end=3945,
+  serialized_start=4118,
+  serialized_end=4233,
 )
 
 
@@ -1463,35 +1585,35 @@ _FORMCHECKBOX = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='checked', full_name='FormCheckbox.checked', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='required', full_name='FormCheckbox.required', index=2,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3947,
-  serialized_end=4017,
+  serialized_start=4235,
+  serialized_end=4305,
 )
 
 
@@ -1508,42 +1630,42 @@ _LINEITEM = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='description', full_name='LineItem.description', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='offer', full_name='LineItem.offer', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='amount', full_name='LineItem.amount', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4019,
-  serialized_end=4111,
+  serialized_start=4307,
+  serialized_end=4399,
 )
 
 
@@ -1560,35 +1682,35 @@ _MONEY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='currencyCode', full_name='Money.currencyCode', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='formattedAmount', full_name='Money.formattedAmount', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4113,
-  serialized_end=4183,
+  serialized_start=4401,
+  serialized_end=4471,
 )
 
 
@@ -1605,42 +1727,42 @@ _PURCHASENOTIFICATIONRESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='debugInfo', full_name='PurchaseNotificationResponse.debugInfo', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='localizedErrorMessage', full_name='PurchaseNotificationResponse.localizedErrorMessage', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='purchaseId', full_name='PurchaseNotificationResponse.purchaseId', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4186,
-  serialized_end=4314,
+  serialized_start=4474,
+  serialized_end=4602,
 )
 
 
@@ -1657,70 +1779,70 @@ _PURCHASESTATUSRESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='statusMsg', full_name='PurchaseStatusResponse.statusMsg', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='statusTitle', full_name='PurchaseStatusResponse.statusTitle', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='briefMessage', full_name='PurchaseStatusResponse.briefMessage', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='infoUrl', full_name='PurchaseStatusResponse.infoUrl', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='libraryUpdate', full_name='PurchaseStatusResponse.libraryUpdate', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='rejectedInstrument', full_name='PurchaseStatusResponse.rejectedInstrument', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='appDeliveryData', full_name='PurchaseStatusResponse.appDeliveryData', index=7,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4317,
-  serialized_end=4566,
+  serialized_start=4605,
+  serialized_end=4854,
 )
 
 
@@ -1737,21 +1859,21 @@ _DELIVERYRESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4568,
-  serialized_end=4636,
+  serialized_start=4856,
+  serialized_end=4924,
 )
 
 
@@ -1768,35 +1890,35 @@ _DOCID = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='type', full_name='Docid.type', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='backend', full_name='Docid.backend', index=2,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4638,
-  serialized_end=4698,
+  serialized_start=4926,
+  serialized_end=4986,
 )
 
 
@@ -1813,35 +1935,35 @@ _INSTALL = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='version', full_name='Install.version', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='bundled', full_name='Install.bundled', index=2,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4700,
-  serialized_end=4762,
+  serialized_start=4988,
+  serialized_end=5050,
 )
 
 
@@ -1858,119 +1980,140 @@ _OFFER = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='currencyCode', full_name='Offer.currencyCode', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='formattedAmount', full_name='Offer.formattedAmount', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='convertedPrice', full_name='Offer.convertedPrice', index=3,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='checkoutFlowRequired', full_name='Offer.checkoutFlowRequired', index=4,
       number=5, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='fullPriceMicros', full_name='Offer.fullPriceMicros', index=5,
       number=6, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='formattedFullAmount', full_name='Offer.formattedFullAmount', index=6,
       number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='offerType', full_name='Offer.offerType', index=7,
       number=8, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='rentalTerms', full_name='Offer.rentalTerms', index=8,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='onSaleDate', full_name='Offer.onSaleDate', index=9,
       number=10, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='promotionLabel', full_name='Offer.promotionLabel', index=10,
       number=11, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='subscriptionTerms', full_name='Offer.subscriptionTerms', index=11,
       number=12, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='formattedName', full_name='Offer.formattedName', index=12,
       number=13, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='formattedDescription', full_name='Offer.formattedDescription', index=13,
       number=14, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='saleEnds', full_name='Offer.saleEnds', index=14,
+      name='sale', full_name='Offer.sale', index=14,
+      number=22, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='Offer.message', index=15,
+      number=26, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='saleEndTimestamp', full_name='Offer.saleEndTimestamp', index=16,
+      number=30, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='saleMessage', full_name='Offer.saleMessage', index=17,
       number=31, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4765,
-  serialized_end=5167,
+  serialized_start=5053,
+  serialized_end=5515,
 )
 
 
@@ -1987,49 +2130,49 @@ _OWNERSHIPINFO = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='validUntilTimestampMsec', full_name='OwnershipInfo.validUntilTimestampMsec', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='autoRenewing', full_name='OwnershipInfo.autoRenewing', index=2,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='refundTimeoutTimestampMsec', full_name='OwnershipInfo.refundTimeoutTimestampMsec', index=3,
       number=4, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='postDeliveryRefundWindowMsec', full_name='OwnershipInfo.postDeliveryRefundWindowMsec', index=4,
       number=5, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5170,
-  serialized_end=5347,
+  serialized_start=5518,
+  serialized_end=5695,
 )
 
 
@@ -2046,28 +2189,28 @@ _RENTALTERMS = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='activatePeriodSeconds', full_name='RentalTerms.activatePeriodSeconds', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5349,
-  serialized_end=5421,
+  serialized_start=5697,
+  serialized_end=5769,
 )
 
 
@@ -2084,28 +2227,28 @@ _SUBSCRIPTIONTERMS = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='trialPeriod', full_name='SubscriptionTerms.trialPeriod', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5423,
-  serialized_end=5514,
+  serialized_start=5771,
+  serialized_end=5862,
 )
 
 
@@ -2122,28 +2265,28 @@ _TIMEPERIOD = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='count', full_name='TimePeriod.count', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5516,
-  serialized_end=5557,
+  serialized_start=5864,
+  serialized_end=5905,
 )
 
 
@@ -2160,28 +2303,28 @@ _BILLINGADDRESSSPEC = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='requiredField', full_name='BillingAddressSpec.requiredField', index=1,
       number=2, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5559,
-  serialized_end=5630,
+  serialized_start=5907,
+  serialized_end=5978,
 )
 
 
@@ -2198,28 +2341,28 @@ _CARRIERBILLINGCREDENTIALS = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='expiration', full_name='CarrierBillingCredentials.expiration', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5632,
-  serialized_end=5694,
+  serialized_start=5980,
+  serialized_end=6042,
 )
 
 
@@ -2236,70 +2379,70 @@ _CARRIERBILLINGINSTRUMENT = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='accountType', full_name='CarrierBillingInstrument.accountType', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='currencyCode', full_name='CarrierBillingInstrument.currencyCode', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='transactionLimit', full_name='CarrierBillingInstrument.transactionLimit', index=3,
       number=4, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='subscriberIdentifier', full_name='CarrierBillingInstrument.subscriberIdentifier', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='encryptedSubscriberInfo', full_name='CarrierBillingInstrument.encryptedSubscriberInfo', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='credentials', full_name='CarrierBillingInstrument.credentials', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='acceptedCarrierTos', full_name='CarrierBillingInstrument.acceptedCarrierTos', index=7,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5697,
-  serialized_end=5994,
+  serialized_start=6045,
+  serialized_end=6342,
 )
 
 
@@ -2316,56 +2459,56 @@ _CARRIERBILLINGINSTRUMENTSTATUS = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='associationRequired', full_name='CarrierBillingInstrumentStatus.associationRequired', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='passwordRequired', full_name='CarrierBillingInstrumentStatus.passwordRequired', index=2,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='carrierPasswordPrompt', full_name='CarrierBillingInstrumentStatus.carrierPasswordPrompt', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='apiVersion', full_name='CarrierBillingInstrumentStatus.apiVersion', index=4,
       number=5, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='name', full_name='CarrierBillingInstrumentStatus.name', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5997,
-  serialized_end=6199,
+  serialized_start=6345,
+  serialized_end=6547,
 )
 
 
@@ -2382,42 +2525,42 @@ _CARRIERTOS = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='piiTos', full_name='CarrierTos.piiTos', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='needsDcbTosAcceptance', full_name='CarrierTos.needsDcbTosAcceptance', index=2,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='needsPiiTosAcceptance', full_name='CarrierTos.needsPiiTosAcceptance', index=3,
       number=4, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6202,
-  serialized_end=6344,
+  serialized_start=6550,
+  serialized_end=6692,
 )
 
 
@@ -2434,28 +2577,28 @@ _CARRIERTOSENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='version', full_name='CarrierTosEntry.version', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6346,
-  serialized_end=6393,
+  serialized_start=6694,
+  serialized_end=6741,
 )
 
 
@@ -2472,56 +2615,56 @@ _CREDITCARDINSTRUMENT = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='escrowHandle', full_name='CreditCardInstrument.escrowHandle', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='lastDigits', full_name='CreditCardInstrument.lastDigits', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='expirationMonth', full_name='CreditCardInstrument.expirationMonth', index=3,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='expirationYear', full_name='CreditCardInstrument.expirationYear', index=4,
       number=5, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='escrowEfeParam', full_name='CreditCardInstrument.escrowEfeParam', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6396,
-  serialized_end=6558,
+  serialized_start=6744,
+  serialized_end=6906,
 )
 
 
@@ -2538,28 +2681,28 @@ _EFEPARAM = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='EfeParam.value', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6560,
-  serialized_end=6598,
+  serialized_start=6908,
+  serialized_end=6946,
 )
 
 
@@ -2576,28 +2719,28 @@ _INPUTVALIDATIONERROR = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='errorMessage', full_name='InputValidationError.errorMessage', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6600,
-  serialized_end=6664,
+  serialized_start=6948,
+  serialized_end=7012,
 )
 
 
@@ -2614,70 +2757,70 @@ _INSTRUMENT = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='billingAddress', full_name='Instrument.billingAddress', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='creditCard', full_name='Instrument.creditCard', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='carrierBilling', full_name='Instrument.carrierBilling', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='billingAddressSpec', full_name='Instrument.billingAddressSpec', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='instrumentFamily', full_name='Instrument.instrumentFamily', index=5,
       number=6, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='carrierBillingStatus', full_name='Instrument.carrierBillingStatus', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='displayTitle', full_name='Instrument.displayTitle', index=7,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6667,
-  serialized_end=6989,
+  serialized_start=7015,
+  serialized_end=7337,
 )
 
 
@@ -2694,28 +2837,28 @@ _PASSWORDPROMPT = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='forgotPasswordUrl', full_name='PasswordPrompt.forgotPasswordUrl', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6991,
-  serialized_end=7050,
+  serialized_start=7339,
+  serialized_end=7398,
 )
 
 
@@ -2732,56 +2875,56 @@ _CONTAINERMETADATA = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='nextPageUrl', full_name='ContainerMetadata.nextPageUrl', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='relevance', full_name='ContainerMetadata.relevance', index=2,
       number=3, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='estimatedResults', full_name='ContainerMetadata.estimatedResults', index=3,
       number=4, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='analyticsCookie', full_name='ContainerMetadata.analyticsCookie', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='ordered', full_name='ContainerMetadata.ordered', index=5,
       number=6, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7053,
-  serialized_end=7199,
+  serialized_start=7401,
+  serialized_end=7547,
 )
 
 
@@ -2798,28 +2941,28 @@ _DEBUGINFO_TIMING = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='timeInMs', full_name='DebugInfo.Timing.timeInMs', index=1,
       number=4, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7266,
-  serialized_end=7306,
+  serialized_start=7614,
+  serialized_end=7654,
 )
 
 _DEBUGINFO = _descriptor.Descriptor(
@@ -2835,28 +2978,28 @@ _DEBUGINFO = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='timing', full_name='DebugInfo.timing', index=1,
       number=2, type=10, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_DEBUGINFO_TIMING, ],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7201,
-  serialized_end=7306,
+  serialized_start=7549,
+  serialized_end=7654,
 )
 
 
@@ -2873,21 +3016,21 @@ _BULKDETAILSENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7308,
-  serialized_end=7347,
+  serialized_start=7656,
+  serialized_end=7695,
 )
 
 
@@ -2904,28 +3047,28 @@ _BULKDETAILSREQUEST = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='includeChildDocs', full_name='BulkDetailsRequest.includeChildDocs', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7349,
-  serialized_end=7410,
+  serialized_start=7697,
+  serialized_end=7758,
 )
 
 
@@ -2942,21 +3085,21 @@ _BULKDETAILSRESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7412,
-  serialized_end=7467,
+  serialized_start=7760,
+  serialized_end=7815,
 )
 
 
@@ -2973,56 +3116,84 @@ _DETAILSRESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='analyticsCookie', full_name='DetailsResponse.analyticsCookie', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='userReview', full_name='DetailsResponse.userReview', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='docV2', full_name='DetailsResponse.docV2', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='footerHtml', full_name='DetailsResponse.footerHtml', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='badge', full_name='DetailsResponse.badge', index=5,
       number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='features', full_name='DetailsResponse.features', index=6,
+      number=12, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='detailsStreamUrl', full_name='DetailsResponse.detailsStreamUrl', index=7,
+      number=13, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='userReviewUrl', full_name='DetailsResponse.userReviewUrl', index=8,
+      number=14, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='postAcquireDetailsStreamUrl', full_name='DetailsResponse.postAcquireDetailsStreamUrl', index=9,
+      number=17, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7470,
-  serialized_end=7630,
+  serialized_start=7818,
+  serialized_end=8093,
 )
 
 
@@ -3039,28 +3210,211 @@ _BADGE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='message', full_name='Badge.message', index=1,
+      name='image', full_name='Badge.image', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='badgeContainer1', full_name='Badge.badgeContainer1', index=2,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='Badge.message', index=3,
       number=11, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7632,
-  serialized_end=7671,
+  serialized_start=8095,
+  serialized_end=8200,
+)
+
+
+_BADGECONTAINER1 = _descriptor.Descriptor(
+  name='BadgeContainer1',
+  full_name='BadgeContainer1',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='badgeContainer2', full_name='BadgeContainer1.badgeContainer2', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=8202,
+  serialized_end=8262,
+)
+
+
+_BADGECONTAINER2 = _descriptor.Descriptor(
+  name='BadgeContainer2',
+  full_name='BadgeContainer2',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='badgeLinkContainer', full_name='BadgeContainer2.badgeLinkContainer', index=0,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=8264,
+  serialized_end=8330,
+)
+
+
+_BADGELINKCONTAINER = _descriptor.Descriptor(
+  name='BadgeLinkContainer',
+  full_name='BadgeLinkContainer',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='link', full_name='BadgeLinkContainer.link', index=0,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=8332,
+  serialized_end=8366,
+)
+
+
+_FEATURES = _descriptor.Descriptor(
+  name='Features',
+  full_name='Features',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='featurePresence', full_name='Features.featurePresence', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='featureRating', full_name='Features.featureRating', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=8368,
+  serialized_end=8446,
+)
+
+
+_FEATURE = _descriptor.Descriptor(
+  name='Feature',
+  full_name='Feature',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='label', full_name='Feature.label', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='Feature.value', index=1,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=8448,
+  serialized_end=8487,
 )
 
 
@@ -3077,133 +3431,133 @@ _DEVICECONFIGURATIONPROTO = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='keyboard', full_name='DeviceConfigurationProto.keyboard', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='navigation', full_name='DeviceConfigurationProto.navigation', index=2,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='screenLayout', full_name='DeviceConfigurationProto.screenLayout', index=3,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='hasHardKeyboard', full_name='DeviceConfigurationProto.hasHardKeyboard', index=4,
       number=5, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='hasFiveWayNavigation', full_name='DeviceConfigurationProto.hasFiveWayNavigation', index=5,
       number=6, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='screenDensity', full_name='DeviceConfigurationProto.screenDensity', index=6,
       number=7, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='glEsVersion', full_name='DeviceConfigurationProto.glEsVersion', index=7,
       number=8, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='systemSharedLibrary', full_name='DeviceConfigurationProto.systemSharedLibrary', index=8,
       number=9, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='systemAvailableFeature', full_name='DeviceConfigurationProto.systemAvailableFeature', index=9,
       number=10, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='nativePlatform', full_name='DeviceConfigurationProto.nativePlatform', index=10,
       number=11, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='screenWidth', full_name='DeviceConfigurationProto.screenWidth', index=11,
       number=12, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='screenHeight', full_name='DeviceConfigurationProto.screenHeight', index=12,
       number=13, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='systemSupportedLocale', full_name='DeviceConfigurationProto.systemSupportedLocale', index=13,
       number=14, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='glExtension', full_name='DeviceConfigurationProto.glExtension', index=14,
       number=15, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='deviceClass', full_name='DeviceConfigurationProto.deviceClass', index=15,
       number=16, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='maxApkDownloadSizeMb', full_name='DeviceConfigurationProto.maxApkDownloadSizeMb', index=16,
       number=17, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7674,
-  serialized_end=8111,
+  serialized_start=8490,
+  serialized_end=8927,
 )
 
 
@@ -3220,140 +3574,140 @@ _DOCUMENT = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='fetchDocid', full_name='Document.fetchDocid', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='sampleDocid', full_name='Document.sampleDocid', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='title', full_name='Document.title', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='url', full_name='Document.url', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='snippet', full_name='Document.snippet', index=5,
       number=6, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='priceDeprecated', full_name='Document.priceDeprecated', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='availability', full_name='Document.availability', index=7,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='image', full_name='Document.image', index=8,
       number=10, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='child', full_name='Document.child', index=9,
       number=11, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='aggregateRating', full_name='Document.aggregateRating', index=10,
       number=13, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='offer', full_name='Document.offer', index=11,
       number=14, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='translatedSnippet', full_name='Document.translatedSnippet', index=12,
       number=15, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='documentVariant', full_name='Document.documentVariant', index=13,
       number=16, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='categoryId', full_name='Document.categoryId', index=14,
       number=17, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='decoration', full_name='Document.decoration', index=15,
       number=18, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='parent', full_name='Document.parent', index=16,
       number=19, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='privacyPolicyUrl', full_name='Document.privacyPolicyUrl', index=17,
       number=20, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8114,
-  serialized_end=8625,
+  serialized_start=8930,
+  serialized_end=9441,
 )
 
 
@@ -3370,84 +3724,84 @@ _DOCUMENTVARIANT = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='rule', full_name='DocumentVariant.rule', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='title', full_name='DocumentVariant.title', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='snippet', full_name='DocumentVariant.snippet', index=3,
       number=4, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='recentChanges', full_name='DocumentVariant.recentChanges', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='autoTranslation', full_name='DocumentVariant.autoTranslation', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='offer', full_name='DocumentVariant.offer', index=6,
       number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='channelId', full_name='DocumentVariant.channelId', index=7,
       number=9, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='child', full_name='DocumentVariant.child', index=8,
       number=10, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='decoration', full_name='DocumentVariant.decoration', index=9,
       number=11, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8628,
-  serialized_end=8885,
+  serialized_start=9444,
+  serialized_end=9701,
 )
 
 
@@ -3464,28 +3818,28 @@ _IMAGE_DIMENSION = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='height', full_name='Image.Dimension.height', index=1,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9126,
-  serialized_end=9168,
+  serialized_start=9971,
+  serialized_end=10013,
 )
 
 _IMAGE_CITATION = _descriptor.Descriptor(
@@ -3501,28 +3855,28 @@ _IMAGE_CITATION = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='url', full_name='Image.Citation.url', index=1,
       number=12, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9170,
-  serialized_end=9217,
+  serialized_start=10015,
+  serialized_end=10062,
 )
 
 _IMAGE = _descriptor.Descriptor(
@@ -3538,77 +3892,84 @@ _IMAGE = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='dimension', full_name='Image.dimension', index=1,
       number=2, type=10, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='imageUrl', full_name='Image.imageUrl', index=2,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='altTextLocalized', full_name='Image.altTextLocalized', index=3,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='secureUrl', full_name='Image.secureUrl', index=4,
       number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='positionInSequence', full_name='Image.positionInSequence', index=5,
       number=8, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='supportsFifeUrlOptions', full_name='Image.supportsFifeUrlOptions', index=6,
       number=9, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='citation', full_name='Image.citation', index=7,
       number=10, type=10, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='color', full_name='Image.color', index=8,
       number=15, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='screenshotSetNumber', full_name='Image.screenshotSetNumber', index=9,
+      number=21, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_IMAGE_DIMENSION, _IMAGE_CITATION, ],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8888,
-  serialized_end=9217,
+  serialized_start=9704,
+  serialized_end=10062,
 )
 
 
@@ -3625,35 +3986,35 @@ _TRANSLATEDTEXT = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='sourceLocale', full_name='TranslatedText.sourceLocale', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='targetLocale', full_name='TranslatedText.targetLocale', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9219,
-  serialized_end=9293,
+  serialized_start=10064,
+  serialized_end=10138,
 )
 
 
@@ -3670,42 +4031,42 @@ _PLUSONEDATA = _descriptor.Descriptor(
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='total', full_name='PlusOneData.total', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='circlesTotal', full_name='PlusOneData.circlesTotal', index=2,
       number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='circlesPeople', full_name='PlusOneData.circlesPeople', index=3,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9295,
-  serialized_end=9400,
+  serialized_start=10140,
+  serialized_end=10245,
 )
 
 
@@ -3722,28 +4083,28 @@ _PLUSPERSON = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='profileImageUrl', full_name='PlusPerson.profileImageUrl', index=1,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9402,
-  serialized_end=9460,
+  serialized_start=10247,
+  serialized_end=10305,
 )
 
 
@@ -3760,35 +4121,35 @@ _ALBUMDETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='details', full_name='AlbumDetails.details', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='displayArtist', full_name='AlbumDetails.displayArtist', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9462,
-  serialized_end=9561,
+  serialized_start=10307,
+  serialized_end=10406,
 )
 
 
@@ -3805,168 +4166,189 @@ _APPDETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='majorVersionNumber', full_name='AppDetails.majorVersionNumber', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='versionCode', full_name='AppDetails.versionCode', index=2,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='versionString', full_name='AppDetails.versionString', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='title', full_name='AppDetails.title', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='appCategory', full_name='AppDetails.appCategory', index=5,
       number=7, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='contentRating', full_name='AppDetails.contentRating', index=6,
       number=8, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='installationSize', full_name='AppDetails.installationSize', index=7,
       number=9, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='permission', full_name='AppDetails.permission', index=8,
       number=10, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='developerEmail', full_name='AppDetails.developerEmail', index=9,
       number=11, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='developerWebsite', full_name='AppDetails.developerWebsite', index=10,
       number=12, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='numDownloads', full_name='AppDetails.numDownloads', index=11,
       number=13, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='packageName', full_name='AppDetails.packageName', index=12,
       number=14, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='recentChangesHtml', full_name='AppDetails.recentChangesHtml', index=13,
       number=15, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='uploadDate', full_name='AppDetails.uploadDate', index=14,
       number=16, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='file', full_name='AppDetails.file', index=15,
       number=17, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='appType', full_name='AppDetails.appType', index=16,
       number=18, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='unstable', full_name='AppDetails.unstable', index=17,
       number=21, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='containsAds', full_name='AppDetails.containsAds', index=18,
+      name='hasInstantLink', full_name='AppDetails.hasInstantLink', index=18,
+      number=24, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='containsAds', full_name='AppDetails.containsAds', index=19,
       number=30, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='dependencies', full_name='AppDetails.dependencies', index=19,
+      name='dependencies', full_name='AppDetails.dependencies', index=20,
       number=34, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='testingProgramInfo', full_name='AppDetails.testingProgramInfo', index=20,
+      name='testingProgramInfo', full_name='AppDetails.testingProgramInfo', index=21,
       number=35, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='earlyAccessInfo', full_name='AppDetails.earlyAccessInfo', index=21,
+      name='earlyAccessInfo', full_name='AppDetails.earlyAccessInfo', index=22,
       number=36, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='instantLink', full_name='AppDetails.instantLink', index=23,
+      number=43, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='developerAddress', full_name='AppDetails.developerAddress', index=24,
+      number=45, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9564,
-  serialized_end=10130,
+  serialized_start=10409,
+  serialized_end=11046,
 )
 
 
@@ -3983,42 +4365,42 @@ _DEPENDENCIES = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='unknown2', full_name='Dependencies.unknown2', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='dependency', full_name='Dependencies.dependency', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='unknown3', full_name='Dependencies.unknown3', index=3,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10132,
-  serialized_end=10233,
+  serialized_start=11048,
+  serialized_end=11149,
 )
 
 
@@ -4035,35 +4417,35 @@ _DEPENDENCY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='version', full_name='Dependency.version', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='unknown4', full_name='Dependency.unknown4', index=2,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10235,
-  serialized_end=10303,
+  serialized_start=11151,
+  serialized_end=11219,
 )
 
 
@@ -4080,35 +4462,35 @@ _TESTINGPROGRAMINFO = _descriptor.Descriptor(
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='subscribed1', full_name='TestingProgramInfo.subscribed1', index=1,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='testingProgramEmail', full_name='TestingProgramInfo.testingProgramEmail', index=2,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10305,
-  serialized_end=10395,
+  serialized_start=11221,
+  serialized_end=11311,
 )
 
 
@@ -4125,21 +4507,21 @@ _EARLYACCESSINFO = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10397,
-  serialized_end=10429,
+  serialized_start=11313,
+  serialized_end=11345,
 )
 
 
@@ -4156,35 +4538,35 @@ _ARTISTDETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='name', full_name='ArtistDetails.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='externalLinks', full_name='ArtistDetails.externalLinks', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10431,
-  serialized_end=10525,
+  serialized_start=11347,
+  serialized_end=11441,
 )
 
 
@@ -4201,35 +4583,35 @@ _ARTISTEXTERNALLINKS = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='googlePlusProfileUrl', full_name='ArtistExternalLinks.googlePlusProfileUrl', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='youtubeChannelUrl', full_name='ArtistExternalLinks.youtubeChannelUrl', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10527,
-  serialized_end=10625,
+  serialized_start=11443,
+  serialized_end=11541,
 )
 
 
@@ -4246,91 +4628,91 @@ _DOCUMENTDETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='albumDetails', full_name='DocumentDetails.albumDetails', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='artistDetails', full_name='DocumentDetails.artistDetails', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='songDetails', full_name='DocumentDetails.songDetails', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='bookDetails', full_name='DocumentDetails.bookDetails', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='videoDetails', full_name='DocumentDetails.videoDetails', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='subscriptionDetails', full_name='DocumentDetails.subscriptionDetails', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='magazineDetails', full_name='DocumentDetails.magazineDetails', index=7,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='tvShowDetails', full_name='DocumentDetails.tvShowDetails', index=8,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='tvSeasonDetails', full_name='DocumentDetails.tvSeasonDetails', index=9,
       number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='tvEpisodeDetails', full_name='DocumentDetails.tvEpisodeDetails', index=10,
       number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10628,
-  serialized_end=11082,
+  serialized_start=11544,
+  serialized_end=11998,
 )
 
 
@@ -4347,35 +4729,35 @@ _FILEMETADATA = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='versionCode', full_name='FileMetadata.versionCode', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='size', full_name='FileMetadata.size', index=2,
       number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11084,
-  serialized_end=11151,
+  serialized_start=12000,
+  serialized_end=12067,
 )
 
 
@@ -4392,42 +4774,42 @@ _MAGAZINEDETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='deviceAvailabilityDescriptionHtml', full_name='MagazineDetails.deviceAvailabilityDescriptionHtml', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='psvDescription', full_name='MagazineDetails.psvDescription', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='deliveryFrequencyDescription', full_name='MagazineDetails.deliveryFrequencyDescription', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11154,
-  serialized_end=11302,
+  serialized_start=12070,
+  serialized_end=12218,
 )
 
 
@@ -4444,70 +4826,70 @@ _MUSICDETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='durationSec', full_name='MusicDetails.durationSec', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='originalReleaseDate', full_name='MusicDetails.originalReleaseDate', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='label', full_name='MusicDetails.label', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='artist', full_name='MusicDetails.artist', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='genre', full_name='MusicDetails.genre', index=5,
       number=6, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='releaseDate', full_name='MusicDetails.releaseDate', index=6,
       number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='releaseType', full_name='MusicDetails.releaseType', index=7,
       number=8, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11305,
-  serialized_end=11492,
+  serialized_start=12221,
+  serialized_end=12408,
 )
 
 
@@ -4524,56 +4906,56 @@ _SONGDETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='details', full_name='SongDetails.details', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='albumName', full_name='SongDetails.albumName', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='trackNumber', full_name='SongDetails.trackNumber', index=3,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='previewUrl', full_name='SongDetails.previewUrl', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='displayArtist', full_name='SongDetails.displayArtist', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11495,
-  serialized_end=11653,
+  serialized_start=12411,
+  serialized_end=12569,
 )
 
 
@@ -4590,21 +4972,21 @@ _SUBSCRIPTIONDETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11655,
-  serialized_end=11704,
+  serialized_start=12571,
+  serialized_end=12620,
 )
 
 
@@ -4621,49 +5003,49 @@ _TRAILER = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='title', full_name='Trailer.title', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='thumbnailUrl', full_name='Trailer.thumbnailUrl', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='watchUrl', full_name='Trailer.watchUrl', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='duration', full_name='Trailer.duration', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11706,
-  serialized_end=11807,
+  serialized_start=12622,
+  serialized_end=12723,
 )
 
 
@@ -4680,35 +5062,35 @@ _TVEPISODEDETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='episodeIndex', full_name='TvEpisodeDetails.episodeIndex', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='releaseDate', full_name='TvEpisodeDetails.releaseDate', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11809,
-  serialized_end=11896,
+  serialized_start=12725,
+  serialized_end=12812,
 )
 
 
@@ -4725,42 +5107,42 @@ _TVSEASONDETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='seasonIndex', full_name='TvSeasonDetails.seasonIndex', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='releaseDate', full_name='TvSeasonDetails.releaseDate', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='broadcaster', full_name='TvSeasonDetails.broadcaster', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11898,
-  serialized_end=12004,
+  serialized_start=12814,
+  serialized_end=12920,
 )
 
 
@@ -4777,42 +5159,42 @@ _TVSHOWDETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='startYear', full_name='TvShowDetails.startYear', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='endYear', full_name='TvShowDetails.endYear', index=2,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='broadcaster', full_name='TvShowDetails.broadcaster', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12006,
-  serialized_end=12099,
+  serialized_start=12922,
+  serialized_end=13015,
 )
 
 
@@ -4829,35 +5211,35 @@ _VIDEOCREDIT = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='credit', full_name='VideoCredit.credit', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='name', full_name='VideoCredit.name', index=2,
       number=3, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12101,
-  serialized_end=12164,
+  serialized_start=13017,
+  serialized_end=13080,
 )
 
 
@@ -4874,77 +5256,77 @@ _VIDEODETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='duration', full_name='VideoDetails.duration', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='releaseDate', full_name='VideoDetails.releaseDate', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='contentRating', full_name='VideoDetails.contentRating', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='likes', full_name='VideoDetails.likes', index=4,
       number=5, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='dislikes', full_name='VideoDetails.dislikes', index=5,
       number=6, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='genre', full_name='VideoDetails.genre', index=6,
       number=7, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='trailer', full_name='VideoDetails.trailer', index=7,
       number=8, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='rentalTerm', full_name='VideoDetails.rentalTerm', index=8,
       number=9, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12167,
-  serialized_end=12386,
+  serialized_start=13083,
+  serialized_end=13302,
 )
 
 
@@ -4961,28 +5343,28 @@ _VIDEORENTALTERM_TERM = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='body', full_name='VideoRentalTerm.Term.body', index=1,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12513,
-  serialized_end=12549,
+  serialized_start=13429,
+  serialized_end=13465,
 )
 
 _VIDEORENTALTERM = _descriptor.Descriptor(
@@ -4998,42 +5380,42 @@ _VIDEORENTALTERM = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='offerAbbreviation', full_name='VideoRentalTerm.offerAbbreviation', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='rentalHeader', full_name='VideoRentalTerm.rentalHeader', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='term', full_name='VideoRentalTerm.term', index=3,
       number=4, type=10, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_VIDEORENTALTERM_TERM, ],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12389,
-  serialized_end=12549,
+  serialized_start=13305,
+  serialized_end=13465,
 )
 
 
@@ -5050,91 +5432,91 @@ _BUCKET = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='multiCorpus', full_name='Bucket.multiCorpus', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='title', full_name='Bucket.title', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='iconUrl', full_name='Bucket.iconUrl', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='fullContentsUrl', full_name='Bucket.fullContentsUrl', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='relevance', full_name='Bucket.relevance', index=5,
       number=6, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='estimatedResults', full_name='Bucket.estimatedResults', index=6,
       number=7, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='analyticsCookie', full_name='Bucket.analyticsCookie', index=7,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='fullContentsListUrl', full_name='Bucket.fullContentsListUrl', index=8,
       number=9, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='nextPageUrl', full_name='Bucket.nextPageUrl', index=9,
       number=10, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='ordered', full_name='Bucket.ordered', index=10,
       number=11, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12552,
-  serialized_end=12801,
+  serialized_start=13468,
+  serialized_end=13717,
 )
 
 
@@ -5151,28 +5533,28 @@ _LISTRESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='cluster', full_name='ListResponse.cluster', index=1,
+      name='doc', full_name='ListResponse.doc', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12803,
-  serialized_end=12875,
+  serialized_start=13719,
+  serialized_end=13779,
 )
 
 
@@ -5189,133 +5571,133 @@ _DOCV1 = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='docid', full_name='DocV1.docid', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='detailsUrl', full_name='DocV1.detailsUrl', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='reviewsUrl', full_name='DocV1.reviewsUrl', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='relatedListUrl', full_name='DocV1.relatedListUrl', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='moreByListUrl', full_name='DocV1.moreByListUrl', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='shareUrl', full_name='DocV1.shareUrl', index=6,
       number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='creator', full_name='DocV1.creator', index=7,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='details', full_name='DocV1.details', index=8,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='descriptionHtml', full_name='DocV1.descriptionHtml', index=9,
       number=10, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='relatedBrowseUrl', full_name='DocV1.relatedBrowseUrl', index=10,
       number=11, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='moreByBrowseUrl', full_name='DocV1.moreByBrowseUrl', index=11,
       number=12, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='relatedHeader', full_name='DocV1.relatedHeader', index=12,
       number=13, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='moreByHeader', full_name='DocV1.moreByHeader', index=13,
       number=14, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='title', full_name='DocV1.title', index=14,
       number=15, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='plusOneData', full_name='DocV1.plusOneData', index=15,
       number=16, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='warningMessage', full_name='DocV1.warningMessage', index=16,
       number=17, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12878,
-  serialized_end=13282,
+  serialized_start=13782,
+  serialized_end=14186,
 )
 
 
@@ -5332,175 +5714,203 @@ _DOCV2 = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='backendDocid', full_name='DocV2.backendDocid', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='docType', full_name='DocV2.docType', index=2,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='backendId', full_name='DocV2.backendId', index=3,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='title', full_name='DocV2.title', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='creator', full_name='DocV2.creator', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='descriptionHtml', full_name='DocV2.descriptionHtml', index=6,
       number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='offer', full_name='DocV2.offer', index=7,
       number=8, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='availability', full_name='DocV2.availability', index=8,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='image', full_name='DocV2.image', index=9,
       number=10, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='child', full_name='DocV2.child', index=10,
       number=11, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='containerMetadata', full_name='DocV2.containerMetadata', index=11,
       number=12, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='details', full_name='DocV2.details', index=12,
       number=13, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='aggregateRating', full_name='DocV2.aggregateRating', index=13,
       number=14, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='relatedLinks', full_name='DocV2.relatedLinks', index=14,
       number=15, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='detailsUrl', full_name='DocV2.detailsUrl', index=15,
       number=16, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='shareUrl', full_name='DocV2.shareUrl', index=16,
       number=17, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='reviewsUrl', full_name='DocV2.reviewsUrl', index=17,
       number=18, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='backendUrl', full_name='DocV2.backendUrl', index=18,
       number=19, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='purchaseDetailsUrl', full_name='DocV2.purchaseDetailsUrl', index=19,
       number=20, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='detailsReusable', full_name='DocV2.detailsReusable', index=20,
       number=21, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='subtitle', full_name='DocV2.subtitle', index=21,
       number=22, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='unknown25', full_name='DocV2.unknown25', index=22,
+      name='unknownCategoryContainer', full_name='DocV2.unknownCategoryContainer', index=22,
+      number=24, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='unknown25', full_name='DocV2.unknown25', index=23,
       number=25, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='descriptionShort', full_name='DocV2.descriptionShort', index=24,
+      number=27, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='reviewSnippetsUrl', full_name='DocV2.reviewSnippetsUrl', index=25,
+      number=31, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='reviewQuestionsUrl', full_name='DocV2.reviewQuestionsUrl', index=26,
+      number=34, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13285,
-  serialized_end=13870,
+  serialized_start=14189,
+  serialized_end=14916,
 )
 
 
@@ -5517,21 +5927,21 @@ _UNKNOWN25 = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13872,
-  serialized_end=13913,
+  serialized_start=14918,
+  serialized_end=14959,
 )
 
 
@@ -5548,28 +5958,28 @@ _UNKNOWN25ITEM = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='container', full_name='Unknown25Item.container', index=1,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13915,
-  serialized_end=13985,
+  serialized_start=14961,
+  serialized_end=15031,
 )
 
 
@@ -5586,21 +5996,21 @@ _UNKNOWN25CONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13987,
-  serialized_end=14022,
+  serialized_start=15033,
+  serialized_end=15068,
 )
 
 
@@ -5617,56 +6027,56 @@ _RELATEDLINKS = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='privacyPolicyUrl', full_name='RelatedLinks.privacyPolicyUrl', index=1,
       number=18, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='youMightAlsoLike', full_name='RelatedLinks.youMightAlsoLike', index=2,
       number=24, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='rated', full_name='RelatedLinks.rated', index=3,
       number=29, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='relatedLinks', full_name='RelatedLinks.relatedLinks', index=4,
       number=34, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='categoryInfo', full_name='RelatedLinks.categoryInfo', index=5,
       number=53, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14025,
-  serialized_end=14242,
+  serialized_start=15071,
+  serialized_end=15288,
 )
 
 
@@ -5683,21 +6093,21 @@ _RELATEDLINKSUNKNOWN1 = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14244,
-  serialized_end=14307,
+  serialized_start=15290,
+  serialized_end=15353,
 )
 
 
@@ -5709,26 +6119,33 @@ _RELATEDLINKSUNKNOWN2 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='nextPageUrl', full_name='RelatedLinksUnknown2.nextPageUrl', index=0,
+      name='homeUrl', full_name='RelatedLinksUnknown2.homeUrl', index=0,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='nextPageUrl', full_name='RelatedLinksUnknown2.nextPageUrl', index=1,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14309,
-  serialized_end=14352,
+  serialized_start=15355,
+  serialized_end=15415,
 )
 
 
@@ -5745,35 +6162,35 @@ _RATED = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='image', full_name='Rated.image', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='learnMoreHtmlLink', full_name='Rated.learnMoreHtmlLink', index=2,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14354,
-  serialized_end=14426,
+  serialized_start=15417,
+  serialized_end=15489,
 )
 
 
@@ -5790,35 +6207,35 @@ _RELATEDLINK = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='url1', full_name='RelatedLink.url1', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='url2', full_name='RelatedLink.url2', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14428,
-  serialized_end=14484,
+  serialized_start=15491,
+  serialized_end=15547,
 )
 
 
@@ -5835,28 +6252,28 @@ _CATEGORYINFO = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='appCategory', full_name='CategoryInfo.appCategory', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14486,
-  serialized_end=14538,
+  serialized_start=15549,
+  serialized_end=15601,
 )
 
 
@@ -5873,56 +6290,56 @@ _ENCRYPTEDSUBSCRIBERINFO = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='encryptedKey', full_name='EncryptedSubscriberInfo.encryptedKey', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='signature', full_name='EncryptedSubscriberInfo.signature', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='initVector', full_name='EncryptedSubscriberInfo.initVector', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='googleKeyVersion', full_name='EncryptedSubscriberInfo.googleKeyVersion', index=4,
       number=5, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='carrierKeyVersion', full_name='EncryptedSubscriberInfo.carrierKeyVersion', index=5,
       number=6, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14541,
-  serialized_end=14694,
+  serialized_start=15604,
+  serialized_end=15757,
 )
 
 
@@ -5939,42 +6356,42 @@ _AVAILABILITY_PERDEVICEAVAILABILITYRESTRICTION = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='deviceRestriction', full_name='Availability.PerDeviceAvailabilityRestriction.deviceRestriction', index=1,
       number=11, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='channelId', full_name='Availability.PerDeviceAvailabilityRestriction.channelId', index=2,
       number=12, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='filterInfo', full_name='Availability.PerDeviceAvailabilityRestriction.filterInfo', index=3,
       number=15, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15000,
-  serialized_end=15142,
+  serialized_start=16063,
+  serialized_end=16205,
 )
 
 _AVAILABILITY = _descriptor.Descriptor(
@@ -5990,70 +6407,70 @@ _AVAILABILITY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='offerType', full_name='Availability.offerType', index=1,
       number=6, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='rule', full_name='Availability.rule', index=2,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='perdeviceavailabilityrestriction', full_name='Availability.perdeviceavailabilityrestriction', index=3,
       number=9, type=10, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='availableIfOwned', full_name='Availability.availableIfOwned', index=4,
       number=13, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='install', full_name='Availability.install', index=5,
       number=14, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='filterInfo', full_name='Availability.filterInfo', index=6,
       number=16, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='ownershipInfo', full_name='Availability.ownershipInfo', index=7,
       number=17, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_AVAILABILITY_PERDEVICEAVAILABILITYRESTRICTION, ],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14697,
-  serialized_end=15142,
+  serialized_start=15760,
+  serialized_end=16205,
 )
 
 
@@ -6070,21 +6487,21 @@ _FILTEREVALUATIONINFO = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15144,
-  serialized_end=15207,
+  serialized_start=16207,
+  serialized_end=16270,
 )
 
 
@@ -6101,91 +6518,91 @@ _RULE = _descriptor.Descriptor(
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='operator', full_name='Rule.operator', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='key', full_name='Rule.key', index=2,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='stringArg', full_name='Rule.stringArg', index=3,
       number=4, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='longArg', full_name='Rule.longArg', index=4,
       number=5, type=3, cpp_type=2, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='doubleArg', full_name='Rule.doubleArg', index=5,
       number=6, type=1, cpp_type=5, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='subrule', full_name='Rule.subrule', index=6,
       number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='responseCode', full_name='Rule.responseCode', index=7,
       number=8, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='comment', full_name='Rule.comment', index=8,
       number=9, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='stringArgHash', full_name='Rule.stringArgHash', index=9,
       number=10, type=6, cpp_type=4, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='constArg', full_name='Rule.constArg', index=10,
       number=11, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15210,
-  serialized_end=15422,
+  serialized_start=16273,
+  serialized_end=16485,
 )
 
 
@@ -6202,49 +6619,49 @@ _RULEEVALUATION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='actualStringValue', full_name='RuleEvaluation.actualStringValue', index=1,
       number=2, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='actualLongValue', full_name='RuleEvaluation.actualLongValue', index=2,
       number=3, type=3, cpp_type=2, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='actualBoolValue', full_name='RuleEvaluation.actualBoolValue', index=3,
       number=4, type=8, cpp_type=7, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='actualDoubleValue', full_name='RuleEvaluation.actualDoubleValue', index=4,
       number=5, type=1, cpp_type=5, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15425,
-  serialized_end=15566,
+  serialized_start=16488,
+  serialized_end=16629,
 )
 
 
@@ -6261,35 +6678,35 @@ _LIBRARYAPPDETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='refundTimeoutTimestampMsec', full_name='LibraryAppDetails.refundTimeoutTimestampMsec', index=1,
       number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='postDeliveryRefundWindowMsec', full_name='LibraryAppDetails.postDeliveryRefundWindowMsec', index=2,
       number=4, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15568,
-  serialized_end=15686,
+  serialized_start=16631,
+  serialized_end=16749,
 )
 
 
@@ -6306,28 +6723,28 @@ _LIBRARYINAPPDETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='signature', full_name='LibraryInAppDetails.signature', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15688,
-  serialized_end=15756,
+  serialized_start=16751,
+  serialized_end=16819,
 )
 
 
@@ -6344,63 +6761,63 @@ _LIBRARYMUTATION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='offerType', full_name='LibraryMutation.offerType', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='documentHash', full_name='LibraryMutation.documentHash', index=2,
       number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='deleted', full_name='LibraryMutation.deleted', index=3,
       number=4, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='appDetails', full_name='LibraryMutation.appDetails', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='subscriptionDetails', full_name='LibraryMutation.subscriptionDetails', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='inAppDetails', full_name='LibraryMutation.inAppDetails', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15759,
-  serialized_end=15999,
+  serialized_start=16822,
+  serialized_end=17062,
 )
 
 
@@ -6417,42 +6834,42 @@ _LIBRARYSUBSCRIPTIONDETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='validUntilTimestampMsec', full_name='LibrarySubscriptionDetails.validUntilTimestampMsec', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='autoRenewing', full_name='LibrarySubscriptionDetails.autoRenewing', index=2,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='trialUntilTimestampMsec', full_name='LibrarySubscriptionDetails.trialUntilTimestampMsec', index=3,
       number=4, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16002,
-  serialized_end=16151,
+  serialized_start=17065,
+  serialized_end=17214,
 )
 
 
@@ -6469,56 +6886,56 @@ _LIBRARYUPDATE = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='corpus', full_name='LibraryUpdate.corpus', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='serverToken', full_name='LibraryUpdate.serverToken', index=2,
       number=3, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='mutation', full_name='LibraryUpdate.mutation', index=3,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='hasMore', full_name='LibraryUpdate.hasMore', index=4,
       number=5, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='libraryId', full_name='LibraryUpdate.libraryId', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16154,
-  serialized_end=16294,
+  serialized_start=17217,
+  serialized_end=17357,
 )
 
 
@@ -6535,28 +6952,28 @@ _ANDROIDAPPNOTIFICATIONDATA = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='assetId', full_name='AndroidAppNotificationData.assetId', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16296,
-  serialized_end=16362,
+  serialized_start=17359,
+  serialized_end=17425,
 )
 
 
@@ -6573,28 +6990,28 @@ _INAPPNOTIFICATIONDATA = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='inAppNotificationId', full_name='InAppNotificationData.inAppNotificationId', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16364,
-  serialized_end=16441,
+  serialized_start=17427,
+  serialized_end=17504,
 )
 
 
@@ -6611,21 +7028,21 @@ _LIBRARYDIRTYDATA = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16443,
-  serialized_end=16478,
+  serialized_start=17506,
+  serialized_end=17541,
 )
 
 
@@ -6642,112 +7059,112 @@ _NOTIFICATION = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='timestamp', full_name='Notification.timestamp', index=1,
       number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='docid', full_name='Notification.docid', index=2,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='docTitle', full_name='Notification.docTitle', index=3,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='userEmail', full_name='Notification.userEmail', index=4,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='appData', full_name='Notification.appData', index=5,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='appDeliveryData', full_name='Notification.appDeliveryData', index=6,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='purchaseRemovalData', full_name='Notification.purchaseRemovalData', index=7,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='userNotificationData', full_name='Notification.userNotificationData', index=8,
       number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='inAppNotificationData', full_name='Notification.inAppNotificationData', index=9,
       number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='purchaseDeclinedData', full_name='Notification.purchaseDeclinedData', index=10,
       number=12, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='notificationId', full_name='Notification.notificationId', index=11,
       number=13, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='libraryUpdate', full_name='Notification.libraryUpdate', index=12,
       number=14, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='libraryDirtyData', full_name='Notification.libraryDirtyData', index=13,
       number=15, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16481,
-  serialized_end=17016,
+  serialized_start=17544,
+  serialized_end=18079,
 )
 
 
@@ -6764,28 +7181,28 @@ _PURCHASEDECLINEDDATA = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='showNotification', full_name='PurchaseDeclinedData.showNotification', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17018,
-  serialized_end=17082,
+  serialized_start=18081,
+  serialized_end=18145,
 )
 
 
@@ -6802,21 +7219,21 @@ _PURCHASEREMOVALDATA = _descriptor.Descriptor(
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17084,
-  serialized_end=17124,
+  serialized_start=18147,
+  serialized_end=18187,
 )
 
 
@@ -6833,49 +7250,49 @@ _USERNOTIFICATIONDATA = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='notificationText', full_name='UserNotificationData.notificationText', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='tickerText', full_name='UserNotificationData.tickerText', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='dialogTitle', full_name='UserNotificationData.dialogTitle', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='dialogText', full_name='UserNotificationData.dialogText', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17127,
-  serialized_end=17263,
+  serialized_start=18190,
+  serialized_end=18326,
 )
 
 
@@ -6892,98 +7309,532 @@ _AGGREGATERATING = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='starRating', full_name='AggregateRating.starRating', index=1,
       number=2, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='ratingsCount', full_name='AggregateRating.ratingsCount', index=2,
       number=3, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='oneStarRatings', full_name='AggregateRating.oneStarRatings', index=3,
       number=4, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='twoStarRatings', full_name='AggregateRating.twoStarRatings', index=4,
       number=5, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='threeStarRatings', full_name='AggregateRating.threeStarRatings', index=5,
       number=6, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='fourStarRatings', full_name='AggregateRating.fourStarRatings', index=6,
       number=7, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='fiveStarRatings', full_name='AggregateRating.fiveStarRatings', index=7,
       number=8, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='thumbsUpCount', full_name='AggregateRating.thumbsUpCount', index=8,
       number=9, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='thumbsDownCount', full_name='AggregateRating.thumbsDownCount', index=9,
       number=10, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='commentCount', full_name='AggregateRating.commentCount', index=10,
       number=11, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='bayesianMeanRating', full_name='AggregateRating.bayesianMeanRating', index=11,
       number=12, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17266,
-  serialized_end=17561,
+  serialized_start=18329,
+  serialized_end=18624,
+)
+
+
+_ACCEPTTOSRESPONSE = _descriptor.Descriptor(
+  name='AcceptTosResponse',
+  full_name='AcceptTosResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=18626,
+  serialized_end=18645,
+)
+
+
+_CARRIERBILLINGCONFIG = _descriptor.Descriptor(
+  name='CarrierBillingConfig',
+  full_name='CarrierBillingConfig',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='CarrierBillingConfig.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='name', full_name='CarrierBillingConfig.name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='apiVersion', full_name='CarrierBillingConfig.apiVersion', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='provisioningUrl', full_name='CarrierBillingConfig.provisioningUrl', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='credentialsUrl', full_name='CarrierBillingConfig.credentialsUrl', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='tosRequired', full_name='CarrierBillingConfig.tosRequired', index=5,
+      number=6, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='perTransactionCredentialsRequired', full_name='CarrierBillingConfig.perTransactionCredentialsRequired', index=6,
+      number=7, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='sendSubscriberIdWithCarrierBillingRequests', full_name='CarrierBillingConfig.sendSubscriberIdWithCarrierBillingRequests', index=7,
+      number=8, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=18648,
+  serialized_end=18881,
+)
+
+
+_BILLINGCONFIG = _descriptor.Descriptor(
+  name='BillingConfig',
+  full_name='BillingConfig',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='carrierBillingConfig', full_name='BillingConfig.carrierBillingConfig', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='maxIabApiVersion', full_name='BillingConfig.maxIabApiVersion', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=18883,
+  serialized_end=18977,
+)
+
+
+_CORPUSMETADATA = _descriptor.Descriptor(
+  name='CorpusMetadata',
+  full_name='CorpusMetadata',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='backend', full_name='CorpusMetadata.backend', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='name', full_name='CorpusMetadata.name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='landingUrl', full_name='CorpusMetadata.landingUrl', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='libraryName', full_name='CorpusMetadata.libraryName', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='recsWidgetUrl', full_name='CorpusMetadata.recsWidgetUrl', index=4,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='shopName', full_name='CorpusMetadata.shopName', index=5,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=18980,
+  serialized_end=19109,
+)
+
+
+_EXPERIMENTS = _descriptor.Descriptor(
+  name='Experiments',
+  full_name='Experiments',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='experimentId', full_name='Experiments.experimentId', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=19111,
+  serialized_end=19146,
+)
+
+
+_SELFUPDATECONFIG = _descriptor.Descriptor(
+  name='SelfUpdateConfig',
+  full_name='SelfUpdateConfig',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='latestClientVersionCode', full_name='SelfUpdateConfig.latestClientVersionCode', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=19148,
+  serialized_end=19199,
+)
+
+
+_TOCRESPONSE = _descriptor.Descriptor(
+  name='TocResponse',
+  full_name='TocResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='corpus', full_name='TocResponse.corpus', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='tosVersionDeprecated', full_name='TocResponse.tosVersionDeprecated', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='tosContent', full_name='TocResponse.tosContent', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='homeUrl', full_name='TocResponse.homeUrl', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='experiments', full_name='TocResponse.experiments', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='tosCheckboxTextMarketingEmails', full_name='TocResponse.tosCheckboxTextMarketingEmails', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='tosToken', full_name='TocResponse.tosToken', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='iconOverrideUrl', full_name='TocResponse.iconOverrideUrl', index=7,
+      number=9, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='selfUpdateConfig', full_name='TocResponse.selfUpdateConfig', index=8,
+      number=10, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='requiresUploadDeviceConfig', full_name='TocResponse.requiresUploadDeviceConfig', index=9,
+      number=11, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='billingConfig', full_name='TocResponse.billingConfig', index=10,
+      number=12, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='recsWidgetUrl', full_name='TocResponse.recsWidgetUrl', index=11,
+      number=13, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='socialHomeUrl', full_name='TocResponse.socialHomeUrl', index=12,
+      number=15, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='ageVerificationRequired', full_name='TocResponse.ageVerificationRequired', index=13,
+      number=16, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='gplusSignupEnabled', full_name='TocResponse.gplusSignupEnabled', index=14,
+      number=17, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='redeemEnabled', full_name='TocResponse.redeemEnabled', index=15,
+      number=18, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='helpUrl', full_name='TocResponse.helpUrl', index=16,
+      number=19, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='themeId', full_name='TocResponse.themeId', index=17,
+      number=20, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='entertainmentHomeUrl', full_name='TocResponse.entertainmentHomeUrl', index=18,
+      number=21, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='cookie', full_name='TocResponse.cookie', index=19,
+      number=22, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=19202,
+  serialized_end=19763,
 )
 
 
@@ -7000,112 +7851,133 @@ _PAYLOAD = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='detailsResponse', full_name='Payload.detailsResponse', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='reviewResponse', full_name='Payload.reviewResponse', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='buyResponse', full_name='Payload.buyResponse', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='searchResponse', full_name='Payload.searchResponse', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='browseResponse', full_name='Payload.browseResponse', index=5,
+      name='tocResponse', full_name='Payload.tocResponse', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='browseResponse', full_name='Payload.browseResponse', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='purchaseStatusResponse', full_name='Payload.purchaseStatusResponse', index=6,
+      name='purchaseStatusResponse', full_name='Payload.purchaseStatusResponse', index=7,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='logResponse', full_name='Payload.logResponse', index=7,
+      name='logResponse', full_name='Payload.logResponse', index=8,
       number=10, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='bulkDetailsResponse', full_name='Payload.bulkDetailsResponse', index=8,
+      name='flagContentResponse', full_name='Payload.flagContentResponse', index=9,
+      number=13, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='bulkDetailsResponse', full_name='Payload.bulkDetailsResponse', index=10,
       number=19, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='deliveryResponse', full_name='Payload.deliveryResponse', index=9,
+      name='deliveryResponse', full_name='Payload.deliveryResponse', index=11,
       number=21, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='uploadDeviceConfigResponse', full_name='Payload.uploadDeviceConfigResponse', index=10,
-      number=25, type=11, cpp_type=10, label=1,
+      name='acceptTosResponse', full_name='Payload.acceptTosResponse', index=12,
+      number=22, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='androidCheckinResponse', full_name='Payload.androidCheckinResponse', index=11,
+      name='androidCheckinResponse', full_name='Payload.androidCheckinResponse', index=13,
       number=26, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='searchSuggestResponse', full_name='Payload.searchSuggestResponse', index=12,
+      name='uploadDeviceConfigResponse', full_name='Payload.uploadDeviceConfigResponse', index=14,
+      number=28, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='searchSuggestResponse', full_name='Payload.searchSuggestResponse', index=15,
       number=40, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='testingProgramResponse', full_name='Payload.testingProgramResponse', index=13,
+      name='testingProgramResponse', full_name='Payload.testingProgramResponse', index=16,
       number=80, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17564,
-  serialized_end=18219,
+  serialized_start=19766,
+  serialized_end=20532,
 )
 
 
@@ -7122,49 +7994,187 @@ _PREFETCH = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='response', full_name='PreFetch.response', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='etag', full_name='PreFetch.etag', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='ttl', full_name='PreFetch.ttl', index=3,
       number=4, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='softTtl', full_name='PreFetch.softTtl', index=4,
       number=5, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18221,
-  serialized_end=18324,
+  serialized_start=20534,
+  serialized_end=20637,
+)
+
+
+_SERVERMETADATA = _descriptor.Descriptor(
+  name='ServerMetadata',
+  full_name='ServerMetadata',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='latencyMillis', full_name='ServerMetadata.latencyMillis', index=0,
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=20639,
+  serialized_end=20678,
+)
+
+
+_TARGETS = _descriptor.Descriptor(
+  name='Targets',
+  full_name='Targets',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='targetId', full_name='Targets.targetId', index=0,
+      number=1, type=3, cpp_type=2, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='signature', full_name='Targets.signature', index=1,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=20680,
+  serialized_end=20726,
+)
+
+
+_SERVERCOOKIE = _descriptor.Descriptor(
+  name='ServerCookie',
+  full_name='ServerCookie',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='type', full_name='ServerCookie.type', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='token', full_name='ServerCookie.token', index=1,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=20728,
+  serialized_end=20771,
+)
+
+
+_SERVERCOOKIES = _descriptor.Descriptor(
+  name='ServerCookies',
+  full_name='ServerCookies',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='serverCookie', full_name='ServerCookies.serverCookie', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=20773,
+  serialized_end=20825,
 )
 
 
@@ -7181,42 +8191,163 @@ _RESPONSEWRAPPER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='commands', full_name='ResponseWrapper.commands', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='preFetch', full_name='ResponseWrapper.preFetch', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='notification', full_name='ResponseWrapper.notification', index=3,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='serverMetadata', full_name='ResponseWrapper.serverMetadata', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='targets', full_name='ResponseWrapper.targets', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='serverCookies', full_name='ResponseWrapper.serverCookies', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='serverLogsCookie', full_name='ResponseWrapper.serverLogsCookie', index=7,
+      number=9, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18327,
-  serialized_end=18472,
+  serialized_start=20828,
+  serialized_end=21106,
+)
+
+
+_RESPONSEWRAPPERAPI = _descriptor.Descriptor(
+  name='ResponseWrapperApi',
+  full_name='ResponseWrapperApi',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='payload', full_name='ResponseWrapperApi.payload', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=21108,
+  serialized_end=21158,
+)
+
+
+_PAYLOADAPI = _descriptor.Descriptor(
+  name='PayloadApi',
+  full_name='PayloadApi',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='userProfileResponse', full_name='PayloadApi.userProfileResponse', index=0,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=21160,
+  serialized_end=21223,
+)
+
+
+_USERPROFILERESPONSE = _descriptor.Descriptor(
+  name='UserProfileResponse',
+  full_name='UserProfileResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='userProfile', full_name='UserProfileResponse.userProfile', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=21225,
+  serialized_end=21281,
 )
 
 
@@ -7233,35 +8364,35 @@ _SERVERCOMMANDS = _descriptor.Descriptor(
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='displayErrorMessage', full_name='ServerCommands.displayErrorMessage', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='logErrorStacktrace', full_name='ServerCommands.logErrorStacktrace', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18474,
-  serialized_end=18567,
+  serialized_start=21283,
+  serialized_end=21376,
 )
 
 
@@ -7278,28 +8409,28 @@ _GETREVIEWSRESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='matchingCount', full_name='GetReviewsResponse.matchingCount', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18569,
-  serialized_end=18637,
+  serialized_start=21378,
+  serialized_end=21446,
 )
 
 
@@ -7316,289 +8447,230 @@ _REVIEW = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='url', full_name='Review.url', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='source', full_name='Review.source', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='documentVersion', full_name='Review.documentVersion', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='timestampMsec', full_name='Review.timestampMsec', index=4,
       number=5, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='starRating', full_name='Review.starRating', index=5,
       number=6, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='title', full_name='Review.title', index=6,
       number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='comment', full_name='Review.comment', index=7,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='commentId', full_name='Review.commentId', index=8,
       number=9, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='deviceName', full_name='Review.deviceName', index=9,
       number=19, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='replyText', full_name='Review.replyText', index=10,
       number=29, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='replyTimestampMsec', full_name='Review.replyTimestampMsec', index=11,
       number=30, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='author', full_name='Review.author', index=12,
       number=31, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='author2', full_name='Review.author2', index=13,
+      name='userProfile', full_name='Review.userProfile', index=13,
       number=33, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18640,
-  serialized_end=18935,
+  serialized_start=21449,
+  serialized_end=21758,
 )
 
 
-_AUTHOR = _descriptor.Descriptor(
-  name='Author',
-  full_name='Author',
+_REVIEWAUTHOR = _descriptor.Descriptor(
+  name='ReviewAuthor',
+  full_name='ReviewAuthor',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='Author.name', index=0,
+      name='name', full_name='ReviewAuthor.name', index=0,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='urls', full_name='Author.urls', index=1,
+      name='avatar', full_name='ReviewAuthor.avatar', index=1,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18937,
-  serialized_end=18982,
+  serialized_start=21760,
+  serialized_end=21812,
 )
 
 
-_AUTHOR2 = _descriptor.Descriptor(
-  name='Author2',
-  full_name='Author2',
+_USERPROFILE = _descriptor.Descriptor(
+  name='UserProfile',
+  full_name='UserProfile',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='personIdString', full_name='Author2.personIdString', index=0,
+      name='personIdString', full_name='UserProfile.personIdString', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='personId', full_name='Author2.personId', index=1,
+      name='personId', full_name='UserProfile.personId', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='unknown1', full_name='Author2.unknown1', index=2,
+      name='unknown1', full_name='UserProfile.unknown1', index=2,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='unknown2', full_name='Author2.unknown2', index=3,
+      name='unknown2', full_name='UserProfile.unknown2', index=3,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='name', full_name='Author2.name', index=4,
+      name='name', full_name='UserProfile.name', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='urls', full_name='Author2.urls', index=5,
-      number=10, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='image', full_name='UserProfile.image', index=5,
+      number=10, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='googlePlusUrl', full_name='Author2.googlePlusUrl', index=6,
+      name='googlePlusUrl', full_name='UserProfile.googlePlusUrl', index=6,
       number=19, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='googlePlusTagline', full_name='Author2.googlePlusTagline', index=7,
+      name='googlePlusTagline', full_name='UserProfile.googlePlusTagline', index=7,
       number=22, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18985,
-  serialized_end=19159,
-)
-
-
-_AVATAR = _descriptor.Descriptor(
-  name='Avatar',
-  full_name='Avatar',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='unknown1', full_name='Avatar.unknown1', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='url', full_name='Avatar.url', index=1,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='secureUrl', full_name='Avatar.secureUrl', index=2,
-      number=7, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='unknown2', full_name='Avatar.unknown2', index=3,
-      number=9, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='unknown3', full_name='Avatar.unknown3', index=4,
-      number=22, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=19161,
-  serialized_end=19255,
+  serialized_start=21815,
+  serialized_end=21993,
 )
 
 
@@ -7615,35 +8687,35 @@ _REVIEWRESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='nextPageUrl', full_name='ReviewResponse.nextPageUrl', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='userReview', full_name='ReviewResponse.userReview', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19257,
-  serialized_end=19365,
+  serialized_start=21995,
+  serialized_end=22103,
 )
 
 
@@ -7660,49 +8732,49 @@ _RELATEDSEARCH = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='header', full_name='RelatedSearch.header', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='backendId', full_name='RelatedSearch.backendId', index=2,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='docType', full_name='RelatedSearch.docType', index=3,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='current', full_name='RelatedSearch.current', index=4,
       number=5, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19367,
-  serialized_end=19470,
+  serialized_start=22105,
+  serialized_end=22208,
 )
 
 
@@ -7719,177 +8791,63 @@ _SEARCHRESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='suggestedQuery', full_name='SearchResponse.suggestedQuery', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='aggregateQuery', full_name='SearchResponse.aggregateQuery', index=2,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='bucket', full_name='SearchResponse.bucket', index=3,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='doc', full_name='SearchResponse.doc', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='relatedSearch', full_name='SearchResponse.relatedSearch', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='nextPageUrl', full_name='SearchResponse.nextPageUrl', index=6,
       number=10, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19473,
-  serialized_end=19666,
-)
-
-
-_USERPROFILERESPONSEWRAPPER = _descriptor.Descriptor(
-  name='UserProfileResponseWrapper',
-  full_name='UserProfileResponseWrapper',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='payload', full_name='UserProfileResponseWrapper.payload', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='commands', full_name='UserProfileResponseWrapper.commands', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='preFetch', full_name='UserProfileResponseWrapper.preFetch', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='notification', full_name='UserProfileResponseWrapper.notification', index=3,
-      number=4, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=19669,
-  serialized_end=19836,
-)
-
-
-_USERPROFILEPAYLOAD = _descriptor.Descriptor(
-  name='UserProfilePayload',
-  full_name='UserProfilePayload',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='response', full_name='UserProfilePayload.response', index=0,
-      number=5, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=19838,
-  serialized_end=19898,
-)
-
-
-_USERPROFILERESPONSE = _descriptor.Descriptor(
-  name='UserProfileResponse',
-  full_name='UserProfileResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='doc', full_name='UserProfileResponse.doc', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=19900,
-  serialized_end=19942,
+  serialized_start=22211,
+  serialized_end=22404,
 )
 
 
@@ -7906,21 +8864,21 @@ _SEARCHSUGGESTRESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19944,
-  serialized_end=20003,
+  serialized_start=22406,
+  serialized_end=22465,
 )
 
 
@@ -7937,21 +8895,21 @@ _SEARCHSUGGESTENTRY_IMAGECONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20213,
-  serialized_end=20247,
+  serialized_start=22675,
+  serialized_end=22709,
 )
 
 _SEARCHSUGGESTENTRY_PACKAGENAMECONTAINER = _descriptor.Descriptor(
@@ -7967,21 +8925,21 @@ _SEARCHSUGGESTENTRY_PACKAGENAMECONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20249,
-  serialized_end=20292,
+  serialized_start=22711,
+  serialized_end=22754,
 )
 
 _SEARCHSUGGESTENTRY = _descriptor.Descriptor(
@@ -7997,49 +8955,49 @@ _SEARCHSUGGESTENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='suggestedQuery', full_name='SearchSuggestEntry.suggestedQuery', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='imageContainer', full_name='SearchSuggestEntry.imageContainer', index=2,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='title', full_name='SearchSuggestEntry.title', index=3,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='packageNameContainer', full_name='SearchSuggestEntry.packageNameContainer', index=4,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_SEARCHSUGGESTENTRY_IMAGECONTAINER, _SEARCHSUGGESTENTRY_PACKAGENAMECONTAINER, ],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20006,
-  serialized_end=20292,
+  serialized_start=22468,
+  serialized_end=22754,
 )
 
 
@@ -8056,21 +9014,21 @@ _TESTINGPROGRAMRESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20294,
-  serialized_end=20357,
+  serialized_start=22756,
+  serialized_end=22819,
 )
 
 
@@ -8087,21 +9045,21 @@ _TESTINGPROGRAMRESULT = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20359,
-  serialized_end=20422,
+  serialized_start=22821,
+  serialized_end=22884,
 )
 
 
@@ -8118,35 +9076,35 @@ _TESTINGPROGRAMDETAILS = _descriptor.Descriptor(
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='id', full_name='TestingProgramDetails.id', index=1,
       number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='unsubscribed', full_name='TestingProgramDetails.unsubscribed', index=2,
       number=4, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20424,
-  serialized_end=20496,
+  serialized_start=22886,
+  serialized_end=22958,
 )
 
 
@@ -8163,28 +9121,28 @@ _LOGREQUEST = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='downloadConfirmationQuery', full_name='LogRequest.downloadConfirmationQuery', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20498,
-  serialized_end=20564,
+  serialized_start=22960,
+  serialized_end=23026,
 )
 
 
@@ -8201,28 +9159,28 @@ _TESTINGPROGRAMREQUEST = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='subscribe', full_name='TestingProgramRequest.subscribe', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20566,
-  serialized_end=20629,
+  serialized_start=23028,
+  serialized_end=23091,
 )
 
 
@@ -8239,35 +9197,35 @@ _UPLOADDEVICECONFIGREQUEST = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='manufacturer', full_name='UploadDeviceConfigRequest.manufacturer', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='gcmRegistrationId', full_name='UploadDeviceConfigRequest.gcmRegistrationId', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20632,
-  serialized_end=20764,
+  serialized_start=23094,
+  serialized_end=23226,
 )
 
 
@@ -8284,21 +9242,21 @@ _UPLOADDEVICECONFIGRESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20766,
-  serialized_end=20827,
+  serialized_start=23228,
+  serialized_end=23289,
 )
 
 
@@ -8315,168 +9273,168 @@ _ANDROIDCHECKINREQUEST = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='id', full_name='AndroidCheckinRequest.id', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='digest', full_name='AndroidCheckinRequest.digest', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='checkin', full_name='AndroidCheckinRequest.checkin', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='desiredBuild', full_name='AndroidCheckinRequest.desiredBuild', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='locale', full_name='AndroidCheckinRequest.locale', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='loggingId', full_name='AndroidCheckinRequest.loggingId', index=6,
       number=7, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='marketCheckin', full_name='AndroidCheckinRequest.marketCheckin', index=7,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='macAddr', full_name='AndroidCheckinRequest.macAddr', index=8,
       number=9, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='meid', full_name='AndroidCheckinRequest.meid', index=9,
       number=10, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='accountCookie', full_name='AndroidCheckinRequest.accountCookie', index=10,
       number=11, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='timeZone', full_name='AndroidCheckinRequest.timeZone', index=11,
       number=12, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='securityToken', full_name='AndroidCheckinRequest.securityToken', index=12,
       number=13, type=6, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='version', full_name='AndroidCheckinRequest.version', index=13,
       number=14, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='otaCert', full_name='AndroidCheckinRequest.otaCert', index=14,
       number=15, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='serialNumber', full_name='AndroidCheckinRequest.serialNumber', index=15,
       number=16, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='esn', full_name='AndroidCheckinRequest.esn', index=16,
       number=17, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='deviceConfiguration', full_name='AndroidCheckinRequest.deviceConfiguration', index=17,
       number=18, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='macAddrType', full_name='AndroidCheckinRequest.macAddrType', index=18,
       number=19, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='fragment', full_name='AndroidCheckinRequest.fragment', index=19,
       number=20, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='userName', full_name='AndroidCheckinRequest.userName', index=20,
       number=21, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='userSerialNumber', full_name='AndroidCheckinRequest.userSerialNumber', index=21,
       number=22, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20830,
-  serialized_end=21317,
+  serialized_start=23292,
+  serialized_end=23779,
 )
 
 
@@ -8493,84 +9451,91 @@ _ANDROIDCHECKINRESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='intent', full_name='AndroidCheckinResponse.intent', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='timeMsec', full_name='AndroidCheckinResponse.timeMsec', index=2,
       number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='digest', full_name='AndroidCheckinResponse.digest', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='setting', full_name='AndroidCheckinResponse.setting', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='marketOk', full_name='AndroidCheckinResponse.marketOk', index=5,
       number=6, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='androidId', full_name='AndroidCheckinResponse.androidId', index=6,
       number=7, type=6, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='securityToken', full_name='AndroidCheckinResponse.securityToken', index=7,
       number=8, type=6, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='settingsDiff', full_name='AndroidCheckinResponse.settingsDiff', index=8,
       number=9, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='deleteSetting', full_name='AndroidCheckinResponse.deleteSetting', index=9,
       number=10, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='deviceCheckinConsistencyToken', full_name='AndroidCheckinResponse.deviceCheckinConsistencyToken', index=10,
+      number=12, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21320,
-  serialized_end=21573,
+  serialized_start=23782,
+  serialized_end=24074,
 )
 
 
@@ -8587,28 +9552,28 @@ _GSERVICESSETTING = _descriptor.Descriptor(
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='GservicesSetting.value', index=1,
       number=2, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21575,
-  serialized_end=21622,
+  serialized_start=24076,
+  serialized_end=24123,
 )
 
 
@@ -8625,112 +9590,112 @@ _ANDROIDBUILDPROTO = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='product', full_name='AndroidBuildProto.product', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='carrier', full_name='AndroidBuildProto.carrier', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='radio', full_name='AndroidBuildProto.radio', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='bootloader', full_name='AndroidBuildProto.bootloader', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='client', full_name='AndroidBuildProto.client', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='timestamp', full_name='AndroidBuildProto.timestamp', index=6,
       number=7, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='googleServices', full_name='AndroidBuildProto.googleServices', index=7,
       number=8, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='device', full_name='AndroidBuildProto.device', index=8,
       number=9, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='sdkVersion', full_name='AndroidBuildProto.sdkVersion', index=9,
       number=10, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='model', full_name='AndroidBuildProto.model', index=10,
       number=11, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='manufacturer', full_name='AndroidBuildProto.manufacturer', index=11,
       number=12, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='buildProduct', full_name='AndroidBuildProto.buildProduct', index=12,
       number=13, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='otaInstalled', full_name='AndroidBuildProto.otaInstalled', index=13,
       number=14, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21625,
-  serialized_end=21901,
+  serialized_start=24126,
+  serialized_end=24402,
 )
 
 
@@ -8747,77 +9712,77 @@ _ANDROIDCHECKINPROTO = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='lastCheckinMsec', full_name='AndroidCheckinProto.lastCheckinMsec', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='event', full_name='AndroidCheckinProto.event', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='stat', full_name='AndroidCheckinProto.stat', index=3,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='requestedGroup', full_name='AndroidCheckinProto.requestedGroup', index=4,
       number=5, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='cellOperator', full_name='AndroidCheckinProto.cellOperator', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='simOperator', full_name='AndroidCheckinProto.simOperator', index=6,
       number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='roaming', full_name='AndroidCheckinProto.roaming', index=7,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='userNumber', full_name='AndroidCheckinProto.userNumber', index=8,
       number=9, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21904,
-  serialized_end=22162,
+  serialized_start=24405,
+  serialized_end=24663,
 )
 
 
@@ -8834,35 +9799,35 @@ _ANDROIDEVENTPROTO = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='AndroidEventProto.value', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='timeMsec', full_name='AndroidEventProto.timeMsec', index=2,
       number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22164,
-  serialized_end=22229,
+  serialized_start=24665,
+  serialized_end=24730,
 )
 
 
@@ -8879,28 +9844,28 @@ _ANDROIDINTENTPROTO_EXTRA = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='AndroidIntentProto.Extra.value', index=1,
       number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22366,
-  serialized_end=22402,
+  serialized_start=24867,
+  serialized_end=24903,
 )
 
 _ANDROIDINTENTPROTO = _descriptor.Descriptor(
@@ -8916,49 +9881,49 @@ _ANDROIDINTENTPROTO = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='dataUri', full_name='AndroidIntentProto.dataUri', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='mimeType', full_name='AndroidIntentProto.mimeType', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='javaClass', full_name='AndroidIntentProto.javaClass', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='extra', full_name='AndroidIntentProto.extra', index=4,
       number=5, type=10, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_ANDROIDINTENTPROTO_EXTRA, ],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22232,
-  serialized_end=22402,
+  serialized_start=24733,
+  serialized_end=24903,
 )
 
 
@@ -8975,35 +9940,35 @@ _ANDROIDSTATISTICPROTO = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='count', full_name='AndroidStatisticProto.count', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='sum', full_name='AndroidStatisticProto.sum', index=2,
       number=3, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22404,
-  serialized_end=22468,
+  serialized_start=24905,
+  serialized_end=24969,
 )
 
 
@@ -9020,49 +9985,49 @@ _CLIENTLIBRARYSTATE = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='serverToken', full_name='ClientLibraryState.serverToken', index=1,
       number=2, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='hashCodeSum', full_name='ClientLibraryState.hashCodeSum', index=2,
       number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='librarySize', full_name='ClientLibraryState.librarySize', index=3,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='libraryId', full_name='ClientLibraryState.libraryId', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22470,
-  serialized_end=22588,
+  serialized_start=24971,
+  serialized_end=25089,
 )
 
 
@@ -9079,49 +10044,49 @@ _ANDROIDDATAUSAGEPROTO = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='currentReportMsec', full_name='AndroidDataUsageProto.currentReportMsec', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='keyToPackageNameMapping', full_name='AndroidDataUsageProto.keyToPackageNameMapping', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='payloadLevelAppStat', full_name='AndroidDataUsageProto.payloadLevelAppStat', index=3,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='ipLayerNetworkStat', full_name='AndroidDataUsageProto.ipLayerNetworkStat', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22591,
-  serialized_end=22817,
+  serialized_start=25092,
+  serialized_end=25318,
 )
 
 
@@ -9138,35 +10103,35 @@ _ANDROIDUSAGESTATSREPORT = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='loggingId', full_name='AndroidUsageStatsReport.loggingId', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='usageStats', full_name='AndroidUsageStatsReport.usageStats', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22819,
-  serialized_end=22929,
+  serialized_start=25320,
+  serialized_end=25430,
 )
 
 
@@ -9183,42 +10148,42 @@ _APPBUCKET = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='bucketDurationMsec', full_name='AppBucket.bucketDurationMsec', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='statCounters', full_name='AppBucket.statCounters', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='operationCount', full_name='AppBucket.operationCount', index=3,
       number=4, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22931,
-  serialized_end=23056,
+  serialized_start=25432,
+  serialized_end=25557,
 )
 
 
@@ -9235,28 +10200,28 @@ _COUNTERDATA = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='packets', full_name='CounterData.packets', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23058,
-  serialized_end=23103,
+  serialized_start=25559,
+  serialized_end=25604,
 )
 
 
@@ -9273,35 +10238,35 @@ _IPLAYERAPPSTAT = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='applicationTag', full_name='IpLayerAppStat.applicationTag', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='ipLayerAppBucket', full_name='IpLayerAppStat.ipLayerAppBucket', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23105,
-  serialized_end=23203,
+  serialized_start=25606,
+  serialized_end=25704,
 )
 
 
@@ -9318,42 +10283,42 @@ _IPLAYERNETWORKBUCKET = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='bucketDurationMsec', full_name='IpLayerNetworkBucket.bucketDurationMsec', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='statCounters', full_name='IpLayerNetworkBucket.statCounters', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='networkActiveDuration', full_name='IpLayerNetworkBucket.networkActiveDuration', index=3,
       number=4, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23206,
-  serialized_end=23349,
+  serialized_start=25707,
+  serialized_end=25850,
 )
 
 
@@ -9370,42 +10335,42 @@ _IPLAYERNETWORKSTAT = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='type', full_name='IpLayerNetworkStat.type', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='ipLayerNetworkBucket', full_name='IpLayerNetworkStat.ipLayerNetworkBucket', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='ipLayerAppStat', full_name='IpLayerNetworkStat.ipLayerAppStat', index=3,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23352,
-  serialized_end=23504,
+  serialized_start=25853,
+  serialized_end=26005,
 )
 
 
@@ -9422,35 +10387,35 @@ _KEYTOPACKAGENAMEMAPPING = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='uidName', full_name='KeyToPackageNameMapping.uidName', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='sharedPackageList', full_name='KeyToPackageNameMapping.sharedPackageList', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23506,
-  serialized_end=23609,
+  serialized_start=26007,
+  serialized_end=26110,
 )
 
 
@@ -9467,28 +10432,28 @@ _PACKAGEINFO = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='versionCode', full_name='PackageInfo.versionCode', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23611,
-  serialized_end=23662,
+  serialized_start=26112,
+  serialized_end=26163,
 )
 
 
@@ -9505,35 +10470,35 @@ _PAYLOADLEVELAPPSTAT = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='applicationTag', full_name='PayloadLevelAppStat.applicationTag', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='payloadLevelAppBucket', full_name='PayloadLevelAppStat.payloadLevelAppBucket', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23664,
-  serialized_end=23772,
+  serialized_start=26165,
+  serialized_end=26273,
 )
 
 
@@ -9550,42 +10515,42 @@ _STATCOUNTERS = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='direction', full_name='StatCounters.direction', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='counterData', full_name='StatCounters.counterData', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='fgBg', full_name='StatCounters.fgBg', index=3,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23774,
-  serialized_end=23878,
+  serialized_start=26275,
+  serialized_end=26379,
 )
 
 
@@ -9602,93 +10567,194 @@ _USAGESTATSEXTENSIONPROTO = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23880,
-  serialized_end=23949,
+  serialized_start=26381,
+  serialized_end=26450,
 )
 
 
-_SEARCHCLUSTER = _descriptor.Descriptor(
-  name='SearchCluster',
-  full_name='SearchCluster',
+_MODIFYLIBRARYREQUEST = _descriptor.Descriptor(
+  name='ModifyLibraryRequest',
+  full_name='ModifyLibraryRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='SearchCluster.id', index=0,
+      name='libraryId', full_name='ModifyLibraryRequest.libraryId', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='type', full_name='SearchCluster.type', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='int1', full_name='SearchCluster.int1', index=2,
-      number=3, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='int2', full_name='SearchCluster.int2', index=3,
-      number=4, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='category', full_name='SearchCluster.category', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='doc', full_name='SearchCluster.doc', index=5,
-      number=11, type=11, cpp_type=10, label=3,
+      name='addPackageName', full_name='ModifyLibraryRequest.addPackageName', index=1,
+      number=2, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='removePackageName', full_name='ModifyLibraryRequest.removePackageName', index=2,
+      number=3, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23951,
-  serialized_end=24059,
+  serialized_start=26452,
+  serialized_end=26544,
+)
+
+
+_URLREQUESTWRAPPER = _descriptor.Descriptor(
+  name='UrlRequestWrapper',
+  full_name='UrlRequestWrapper',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='developerAppsRequest', full_name='UrlRequestWrapper.developerAppsRequest', index=0,
+      number=49, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=26546,
+  serialized_end=26618,
+)
+
+
+_DEVELOPERAPPSREQUEST = _descriptor.Descriptor(
+  name='DeveloperAppsRequest',
+  full_name='DeveloperAppsRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='developerIdContainer1', full_name='DeveloperAppsRequest.developerIdContainer1', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='developerIdContainer2', full_name='DeveloperAppsRequest.developerIdContainer2', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='unknownInt3', full_name='DeveloperAppsRequest.unknownInt3', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=26621,
+  serialized_end=26772,
+)
+
+
+_DEVELOPERIDCONTAINER = _descriptor.Descriptor(
+  name='DeveloperIdContainer',
+  full_name='DeveloperIdContainer',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='developerId', full_name='DeveloperIdContainer.developerId', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='unknownInt2', full_name='DeveloperIdContainer.unknownInt2', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='unknownInt3', full_name='DeveloperIdContainer.unknownInt3', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=26774,
+  serialized_end=26859,
 )
 
 _ANDROIDAPPDELIVERYDATA.fields_by_name['additionalFile'].message_type = _APPFILEMETADATA
 _ANDROIDAPPDELIVERYDATA.fields_by_name['downloadAuthCookie'].message_type = _HTTPCOOKIE
 _ANDROIDAPPDELIVERYDATA.fields_by_name['patchData'].message_type = _ANDROIDAPPPATCHDATA
 _ANDROIDAPPDELIVERYDATA.fields_by_name['encryptionParams'].message_type = _ENCRYPTIONPARAMS
+_ANDROIDAPPDELIVERYDATA.fields_by_name['split'].message_type = _SPLIT
 _BOOKAUTHOR.fields_by_name['docid'].message_type = _DOCID
 _BOOKDETAILS_IDENTIFIER.containing_type = _BOOKDETAILS
 _BOOKDETAILS.fields_by_name['subject'].message_type = _BOOKSUBJECT
@@ -9754,6 +10820,13 @@ _DETAILSRESPONSE.fields_by_name['docV1'].message_type = _DOCV1
 _DETAILSRESPONSE.fields_by_name['userReview'].message_type = _REVIEW
 _DETAILSRESPONSE.fields_by_name['docV2'].message_type = _DOCV2
 _DETAILSRESPONSE.fields_by_name['badge'].message_type = _BADGE
+_DETAILSRESPONSE.fields_by_name['features'].message_type = _FEATURES
+_BADGE.fields_by_name['image'].message_type = _IMAGE
+_BADGE.fields_by_name['badgeContainer1'].message_type = _BADGECONTAINER1
+_BADGECONTAINER1.fields_by_name['badgeContainer2'].message_type = _BADGECONTAINER2
+_BADGECONTAINER2.fields_by_name['badgeLinkContainer'].message_type = _BADGELINKCONTAINER
+_FEATURES.fields_by_name['featurePresence'].message_type = _FEATURE
+_FEATURES.fields_by_name['featureRating'].message_type = _FEATURE
 _DOCUMENT.fields_by_name['docid'].message_type = _DOCID
 _DOCUMENT.fields_by_name['fetchDocid'].message_type = _DOCID
 _DOCUMENT.fields_by_name['sampleDocid'].message_type = _DOCID
@@ -9806,7 +10879,7 @@ _VIDEORENTALTERM_TERM.containing_type = _VIDEORENTALTERM
 _VIDEORENTALTERM.fields_by_name['term'].message_type = _VIDEORENTALTERM_TERM
 _BUCKET.fields_by_name['document'].message_type = _DOCV1
 _LISTRESPONSE.fields_by_name['bucket'].message_type = _BUCKET
-_LISTRESPONSE.fields_by_name['cluster'].message_type = _SEARCHCLUSTER
+_LISTRESPONSE.fields_by_name['doc'].message_type = _DOCV2
 _DOCV1.fields_by_name['finskyDoc'].message_type = _DOCUMENT
 _DOCV1.fields_by_name['details'].message_type = _DOCUMENTDETAILS
 _DOCV1.fields_by_name['plusOneData'].message_type = _PLUSONEDATA
@@ -9818,6 +10891,7 @@ _DOCV2.fields_by_name['containerMetadata'].message_type = _CONTAINERMETADATA
 _DOCV2.fields_by_name['details'].message_type = _DOCUMENTDETAILS
 _DOCV2.fields_by_name['aggregateRating'].message_type = _AGGREGATERATING
 _DOCV2.fields_by_name['relatedLinks'].message_type = _RELATEDLINKS
+_DOCV2.fields_by_name['unknownCategoryContainer'].message_type = _UNKNOWNCATEGORYCONTAINER
 _DOCV2.fields_by_name['unknown25'].message_type = _UNKNOWN25
 _UNKNOWN25.fields_by_name['item'].message_type = _UNKNOWN25ITEM
 _UNKNOWN25ITEM.fields_by_name['container'].message_type = _UNKNOWN25CONTAINER
@@ -9852,40 +10926,48 @@ _NOTIFICATION.fields_by_name['inAppNotificationData'].message_type = _INAPPNOTIF
 _NOTIFICATION.fields_by_name['purchaseDeclinedData'].message_type = _PURCHASEDECLINEDDATA
 _NOTIFICATION.fields_by_name['libraryUpdate'].message_type = _LIBRARYUPDATE
 _NOTIFICATION.fields_by_name['libraryDirtyData'].message_type = _LIBRARYDIRTYDATA
+_BILLINGCONFIG.fields_by_name['carrierBillingConfig'].message_type = _CARRIERBILLINGCONFIG
+_TOCRESPONSE.fields_by_name['corpus'].message_type = _CORPUSMETADATA
+_TOCRESPONSE.fields_by_name['experiments'].message_type = _EXPERIMENTS
+_TOCRESPONSE.fields_by_name['selfUpdateConfig'].message_type = _SELFUPDATECONFIG
+_TOCRESPONSE.fields_by_name['billingConfig'].message_type = _BILLINGCONFIG
 _PAYLOAD.fields_by_name['listResponse'].message_type = _LISTRESPONSE
 _PAYLOAD.fields_by_name['detailsResponse'].message_type = _DETAILSRESPONSE
 _PAYLOAD.fields_by_name['reviewResponse'].message_type = _REVIEWRESPONSE
 _PAYLOAD.fields_by_name['buyResponse'].message_type = _BUYRESPONSE
 _PAYLOAD.fields_by_name['searchResponse'].message_type = _SEARCHRESPONSE
+_PAYLOAD.fields_by_name['tocResponse'].message_type = _TOCRESPONSE
 _PAYLOAD.fields_by_name['browseResponse'].message_type = _BROWSERESPONSE
 _PAYLOAD.fields_by_name['purchaseStatusResponse'].message_type = _PURCHASESTATUSRESPONSE
 _PAYLOAD.fields_by_name['bulkDetailsResponse'].message_type = _BULKDETAILSRESPONSE
 _PAYLOAD.fields_by_name['deliveryResponse'].message_type = _DELIVERYRESPONSE
-_PAYLOAD.fields_by_name['uploadDeviceConfigResponse'].message_type = _UPLOADDEVICECONFIGRESPONSE
+_PAYLOAD.fields_by_name['acceptTosResponse'].message_type = _ACCEPTTOSRESPONSE
 _PAYLOAD.fields_by_name['androidCheckinResponse'].message_type = _ANDROIDCHECKINRESPONSE
+_PAYLOAD.fields_by_name['uploadDeviceConfigResponse'].message_type = _UPLOADDEVICECONFIGRESPONSE
 _PAYLOAD.fields_by_name['searchSuggestResponse'].message_type = _SEARCHSUGGESTRESPONSE
 _PAYLOAD.fields_by_name['testingProgramResponse'].message_type = _TESTINGPROGRAMRESPONSE
 _PREFETCH.fields_by_name['response'].message_type = _RESPONSEWRAPPER
+_SERVERCOOKIES.fields_by_name['serverCookie'].message_type = _SERVERCOOKIE
 _RESPONSEWRAPPER.fields_by_name['payload'].message_type = _PAYLOAD
 _RESPONSEWRAPPER.fields_by_name['commands'].message_type = _SERVERCOMMANDS
 _RESPONSEWRAPPER.fields_by_name['preFetch'].message_type = _PREFETCH
 _RESPONSEWRAPPER.fields_by_name['notification'].message_type = _NOTIFICATION
+_RESPONSEWRAPPER.fields_by_name['serverMetadata'].message_type = _SERVERMETADATA
+_RESPONSEWRAPPER.fields_by_name['targets'].message_type = _TARGETS
+_RESPONSEWRAPPER.fields_by_name['serverCookies'].message_type = _SERVERCOOKIES
+_RESPONSEWRAPPERAPI.fields_by_name['payload'].message_type = _PAYLOADAPI
+_PAYLOADAPI.fields_by_name['userProfileResponse'].message_type = _USERPROFILERESPONSE
+_USERPROFILERESPONSE.fields_by_name['userProfile'].message_type = _USERPROFILE
 _GETREVIEWSRESPONSE.fields_by_name['review'].message_type = _REVIEW
-_REVIEW.fields_by_name['author'].message_type = _AUTHOR
-_REVIEW.fields_by_name['author2'].message_type = _AUTHOR2
-_AUTHOR.fields_by_name['urls'].message_type = _AVATAR
-_AUTHOR2.fields_by_name['urls'].message_type = _AVATAR
+_REVIEW.fields_by_name['author'].message_type = _REVIEWAUTHOR
+_REVIEW.fields_by_name['userProfile'].message_type = _USERPROFILE
+_REVIEWAUTHOR.fields_by_name['avatar'].message_type = _IMAGE
+_USERPROFILE.fields_by_name['image'].message_type = _IMAGE
 _REVIEWRESPONSE.fields_by_name['getResponse'].message_type = _GETREVIEWSRESPONSE
 _REVIEWRESPONSE.fields_by_name['userReview'].message_type = _REVIEW
 _SEARCHRESPONSE.fields_by_name['bucket'].message_type = _BUCKET
 _SEARCHRESPONSE.fields_by_name['doc'].message_type = _DOCV2
 _SEARCHRESPONSE.fields_by_name['relatedSearch'].message_type = _RELATEDSEARCH
-_USERPROFILERESPONSEWRAPPER.fields_by_name['payload'].message_type = _USERPROFILEPAYLOAD
-_USERPROFILERESPONSEWRAPPER.fields_by_name['commands'].message_type = _SERVERCOMMANDS
-_USERPROFILERESPONSEWRAPPER.fields_by_name['preFetch'].message_type = _PREFETCH
-_USERPROFILERESPONSEWRAPPER.fields_by_name['notification'].message_type = _NOTIFICATION
-_USERPROFILEPAYLOAD.fields_by_name['response'].message_type = _USERPROFILERESPONSE
-_USERPROFILERESPONSE.fields_by_name['doc'].message_type = _DOCV2
 _SEARCHSUGGESTRESPONSE.fields_by_name['entry'].message_type = _SEARCHSUGGESTENTRY
 _SEARCHSUGGESTENTRY_IMAGECONTAINER.containing_type = _SEARCHSUGGESTENTRY
 _SEARCHSUGGESTENTRY_PACKAGENAMECONTAINER.containing_type = _SEARCHSUGGESTENTRY
@@ -9916,8 +10998,11 @@ _KEYTOPACKAGENAMEMAPPING.fields_by_name['sharedPackageList'].message_type = _PAC
 _PAYLOADLEVELAPPSTAT.fields_by_name['payloadLevelAppBucket'].message_type = _APPBUCKET
 _STATCOUNTERS.fields_by_name['counterData'].message_type = _COUNTERDATA
 _USAGESTATSEXTENSIONPROTO.fields_by_name['dataUsage'].message_type = _ANDROIDDATAUSAGEPROTO
-_SEARCHCLUSTER.fields_by_name['doc'].message_type = _DOCV2
+_URLREQUESTWRAPPER.fields_by_name['developerAppsRequest'].message_type = _DEVELOPERAPPSREQUEST
+_DEVELOPERAPPSREQUEST.fields_by_name['developerIdContainer1'].message_type = _DEVELOPERIDCONTAINER
+_DEVELOPERAPPSREQUEST.fields_by_name['developerIdContainer2'].message_type = _DEVELOPERIDCONTAINER
 DESCRIPTOR.message_types_by_name['AndroidAppDeliveryData'] = _ANDROIDAPPDELIVERYDATA
+DESCRIPTOR.message_types_by_name['Split'] = _SPLIT
 DESCRIPTOR.message_types_by_name['AndroidAppPatchData'] = _ANDROIDAPPPATCHDATA
 DESCRIPTOR.message_types_by_name['AppFileMetadata'] = _APPFILEMETADATA
 DESCRIPTOR.message_types_by_name['EncryptionParams'] = _ENCRYPTIONPARAMS
@@ -9966,6 +11051,11 @@ DESCRIPTOR.message_types_by_name['BulkDetailsRequest'] = _BULKDETAILSREQUEST
 DESCRIPTOR.message_types_by_name['BulkDetailsResponse'] = _BULKDETAILSRESPONSE
 DESCRIPTOR.message_types_by_name['DetailsResponse'] = _DETAILSRESPONSE
 DESCRIPTOR.message_types_by_name['Badge'] = _BADGE
+DESCRIPTOR.message_types_by_name['BadgeContainer1'] = _BADGECONTAINER1
+DESCRIPTOR.message_types_by_name['BadgeContainer2'] = _BADGECONTAINER2
+DESCRIPTOR.message_types_by_name['BadgeLinkContainer'] = _BADGELINKCONTAINER
+DESCRIPTOR.message_types_by_name['Features'] = _FEATURES
+DESCRIPTOR.message_types_by_name['Feature'] = _FEATURE
 DESCRIPTOR.message_types_by_name['DeviceConfigurationProto'] = _DEVICECONFIGURATIONPROTO
 DESCRIPTOR.message_types_by_name['Document'] = _DOCUMENT
 DESCRIPTOR.message_types_by_name['DocumentVariant'] = _DOCUMENTVARIANT
@@ -10025,21 +11115,31 @@ DESCRIPTOR.message_types_by_name['PurchaseDeclinedData'] = _PURCHASEDECLINEDDATA
 DESCRIPTOR.message_types_by_name['PurchaseRemovalData'] = _PURCHASEREMOVALDATA
 DESCRIPTOR.message_types_by_name['UserNotificationData'] = _USERNOTIFICATIONDATA
 DESCRIPTOR.message_types_by_name['AggregateRating'] = _AGGREGATERATING
+DESCRIPTOR.message_types_by_name['AcceptTosResponse'] = _ACCEPTTOSRESPONSE
+DESCRIPTOR.message_types_by_name['CarrierBillingConfig'] = _CARRIERBILLINGCONFIG
+DESCRIPTOR.message_types_by_name['BillingConfig'] = _BILLINGCONFIG
+DESCRIPTOR.message_types_by_name['CorpusMetadata'] = _CORPUSMETADATA
+DESCRIPTOR.message_types_by_name['Experiments'] = _EXPERIMENTS
+DESCRIPTOR.message_types_by_name['SelfUpdateConfig'] = _SELFUPDATECONFIG
+DESCRIPTOR.message_types_by_name['TocResponse'] = _TOCRESPONSE
 DESCRIPTOR.message_types_by_name['Payload'] = _PAYLOAD
 DESCRIPTOR.message_types_by_name['PreFetch'] = _PREFETCH
+DESCRIPTOR.message_types_by_name['ServerMetadata'] = _SERVERMETADATA
+DESCRIPTOR.message_types_by_name['Targets'] = _TARGETS
+DESCRIPTOR.message_types_by_name['ServerCookie'] = _SERVERCOOKIE
+DESCRIPTOR.message_types_by_name['ServerCookies'] = _SERVERCOOKIES
 DESCRIPTOR.message_types_by_name['ResponseWrapper'] = _RESPONSEWRAPPER
+DESCRIPTOR.message_types_by_name['ResponseWrapperApi'] = _RESPONSEWRAPPERAPI
+DESCRIPTOR.message_types_by_name['PayloadApi'] = _PAYLOADAPI
+DESCRIPTOR.message_types_by_name['UserProfileResponse'] = _USERPROFILERESPONSE
 DESCRIPTOR.message_types_by_name['ServerCommands'] = _SERVERCOMMANDS
 DESCRIPTOR.message_types_by_name['GetReviewsResponse'] = _GETREVIEWSRESPONSE
 DESCRIPTOR.message_types_by_name['Review'] = _REVIEW
-DESCRIPTOR.message_types_by_name['Author'] = _AUTHOR
-DESCRIPTOR.message_types_by_name['Author2'] = _AUTHOR2
-DESCRIPTOR.message_types_by_name['Avatar'] = _AVATAR
+DESCRIPTOR.message_types_by_name['ReviewAuthor'] = _REVIEWAUTHOR
+DESCRIPTOR.message_types_by_name['UserProfile'] = _USERPROFILE
 DESCRIPTOR.message_types_by_name['ReviewResponse'] = _REVIEWRESPONSE
 DESCRIPTOR.message_types_by_name['RelatedSearch'] = _RELATEDSEARCH
 DESCRIPTOR.message_types_by_name['SearchResponse'] = _SEARCHRESPONSE
-DESCRIPTOR.message_types_by_name['UserProfileResponseWrapper'] = _USERPROFILERESPONSEWRAPPER
-DESCRIPTOR.message_types_by_name['UserProfilePayload'] = _USERPROFILEPAYLOAD
-DESCRIPTOR.message_types_by_name['UserProfileResponse'] = _USERPROFILERESPONSE
 DESCRIPTOR.message_types_by_name['SearchSuggestResponse'] = _SEARCHSUGGESTRESPONSE
 DESCRIPTOR.message_types_by_name['SearchSuggestEntry'] = _SEARCHSUGGESTENTRY
 DESCRIPTOR.message_types_by_name['TestingProgramResponse'] = _TESTINGPROGRAMRESPONSE
@@ -10070,7 +11170,10 @@ DESCRIPTOR.message_types_by_name['PackageInfo'] = _PACKAGEINFO
 DESCRIPTOR.message_types_by_name['PayloadLevelAppStat'] = _PAYLOADLEVELAPPSTAT
 DESCRIPTOR.message_types_by_name['StatCounters'] = _STATCOUNTERS
 DESCRIPTOR.message_types_by_name['UsageStatsExtensionProto'] = _USAGESTATSEXTENSIONPROTO
-DESCRIPTOR.message_types_by_name['SearchCluster'] = _SEARCHCLUSTER
+DESCRIPTOR.message_types_by_name['ModifyLibraryRequest'] = _MODIFYLIBRARYREQUEST
+DESCRIPTOR.message_types_by_name['UrlRequestWrapper'] = _URLREQUESTWRAPPER
+DESCRIPTOR.message_types_by_name['DeveloperAppsRequest'] = _DEVELOPERAPPSREQUEST
+DESCRIPTOR.message_types_by_name['DeveloperIdContainer'] = _DEVELOPERIDCONTAINER
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 AndroidAppDeliveryData = _reflection.GeneratedProtocolMessageType('AndroidAppDeliveryData', (_message.Message,), dict(
@@ -10079,6 +11182,13 @@ AndroidAppDeliveryData = _reflection.GeneratedProtocolMessageType('AndroidAppDel
   # @@protoc_insertion_point(class_scope:AndroidAppDeliveryData)
   ))
 _sym_db.RegisterMessage(AndroidAppDeliveryData)
+
+Split = _reflection.GeneratedProtocolMessageType('Split', (_message.Message,), dict(
+  DESCRIPTOR = _SPLIT,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:Split)
+  ))
+_sym_db.RegisterMessage(Split)
 
 AndroidAppPatchData = _reflection.GeneratedProtocolMessageType('AndroidAppPatchData', (_message.Message,), dict(
   DESCRIPTOR = _ANDROIDAPPPATCHDATA,
@@ -10447,6 +11557,41 @@ Badge = _reflection.GeneratedProtocolMessageType('Badge', (_message.Message,), d
   # @@protoc_insertion_point(class_scope:Badge)
   ))
 _sym_db.RegisterMessage(Badge)
+
+BadgeContainer1 = _reflection.GeneratedProtocolMessageType('BadgeContainer1', (_message.Message,), dict(
+  DESCRIPTOR = _BADGECONTAINER1,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:BadgeContainer1)
+  ))
+_sym_db.RegisterMessage(BadgeContainer1)
+
+BadgeContainer2 = _reflection.GeneratedProtocolMessageType('BadgeContainer2', (_message.Message,), dict(
+  DESCRIPTOR = _BADGECONTAINER2,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:BadgeContainer2)
+  ))
+_sym_db.RegisterMessage(BadgeContainer2)
+
+BadgeLinkContainer = _reflection.GeneratedProtocolMessageType('BadgeLinkContainer', (_message.Message,), dict(
+  DESCRIPTOR = _BADGELINKCONTAINER,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:BadgeLinkContainer)
+  ))
+_sym_db.RegisterMessage(BadgeLinkContainer)
+
+Features = _reflection.GeneratedProtocolMessageType('Features', (_message.Message,), dict(
+  DESCRIPTOR = _FEATURES,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:Features)
+  ))
+_sym_db.RegisterMessage(Features)
+
+Feature = _reflection.GeneratedProtocolMessageType('Feature', (_message.Message,), dict(
+  DESCRIPTOR = _FEATURE,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:Feature)
+  ))
+_sym_db.RegisterMessage(Feature)
 
 DeviceConfigurationProto = _reflection.GeneratedProtocolMessageType('DeviceConfigurationProto', (_message.Message,), dict(
   DESCRIPTOR = _DEVICECONFIGURATIONPROTO,
@@ -10893,6 +12038,55 @@ AggregateRating = _reflection.GeneratedProtocolMessageType('AggregateRating', (_
   ))
 _sym_db.RegisterMessage(AggregateRating)
 
+AcceptTosResponse = _reflection.GeneratedProtocolMessageType('AcceptTosResponse', (_message.Message,), dict(
+  DESCRIPTOR = _ACCEPTTOSRESPONSE,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:AcceptTosResponse)
+  ))
+_sym_db.RegisterMessage(AcceptTosResponse)
+
+CarrierBillingConfig = _reflection.GeneratedProtocolMessageType('CarrierBillingConfig', (_message.Message,), dict(
+  DESCRIPTOR = _CARRIERBILLINGCONFIG,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:CarrierBillingConfig)
+  ))
+_sym_db.RegisterMessage(CarrierBillingConfig)
+
+BillingConfig = _reflection.GeneratedProtocolMessageType('BillingConfig', (_message.Message,), dict(
+  DESCRIPTOR = _BILLINGCONFIG,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:BillingConfig)
+  ))
+_sym_db.RegisterMessage(BillingConfig)
+
+CorpusMetadata = _reflection.GeneratedProtocolMessageType('CorpusMetadata', (_message.Message,), dict(
+  DESCRIPTOR = _CORPUSMETADATA,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:CorpusMetadata)
+  ))
+_sym_db.RegisterMessage(CorpusMetadata)
+
+Experiments = _reflection.GeneratedProtocolMessageType('Experiments', (_message.Message,), dict(
+  DESCRIPTOR = _EXPERIMENTS,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:Experiments)
+  ))
+_sym_db.RegisterMessage(Experiments)
+
+SelfUpdateConfig = _reflection.GeneratedProtocolMessageType('SelfUpdateConfig', (_message.Message,), dict(
+  DESCRIPTOR = _SELFUPDATECONFIG,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:SelfUpdateConfig)
+  ))
+_sym_db.RegisterMessage(SelfUpdateConfig)
+
+TocResponse = _reflection.GeneratedProtocolMessageType('TocResponse', (_message.Message,), dict(
+  DESCRIPTOR = _TOCRESPONSE,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:TocResponse)
+  ))
+_sym_db.RegisterMessage(TocResponse)
+
 Payload = _reflection.GeneratedProtocolMessageType('Payload', (_message.Message,), dict(
   DESCRIPTOR = _PAYLOAD,
   __module__ = 'googleplay_pb2'
@@ -10907,12 +12101,61 @@ PreFetch = _reflection.GeneratedProtocolMessageType('PreFetch', (_message.Messag
   ))
 _sym_db.RegisterMessage(PreFetch)
 
+ServerMetadata = _reflection.GeneratedProtocolMessageType('ServerMetadata', (_message.Message,), dict(
+  DESCRIPTOR = _SERVERMETADATA,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:ServerMetadata)
+  ))
+_sym_db.RegisterMessage(ServerMetadata)
+
+Targets = _reflection.GeneratedProtocolMessageType('Targets', (_message.Message,), dict(
+  DESCRIPTOR = _TARGETS,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:Targets)
+  ))
+_sym_db.RegisterMessage(Targets)
+
+ServerCookie = _reflection.GeneratedProtocolMessageType('ServerCookie', (_message.Message,), dict(
+  DESCRIPTOR = _SERVERCOOKIE,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:ServerCookie)
+  ))
+_sym_db.RegisterMessage(ServerCookie)
+
+ServerCookies = _reflection.GeneratedProtocolMessageType('ServerCookies', (_message.Message,), dict(
+  DESCRIPTOR = _SERVERCOOKIES,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:ServerCookies)
+  ))
+_sym_db.RegisterMessage(ServerCookies)
+
 ResponseWrapper = _reflection.GeneratedProtocolMessageType('ResponseWrapper', (_message.Message,), dict(
   DESCRIPTOR = _RESPONSEWRAPPER,
   __module__ = 'googleplay_pb2'
   # @@protoc_insertion_point(class_scope:ResponseWrapper)
   ))
 _sym_db.RegisterMessage(ResponseWrapper)
+
+ResponseWrapperApi = _reflection.GeneratedProtocolMessageType('ResponseWrapperApi', (_message.Message,), dict(
+  DESCRIPTOR = _RESPONSEWRAPPERAPI,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:ResponseWrapperApi)
+  ))
+_sym_db.RegisterMessage(ResponseWrapperApi)
+
+PayloadApi = _reflection.GeneratedProtocolMessageType('PayloadApi', (_message.Message,), dict(
+  DESCRIPTOR = _PAYLOADAPI,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:PayloadApi)
+  ))
+_sym_db.RegisterMessage(PayloadApi)
+
+UserProfileResponse = _reflection.GeneratedProtocolMessageType('UserProfileResponse', (_message.Message,), dict(
+  DESCRIPTOR = _USERPROFILERESPONSE,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:UserProfileResponse)
+  ))
+_sym_db.RegisterMessage(UserProfileResponse)
 
 ServerCommands = _reflection.GeneratedProtocolMessageType('ServerCommands', (_message.Message,), dict(
   DESCRIPTOR = _SERVERCOMMANDS,
@@ -10935,26 +12178,19 @@ Review = _reflection.GeneratedProtocolMessageType('Review', (_message.Message,),
   ))
 _sym_db.RegisterMessage(Review)
 
-Author = _reflection.GeneratedProtocolMessageType('Author', (_message.Message,), dict(
-  DESCRIPTOR = _AUTHOR,
+ReviewAuthor = _reflection.GeneratedProtocolMessageType('ReviewAuthor', (_message.Message,), dict(
+  DESCRIPTOR = _REVIEWAUTHOR,
   __module__ = 'googleplay_pb2'
-  # @@protoc_insertion_point(class_scope:Author)
+  # @@protoc_insertion_point(class_scope:ReviewAuthor)
   ))
-_sym_db.RegisterMessage(Author)
+_sym_db.RegisterMessage(ReviewAuthor)
 
-Author2 = _reflection.GeneratedProtocolMessageType('Author2', (_message.Message,), dict(
-  DESCRIPTOR = _AUTHOR2,
+UserProfile = _reflection.GeneratedProtocolMessageType('UserProfile', (_message.Message,), dict(
+  DESCRIPTOR = _USERPROFILE,
   __module__ = 'googleplay_pb2'
-  # @@protoc_insertion_point(class_scope:Author2)
+  # @@protoc_insertion_point(class_scope:UserProfile)
   ))
-_sym_db.RegisterMessage(Author2)
-
-Avatar = _reflection.GeneratedProtocolMessageType('Avatar', (_message.Message,), dict(
-  DESCRIPTOR = _AVATAR,
-  __module__ = 'googleplay_pb2'
-  # @@protoc_insertion_point(class_scope:Avatar)
-  ))
-_sym_db.RegisterMessage(Avatar)
+_sym_db.RegisterMessage(UserProfile)
 
 ReviewResponse = _reflection.GeneratedProtocolMessageType('ReviewResponse', (_message.Message,), dict(
   DESCRIPTOR = _REVIEWRESPONSE,
@@ -10976,27 +12212,6 @@ SearchResponse = _reflection.GeneratedProtocolMessageType('SearchResponse', (_me
   # @@protoc_insertion_point(class_scope:SearchResponse)
   ))
 _sym_db.RegisterMessage(SearchResponse)
-
-UserProfileResponseWrapper = _reflection.GeneratedProtocolMessageType('UserProfileResponseWrapper', (_message.Message,), dict(
-  DESCRIPTOR = _USERPROFILERESPONSEWRAPPER,
-  __module__ = 'googleplay_pb2'
-  # @@protoc_insertion_point(class_scope:UserProfileResponseWrapper)
-  ))
-_sym_db.RegisterMessage(UserProfileResponseWrapper)
-
-UserProfilePayload = _reflection.GeneratedProtocolMessageType('UserProfilePayload', (_message.Message,), dict(
-  DESCRIPTOR = _USERPROFILEPAYLOAD,
-  __module__ = 'googleplay_pb2'
-  # @@protoc_insertion_point(class_scope:UserProfilePayload)
-  ))
-_sym_db.RegisterMessage(UserProfilePayload)
-
-UserProfileResponse = _reflection.GeneratedProtocolMessageType('UserProfileResponse', (_message.Message,), dict(
-  DESCRIPTOR = _USERPROFILERESPONSE,
-  __module__ = 'googleplay_pb2'
-  # @@protoc_insertion_point(class_scope:UserProfileResponse)
-  ))
-_sym_db.RegisterMessage(UserProfileResponse)
 
 SearchSuggestResponse = _reflection.GeneratedProtocolMessageType('SearchSuggestResponse', (_message.Message,), dict(
   DESCRIPTOR = _SEARCHSUGGESTRESPONSE,
@@ -11232,12 +12447,33 @@ UsageStatsExtensionProto = _reflection.GeneratedProtocolMessageType('UsageStatsE
   ))
 _sym_db.RegisterMessage(UsageStatsExtensionProto)
 
-SearchCluster = _reflection.GeneratedProtocolMessageType('SearchCluster', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHCLUSTER,
+ModifyLibraryRequest = _reflection.GeneratedProtocolMessageType('ModifyLibraryRequest', (_message.Message,), dict(
+  DESCRIPTOR = _MODIFYLIBRARYREQUEST,
   __module__ = 'googleplay_pb2'
-  # @@protoc_insertion_point(class_scope:SearchCluster)
+  # @@protoc_insertion_point(class_scope:ModifyLibraryRequest)
   ))
-_sym_db.RegisterMessage(SearchCluster)
+_sym_db.RegisterMessage(ModifyLibraryRequest)
+
+UrlRequestWrapper = _reflection.GeneratedProtocolMessageType('UrlRequestWrapper', (_message.Message,), dict(
+  DESCRIPTOR = _URLREQUESTWRAPPER,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:UrlRequestWrapper)
+  ))
+_sym_db.RegisterMessage(UrlRequestWrapper)
+
+DeveloperAppsRequest = _reflection.GeneratedProtocolMessageType('DeveloperAppsRequest', (_message.Message,), dict(
+  DESCRIPTOR = _DEVELOPERAPPSREQUEST,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:DeveloperAppsRequest)
+  ))
+_sym_db.RegisterMessage(DeveloperAppsRequest)
+
+DeveloperIdContainer = _reflection.GeneratedProtocolMessageType('DeveloperIdContainer', (_message.Message,), dict(
+  DESCRIPTOR = _DEVELOPERIDCONTAINER,
+  __module__ = 'googleplay_pb2'
+  # @@protoc_insertion_point(class_scope:DeveloperIdContainer)
+  ))
+_sym_db.RegisterMessage(DeveloperIdContainer)
 
 
 # @@protoc_insertion_point(module_scope)

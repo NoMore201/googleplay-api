@@ -1,60 +1,36 @@
 import struct
 import sys
+from google.protobuf.message import Message
 from . import googleplay_pb2
 
 VERSION = sys.version_info[0]
 
-def fromDocToDictionary(app):
-    return {"docId": app.docid,
-            "title": app.title,
-            "author": app.creator,
-            "description": app.descriptionHtml,
-            "recentChanges": app.details.appDetails.recentChangesHtml,
-            "offer": [{"micros": o.micros,
-                       "currencyCode": o.currencyCode,
-                       "formattedAmount": o.formattedAmount,
-                       "checkoutFlowRequired": o.checkoutFlowRequired,
-                       "offerType": o.offerType,
-                       "saleEnds": o.saleEnds}
-                      for o in app.offer],
-            "images": [{"imageType": img.imageType,
-                        "width": img.dimension.width
-                        if hasattr(img.dimension, "width")
-                        else 0,
-                        "height": img.dimension.height
-                        if hasattr(img.dimension, "height")
-                        else 0,
-                        "url": img.imageUrl,
-                        "supportsFifeUrlOptions": img.supportsFifeUrlOptions}
-                       for img in app.image],
-            "versionCode": app.details.appDetails.versionCode,
-            "versionString": app.details.appDetails.versionString,
-            "installationSize": app.details.appDetails.installationSize,
-            "numDownloads": app.details.appDetails.numDownloads,
-            "uploadDate": app.details.appDetails.uploadDate,
-            "permission": [p for p in app.details.appDetails.permission],
-            "files": [{"fileType": f.fileType,
-                       "version": f.versionCode,
-                       "size": f.size}
-                      for f in app.details.appDetails.file],
-            "unstable": app.details.appDetails.unstable,
-            "containsAds": app.details.appDetails.containsAds,
-            "aggregateRating": {"type": app.aggregateRating.type,
-                                "starRating": app.aggregateRating.starRating,
-                                "ratingsCount": app.aggregateRating.ratingsCount,
-                                "oneStarRatings": app.aggregateRating.oneStarRatings,
-                                "twoStarRatings": app.aggregateRating.twoStarRatings,
-                                "threeStarRatings": app.aggregateRating.threeStarRatings,
-                                "fourStarRatings": app.aggregateRating.fourStarRatings,
-                                "fiveStarRatings": app.aggregateRating.fiveStarRatings,
-                                "commentCount": app.aggregateRating.commentCount},
-            "dependencies": [{"packageName": d.packageName,
-                              "version": d.version}
-                             for d in app.details.appDetails.dependencies.dependency],
-            "category": {"appType": app.relatedLinks.categoryInfo.appType,
-                         "appCategory": app.relatedLinks.categoryInfo.appCategory},
-            "detailsUrl": app.detailsUrl}
+def isIterable(obj):
+    try:
+        iter(obj)
+        return True
+    except TypeError:
+        return False
 
+def isProtobuf(obj):
+    """Really bad workaround to check if an object is an
+    instance of a protobuf message"""
+    return hasattr(obj, "MergeFrom")
+
+def parseProtobufObj(obj):
+    output = {}
+    for (fd, value) in obj.ListFields():
+        key = fd.name
+        if isProtobuf(value):
+            if not isIterable(value):
+                output.update({key: parseProtobufObj(value)})
+            else:
+                output.update({
+                    key: [parseProtobufObj(i) for i in value]
+                })
+        else:
+            output.update({key: value})
+    return output
 
 def readInt(byteArray, start):
     """Read the byte array, starting from *start* position,
@@ -89,6 +65,30 @@ def hasListResponse(obj):
 def hasSearchResponse(obj):
     try:
         return obj.HasField('searchResponse')
+    except ValueError:
+        return False
+
+def hasCluster(obj):
+    try:
+        return obj.HasField('cluster')
+    except ValueError:
+        return False
+
+def hasTosContent(tocResponse):
+    try:
+        return tocResponse.HasField('tosContent')
+    except ValueError:
+        return False
+
+def hasTosToken(tocResponse):
+    try:
+        return tocResponse.HasField('tosToken')
+    except ValueError:
+        return False
+
+def hasCookie(tocResponse):
+    try:
+        return tocResponse.HasField('cookie')
     except ValueError:
         return False
 
