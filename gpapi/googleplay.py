@@ -297,7 +297,7 @@ class GooglePlayAPI(object):
 
     def executeRequestApi2(self, path, post_data=None, content_type=CONTENT_TYPE_URLENC, params=None):
         if self.authSubToken is None:
-            raise Exception("You need to login before executing any request")
+            raise LoginError("You need to login before executing any request")
         headers = self.getHeaders()
         headers["Content-Type"] = content_type
 
@@ -342,7 +342,7 @@ class GooglePlayAPI(object):
         offset is used to take result starting from an index.
         """
         if self.authSubToken is None:
-            raise Exception("You need to login before executing any request")
+            raise LoginError("You need to login before executing any request")
 
         remaining = nb_result
         output = []
@@ -640,7 +640,7 @@ class GooglePlayAPI(object):
         """
 
         if self.authSubToken is None:
-            raise Exception("You need to login before executing any request")
+            raise LoginError("You need to login before executing any request")
 
         if versionCode is None:
             # pick up latest version
