@@ -247,7 +247,7 @@ class GooglePlayAPI(object):
             self.gsfId = gsfId
             self.setAuthSubToken(authSubToken)
             # check if token is valid with a simple search
-            self.search('drv', 1, None)
+            self.search('drv')
         else:
             raise LoginError('Either (email,pass) or (gsfId, authSubToken) is needed')
 
@@ -346,7 +346,7 @@ class GooglePlayAPI(object):
         entryIterator = data.payload.searchSuggestResponse.entry
         return list(map(utils.parseProtobufObj, entryIterator))
 
-    def search(self, query, nb_result, offset=None):
+    def search(self, query):
         """ Search the play store for an app.
 
         nb_result (int): is the maximum number of result to be returned
@@ -356,12 +356,7 @@ class GooglePlayAPI(object):
         if self.authSubToken is None:
             raise Exception("You need to login before executing any request")
 
-        remaining = nb_result
-        output = []
-
         path = SEARCH_URL + "?c=3&q={}".format(requests.utils.quote(query))
-        if (offset is not None):
-            nextPath += "&o={}".format(offset)
         # FIXME: not sure if this toc call should be here
         self.toc()
         data = self.executeRequestApi2(path)

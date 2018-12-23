@@ -16,7 +16,7 @@ server.login(None, None, gsfId, authSubToken)
 print("\nSearch suggestion for \"fir\"\n")
 print(server.searchSuggest("fir"))
 
-result = server.search("firefox", 34, None)
+result = server.search("firefox")
 for doc in result:
     print("doc: {}".format(doc["docid"]))
     for cluster in doc["child"]:
