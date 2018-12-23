@@ -1,36 +1,11 @@
 import struct
 import sys
 from google.protobuf.message import Message
+from google.protobuf.json_format import MessageToDict
 from . import googleplay_pb2
 
-VERSION = sys.version_info[0]
-
-def isIterable(obj):
-    try:
-        iter(obj)
-        return True
-    except TypeError:
-        return False
-
-def isProtobuf(obj):
-    """Really bad workaround to check if an object is an
-    instance of a protobuf message"""
-    return hasattr(obj, "MergeFrom")
-
 def parseProtobufObj(obj):
-    output = {}
-    for (fd, value) in obj.ListFields():
-        key = fd.name
-        if isProtobuf(value):
-            if not isIterable(value):
-                output.update({key: parseProtobufObj(value)})
-            else:
-                output.update({
-                    key: [parseProtobufObj(i) for i in value]
-                })
-        else:
-            output.update({key: value})
-    return output
+    return MessageToDict(obj, False, False, False)
 
 def readInt(byteArray, start):
     """Read the byte array, starting from *start* position,
@@ -43,10 +18,7 @@ def toBigInt(byteArray):
     array = byteArray[::-1]  # reverse array
     out = 0
     for key, value in enumerate(array):
-        if VERSION == 3:
-            decoded = struct.unpack("B", bytes([value]))[0]
-        else:
-            decoded = struct.unpack("B", value)[0]
+        decoded = struct.unpack("B", bytes([value]))[0]
         out = out | decoded << key * 8
     return out
 
