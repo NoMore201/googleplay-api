@@ -343,19 +343,16 @@ class GooglePlayAPI(object):
                   "ssis": "120",
                   "sst": "2"}
         data = self.executeRequestApi2(SEARCH_SUGGEST_URL, params=params)
-        output = []
-        for entry in data.payload.searchSuggestResponse.entry:
-            output.append(utils.parseProtobufObj(entry))
-        return output
+        entryIterator = data.payload.searchSuggestResponse.entry
+        return list(map(utils.parseProtobufObj, entryIterator))
 
     def search(self, query, nb_result, offset=None):
         """ Search the play store for an app.
 
-        nb_result is the maximum number of result to be returned.
+        nb_result (int): is the maximum number of result to be returned
 
-        offset is used to take result starting from an index.
+        offset (int): is used to take result starting from an index.
         """
-        # TODO: correctly implement nb_results (for now it does nothing)
         if self.authSubToken is None:
             raise Exception("You need to login before executing any request")
 
@@ -365,17 +362,15 @@ class GooglePlayAPI(object):
         path = SEARCH_URL + "?c=3&q={}".format(requests.utils.quote(query))
         if (offset is not None):
             nextPath += "&o={}".format(offset)
-        # TODO: not sure if this toc call should be here
+        # FIXME: not sure if this toc call should be here
         self.toc()
         data = self.executeRequestApi2(path)
         if utils.hasPrefetch(data):
             response = data.preFetch[0].response
         else:
             response = data
-        output = []
-        for cluster in response.payload.listResponse.doc[0].child:
-            output.append(utils.parseProtobufObj(cluster))
-        return output
+        resIterator = response.payload.listResponse.doc
+        return list(map(utils.parseProtobufObj, resIterator))
 
     def details(self, packageName):
         """Get app details from a package name.
@@ -412,17 +407,17 @@ class GooglePlayAPI(object):
                 utils.parseProtobufObj(entry.doc)
                 for entry in response.entry]
 
-    def getHomeApps(self):
+    def home(self, cat=None):
         path = HOME_URL + "?c=3&nocache_isui=true"
+        if cat is not None:
+            path += "&cat={}".format(cat)
         data = self.executeRequestApi2(path)
         if utils.hasPrefetch(data):
             response = data.preFetch[0].response
         else:
             response = data
-        output = []
-        for cluster in response.payload.listResponse.doc[0].child:
-            output.append(utils.parseProtobufObj(cluster))
-        return output
+        resIterator = response.payload.listResponse.doc
+        return list(map(utils.parseProtobufObj, resIterator))
 
     def browse(self, cat=None, subCat=None):
         """Browse categories. If neither cat nor subcat are specified,
@@ -435,29 +430,7 @@ class GooglePlayAPI(object):
             path += "&ctr={}".format(requests.utils.quote(subCat))
         data = self.executeRequestApi2(path)
 
-        if cat is None and subCat is None:
-            # result contains all categories available
-            return [utils.parseProtobufObj(c) for c in data.payload.browseResponse.category]
-
-        output = []
-        clusters = []
-
-        if utils.hasPrefetch(data):
-            for pf in data.preFetch:
-                for cluster in pf.response.payload.listResponse.doc:
-                    clusters.extend(cluster.child)
-
-        # result contains apps of a specific category
-        # organized by sections
-        for cluster in clusters:
-            apps = [a for a in cluster.child]
-            apps = list(map(utils.parseProtobufObj,
-                            apps))
-            section = {'title': cluster.title,
-                       'docid': cluster.docid,
-                       'apps': apps}
-            output.append(section)
-        return output
+        return utils.parseProtobufObj(data.payload.browseResponse)
 
     def list(self, cat, ctr=None, nb_results=None, offset=None):
         """List apps for a specfic category *cat*.
