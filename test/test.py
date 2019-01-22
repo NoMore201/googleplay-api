@@ -88,12 +88,14 @@ for doc in browseCat:
 
 # LIST
 cat = "MUSIC_AND_AUDIO"
-print("\nList %s subcategories\n" % cat)
+print("\nList {} subcategories\n".format(cat))
 catList = server.list(cat)
 for c in catList:
     print(c)
 
-print("\nList %s apps for %s category\n" % (catList[0], cat))
-appList = server.list(cat, catList[0])
+limit = 4
+print("\nList only {} apps from subcat {} for {} category\n".format(
+    limit, catList[0], cat))
+appList = server.list(cat, catList[0], 4, 1)
 for app in appList:
     print(app["docid"])
