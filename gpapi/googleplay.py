@@ -68,7 +68,7 @@ class GooglePlayAPI(object):
     Usual APIs methods are login(), search(), details(), bulkDetails(),
     download(), browse(), reviews() and list()."""
 
-    def __init__(self, locale, timezone, device_codename='bacon',
+    def __init__(self, locale="en_US", timezone="UTC", device_codename="bacon",
                  proxies_config=None):
         self.authSubToken = None
         self.gsfId = None
@@ -77,16 +77,16 @@ class GooglePlayAPI(object):
         self.dfeCookie = None
         self.proxies_config = proxies_config
         self.deviceBuilder = config.DeviceBuilder(device_codename)
-        self.set_locale(locale)
-        self.set_timezone(timezone)
+        self.setLocale(locale)
+        self.setTimezone(timezone)
 
-    def set_locale(self, locale):
-        self.deviceBuilder.set_locale(locale)
+    def setLocale(self, locale):
+        self.deviceBuilder.setLocale(locale)
 
-    def set_timezone(self, timezone):
-        self.deviceBuilder.set_timezone(timezone)
+    def setTimezone(self, timezone):
+        self.deviceBuilder.setTimezone(timezone)
 
-    def encrypt_password(self, login, passwd):
+    def encryptPassword(self, login, passwd):
         """Encrypt credentials using the google publickey, with the
         RSA algorithm"""
 
@@ -211,7 +211,7 @@ class GooglePlayAPI(object):
             # First time setup, where we obtain an ac2dm token and
             # upload device information
 
-            encryptedPass = self.encrypt_password(email, password).decode('utf-8')
+            encryptedPass = self.encryptPassword(email, password).decode('utf-8')
             # AC2DM token
             params = self.deviceBuilder.getLoginParams(email, encryptedPass)
             params['service'] = 'ac2dm'

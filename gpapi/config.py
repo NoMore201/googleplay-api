@@ -55,7 +55,7 @@ class DeviceBuilder(object):
         for (key, value) in config.items(device):
             self.device[key] = value
 
-    def set_locale(self, locale):
+    def setLocale(self, locale):
         # test if provided locale is valid
         if locale is None or type(locale) is not str:
             raise InvalidLocaleError()
@@ -66,7 +66,7 @@ class DeviceBuilder(object):
             raise InvalidLocaleError()
         self.locale = locale
 
-    def set_timezone(self, timezone):
+    def setTimezone(self, timezone):
         if timezone is None or type(timezone) is not str:
             timezone = self.device.get('timezone')
             if timezone is None:
