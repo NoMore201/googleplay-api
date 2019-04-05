@@ -20,6 +20,9 @@ git clone --branch $REPO_BRANCH $REPO_SRC $REPO_LOCAL &>/dev/null
 # clean device.properties file
 echo "" > $DEVS_FILE
 
+SAVEIFS=$IFS # store current field separator
+IFS=$(echo -en "\n\b") # set new field separator
+
 for dev in `ls $RES_DIR | grep properties$`; do
         FILE="$RES_DIR/$dev"
         NAME=`echo $dev | sed -e "s/device-\(.*\).properties/\1/"`
@@ -28,6 +31,8 @@ for dev in `ls $RES_DIR | grep properties$`; do
         cat $FILE >> $DEVS_FILE
         echo "" >> $DEVS_FILE
 done
+
+IFS=$SAVEIFS # restore field separator
 
 # cleanup
 echo "==> Cleanup"
