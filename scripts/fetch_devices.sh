@@ -31,7 +31,7 @@ for dev in `ls $RES_DIR | grep properties$`; do
         fi
         echo "==> appending device data for $NAME"
         echo "[$NAME]" >> $DEVS_FILE
-        cat $FILE >> $DEVS_FILE
+        cat $FILE | grep ^[[:alnum:]] | grep '=' >> $DEVS_FILE
         echo "" >> $DEVS_FILE
 done
 
