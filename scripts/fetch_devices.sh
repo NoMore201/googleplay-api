@@ -20,7 +20,7 @@ git clone --branch $REPO_BRANCH $REPO_SRC $REPO_LOCAL &>/dev/null
 # clean device.properties file
 echo "" > $DEVS_FILE
 
-for dev in `ls $RES_DIR`; do
+for dev in `ls $RES_DIR | grep properties$`; do
         FILE="$RES_DIR/$dev"
         NAME=`echo $dev | sed -e "s/device-\(.*\).properties/\1/"`
         echo "==> appending device data for $NAME"
