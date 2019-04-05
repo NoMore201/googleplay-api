@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPO_SRC="https://github.com/yeriomin/play-store-api"
-REPO_BRANCH="master"
+REPO_BRANCH="alldevices"
 REPO_LOCAL="/tmp/psapi"
 RES_DIR="${REPO_LOCAL}/src/main/resources"
 
