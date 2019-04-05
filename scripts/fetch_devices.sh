@@ -26,6 +26,9 @@ IFS=$(echo -en "\n\b") # set new field separator
 for dev in `ls $RES_DIR | grep properties$`; do
         FILE="$RES_DIR/$dev"
         NAME=`echo $dev | sed -e "s/device-\(.*\).properties/\1/"`
+        if [ -z "$NAME" ]; then
+            continue
+        fi
         echo "==> appending device data for $NAME"
         echo "[$NAME]" >> $DEVS_FILE
         cat $FILE >> $DEVS_FILE
