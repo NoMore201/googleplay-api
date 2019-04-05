@@ -1,6 +1,7 @@
 #!/bin/bash
 
 REPO_SRC="https://github.com/yeriomin/play-store-api"
+REPO_BRANCH="master"
 REPO_LOCAL="/tmp/psapi"
 RES_DIR="${REPO_LOCAL}/src/main/resources"
 
@@ -14,7 +15,7 @@ if [ ! -d "./gpapi" ]; then
 fi
 
 echo "==> Cloning play-store-api repo into $REPO_LOCAL"
-git clone $REPO_SRC $REPO_LOCAL &>/dev/null
+git clone --branch $REPO_BRANCH $REPO_SRC $REPO_LOCAL &>/dev/null
 
 # clean device.properties file
 echo "" > $DEVS_FILE
