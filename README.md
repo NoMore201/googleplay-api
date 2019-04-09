@@ -9,6 +9,15 @@ maintained anymore. The code was updated with some important changes:
 * select the device you want to fake from a list of pre-defined values (check `device.properties`)
 (defaults to a OnePlus One)
 
+# Build
+
+This is the recommended way to build the package, since setuptools will take care of
+generating the `googleplay_pb2.py` file needed by the library (check the `setup.py`)
+
+```
+$ python setup.py build
+```
+
 # Usage
 
 Check scripts in `test` directory for more examples on how to use this API.
