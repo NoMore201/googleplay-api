@@ -39,6 +39,7 @@ setup(name='gpapi',
               'googleplay.py',
               'utils.py'
           ]},
+      include_package_data=True,
       cmdclass={'build_py': ProtobufBuilder},
       install_requires=['cryptography>=2.2',
                         'protobuf>=3.5.2',
