@@ -20,7 +20,7 @@ class ProtobufBuilder(_build):
         subprocess.run([PROTOC_BIN,
             "--proto_path=" + CURRENT_DIR,
             "--python_out=" + CURRENT_DIR + "/gpapi/",
-            "googleplay.proto"])
+            CURRENT_DIR + "/googleplay.proto"])
         super().run()
 
 setup(name='gpapi',
