@@ -18,7 +18,8 @@ print(server.searchSuggest("fir"))
 
 result = server.search("firefox")
 for doc in result:
-    print("doc: {}".format(doc["docid"]))
+    if 'docid' in doc:
+        print("doc: {}".format(doc["docid"]))
     for cluster in doc["child"]:
         print("\tcluster: {}".format(cluster["docid"]))
         for app in cluster["child"]:
@@ -80,7 +81,8 @@ print("\nBrowsing the {} category\n".format(sampleCat))
 browseCat = server.home(cat=sampleCat)
 
 for doc in browseCat:
-    print("doc: {}".format(doc["docid"]))
+    if 'docid' in doc:
+        print("doc: {}".format(doc["docid"]))
     for child in doc["child"]:
         print("\tsubcat: {}".format(child["docid"]))
         for app in child["child"]:
