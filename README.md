@@ -31,10 +31,11 @@ passwd = "mypasswd"
 api = GooglePlayAPI(locale="en_US", timezone="UTC", device_codename="hero2lte")
 api.login(email=mail, password=passwd)
 
-result = server.search("firefox")
+result = api.search("firefox")
 
 for doc in result:
-    print("doc: {}".format(doc["docid"]))
+    if 'docid' in doc:
+        print("doc: {}".format(doc["docid"]))
     for cluster in doc["child"]:
         print("\tcluster: {}".format(cluster["docid"]))
         for app in cluster["child"]:
