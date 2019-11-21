@@ -140,7 +140,6 @@ class DeviceBuilder(object):
                 "source": "android",
                 "device_country": self.locale[0:2],
                 "lang": self.locale,
-                "sdk_version": self.device.get('build.version.sdk_int'),
                 "client_sig": "38918a453d07199354f8b19af05ec6562ced5788",
                 "callerSig": "38918a453d07199354f8b19af05ec6562ced5788"}
 
