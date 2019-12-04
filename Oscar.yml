@@ -1,0 +1,145 @@
+Skip to content
+We are having a problem billing your account. Please enter a new payment method or check with your payment provider for details on why the transaction failed. You can downgrade to GitHub Free in your Billing settings.
+You can always contact support with any questions.
+GooglePlay
+Repositories1K
+Code1M
+Commits6K
+Issues3K
+Packages0
+Marketplace0
+Topics10
+Wikis635
+Users22
+Language
+
+Sort
+
+1,349,687 code results
+@oshimamasara
+oshimamasara/MLKamenRider
+app/build/intermediates/incremental/packageDebug/debug/file-input-save-data.txt
+14.set=ANDROID_RESOURCE
+180.file=/media/oshimamasara/Data256GB4/Published/GooglePlay/tensorflow-for-poets-2-master/android/tflite/app/build/intermediates/res/debug/resources-debug.ap_/res/layout-v21/notification_action.xml
+164.set=ANDROID_RESOURCE
+26.file=/media/oshimamasara/Data256GB4/Published/GooglePlay/tensorflow-for-poets-2-master/android/tflite/app/build/intermediates/res/debug/resources-debug.ap_/res/layout/design_layout_tab_icon.xml
+ Text
+Showing the top two matches
+Last indexed on Sep 19
+@dskim9752
+dskim9752/base
+docs/html/distribute/distribute_toc.cs
+      <li><a href="<?cs var:toroot ?>distribute/googleplay/about/visibility.html">Visibility</a></li>
+      <li><a href="<?cs var:toroot ?>distribute/googleplay/about/monetizing.html">Monetizing</a></li>
+      <li><a href="<?cs var:toroot ?>distribute/googleplay/about/distribution.html">Distribution</a></li>
+ C#
+Showing the top match
+Last indexed on Jun 28, 2018
+@Labs22
+Labs22/BlackServerOS
+Digital Forensics/Cuckoo-2.0.3/Cuckoo-2.0.3/cuckoo/processing/googleplay.py
+    # TODO Fix with actual dependency from PyPI.
+    from lib.api.googleplay.googleplay import GooglePlayAPI
+    HAVE_GOOGLEPLAY = True
+except ImportError:
+    HAVE_GOOGLEPLAY = False
+
+log = logging.getLogger(__name__)
+ Python
+Showing the top four matches
+Last indexed on Jul 9, 2018
+@vineetpurswani
+vineetpurswani/cuckooml-enhanced
+modules/processing/googleplay.py
+except ImportError:
+    HAVE_ANDROGUARD = False
+
+try:
+    from lib.api.googleplay.googleplay import GooglePlayAPI
+    HAVE_GOOGLEPLAY = True
+except ImportError:
+    HAVE_GOOGLEPLAY = False
+
+log = logging.getLogger(__name__)
+ Python
+Showing the top four matches
+Last indexed on Jul 9, 2018
+@sparkyman
+sparkyman/frameworks_base-1
+docs/html/distribute/distribute_toc.cs
+    <ul>
+      <li><a href="<?cs var:toroot ?>distribute/googleplay/about/visibility.html">
+           <span class="en">Visibility</a></li>
+      <li><a href="<?cs var:toroot ?>distribute/googleplay/about/monetizing.html">
+ C#
+Showing the top two matches
+Last indexed on Jun 26, 2018
+@oshimamasara
+oshimamasara/MLKamenRider
+app/build/intermediates/incremental/mergeReleaseResources/compile-file-map.properties
+/home/oshimamasara/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/498ad6e4088157111cade0a85cc585d1/res/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png=/media/oshimamasara/Data256GB4/Published/GooglePlay/tensorflow-for-poets-2-master/android/tflite/app/build/intermediates/res/merged/release/drawable-xxxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat
+ Java Properties
+Showing the top match
+Last indexed on Sep 19
+@LuckJC
+LuckJC/pro-fw
+base/docs/html/distribute/distribute_toc.cs
+      <li><a href="<?cs var:toroot ?>distribute/googleplay/about/visibility.html">Visibility</a></li>
+      <li><a href="<?cs var:toroot ?>distribute/googleplay/about/monetizing.html">Monetizing</a></li>
+      <li><a href="<?cs var:toroot ?>distribute/googleplay/about/distribution.html">Distribution</a></li>
+ C#
+Showing the top match
+Last indexed on Jun 30, 2018
+@Mantouidev
+Mantouidev/k_frameworks_base
+docs/html/distribute/distribute_toc.cs
+      <li><a href="<?cs var:toroot ?>distribute/googleplay/about/visibility.html">Visibility</a></li>
+      <li><a href="<?cs var:toroot ?>distribute/googleplay/about/monetizing.html">Monetizing</a></li>
+      <li><a href="<?cs var:toroot ?>distribute/googleplay/about/distribution.html">Distribution</a></li>
+ C#
+Showing the top match
+Last indexed on Jun 28, 2018
+@WPPlugins
+WPPlugins/wfs-googleplay-thumbnail
+wfs-googleplay-thumbnail-plugin.php
+<?php
+
+/*
+Plugin Name: WFS GooglePlay Thumbnail
+Plugin URI: http://webfaceScript.com
+Description: Create slideshow including videos and images like googleplay
+Version: 0.5
+Author: WebfaceScript
+ PHP
+Showing the top two matches
+Last indexed on Jul 9, 2018
+@fenand
+fenand/repositorios-que-eran-privados-y-cloud9-mas-otros-repositorios
+workspace/0899-google-play/GooglePlayTest01.java
+    public void tearDown()
+    {
+    }
+
+    @Test
+    public void TestApartado01()
+    {
+        // Se crea la tienda
+        GooglePlay googlePlay = new GooglePlay();
+        
+        // Se crean los usuarios de la tienda
+ Java
+Showing the top match
+Last indexed on Jul 15, 2018
+Advanced search
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
