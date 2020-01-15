@@ -2,4 +2,4 @@ language: python
 python:
   -  "3.5"
 install: pip install .
-script: python test.py -e $EMAIL -p $PASSWD
+script: python test/test.py

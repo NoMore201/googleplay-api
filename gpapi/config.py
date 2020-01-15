@@ -29,6 +29,13 @@ else:
 config.read(filepath)
 
 
+class InvalidLocaleError(Exception):
+    pass
+
+class InvalidTimezoneError(Exception):
+    pass
+
+
 def getDevicesCodenames():
     """Returns a list containing devices codenames"""
     return config.sections()
@@ -48,22 +55,22 @@ class DeviceBuilder(object):
         for (key, value) in config.items(device):
             self.device[key] = value
 
-    def set_locale(self, locale):
+    def setLocale(self, locale):
         # test if provided locale is valid
         if locale is None or type(locale) is not str:
-            raise Exception('Wrong locale supplied')
+            raise InvalidLocaleError()
 
         # check if locale matches the structure of a common
         # value like "en_US"
         if match(r'[a-z]{2}\_[A-Z]{2}', locale) is None:
-            raise Exception('Wrong locale supplied')
+            raise InvalidLocaleError()
         self.locale = locale
 
-    def set_timezone(self, timezone):
+    def setTimezone(self, timezone):
         if timezone is None or type(timezone) is not str:
             timezone = self.device.get('timezone')
             if timezone is None:
-                raise Exception('Wrong timezone supplied')
+                raise InvalidTimezoneError()
         self.timezone = timezone
 
     def getBaseHeaders(self):
@@ -133,7 +140,6 @@ class DeviceBuilder(object):
                 "source": "android",
                 "device_country": self.locale[0:2],
                 "lang": self.locale,
-                "sdk_version": self.device.get('build.version.sdk_int'),
                 "client_sig": "38918a453d07199354f8b19af05ec6562ced5788",
                 "callerSig": "38918a453d07199354f8b19af05ec6562ced5788"}
 

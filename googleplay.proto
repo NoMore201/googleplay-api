@@ -1,8 +1,9 @@
 syntax = "proto2";
 
+// Both sha1 and sha256 are encoded with base64 with URL and Filename Safe Alphabet with padding removed
 message AndroidAppDeliveryData {
   optional int64 downloadSize = 1;
-  optional string signature = 2;
+  optional string sha1 = 2;
   optional string downloadUrl = 3;
   repeated AppFileMetadata additionalFile = 4;
   repeated HttpCookie downloadAuthCookie = 5;
@@ -13,10 +14,23 @@ message AndroidAppDeliveryData {
   optional bool immediateStartNeeded = 10;
   optional AndroidAppPatchData patchData = 11;
   optional EncryptionParams encryptionParams = 12;
+  optional string downloadUrlGzipped = 13;
+  optional int64 downloadSizeGzipped = 14;
+  repeated Split split = 15;
+  optional string sha256 = 19;
+}
+message Split {
+  optional string name = 1;
+  optional int64 size = 2;
+  optional int64 sizeGzipped = 3;
+  optional string sha1 = 4;
+  optional string downloadUrl = 5;
+  optional string downloadUrlGzipped = 6;
+  optional string sha256 = 9;
 }
 message AndroidAppPatchData {
   optional int32 baseVersionCode = 1;
-  optional string baseSignature = 2;
+  optional string baseSha1 = 2;
   optional string downloadUrl = 3;
   optional int32 patchFormat = 4;
   optional int64 maxPatchSize = 5;
@@ -26,6 +40,9 @@ message AppFileMetadata {
   optional int32 versionCode = 2;
   optional int64 size = 3;
   optional string downloadUrl = 4;
+  optional int64 sizeGzipped = 6;
+  optional string downloadUrlGzipped = 7;
+  optional string sha1 = 8;
 }
 message EncryptionParams {
   optional int32 version = 1;
@@ -232,7 +249,10 @@ message Offer {
   optional SubscriptionTerms subscriptionTerms = 12;
   optional string formattedName = 13;
   optional string formattedDescription = 14;
-  optional string saleEnds = 31;
+  optional bool sale = 22;
+  optional string message = 26;
+  optional int64 saleEndTimestamp = 30;
+  optional string saleMessage = 31;
 }
 message OwnershipInfo {
   optional int64 initiationTimestampMsec = 1;
@@ -353,10 +373,33 @@ message DetailsResponse {
   optional DocV2 docV2 = 4;
   optional string footerHtml = 5;
   repeated Badge badge = 7;
+  optional Features features = 12;
+  optional string detailsStreamUrl = 13;
+  optional string userReviewUrl = 14;
+  optional string postAcquireDetailsStreamUrl = 17;
 }
 message Badge {
   optional string label = 1;
+  optional Image image = 2;
+  optional BadgeContainer1 badgeContainer1 = 4;
   optional string message = 11;
+}
+message BadgeContainer1 {
+  optional BadgeContainer2 badgeContainer2 = 1;
+}
+message BadgeContainer2 {
+  optional BadgeLinkContainer badgeLinkContainer = 2;
+}
+message BadgeLinkContainer {
+  optional string link = 2;
+}
+message Features {
+  repeated Feature featurePresence = 1;
+  repeated Feature featureRating = 2;
+}
+message Feature {
+  optional string label = 1;
+  optional string value = 3;
 }
 message DeviceConfigurationProto {
   optional int32 touchScreen = 1;
@@ -425,6 +468,7 @@ message Image {
     optional string url = 12;
   }
   optional string color = 15;
+  optional int32 screenshotSetNumber = 21;
 }
 message TranslatedText {
   optional string text = 1;
@@ -467,10 +511,13 @@ message AppDetails {
   repeated FileMetadata file = 17;
   optional string appType = 18;
   optional bool unstable = 21;
+  optional bool hasInstantLink = 24;
   optional string containsAds = 30;
   optional Dependencies dependencies = 34;
   optional TestingProgramInfo testingProgramInfo = 35;
   optional EarlyAccessInfo earlyAccessInfo = 36;
+  optional string instantLink = 43;
+  optional string developerAddress = 45;
 }
 message Dependencies {
   optional int32 unknown1 = 1;
@@ -610,7 +657,7 @@ message Bucket {
 }
 message ListResponse {
   repeated Bucket bucket = 1;
-  repeated SearchCluster cluster = 2;
+  repeated DocV2 doc = 2;
 }
 message DocV1 {
   optional Document finskyDoc = 1;
@@ -655,7 +702,11 @@ message DocV2 {
   optional string purchaseDetailsUrl = 20;
   optional bool detailsReusable = 21;
   optional string subtitle = 22;
+  optional UnknownCategoryContainer unknownCategoryContainer = 24;
   optional Unknown25 unknown25 = 25;
+  optional string descriptionShort = 27;
+  optional string reviewSnippetsUrl = 31;
+  optional string reviewQuestionsUrl = 34;
 }
 message Unknown25 {
   repeated Unknown25Item item = 2;
@@ -679,6 +730,7 @@ message RelatedLinksUnknown1 {
   optional RelatedLinksUnknown2 unknown2 = 2;
 }
 message RelatedLinksUnknown2 {
+  optional string homeUrl = 2;
   optional string nextPageUrl = 3;
 }
 message Rated {
@@ -830,19 +882,74 @@ message AggregateRating {
   optional uint64 commentCount = 11;
   optional double bayesianMeanRating = 12;
 }
+
+message AcceptTosResponse {
+}message CarrierBillingConfig {
+   optional string id = 1;
+   optional string name = 2;
+   optional int32 apiVersion = 3;
+   optional string provisioningUrl = 4;
+   optional string credentialsUrl = 5;
+   optional bool tosRequired = 6;
+   optional bool perTransactionCredentialsRequired = 7;
+   optional bool sendSubscriberIdWithCarrierBillingRequests = 8;
+}
+message BillingConfig {
+  optional CarrierBillingConfig carrierBillingConfig = 1;
+  optional int32 maxIabApiVersion = 2;
+}
+message CorpusMetadata {
+  optional int32 backend = 1;
+  optional string name = 2;
+  optional string landingUrl = 3;
+  optional string libraryName = 4;
+  optional string recsWidgetUrl = 6;
+  optional string shopName = 7;
+}
+message Experiments {
+  repeated string experimentId = 1;
+}
+message SelfUpdateConfig {
+  optional int32 latestClientVersionCode = 1;
+}
+message TocResponse {
+  repeated CorpusMetadata corpus = 1;
+  optional int32 tosVersionDeprecated = 2;
+  optional string tosContent = 3;
+  optional string homeUrl = 4;
+  optional Experiments experiments = 5;
+  optional string tosCheckboxTextMarketingEmails = 6;
+  optional string tosToken = 7;
+  optional string iconOverrideUrl = 9;
+  optional SelfUpdateConfig selfUpdateConfig = 10;
+  optional bool requiresUploadDeviceConfig = 11;
+  optional BillingConfig billingConfig = 12;
+  optional string recsWidgetUrl = 13;
+  optional string socialHomeUrl = 15;
+  optional bool ageVerificationRequired = 16;
+  optional bool gplusSignupEnabled = 17;
+  optional bool redeemEnabled = 18;
+  optional string helpUrl = 19;
+  optional int32 themeId = 20;
+  optional string entertainmentHomeUrl = 21;
+  optional string cookie = 22;
+}
 message Payload {
   optional ListResponse listResponse = 1;
   optional DetailsResponse detailsResponse = 2;
   optional ReviewResponse reviewResponse = 3;
   optional BuyResponse buyResponse = 4;
   optional SearchResponse searchResponse = 5;
+  optional TocResponse tocResponse = 6;
   optional BrowseResponse browseResponse = 7;
   optional PurchaseStatusResponse purchaseStatusResponse = 8;
   optional string logResponse = 10;
+  optional string flagContentResponse = 13;
   optional BulkDetailsResponse bulkDetailsResponse = 19;
   optional DeliveryResponse deliveryResponse = 21;
-  optional UploadDeviceConfigResponse uploadDeviceConfigResponse = 25;
+  optional AcceptTosResponse acceptTosResponse = 22;
   optional AndroidCheckinResponse androidCheckinResponse = 26;
+  optional UploadDeviceConfigResponse uploadDeviceConfigResponse = 28;
   optional SearchSuggestResponse searchSuggestResponse = 40;
   optional TestingProgramResponse testingProgramResponse = 80;
 }
@@ -853,11 +960,40 @@ message PreFetch {
   optional int64 ttl = 4;
   optional int64 softTtl = 5;
 }
+message ServerMetadata {
+  optional int64 latencyMillis = 1;
+}
+
+message Targets {
+  repeated int64 targetId = 1;
+  optional bytes signature = 2;
+}
+
+message ServerCookie {
+  optional int32 type = 1;
+  optional bytes token = 2;
+}
+message ServerCookies {
+  repeated ServerCookie serverCookie = 1;
+}
 message ResponseWrapper {
   optional Payload payload = 1;
   optional ServerCommands commands = 2;
   repeated PreFetch preFetch = 3;
   repeated Notification notification = 4;
+  optional ServerMetadata serverMetadata = 5;
+  optional Targets targets = 6;
+  optional ServerCookies serverCookies = 7;
+  optional bytes serverLogsCookie = 9;
+}
+message ResponseWrapperApi {
+  optional PayloadApi payload = 1;
+}
+message PayloadApi {
+  optional UserProfileResponse userProfileResponse = 5;
+}
+message UserProfileResponse {
+  optional UserProfile userProfile = 1;
 }
 message ServerCommands {
   optional bool clearCache = 1;
@@ -881,29 +1017,22 @@ message Review {
   optional string deviceName = 19;
   optional string replyText = 29;
   optional int64 replyTimestampMsec = 30;
-  optional Author author = 31;
-  optional Author2 author2 = 33;
+  optional ReviewAuthor author = 31;
+  optional UserProfile userProfile = 33;
 }
-message Author {
+message ReviewAuthor {
   optional string name = 2;
-  optional Avatar urls = 5;
+  optional Image avatar = 5;
 }
-message Author2 {
+message UserProfile {
   optional string personIdString = 1;
   optional string personId = 2;
   optional int32 unknown1 = 3;
   optional int32 unknown2 = 4;
   optional string name = 5;
-  optional Avatar urls = 10;
+  repeated Image image = 10;
   optional string googlePlusUrl = 19;
   optional string googlePlusTagline = 22;
-}
-message Avatar {
-  optional int32 unknown1 = 1;
-  optional string url = 5;
-  optional string secureUrl = 7;
-  optional bool unknown2 = 9;
-  optional bool unknown3 = 22;
 }
 message ReviewResponse {
   optional GetReviewsResponse getResponse = 1;
@@ -926,18 +1055,6 @@ message SearchResponse {
   repeated DocV2 doc = 5;
   repeated RelatedSearch relatedSearch = 6;
   optional string nextPageUrl = 10;
-}
-message UserProfileResponseWrapper {
-  optional UserProfilePayload payload = 1;
-  optional ServerCommands commands = 2;
-  repeated PreFetch preFetch = 3;
-  repeated Notification notification = 4;
-}
-message UserProfilePayload {
-  optional UserProfileResponse response = 5;
-}
-message UserProfileResponse {
-  repeated DocV2 doc = 1;
 }
 message SearchSuggestResponse {
   repeated SearchSuggestEntry entry = 1;
@@ -1018,6 +1135,7 @@ message AndroidCheckinResponse {
   optional fixed64 securityToken = 8;
   optional bool settingsDiff = 9;
   repeated string deleteSetting = 10;
+  optional string deviceCheckinConsistencyToken = 12;
 }
 message GservicesSetting {
   optional bytes name = 1;
@@ -1139,11 +1257,21 @@ message StatCounters {
 message UsageStatsExtensionProto {
   optional AndroidDataUsageProto dataUsage = 1;
 }
-message SearchCluster {
-  optional string id = 1;
-  optional string type = 2;
-  optional int64 int1 = 3;
-  optional int64 int2 = 4;
-  optional string category = 5;
-  repeated DocV2 doc = 11;
+message ModifyLibraryRequest {
+  optional string libraryId = 1;
+  repeated string addPackageName = 2;
+  repeated string removePackageName = 3;
+}
+message UrlRequestWrapper {
+  optional DeveloperAppsRequest developerAppsRequest = 49;
+}
+message DeveloperAppsRequest {
+  optional DeveloperIdContainer developerIdContainer1 = 1;
+  optional DeveloperIdContainer developerIdContainer2 = 2;
+  optional int32 unknownInt3 = 3;
+}
+message DeveloperIdContainer {
+  optional string developerId = 1;
+  optional int32 unknownInt2 = 2;
+  optional int32 unknownInt3 = 3;
 }
