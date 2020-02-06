@@ -98,6 +98,14 @@ for c in catList:
 limit = 4
 print("\nList only {} apps from subcat {} for {} category\n".format(
     limit, catList[0], cat))
-appList = server.list(cat, catList[0], 4, 1)
+appList = server.list(cat, catList[0], limit, 0)
+for app in appList:
+    print(app["docid"])
+
+# offset
+nr_apps = 2
+print("\n\nUsing offset to list the last {} apps from the previous list:".format(nr_apps))
+offset = limit - nr_apps
+appList = server.list(cat, catList[0], nr_apps, offset)
 for app in appList:
     print(app["docid"])

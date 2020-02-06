@@ -2,6 +2,7 @@
 
 from base64 import b64decode, urlsafe_b64encode
 from datetime import datetime
+import string
 
 from cryptography.hazmat.primitives.asymmetric.utils import encode_dss_signature
 from cryptography.hazmat.backends import default_backend
@@ -427,6 +428,20 @@ class GooglePlayAPI(object):
 
         return utils.parseProtobufObj(data.payload.browseResponse)
 
+    def get_token(self, offset):
+        code = "AEIMQUYcgkosw048"
+        code_suffix = "=BCDEFGHIJKLMNOPQRSTUVWXYZ"
+        if offset >= 254:
+            offset += 1
+        i = offset // 16
+        j = offset % 16
+        s = offset // 128
+        if s > 0:
+            i -= 8 * (s - 1)
+        key = string.ascii_uppercase[i] + code[j]
+        token = "C" + key + requests.utils.quote(code_suffix[s])
+        return token
+
     def list(self, cat, ctr=None, nb_results=None, offset=None):
         """List all possible subcategories for a specific category. If
         also a subcategory is provided, list apps from this category.
@@ -448,7 +463,7 @@ class GooglePlayAPI(object):
         if nb_results is not None:
             path += "&n={}".format(requests.utils.quote(str(nb_results)))
         if offset is not None:
-            path += "&o={}".format(requests.utils.quote(str(offset)))
+            path += "&ctntkn=" + self.get_token(int(offset))
         data = self.executeRequestApi2(path)
         clusters = []
         docs = []
