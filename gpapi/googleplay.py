@@ -286,6 +286,7 @@ class GooglePlayAPI(object):
         params['token_request_options'] = 'CAA4AQ=='
         params['system_partition'] = '1'
         params['_opt_is_called_from_account_manager'] = '1'
+        params['service'] = "oauth2:https://www.googleapis.com/auth/googleplay"
         params.pop('Email')
         params.pop('EncryptedPasswd')
         headers = self.deviceBuilder.getAuthHeaders(self.gsfId)
