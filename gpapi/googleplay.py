@@ -34,6 +34,7 @@ TOC_URL = FDFE + "toc"
 ACCEPT_TOS_URL = FDFE + "acceptTos"
 LIST_URL = FDFE + "list"
 REVIEWS_URL = FDFE + "rev"
+OAUTH_SERVICE = "oauth2:https://www.googleapis.com/auth/googleplay"
 
 CONTENT_TYPE_URLENC = "application/x-www-form-urlencoded; charset=UTF-8"
 CONTENT_TYPE_PROTO = "application/x-protobuf"
@@ -286,7 +287,7 @@ class GooglePlayAPI(object):
         params['token_request_options'] = 'CAA4AQ=='
         params['system_partition'] = '1'
         params['_opt_is_called_from_account_manager'] = '1'
-        params['service'] = "oauth2:https://www.googleapis.com/auth/googleplay"
+        params['service'] = OAUTH_SERVICE
         params.pop('Email')
         params.pop('EncryptedPasswd')
         headers = self.deviceBuilder.getAuthHeaders(self.gsfId)
