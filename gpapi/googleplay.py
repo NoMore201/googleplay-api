@@ -34,6 +34,7 @@ TOC_URL = FDFE + "toc"
 ACCEPT_TOS_URL = FDFE + "acceptTos"
 LIST_URL = FDFE + "list"
 REVIEWS_URL = FDFE + "rev"
+OAUTH_SERVICE = "oauth2:https://www.googleapis.com/auth/googleplay"
 
 CONTENT_TYPE_URLENC = "application/x-www-form-urlencoded; charset=UTF-8"
 CONTENT_TYPE_PROTO = "application/x-protobuf"
@@ -141,7 +142,7 @@ class GooglePlayAPI(object):
         if self.gsfId is not None:
             headers["X-DFE-Device-Id"] = "{0:x}".format(self.gsfId)
         if self.authSubToken is not None:
-            headers["Authorization"] = "GoogleLogin auth=%s" % self.authSubToken
+            headers["Authorization"] = "Bearer %s" % self.authSubToken
         if self.device_config_token is not None:
             headers["X-DFE-Device-Config-Token"] = self.device_config_token
         if self.deviceCheckinConsistencyToken is not None:
@@ -286,6 +287,7 @@ class GooglePlayAPI(object):
         params['token_request_options'] = 'CAA4AQ=='
         params['system_partition'] = '1'
         params['_opt_is_called_from_account_manager'] = '1'
+        params['service'] = OAUTH_SERVICE
         params.pop('Email')
         params.pop('EncryptedPasswd')
         headers = self.deviceBuilder.getAuthHeaders(self.gsfId)
