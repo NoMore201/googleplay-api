@@ -547,7 +547,8 @@ class GooglePlayAPI(object):
 
         if versionCode is None:
             # pick up latest version
-            versionCode = self.details(packageName).get('versionCode')
+            appDetails = self.details(packageName).get('details').get('appDetails')
+            versionCode = appDetails.get('versionCode')
 
         params = {'ot': str(offerType),
                   'doc': packageName,
