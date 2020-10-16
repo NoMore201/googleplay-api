@@ -1,3 +1,4 @@
+import enum
 import json
 from gpapi.googleplay import GooglePlayAPI
 
@@ -40,9 +41,12 @@ App Version: {details['details']['appDetails']['versionString']}
 
 print("Attempting to download {}".format(docid))
 fl = server.download(docid, versionCode=versionCode)
-with open(docid, "wb") as apk_file:
-    for chunk in fl.get("file").get("data"):
+with open(f"{docid}.apk", "wb") as apk_file:
+    parts = int(fl['file']['total_size']) / fl['file']['chunk_size']
+    for index, chunk in enumerate(fl.get("file").get("data")):
         apk_file.write(chunk)
+        print(f"Downloading: {round((index/parts)*100)}% complete...", end="\r")
+    print("")
     print("Download successful")
 
 print("Attempting to download {} splits".format(docid))
@@ -51,6 +55,9 @@ if splits:
     for split in splits:
         split_path = f"{docid}_{split['name']}.apk"
         with open(split_path, 'wb') as f:
-            for chunk in split.get('file').get('data'):
+            parts = int(split['file']['total_size']) / split['file']['chunk_size']
+            for index, chunk in enumerate(split.get('file').get('data')):
+                print(f"Downloading: {round((index/parts)*100)}% complete...", end="\r")
                 f.write(chunk)
+            print("")
     print("Download successful")
