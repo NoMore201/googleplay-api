@@ -1,7 +1,9 @@
+import os
+import sys
 import json
 from gpapi.googleplay import GooglePlayAPI
 
-# Json login file should be structured like:
+# Json login file must be placed in the root be structured like:
 # {
 #     "log_in_name": {
 #         "deviceName": device_name:str,
@@ -10,7 +12,21 @@ from gpapi.googleplay import GooglePlayAPI
 #     },
 # }
 
-with open("login.json") as logins:
+def resource_path(relative_path):
+    """Get absolute path to resource, works for dev and for PyInstaller."""
+
+    # PyInstaller creates a temp folder and stores path in _MEIPASS
+    # Tries temp folder first, if failed uses original path returned as absolute path
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath("")
+
+    return os.path.join(base_path, relative_path)
+
+input("Press Enter To Start")
+
+with open(resource_path("login.json")) as logins:
     device_log_ins = json.load(logins)
     current_log_in = device_log_ins['pixel_2'] # Change this to change device
 

@@ -1,8 +1,10 @@
+altgraph==0.17
 cachetools==4.1.1
 certifi==2020.6.20
 cffi==1.14.3
 chardet==3.0.4
 cryptography==3.1.1
+future==0.18.2
 google-api-core==1.22.4
 google-api-python-client==1.12.3
 google-auth==1.22.1
@@ -10,11 +12,15 @@ google-auth-httplib2==0.0.4
 googleapis-common-protos==1.52.0
 httplib2==0.18.1
 idna==2.10
+pefile==2019.4.18
 protobuf==3.13.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.20
+pyinstaller==4.0
+pyinstaller-hooks-contrib==2020.9
 pytz==2020.1
+pywin32-ctypes==0.2.0
 requests==2.24.0
 rsa==4.6
 six==1.15.0
