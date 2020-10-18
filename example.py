@@ -1,4 +1,3 @@
-import enum
 import json
 from gpapi.googleplay import GooglePlayAPI
 
