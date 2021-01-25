@@ -141,7 +141,7 @@ class GooglePlayAPI(object):
         if self.gsfId is not None:
             headers["X-DFE-Device-Id"] = "{0:x}".format(self.gsfId)
         if self.authSubToken is not None:
-            headers["Authorization"] = "GoogleLogin auth=%s" % self.authSubToken
+            headers["Authorization"] = "Bearer %s" % self.authSubToken
         if self.device_config_token is not None:
             headers["X-DFE-Device-Config-Token"] = self.device_config_token
         if self.deviceCheckinConsistencyToken is not None:
