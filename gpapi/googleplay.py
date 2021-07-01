@@ -640,7 +640,6 @@ class GooglePlayAPI(object):
         params = {'ot': str(offerType),
                   'doc': packageName,
                   'vc': str(versionCode)}
-        self.log(packageName)
         response = self.session.post(PURCHASE_URL, headers=headers,
                                  params=params, verify=ssl_verify,
                                  timeout=60,
