@@ -50,10 +50,17 @@ def getDevicesReadableNames():
 
 class DeviceBuilder(object):
 
-    def __init__(self, device):
+    def __init__(self, device, isCustomDevice=False):
         self.device = {}
-        for (key, value) in config.items(device):
-            self.device[key] = value
+        if isCustomDevice:
+            for (key, value) in device.items():
+                self.device[key.lower()] = value
+        else:
+            for (key, value) in config.items(device):
+                self.device[key.lower()] = value
+
+    def getDeviceInfo(self):
+        return self.device
 
     def setLocale(self, locale):
         # test if provided locale is valid

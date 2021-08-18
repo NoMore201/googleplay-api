@@ -2,6 +2,7 @@
 
 from base64 import b64decode, urlsafe_b64encode
 from datetime import datetime
+import random
 
 from cryptography.hazmat.primitives.asymmetric.utils import encode_dss_signature
 from cryptography.hazmat.backends import default_backend
@@ -34,6 +35,7 @@ TOC_URL = FDFE + "toc"
 ACCEPT_TOS_URL = FDFE + "acceptTos"
 LIST_URL = FDFE + "list"
 REVIEWS_URL = FDFE + "rev"
+OAUTH_SERVICE = "oauth2:https://www.googleapis.com/auth/googleplay"
 
 CONTENT_TYPE_URLENC = "application/x-www-form-urlencoded; charset=UTF-8"
 CONTENT_TYPE_PROTO = "application/x-protobuf"
@@ -68,20 +70,30 @@ class GooglePlayAPI(object):
     Usual APIs methods are login(), search(), details(), bulkDetails(),
     download(), browse(), reviews() and list()."""
 
-    def __init__(self, locale="en_US", timezone="UTC", device_codename="bacon",
+    def __init__(self, locale="en_US", timezone="UTC", custom_device=None, device_codename=None,
                  proxies_config=None):
         self.authSubToken = None
         self.gsfId = None
         self.device_config_token = None
         self.deviceCheckinConsistencyToken = None
         self.dfeCookie = None
+        self.masterToken = None
         self.proxies_config = proxies_config
-        self.deviceBuilder = config.DeviceBuilder(device_codename)
+        if custom_device is not None:
+            self.deviceBuilder = config.DeviceBuilder(custom_device, True)
+            device_codename = custom_device["Build.DEVICE"]
+        else:
+            device_codename = random.choice(config.getDevicesCodenames()).strip()
+            self.deviceBuilder = config.DeviceBuilder(device_codename, False)
+        self.device_name = device_codename
         self.setLocale(locale)
         self.setTimezone(timezone)
 
     def setLocale(self, locale):
         self.deviceBuilder.setLocale(locale)
+
+    def getDeviceInfo(self):
+        return self.deviceBuilder.getDeviceInfo()
 
     def setTimezone(self, timezone):
         self.deviceBuilder.setTimezone(timezone)
@@ -127,8 +139,9 @@ class GooglePlayAPI(object):
 
         return urlsafe_b64encode(h + ciphertext)
 
-    def setAuthSubToken(self, authSubToken):
+    def setAuthSubToken(self, authSubToken, master_token):
         self.authSubToken = authSubToken
+        self.masterToken = master_token
 
     def getHeaders(self, upload_fields=False):
         """Return the default set of request headers, which
@@ -141,7 +154,7 @@ class GooglePlayAPI(object):
         if self.gsfId is not None:
             headers["X-DFE-Device-Id"] = "{0:x}".format(self.gsfId)
         if self.authSubToken is not None:
-            headers["Authorization"] = "GoogleLogin auth=%s" % self.authSubToken
+            headers["Authorization"] = "Bearer %s" % self.authSubToken
         if self.device_config_token is not None:
             headers["X-DFE-Device-Config-Token"] = self.device_config_token
         if self.deviceCheckinConsistencyToken is not None:
@@ -245,7 +258,7 @@ class GooglePlayAPI(object):
         elif gsfId is not None and authSubToken is not None:
             # no need to initialize API
             self.gsfId = gsfId
-            self.setAuthSubToken(authSubToken)
+            self.setAuthSubToken(authSubToken, None)
             # check if token is valid with a simple search
             self.search('drv')
         else:
@@ -272,7 +285,7 @@ class GooglePlayAPI(object):
         if "token" in params:
             master_token = params["token"]
             second_round_token = self.getSecondRoundToken(master_token, requestParams)
-            self.setAuthSubToken(second_round_token)
+            self.setAuthSubToken(second_round_token, master_token)
         elif "error" in params:
             raise LoginError("server says: " + params["error"])
         else:
@@ -286,6 +299,7 @@ class GooglePlayAPI(object):
         params['token_request_options'] = 'CAA4AQ=='
         params['system_partition'] = '1'
         params['_opt_is_called_from_account_manager'] = '1'
+        params['service'] = OAUTH_SERVICE
         params.pop('Email')
         params.pop('EncryptedPasswd')
         headers = self.deviceBuilder.getAuthHeaders(self.gsfId)
