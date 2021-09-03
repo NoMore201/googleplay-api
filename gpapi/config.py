@@ -26,6 +26,7 @@ if VERSION == 2:
     config = ConfigParser.ConfigParser()
 else:
     config = configparser.ConfigParser()
+config.optionxform = str
 config.read(filepath)
 
 
@@ -52,15 +53,18 @@ class DeviceBuilder(object):
 
     def __init__(self, device, isCustomDevice=False):
         self.device = {}
+        self.unformatted_device = {} # Only raw format is accepted by clients
         if isCustomDevice:
             for (key, value) in device.items():
+                self.unformatted_device[key] = value
                 self.device[key.lower()] = value
         else:
             for (key, value) in config.items(device):
+                self.unformatted_device[key] = value
                 self.device[key.lower()] = value
 
     def getDeviceInfo(self):
-        return self.device
+        return self.unformatted_device
 
     def setLocale(self, locale):
         # test if provided locale is valid
@@ -137,18 +141,16 @@ class DeviceBuilder(object):
             headers['device'] = "{0:x}".format(gsfid)
         return headers
 
-    def getLoginParams(self, email, encrypted_passwd):
+    def getLoginParams(self, email):
         return {"Email": email,
-                "EncryptedPasswd": encrypted_passwd,
                 "add_account": "1",
-                "accountType": ACCOUNT,
                 "google_play_services_version": self.device.get('gsf.version'),
                 "has_permission": "1",
-                "source": "android",
                 "device_country": self.locale[0:2],
                 "lang": self.locale,
                 "client_sig": "38918a453d07199354f8b19af05ec6562ced5788",
-                "callerSig": "38918a453d07199354f8b19af05ec6562ced5788"}
+                "callerSig": "38918a453d07199354f8b19af05ec6562ced5788",
+                "sdk_version": self.device.get('build.version.sdk_int')}
 
     def getAndroidCheckinRequest(self):
         request = googleplay_pb2.AndroidCheckinRequest()
