@@ -141,7 +141,8 @@ class DeviceBuilder(object):
                 "device_country": self.locale[0:2],
                 "lang": self.locale,
                 "client_sig": "38918a453d07199354f8b19af05ec6562ced5788",
-                "callerSig": "38918a453d07199354f8b19af05ec6562ced5788"}
+                "callerSig": "38918a453d07199354f8b19af05ec6562ced5788",
+                "droidguard_results": "dummy123"}
 
     def getAndroidCheckinRequest(self):
         request = googleplay_pb2.AndroidCheckinRequest()
