@@ -259,9 +259,13 @@ class GooglePlayAPI(object):
                 ac2dmToken = params["auth"]
             elif "error" in params:
                 if "NeedsBrowser" in params["error"]:
+                    # This callback is returned, but it doesn't appear to 
+                    # actually work for getting into your account
+                    callback_url = params.get("url", None)
                     raise SecurityCheckError("Security check is needed, try to visit "
                                      "https://accounts.google.com/b/0/DisplayUnlockCaptcha "
-                                     "to unlock, or setup an app-specific password")
+                                     "to unlock, or setup an app-specific password. "
+                                     f"Callback URL: {callback_url}")
                 raise LoginError("server says: " + params["error"])
             else:
                 raise LoginError("Auth token not found.")
