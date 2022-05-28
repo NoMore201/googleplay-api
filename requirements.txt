@@ -17,7 +17,7 @@ protobuf==3.13.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.20
-pyinstaller==4.0
+pyinstaller==4.9
 pyinstaller-hooks-contrib==2020.9
 pytz==2020.1
 pywin32-ctypes==0.2.0

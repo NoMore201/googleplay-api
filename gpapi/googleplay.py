@@ -244,10 +244,12 @@ class GooglePlayAPI(object):
             params['service'] = 'ac2dm'
             params['add_account'] = '1'
             params['callerPkg'] = 'com.google.android.gms'
-            headers = self.deviceBuilder.getAuthHeaders(self.gsfId)
-            headers['app'] = 'com.google.android.gsm'
-            response = self.session.post(AUTH_URL, data=params, verify=ssl_verify,
-                                     proxies=self.proxies_config)
+            with requests.Session() as s:
+                s.headers = {'User-Agent': 'GoogleAuth/1.4'}
+                response = s.post(AUTH_URL,
+                                 data=params,
+                                 verify=ssl_verify,
+                                 proxies=self.proxies_config)
             data = response.text.split()
             params = {}
             for d in data:
@@ -286,13 +288,12 @@ class GooglePlayAPI(object):
         requestParams = self.deviceBuilder.getLoginParams(email, passwd)
         requestParams['service'] = 'androidmarket'
         requestParams['app'] = 'com.android.vending'
-        headers = self.deviceBuilder.getAuthHeaders(self.gsfId)
-        headers['app'] = 'com.android.vending'
-        response = self.session.post(AUTH_URL,
-                                 data=requestParams,
-                                 verify=ssl_verify,
-                                 headers=headers,
-                                 proxies=self.proxies_config)
+        with requests.Session() as s:
+            s.headers = {'User-Agent': 'GoogleAuth/1.4', 'device':"{0:x}".format(self.gsfId)}
+            response = s.post(AUTH_URL,
+                                data=requestParams,
+                                verify=ssl_verify,
+                                proxies=self.proxies_config)
         data = response.text.split()
         params = {}
         for d in data:
