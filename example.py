@@ -6,6 +6,8 @@ from gpapi.googleplay import GooglePlayAPI
 # Json login file must be placed in the root be structured like:
 # {
 #     "log_in_name": {
+#         "username": "username",
+#         "password": "password",
 #         "deviceName": device_name:str,
 #         "gsfId" : id_number:int,
 #         "authSubToken" : token:str
@@ -34,8 +36,10 @@ server = GooglePlayAPI("en_US", "America/Toronto", current_log_in['deviceName'])
 
 print("Logging in...")
 server.login(
-    gsfId=current_log_in['gsfId'],
-    authSubToken=current_log_in['authSubToken']
+    email=current_log_in['username'],
+    password=current_log_in['password'],
+    # gsfId=current_log_in['gsfId'],
+    # authSubToken=current_log_in['authSubToken']
 )
 print("Complete!")
 
