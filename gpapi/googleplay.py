@@ -245,6 +245,7 @@ class GooglePlayAPI(object):
             params['add_account'] = '1'
             params['callerPkg'] = 'com.google.android.gms'
             with requests.Session() as s:
+                s.mount('https://', AuthHTTPAdapter())
                 s.headers = {'User-Agent': 'GoogleAuth/1.4'}
                 response = s.post(AUTH_URL,
                                  data=params,
@@ -291,6 +292,7 @@ class GooglePlayAPI(object):
         requestParams['service'] = 'androidmarket'
         requestParams['app'] = 'com.android.vending'
         with requests.Session() as s:
+            s.mount('https://', AuthHTTPAdapter())
             s.headers = {'User-Agent': 'GoogleAuth/1.4', 'device':"{0:x}".format(self.gsfId)}
             response = s.post(AUTH_URL,
                                 data=requestParams,
