@@ -17,7 +17,6 @@ from urllib3.util import ssl_
 
 from . import googleplay_pb2, config, utils
 
-ssl_verify = True
 
 BASE = "https://android.clients.google.com/"
 FDFE = BASE + "fdfe/"
@@ -94,7 +93,7 @@ class GooglePlayAPI(object):
     download(), browse(), reviews() and list()."""
 
     def __init__(self, locale="en_US", timezone="UTC", device_codename="bacon",
-                 proxies_config=None):
+                 proxies_config=None, ssl_verify=True):
         self.authSubToken = None
         self.gsfId = None
         self.device_config_token = None
@@ -104,7 +103,9 @@ class GooglePlayAPI(object):
         self.deviceBuilder = config.DeviceBuilder(device_codename)
         self.setLocale(locale)
         self.setTimezone(timezone)
-        self.session = requests.session()
+        self.ssl_verify = ssl_verify
+        self.session = requests.Session()
+        self.session.verify = self.ssl_verify
         self.session.mount('https://', AuthHTTPAdapter())
 
     def setLocale(self, locale):
@@ -185,7 +186,7 @@ class GooglePlayAPI(object):
 
         stringRequest = request.SerializeToString()
         res = self.session.post(CHECKIN_URL, data=stringRequest,
-                            headers=headers, verify=ssl_verify,
+                            headers=headers, verify=self.ssl_verify,
                             proxies=self.proxies_config)
         response = googleplay_pb2.AndroidCheckinResponse()
         response.ParseFromString(res.content)
@@ -200,7 +201,7 @@ class GooglePlayAPI(object):
         self.session.post(CHECKIN_URL,
                       data=stringRequest,
                       headers=headers,
-                      verify=ssl_verify,
+                      verify=self.ssl_verify,
                       proxies=self.proxies_config)
 
         return response.androidId
@@ -215,7 +216,7 @@ class GooglePlayAPI(object):
         stringRequest = upload.SerializeToString()
         response = self.session.post(UPLOAD_URL, data=stringRequest,
                                  headers=headers,
-                                 verify=ssl_verify,
+                                 verify=self.ssl_verify,
                                  timeout=60,
                                  proxies=self.proxies_config)
         response = googleplay_pb2.ResponseWrapper.FromString(response.content)
@@ -249,7 +250,7 @@ class GooglePlayAPI(object):
                 s.headers = {'User-Agent': 'GoogleAuth/1.4'}
                 response = s.post(AUTH_URL,
                                  data=params,
-                                 verify=ssl_verify,
+                                 verify=self.ssl_verify,
                                  proxies=self.proxies_config)
             data = response.text.split()
             params = {}
@@ -296,7 +297,7 @@ class GooglePlayAPI(object):
             s.headers = {'User-Agent': 'GoogleAuth/1.4', 'device':"{0:x}".format(self.gsfId)}
             response = s.post(AUTH_URL,
                                 data=requestParams,
-                                verify=ssl_verify,
+                                verify=self.ssl_verify,
                                 proxies=self.proxies_config)
         data = response.text.split()
         params = {}
@@ -329,7 +330,7 @@ class GooglePlayAPI(object):
         response = self.session.post(AUTH_URL,
                                  data=params,
                                  headers=headers,
-                                 verify=ssl_verify,
+                                 verify=self.ssl_verify,
                                  proxies=self.proxies_config)
         data = response.text.split()
         params = {}
@@ -356,14 +357,14 @@ class GooglePlayAPI(object):
                                      data=str(post_data),
                                      headers=headers,
                                      params=params,
-                                     verify=ssl_verify,
+                                     verify=self.ssl_verify,
                                      timeout=60,
                                      proxies=self.proxies_config)
         else:
             response = self.session.get(path,
                                     headers=headers,
                                     params=params,
-                                    verify=ssl_verify,
+                                    verify=self.ssl_verify,
                                     timeout=60,
                                     proxies=self.proxies_config)
 
@@ -568,7 +569,7 @@ class GooglePlayAPI(object):
     def _deliver_data(self, url, cookies):
         headers = self.getHeaders()
         response = self.session.get(url, headers=headers,
-                                cookies=cookies, verify=ssl_verify,
+                                cookies=cookies, verify=self.ssl_verify,
                                 stream=True, timeout=60,
                                 proxies=self.proxies_config)
         total_size = response.headers.get('content-length')
@@ -620,7 +621,7 @@ class GooglePlayAPI(object):
         if downloadToken is not None:
             params['dtok'] = downloadToken
         response = self.session.get(DELIVERY_URL, headers=headers,
-                                params=params, verify=ssl_verify,
+                                params=params, verify=self.ssl_verify,
                                 timeout=60,
                                 proxies=self.proxies_config)
         response = googleplay_pb2.ResponseWrapper.FromString(response.content)
@@ -693,7 +694,7 @@ class GooglePlayAPI(object):
                   'vc': str(versionCode)}
         # self.log(packageName)
         response = self.session.post(PURCHASE_URL, headers=headers,
-                                 params=params, verify=ssl_verify,
+                                 params=params, verify=self.ssl_verify,
                                  timeout=60,
                                  proxies=self.proxies_config)
 
@@ -715,7 +716,7 @@ class GooglePlayAPI(object):
         response = self.session.post(LOG_URL,
                                  data=string_request,
                                  headers=self.getHeaders(),
-                                 verify=ssl_verify,
+                                 verify=self.ssl_verify,
                                  timeout=60,
                                  proxies=self.proxies_config)
         response = googleplay_pb2.ResponseWrapper.FromString(response.content)
@@ -725,7 +726,7 @@ class GooglePlayAPI(object):
     def toc(self):
         response = self.session.get(TOC_URL,
                                headers=self.getHeaders(),
-                               verify=ssl_verify,
+                               verify=self.ssl_verify,
                                timeout=60,
                                proxies=self.proxies_config)
         data = googleplay_pb2.ResponseWrapper.FromString(response.content)
@@ -745,7 +746,7 @@ class GooglePlayAPI(object):
         response = self.session.get(ACCEPT_TOS_URL,
                                headers=self.getHeaders(),
                                params=params,
-                               verify=ssl_verify,
+                               verify=self.ssl_verify,
                                timeout=60,
                                proxies=self.proxies_config)
         data = googleplay_pb2.ResponseWrapper.FromString(response.content)
