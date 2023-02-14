@@ -10,6 +10,8 @@ PROTOC_EXEC = "protoc"
 
 CURRENT_DIR = os.path.abspath( os.path.dirname( __file__ ) )
 
+__VERSION__ = '0.4.4-post2'
+
 class ProtobufBuilder(_build):
 
     def run(self):
@@ -26,7 +28,7 @@ class ProtobufBuilder(_build):
         super().run()
 
 setup(name='ak-gpapi',
-      version='0.4.4-post2',
+      version=__VERSION__,
       description='Unofficial python api for google play',
       url='https://github.com/appknox/googleplay-api',
       author='appknox',
