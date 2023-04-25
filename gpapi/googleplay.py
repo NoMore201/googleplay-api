@@ -579,7 +579,7 @@ class GooglePlayAPI(object):
                 'chunk_size': chunk_size}
 
     def delivery(self, packageName, versionCode=None, offerType=1,
-                 downloadToken=None, expansion_files=False, versionString=None):
+                 downloadToken=None, expansion_files=False, versionString=None, link_only=False):
         """Download an already purchased app.
 
         Args:
@@ -588,6 +588,7 @@ class GooglePlayAPI(object):
             offerType (int): different type of downloads (mostly unused for apks)
             downloadToken (str): download token returned by 'purchase' API
             progress_bar (bool): wether or not to print a progress bar to stdout
+            link_only (bool): wether file data or download link only required in response
 
         Returns:
             Dictionary containing apk data and a list of expansion files. As stated
@@ -635,6 +636,9 @@ class GooglePlayAPI(object):
             result['additionalData'] = []
             result['splits'] = []
             downloadUrl = response.payload.deliveryResponse.appDeliveryData.downloadUrl
+            result['downloadUrl'] = downloadUrl
+            if link_only:
+                return result
             cookie = response.payload.deliveryResponse.appDeliveryData.downloadAuthCookie[0]
             cookies = {
                 str(cookie.name): str(cookie.value)
@@ -663,7 +667,7 @@ class GooglePlayAPI(object):
                 result['additionalData'].append(a)
             return result
 
-    def download(self, packageName, versionCode=None, offerType=1, expansion_files=False):
+    def download(self, packageName, versionCode=None, offerType=1, expansion_files=False, link_only=False):
         """Download an app and return its raw data (APK file). Free apps need
         to be "purchased" first, in order to retrieve the download cookie.
         If you want to download an already purchased app, use *delivery* method.
@@ -674,6 +678,7 @@ class GooglePlayAPI(object):
             offerType (int): different type of downloads (mostly unused for apks)
             downloadToken (str): download token returned by 'purchase' API
             progress_bar (bool): wether or not to print a progress bar to stdout
+            link_only (bool): wether file data or download link only required in response
 
         Returns
             Dictionary containing apk data and optional expansion files
@@ -704,7 +709,7 @@ class GooglePlayAPI(object):
         else:
             dlToken = response.payload.buyResponse.downloadToken
             return self.delivery(packageName, versionCode, offerType, dlToken,
-                                 expansion_files=expansion_files)
+                                 expansion_files=expansion_files, link_only=link_only)
 
     def log(self, docid):
         log_request = googleplay_pb2.LogRequest()
