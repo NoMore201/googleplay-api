@@ -22,7 +22,7 @@ $ python setup.py build
 
 Check scripts in `test` directory for more examples on how to use this API.
 
-```
+```py
 from gpapi.googleplay import GooglePlayAPI
 
 mail = "mymail@google.com"
